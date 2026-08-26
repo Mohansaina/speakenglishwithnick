@@ -20,12 +20,14 @@ import { LeadMagnetModal } from '@/components/LeadMagnetModal';
 import { BookingModal } from '@/components/BookingModal';
 import { StudentLoginModal } from '@/components/StudentLoginModal';
 import { SearchModal } from '@/components/SearchModal';
+import { FloatingPracticeWidget } from '@/components/FloatingPracticeWidget';
 import { Sparkles, Calendar, BookOpen, ArrowRight } from 'lucide-react';
 import { translations } from '@/data/translations';
 
 function MainContent() {
   const { language } = useLanguage();
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
+  const [bookingNotes, setBookingNotes] = useState('');
   const [leadMagnetOpen, setLeadMagnetOpen] = useState(false);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [searchModalOpen, setSearchModalOpen] = useState(false);
@@ -37,10 +39,15 @@ function MainContent() {
     }
   };
 
+  const handleOpenBookingWithQuiz = (notes: string) => {
+    setBookingNotes(notes);
+    setBookingModalOpen(true);
+  };
+
   return (
     <main className="min-h-screen bg-white text-stone-900 selection:bg-[#d0f4bd] selection:text-[#0b2d22]">
       
-      {/* 1. Lime Green Top Announcement Bar (Rachel's English style: Cheat Sheet + Student Login + EN/ES Toggle) */}
+      {/* 1. Lime Green Top Announcement Bar */}
       <TopAnnouncementBar
         onOpenLeadMagnet={() => setLeadMagnetOpen(true)}
         onOpenLogin={() => setLoginModalOpen(true)}
@@ -49,7 +56,10 @@ function MainContent() {
       {/* 2. Clean White Header Navbar */}
       <Navbar
         onOpenQuiz={handleScrollToQuiz}
-        onOpenBooking={() => setBookingModalOpen(true)}
+        onOpenBooking={() => {
+          setBookingNotes('');
+          setBookingModalOpen(true);
+        }}
         onOpenLeadMagnet={() => setLeadMagnetOpen(true)}
         onOpenSearch={() => setSearchModalOpen(true)}
       />
@@ -57,22 +67,28 @@ function MainContent() {
       {/* 3. Deep Forest Green Iconic Hero Section */}
       <Hero
         onOpenQuiz={handleScrollToQuiz}
-        onOpenBooking={() => setBookingModalOpen(true)}
+        onOpenBooking={() => {
+          setBookingNotes('');
+          setBookingModalOpen(true);
+        }}
         onOpenLeadMagnet={() => setLeadMagnetOpen(true)}
       />
 
-      {/* 4. Bold Green Metric Stats Bar (1.2M+, 35K+, 500+) */}
+      {/* 4. Bold Green Metric Stats Bar */}
       <StatsBar />
 
-      {/* 5. Transformation Showcase (Rachel's English student photo flanked by quote cards with green quotation marks) */}
+      {/* 5. Transformation Showcase */}
       <TransformationSection />
 
-      {/* 6. Popular Video Lessons & Audio Drills (Rachel's English green rounded cards) */}
+      {/* 6. Popular Video Lessons & Audio Drills */}
       <PopularLessons onOpenBooking={() => setBookingModalOpen(true)} />
 
-      {/* 7. Spanish Speakers Specialization Hub (The 4 sound traps & audio comparison) */}
+      {/* 7. Spanish Speakers Specialization Hub */}
       <SpanishSpeakersHub
-        onOpenBooking={() => setBookingModalOpen(true)}
+        onOpenBooking={() => {
+          setBookingNotes('');
+          setBookingModalOpen(true);
+        }}
         onOpenLeadMagnet={() => setLeadMagnetOpen(true)}
       />
 
@@ -98,13 +114,19 @@ function MainContent() {
             </p>
           </div>
 
-          <FluencyQuiz onSelectCourse={() => {}} />
+          <FluencyQuiz
+            onSelectCourse={() => {}}
+            onOpenBookingWithResult={handleOpenBookingWithQuiz}
+          />
         </div>
       </section>
 
       {/* 11. Programs & Academy Tiers */}
       <Programs
-        onOpenBooking={() => setBookingModalOpen(true)}
+        onOpenBooking={() => {
+          setBookingNotes('');
+          setBookingModalOpen(true);
+        }}
         onOpenLeadMagnet={() => setLeadMagnetOpen(true)}
       />
 
@@ -143,7 +165,10 @@ function MainContent() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2">
             <button
-              onClick={() => setBookingModalOpen(true)}
+              onClick={() => {
+                setBookingNotes('');
+                setBookingModalOpen(true);
+              }}
               className="w-full sm:w-auto px-8 py-4 rounded-full bg-[#66c310] hover:bg-[#58a80d] text-[#0b2d22] font-black text-sm shadow-lg transition-all flex items-center justify-center gap-2 hover:scale-105 cursor-pointer"
             >
               <Calendar className="w-4 h-4 stroke-[2.5]" />
@@ -165,7 +190,10 @@ function MainContent() {
       {/* 15. Structured 4-Column Footer */}
       <Footer
         onOpenQuiz={handleScrollToQuiz}
-        onOpenBooking={() => setBookingModalOpen(true)}
+        onOpenBooking={() => {
+          setBookingNotes('');
+          setBookingModalOpen(true);
+        }}
         onOpenLeadMagnet={() => setLeadMagnetOpen(true)}
         onOpenLogin={() => setLoginModalOpen(true)}
       />
@@ -178,7 +206,11 @@ function MainContent() {
 
       <BookingModal
         isOpen={bookingModalOpen}
-        onClose={() => setBookingModalOpen(false)}
+        prefilledNotes={bookingNotes}
+        onClose={() => {
+          setBookingModalOpen(false);
+          setBookingNotes('');
+        }}
       />
 
       <StudentLoginModal
@@ -189,6 +221,15 @@ function MainContent() {
       <SearchModal
         isOpen={searchModalOpen}
         onClose={() => setSearchModalOpen(false)}
+      />
+
+      {/* Floating 20-Sec Quick Pronunciation Practice Widget */}
+      <FloatingPracticeWidget
+        onOpenQuiz={handleScrollToQuiz}
+        onOpenBooking={() => {
+          setBookingNotes('');
+          setBookingModalOpen(true);
+        }}
       />
 
     </main>

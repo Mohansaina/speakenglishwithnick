@@ -27,9 +27,9 @@ export const AboutNick: React.FC<AboutNickProps> = ({ onOpenBooking }) => {
               <div className="absolute inset-0 bg-gradient-to-t from-[#0b2d22]/90 via-transparent to-transparent" />
               
               <div className="absolute bottom-5 left-5 right-5 text-white">
-                <div className="font-black text-lg">Coach Nick</div>
+                <div className="font-black text-lg">Teacher Nick</div>
                 <p className="text-xs text-[#66c310] font-bold">
-                  {language === 'es' ? 'Especialista en Acento y Fluidez para Hispanohablantes' : 'Accent & Fluency Coach for Spanish Speakers'}
+                  {language === 'es' ? 'Especialista en Acento y Fluidez para Hispanohablantes' : 'Accent & Fluency Specialist for Spanish Speakers'}
                 </p>
               </div>
             </div>
@@ -79,28 +79,28 @@ export const AboutNick: React.FC<AboutNickProps> = ({ onOpenBooking }) => {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
               <div className="p-4 rounded-2xl bg-[#fafafa] border border-stone-200/90 space-y-1">
                 <div className="text-sm font-black text-[#0d382c]">
-                  {language === 'es' ? '1. Repetición Acústica' : '1. Acoustic Shadowing'}
+                  {language === 'es' ? '1. Inglés desde 0' : '1. English from 0'}
                 </div>
                 <p className="text-xs text-stone-500">
-                  {language === 'es' ? 'Entrena tu lengua con ritmo nativo' : 'Train vocal cords with native melody'}
+                  {language === 'es' ? 'Aprende las bases sin estrés ni confusión' : 'Step-by-step basics with patient support'}
                 </p>
               </div>
 
               <div className="p-4 rounded-2xl bg-[#fafafa] border border-stone-200/90 space-y-1">
                 <div className="text-sm font-black text-[#0d382c]">
-                  {language === 'es' ? '2. Frases de Rescate' : '2. Rescue Phrasing'}
+                  {language === 'es' ? '2. Inglés Específico' : '2. Specific English'}
                 </div>
                 <p className="text-xs text-stone-500">
-                  {language === 'es' ? 'Cero bloqueos en reuniones en vivo' : 'Zero awkward pauses in meetings'}
+                  {language === 'es' ? 'Restaurantes, trabajo y situaciones reales' : 'Restaurants, work & everyday social life'}
                 </p>
               </div>
 
               <div className="p-4 rounded-2xl bg-[#fafafa] border border-stone-200/90 space-y-1">
                 <div className="text-sm font-black text-[#0d382c]">
-                  {language === 'es' ? '3. 20 Minutos al Día' : '3. 20-Min Commute'}
+                  {language === 'es' ? '3. Práctica por WhatsApp' : '3. WhatsApp Practice'}
                 </div>
                 <p className="text-xs text-stone-500">
-                  {language === 'es' ? 'Práctica manos libres en tu camino' : 'Hands-free daily audio workouts'}
+                  {language === 'es' ? '5 días a la semana con audios directos' : '5 days a week of personal voice notes'}
                 </p>
               </div>
             </div>

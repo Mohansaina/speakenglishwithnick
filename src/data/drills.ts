@@ -70,5 +70,34 @@ export const drills: AudioDrill[] = [
     betterAlternative: '"If I can just jump in for a quick second..."',
     difficulty: 'Confidence Booster',
     tags: ['Group Speaking', 'Small Talk', 'Confidence']
+  },
+  {
+    id: 'polite-disagree',
+    title: 'Disagreeing Politely in Workplace Meetings',
+    category: 'Workplace & Daily Life',
+    scenario: 'You have a different perspective on a project but want to keep the tone collaborative.',
+    phrase: 'I see where you\'re coming from, but I wonder if there might be an alternative approach.',
+    phonetic: '/aɪ siː wɛər jʊər ˈkʌm.ɪŋ frʌm, bʌt aɪ ˈwʌn.dər ɪf ðɛər maɪt biː.../',
+    meaning: 'Validates the other person before introducing your own constructive suggestion.',
+    whyItWorks: 'Softens disagreement while demonstrating executive presence and diplomacy.',
+    commonMistake: 'Saying "No, you are wrong, that idea doesn\'t work".',
+    betterAlternative: '"That\'s one way to look at it. Another option could be..."',
+    difficulty: 'Intermediate',
+    tags: ['Business', 'Negotiation', 'Meetings']
+  },
+  {
+    id: 'small-talk-opener',
+    title: 'Effortless Coffee Break & Watercooler Small Talk',
+    category: 'Social & Group Dynamics',
+    scenario: 'Standing next to a coworker or conference attendee and you want to break the ice naturally.',
+    phrase: 'How is your week shaping up? Have you had a chance to work on that new launch?',
+    phonetic: '/haʊ ɪz jʊər wiːk ˈʃeɪ.pɪŋ ʌp?/',
+    meaning: 'An open-ended question that sounds warm, engaging, and native.',
+    whyItWorks: '"Shaping up" is a relaxed conversational phrase that invites genuine conversation.',
+    commonMistake: 'Asking closed yes/no questions that immediately lead to dead ends.',
+    betterAlternative: '"How are things going on your end today?"',
+    difficulty: 'Beginner',
+    tags: ['Small Talk', 'Networking', 'Social']
   }
 ];
+

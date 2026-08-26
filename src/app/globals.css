@@ -9,7 +9,12 @@
   --background: #ffffff;
   --foreground: #18181b;
   --brand-forest: #0d382c;
+  --brand-forest-dark: #07221a;
+  --brand-forest-light: #164c3c;
   --brand-lime: #66c310;
+  --brand-lime-hover: #54a50b;
+  --brand-lime-light: #eaf8dd;
+  --brand-glow: rgba(102, 195, 16, 0.35);
 }
 
 body {
@@ -38,8 +43,85 @@ html {
   scrollbar-width: none;
 }
 
-/* Rachel's English style lime green highlight */
+/* Premium Lime Green Selection Highlight */
 ::selection {
   background-color: #d0f4bd;
   color: #0b2d22;
 }
+
+/* Custom Pulsing Soundwave Bars */
+@keyframes soundwave {
+  0%, 100% {
+    height: 6px;
+    opacity: 0.4;
+  }
+  50% {
+    height: 28px;
+    opacity: 1;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(102, 195, 16, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(102, 195, 16, 0.5);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-soundwave-1 {
+  animation: soundwave 1.2s ease-in-out infinite;
+  animation-delay: 0.1s;
+}
+.animate-soundwave-2 {
+  animation: soundwave 1.0s ease-in-out infinite;
+  animation-delay: 0.25s;
+}
+.animate-soundwave-3 {
+  animation: soundwave 1.4s ease-in-out infinite;
+  animation-delay: 0.4s;
+}
+.animate-soundwave-4 {
+  animation: soundwave 0.9s ease-in-out infinite;
+  animation-delay: 0.15s;
+}
+.animate-soundwave-5 {
+  animation: soundwave 1.3s ease-in-out infinite;
+  animation-delay: 0.3s;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* Glowing card halo */
+.glow-lime-sm {
+  box-shadow: 0 0 25px -5px rgba(102, 195, 16, 0.25);
+}
+
+.glow-lime-lg {
+  box-shadow: 0 10px 40px -10px rgba(102, 195, 16, 0.45);
+}
+
+.glass-dark {
+  background: rgba(13, 56, 44, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.glass-white {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+

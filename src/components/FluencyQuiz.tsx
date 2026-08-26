@@ -3,16 +3,21 @@
 import React, { useState } from 'react';
 import { quizQuestions, calculateQuizResult } from '@/data/quizData';
 import { QuizResult } from '@/types';
-import { Sparkles, Brain, ShieldAlert, Ear, BookOpen, Car, Clock, UserCheck, Zap, Briefcase, MessageSquare, Mic, ArrowRight, RotateCcw, Check, Compass, Award } from 'lucide-react';
+import { Sparkles, Brain, ShieldAlert, Ear, BookOpen, Car, Clock, UserCheck, Zap, Briefcase, MessageSquare, Mic, ArrowRight, RotateCcw, Check, Compass, Award, Download, Calendar, BarChart3 } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import confetti from 'canvas-confetti';
 
 interface FluencyQuizProps {
   onClose?: () => void;
   onSelectCourse?: (courseId: string) => void;
+  onOpenBookingWithResult?: (resultDetails: string) => void;
 }
 
-export const FluencyQuiz: React.FC<FluencyQuizProps> = ({ onClose, onSelectCourse }) => {
+export const FluencyQuiz: React.FC<FluencyQuizProps> = ({
+  onClose,
+  onSelectCourse,
+  onOpenBookingWithResult,
+}) => {
   const { language } = useLanguage();
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
@@ -100,6 +105,33 @@ export const FluencyQuiz: React.FC<FluencyQuizProps> = ({ onClose, onSelectCours
           iconName: 'Sparkles',
         }
       ]
+    },
+    {
+      id: 4,
+      question: '¿Cuál es tu mayor desafío con la pronunciación del inglés americano?',
+      subtitle: 'Entender tu patrón fonético nos permite calibrar tus ejercicios de repetición.',
+      options: [
+        {
+          label: 'La diferencia entre vocales cortas y largas (ej. ship vs sheep, live vs leave)',
+          description: 'Tendencia a pronunciarlas todas iguales como en el español.',
+          iconName: 'Ear',
+        },
+        {
+          label: 'Agregar una "E" involuntaria antes de palabras con S (ej. "espeak", "eschool")',
+          description: 'Patrón automático del español que afecta tu fluidez inicial.',
+          iconName: 'Mic',
+        },
+        {
+          label: 'La pronunciación de la R americana y la unión de consonantes (ej. world, girl)',
+          description: 'Posición lingual y tensión muscular en la parte posterior del paladar.',
+          iconName: 'Sparkles',
+        },
+        {
+          label: 'El ritmo acentual y conectar palabras fluidamente sin sonar robótico',
+          description: 'Sonido Schwa /ə/ y reducción de sílabas no acentuadas.',
+          iconName: 'Brain',
+        }
+      ]
     }
   ];
 
@@ -133,8 +165,8 @@ export const FluencyQuiz: React.FC<FluencyQuizProps> = ({ onClose, onSelectCours
       setResult(calculated);
       try {
         confetti({
-          particleCount: 50,
-          spread: 60,
+          particleCount: 60,
+          spread: 70,
           origin: { y: 0.6 }
         });
       } catch {
@@ -154,8 +186,14 @@ export const FluencyQuiz: React.FC<FluencyQuizProps> = ({ onClose, onSelectCours
       return {
         archetype: 'El Traductor Mental',
         tagline: 'Atrapado traduciendo palabra por palabra desde el español',
-        summary: 'Tienes buen conocimiento de vocabulario en tu mente, pero el filtro de traducción genera un retraso de 3 a 5 segundos. Tu ruta más rápida hacia la fluidez es la repetición acústica de frases completas.',
+        summary: 'Tienes buen conocimiento de vocabulario en tu mente, pero el filtro de traducción genera un retraso de 3 a 5 segundos. Tu ruta más rápida hacia la fluidez es la repetición acústica de frases completas sin traducción.',
         barrier: 'Retraso de traducción interna y sobreanálisis gramatical',
+        scores: {
+          accent: 78,
+          confidence: 65,
+          speed: 55,
+          agility: 82,
+        },
         plan: [
           'Reemplaza la lectura silenciosa por repetición en voz alta 20 min/día en tus traslados.',
           'Usa conectores verbales de rescate para ganar segundos sin silencios incómodos.',
@@ -169,6 +207,12 @@ export const FluencyQuiz: React.FC<FluencyQuizProps> = ({ onClose, onSelectCours
         tagline: 'Alta comprensión, pero paralizado por temor a equivocarte',
         summary: 'Entiendes más del 80% de lo que dicen, pero la ansiedad te frena a participar en vivo. Necesitas un espacio seguro para soltarte y roleplays con feedback constructivo.',
         barrier: 'Ansiedad de desempeño y temor al juicio ajeno',
+        scores: {
+          accent: 85,
+          confidence: 45,
+          speed: 68,
+          agility: 75,
+        },
         plan: [
           'Aplica el principio "Comunica primero": el mensaje es 10 veces más importante que la perfección.',
           'Practica roleplays de situaciones laborales para desensibilizar la ansiedad.',
@@ -182,6 +226,12 @@ export const FluencyQuiz: React.FC<FluencyQuizProps> = ({ onClose, onSelectCours
         tagline: 'Te pierdes cuando los nativos hablan a velocidad cotidiana',
         summary: 'Conoces el inglés estándar, pero las uniones de palabras (connected speech) y vocales reducidas te desconciertan. Necesitas entrenamiento de descompresión auditiva.',
         barrier: 'Procesamiento de uniones y reducciones sonoras',
+        scores: {
+          accent: 72,
+          confidence: 60,
+          speed: 50,
+          agility: 70,
+        },
         plan: [
           'Estudia el ritmo acentual en lugar de palabras aisladas.',
           'Domina las 50 uniones y reducciones más comunes en inglés americano.',
@@ -194,6 +244,12 @@ export const FluencyQuiz: React.FC<FluencyQuizProps> = ({ onClose, onSelectCours
       tagline: 'Quieres sonar profesional y natural sin repetir siempre lo mismo',
       summary: 'Te defiendes en inglés, pero sientes que no puedes mostrar tu verdadera inteligencia profesional por falta de modismos y matices.',
       barrier: 'Rango coloquial limitado y repetición de términos',
+      scores: {
+        accent: 82,
+        confidence: 75,
+        speed: 80,
+        agility: 62,
+      },
       plan: [
         'Aprende 5 frases clave de alto impacto diario en lugar de listas eternas del diccionario.',
         'Aplica las frases de inmediato en audios de práctica de 2 minutos.',
@@ -202,8 +258,47 @@ export const FluencyQuiz: React.FC<FluencyQuizProps> = ({ onClose, onSelectCours
     };
   };
 
+  const handleDownloadRoadmap = (archetypeTitle: string, planList: string[]) => {
+    const content = `=====================================================
+PLAN PERSONALIZADO DE 90 DÍAS - COACH NICK
+SPEAK ENGLISH WITH NICK (@speak.english.with.nick)
+=====================================================
+
+PERFIL AL HABLAR: ${archetypeTitle}
+FECHA DE DIAGNÓSTICO: ${new Date().toLocaleDateString()}
+
+RUTINA DIARIA RECOMENDADA:
+- 20 Minutos al día en tu camino al trabajo, coche o caminata.
+- 0% Memorización de listas de gramática.
+- 100% Repetición acústica ('shadowing') en voz alta.
+
+PASOS ACCIONABLES RECOMENDADOS:
+${planList.map((p, i) => `${i + 1}. ${p}`).join('\n')}
+
+LAS 3 FRASES DE RESCATE CLAVE PARA TU PERFIL:
+1. "Could you please speak a little slower? I want to make sure I catch everything."
+2. "Let me put it this way: our main goal is to keep things clear and efficient."
+3. "That's a great question. Let me think about that for a second..."
+
+¿Listo para feedback 1 a 1 en vivo con Coach Nick?
+Agenda tu sesión diagnóstica en: https://speakenglishwithnick.com
+
+¡Mucho éxito en tu camino hacia la fluidez natural!
+`;
+
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Plan_Fluidez_90_Dias_${archetypeTitle.replace(/\s+/g, '_')}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
   return (
-    <div className="w-full max-w-3xl mx-auto rounded-3xl bg-white border-2 border-[#d0f4bd] shadow-xl p-6 sm:p-10 text-stone-900">
+    <div className="w-full max-w-3xl mx-auto rounded-3xl bg-white border-2 border-[#d0f4bd] shadow-2xl p-6 sm:p-10 text-stone-900 glow-lime-sm">
       
       {!result ? (
         <div className="space-y-8">
@@ -217,7 +312,7 @@ export const FluencyQuiz: React.FC<FluencyQuizProps> = ({ onClose, onSelectCours
                   ? `Pregunta ${currentStep + 1} de ${activeQuestions.length}`
                   : `Question ${currentStep + 1} of ${activeQuestions.length}`}
               </span>
-              <span className="text-stone-400">
+              <span className="text-stone-400 font-semibold">
                 {language === 'es' ? 'Diagnóstico Personalizado' : 'Diagnostic Assessment'}
               </span>
             </div>
@@ -225,7 +320,7 @@ export const FluencyQuiz: React.FC<FluencyQuizProps> = ({ onClose, onSelectCours
             {/* Clean Progress Bar with Green Theme */}
             <div className="w-full h-2 rounded-full bg-[#f4fbf0] overflow-hidden border border-[#d0f4bd]">
               <div
-                className="h-full bg-[#66c310] rounded-full transition-all duration-300"
+                className="h-full bg-[#66c310] rounded-full transition-all duration-300 shadow-sm"
                 style={{ width: `${((currentStep + 1) / activeQuestions.length) * 100}%` }}
               />
             </div>
@@ -246,9 +341,9 @@ export const FluencyQuiz: React.FC<FluencyQuizProps> = ({ onClose, onSelectCours
               <button
                 key={idx}
                 onClick={() => handleSelectOption(idx)}
-                className="w-full text-left p-4 sm:p-5 rounded-2xl bg-[#fafafa] hover:bg-[#f4fbf0] border border-stone-200 hover:border-[#66c310] group transition-all flex items-start gap-4 cursor-pointer"
+                className="w-full text-left p-4 sm:p-5 rounded-2xl bg-[#fafafa] hover:bg-[#f4fbf0] border border-stone-200 hover:border-[#66c310] group transition-all flex items-start gap-4 cursor-pointer hover:scale-[1.01] hover:shadow-md"
               >
-                <div className="p-2.5 rounded-xl bg-white border border-stone-200 group-hover:border-[#66c310] shrink-0 shadow-2xs">
+                <div className="p-2.5 rounded-xl bg-white border border-stone-200 group-hover:border-[#66c310] shrink-0 shadow-2xs group-hover:bg-[#eefae8] transition-colors">
                   {getIcon(option.iconName)}
                 </div>
                 <div className="flex-1 space-y-0.5">
@@ -259,8 +354,8 @@ export const FluencyQuiz: React.FC<FluencyQuizProps> = ({ onClose, onSelectCours
                     {option.description}
                   </p>
                 </div>
-                <div className="w-6 h-6 rounded-full border border-stone-300 flex items-center justify-center shrink-0 mt-1 group-hover:border-[#66c310] group-hover:bg-[#66c310] group-hover:text-[#0b2d22] transition-colors">
-                  <ArrowRight className="w-3.5 h-3.5 text-stone-400 group-hover:text-[#0b2d22]" />
+                <div className="w-7 h-7 rounded-full border border-stone-300 flex items-center justify-center shrink-0 mt-1 group-hover:border-[#66c310] group-hover:bg-[#66c310] group-hover:text-[#0b2d22] transition-colors">
+                  <ArrowRight className="w-4 h-4 text-stone-400 group-hover:text-[#0b2d22]" />
                 </div>
               </button>
             ))}
@@ -291,6 +386,7 @@ export const FluencyQuiz: React.FC<FluencyQuizProps> = ({ onClose, onSelectCours
             const barrierText = esData ? esData.barrier : result.primaryBarrier;
             const summaryText = esData ? esData.summary : result.summary;
             const planList = esData ? esData.plan : result.actionPlan;
+            const scores = esData ? esData.scores : { accent: 82, confidence: 60, speed: 65, agility: 75 };
 
             return (
               <>
@@ -306,6 +402,59 @@ export const FluencyQuiz: React.FC<FluencyQuizProps> = ({ onClose, onSelectCours
                   <p className="text-xs sm:text-sm text-stone-600 max-w-md mx-auto italic font-serif">
                     &ldquo;{taglineText}&rdquo;
                   </p>
+                </div>
+
+                {/* Multi-Dimensional Skill Radar Breakdown */}
+                <div className="p-5 rounded-2xl bg-[#fafafa] border border-stone-200 space-y-3">
+                  <div className="flex items-center justify-between text-xs font-black text-[#0d382c] uppercase tracking-wider">
+                    <span className="flex items-center gap-1.5">
+                      <BarChart3 className="w-4 h-4 text-[#66c310]" />
+                      {language === 'es' ? 'Desglose de Habilidades al Hablar' : 'Speaking Capability Dimensions'}
+                    </span>
+                    <span className="text-stone-500 font-normal">0 - 100%</span>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                    <div className="space-y-1">
+                      <div className="flex justify-between text-xs font-bold text-stone-700">
+                        <span>{language === 'es' ? 'Acento y Fonética' : 'Pronunciation & Accent'}</span>
+                        <span className="text-[#0d382c] font-black">{scores.accent}%</span>
+                      </div>
+                      <div className="w-full bg-stone-200 h-2 rounded-full overflow-hidden">
+                        <div className="bg-[#66c310] h-full rounded-full" style={{ width: `${scores.accent}%` }} />
+                      </div>
+                    </div>
+
+                    <div className="space-y-1">
+                      <div className="flex justify-between text-xs font-bold text-stone-700">
+                        <span>{language === 'es' ? 'Confianza sin Ansiedad' : 'Confidence & Calm'}</span>
+                        <span className="text-[#0d382c] font-black">{scores.confidence}%</span>
+                      </div>
+                      <div className="w-full bg-stone-200 h-2 rounded-full overflow-hidden">
+                        <div className="bg-[#66c310] h-full rounded-full" style={{ width: `${scores.confidence}%` }} />
+                      </div>
+                    </div>
+
+                    <div className="space-y-1">
+                      <div className="flex justify-between text-xs font-bold text-stone-700">
+                        <span>{language === 'es' ? 'Velocidad de Respuesta' : 'Response Speed (No translation)'}</span>
+                        <span className="text-[#0d382c] font-black">{scores.speed}%</span>
+                      </div>
+                      <div className="w-full bg-stone-200 h-2 rounded-full overflow-hidden">
+                        <div className="bg-[#66c310] h-full rounded-full" style={{ width: `${scores.speed}%` }} />
+                      </div>
+                    </div>
+
+                    <div className="space-y-1">
+                      <div className="flex justify-between text-xs font-bold text-stone-700">
+                        <span>{language === 'es' ? 'Agilidad de Vocabulario' : 'Vocabulary Agility'}</span>
+                        <span className="text-[#0d382c] font-black">{scores.agility}%</span>
+                      </div>
+                      <div className="w-full bg-stone-200 h-2 rounded-full overflow-hidden">
+                        <div className="bg-[#66c310] h-full rounded-full" style={{ width: `${scores.agility}%` }} />
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Analysis Cards */}
@@ -340,10 +489,21 @@ export const FluencyQuiz: React.FC<FluencyQuizProps> = ({ onClose, onSelectCours
 
                 {/* Action Plan */}
                 <div className="p-5 rounded-2xl bg-[#f4fbf0] border-2 border-[#d0f4bd] space-y-3">
-                  <h4 className="text-xs font-black text-[#0d382c] uppercase tracking-wider flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 text-[#66c310]" />
-                    <span>{language === 'es' ? 'Plan de Acción Sugerido por Coach Nick' : "Coach Nick's 3-Step Action Plan"}</span>
-                  </h4>
+                  <div className="flex items-center justify-between">
+                    <h4 className="text-xs font-black text-[#0d382c] uppercase tracking-wider flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-[#66c310]" />
+                      <span>{language === 'es' ? 'Plan de Acción Sugerido por Coach Nick' : "Coach Nick's 3-Step Action Plan"}</span>
+                    </h4>
+
+                    <button
+                      onClick={() => handleDownloadRoadmap(archetypeTitle, planList)}
+                      className="text-xs font-bold text-[#0d382c] hover:text-[#66c310] flex items-center gap-1 cursor-pointer transition-colors"
+                    >
+                      <Download className="w-3.5 h-3.5" />
+                      <span>{language === 'es' ? 'Descargar Plan (TXT)' : 'Download Roadmap'}</span>
+                    </button>
+                  </div>
+
                   <div className="space-y-2">
                     {planList.map((step, idx) => (
                       <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-800 font-medium">
@@ -356,17 +516,19 @@ export const FluencyQuiz: React.FC<FluencyQuizProps> = ({ onClose, onSelectCours
 
                 {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
-                  <a
-                    href="#programs"
+                  <button
                     onClick={() => {
-                      if (onSelectCourse) onSelectCourse(result.recommendedCourseId);
-                      if (onClose) onClose();
+                      if (onOpenBookingWithResult) {
+                        onOpenBookingWithResult(`Quiz Archetype: ${archetypeTitle}. Primary Barrier: ${barrierText}`);
+                      } else if (onSelectCourse) {
+                        onSelectCourse(result.recommendedCourseId);
+                      }
                     }}
-                    className="w-full sm:flex-1 py-4 rounded-full bg-[#0d382c] hover:bg-[#164c3c] text-white font-black text-center text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full sm:flex-1 py-4 rounded-full bg-[#0d382c] hover:bg-[#164c3c] text-white font-black text-center text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.02]"
                   >
-                    <span>{language === 'es' ? 'Ver Programa Recomendado' : 'See Recommended Program'}</span>
-                    <ArrowRight className="w-4 h-4 text-[#66c310]" />
-                  </a>
+                    <Calendar className="w-4 h-4 text-[#66c310]" />
+                    <span>{language === 'es' ? 'Agendar Sesión con mi Diagnóstico' : 'Book 1-on-1 with My Diagnostic Attached'}</span>
+                  </button>
 
                   <button
                     onClick={handleReset}
