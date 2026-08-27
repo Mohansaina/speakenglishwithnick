@@ -44,14 +44,23 @@ export const Navbar: React.FC<NavbarProps> = ({
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
         
-        {/* 1. Left: Official Brand Logo (Nick Avatar + USA Badge matching reference) */}
+        {/* 1. Left: Official Brand Logo (Nick Avatar + Text) */}
         <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
-          <div className="h-11 sm:h-13 w-auto flex items-center">
+          <div className="h-10 w-10 sm:h-11 sm:w-11 rounded-full overflow-hidden border-2 border-[#164c3c] shadow-xs shrink-0 ring-2 ring-[#62c110]/40">
             <img
-              src="/logo.jpg"
-              alt="Speak English with Nick"
-              className="h-11 sm:h-13 w-auto object-contain transition-transform group-hover:scale-102"
+              src="/nick.png"
+              alt="Coach Nick"
+              className="h-full w-full object-cover object-top transition-transform group-hover:scale-105"
             />
+          </div>
+          <div className="flex flex-col">
+            <div className="font-black text-[#07221a] tracking-tight text-sm sm:text-base leading-tight flex items-center gap-1">
+              <span>Speak English</span>
+              <span className="font-serif italic font-normal text-[#164c3c]">with Nick</span>
+            </div>
+            <span className="text-[10px] sm:text-[11px] font-bold text-stone-500 tracking-normal">
+              American Accent & Fluency
+            </span>
           </div>
         </Link>
 

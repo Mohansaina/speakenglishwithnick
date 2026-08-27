@@ -25,6 +25,14 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: 'Speak English with Nick | American English Accent & Fluency Coach',
   description: 'Top-rated American English accent and fluency training. Specialized for Spanish speakers and ambitious professionals to speak effortless, natural English with total confidence.',
+  icons: {
+    icon: [
+      { url: '/nick.png', type: 'image/png' },
+      { url: '/nick.jpg', type: 'image/jpeg' },
+    ],
+    shortcut: '/nick.png',
+    apple: '/nick.png',
+  },
   keywords: [
     'Speak English With Nick',
     'American Accent Training',
@@ -39,6 +47,14 @@ export const metadata: Metadata = {
     description: 'Master natural American English rhythm, eliminate mental translation, and speak with confidence.',
     url: 'https://speakenglishwithnick.com',
     siteName: 'Speak English with Nick',
+    images: [
+      {
+        url: '/nick.jpg',
+        width: 800,
+        height: 800,
+        alt: 'Coach Nick',
+      }
+    ],
     type: 'website',
   },
 };
