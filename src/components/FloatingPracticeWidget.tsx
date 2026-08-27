@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Volume2, Mic, MicOff, Check, X, Sparkles, Headphones, ChevronUp, ChevronDown, Award, Play, Pause } from 'lucide-react';
+import { Volume2, Mic, MicOff, Check, X, Headphones, ChevronUp, ChevronDown, Award, Play, Pause } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import confetti from 'canvas-confetti';
 
@@ -25,16 +25,16 @@ export const FloatingPracticeWidget: React.FC<FloatingPracticeWidgetProps> = ({
     ? {
         en: "Could you please speak a little slower?",
         ipa: "/kʊd juː pliːz spiːk ə ˈlɪt.əl ˈsloʊ.ər/",
-        tip: "Consejo rápido: Empieza 'speak' con aire continuo sin añadir 'e'."
+        tip: "Consejo rápido: Empieza 'speak' con aire continuo sin añadir la vocal 'e'."
       }
     : {
         en: "Could you please speak a little slower?",
         ipa: "/kʊd juː pliːz spiːk ə ˈlɪt.əl ˈsloʊ.ər/",
-        tip: "Quick Tip: Clean /s/ onset with relaxed vowel duration."
+        tip: "Quick Tip: Clean /s/ onset with relaxed vowel reduction."
       };
 
   const handlePlayAudio = () => {
-    if ('speechSynthesis' in window) {
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
       if (isPlaying) {
         window.speechSynthesis.cancel();
         setIsPlaying(false);
@@ -88,11 +88,11 @@ export const FloatingPracticeWidget: React.FC<FloatingPracticeWidgetProps> = ({
     <div className="fixed bottom-5 right-5 z-40 flex flex-col items-end">
       {/* Expanded Mini Workout Studio */}
       {isOpen && (
-        <div className="mb-3 w-[calc(100vw-2.5rem)] max-w-sm sm:w-96 rounded-3xl bg-[#09241c] border-2 border-[#1e614d] text-white p-4 sm:p-5 shadow-2xl space-y-4 glow-lime-sm animate-in slide-in-from-bottom-5 duration-200">
+        <div className="mb-3 w-[calc(100vw-2.5rem)] max-w-sm sm:w-96 rounded-3xl bg-[#07221a] border border-[#164c3c] text-white p-4 sm:p-5 shadow-[0_16px_50px_rgba(0,0,0,0.3)] space-y-4 glow-lime-sm animate-in slide-in-from-bottom-5 duration-200">
           
           <div className="flex items-center justify-between pb-2 border-b border-[#164c3c]">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#66c310] animate-ping" />
+              <span className="w-2 h-2 rounded-full bg-[#62c110] animate-ping" />
               <h4 className="text-xs font-black text-white uppercase tracking-wider">
                 {language === 'es' ? 'Micro-Práctica del Día (20s)' : 'Daily 20-Sec Workout'}
               </h4>
@@ -105,24 +105,24 @@ export const FloatingPracticeWidget: React.FC<FloatingPracticeWidgetProps> = ({
             </button>
           </div>
 
-          <div className="space-y-1.5 p-3.5 rounded-2xl bg-[#0d382c] border border-[#237058]">
-            <div className="flex justify-between items-center text-[10px] text-[#66c310] font-bold">
+          <div className="space-y-1.5 p-3.5 rounded-2xl bg-[#051913] border border-[#164c3c]">
+            <div className="flex justify-between items-center text-[10px] text-[#62c110] font-bold">
               <span>{language === 'es' ? 'Frase de Hoy:' : "Today's Target:"}</span>
               <span className="font-mono text-stone-400">{dailyPhrase.ipa}</span>
             </div>
-            <p className="text-sm font-extrabold text-white">
+            <p className="text-sm font-black text-white">
               &ldquo;{dailyPhrase.en}&rdquo;
             </p>
           </div>
 
-          <p className="text-[11px] text-[#d1f7b0] italic">
+          <p className="text-[11px] text-[#d7f7c2] italic">
             {dailyPhrase.tip}
           </p>
 
           <div className="flex items-center gap-2 pt-1">
             <button
               onClick={handlePlayAudio}
-              className="flex-1 py-2.5 rounded-full bg-[#66c310] hover:bg-[#54a50b] text-[#0b2d22] font-black text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-xs"
+              className="flex-1 py-2.5 rounded-full bg-[#62c110] hover:bg-[#52a60d] text-[#07221a] font-black text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-xs"
             >
               {isPlaying ? <Pause className="w-3.5 h-3.5 fill-current" /> : <Volume2 className="w-3.5 h-3.5" />}
               <span>{isPlaying ? 'Pausa' : (language === 'es' ? 'Escuchar' : 'Listen')}</span>
@@ -133,22 +133,22 @@ export const FloatingPracticeWidget: React.FC<FloatingPracticeWidgetProps> = ({
               className={`flex-1 py-2.5 rounded-full text-xs font-bold flex items-center justify-center gap-1.5 border transition-all cursor-pointer ${
                 isRecording
                   ? 'bg-rose-900/50 border-rose-500 text-rose-300 animate-pulse'
-                  : 'bg-[#103e30] hover:bg-[#164c3c] border-[#246f58] text-white'
+                  : 'bg-[#0d382c] hover:bg-[#164c3c] border-[#164c3c] text-white'
               }`}
             >
-              {isRecording ? <MicOff className="w-3.5 h-3.5" /> : <Mic className="w-3.5 h-3.5 text-[#66c310]" />}
+              {isRecording ? <MicOff className="w-3.5 h-3.5" /> : <Mic className="w-3.5 h-3.5 text-[#62c110]" />}
               <span>{isRecording ? 'Grabando...' : (language === 'es' ? 'Repetir' : 'Practice')}</span>
             </button>
           </div>
 
           {feedback && (
-            <div className="p-2.5 rounded-xl bg-[#164c3c] border border-[#66c310] text-[#d1f7b0] text-xs font-bold flex items-center justify-between">
+            <div className="p-2.5 rounded-xl bg-[#0d382c] border border-[#62c110] text-[#d7f7c2] text-xs font-bold flex items-center justify-between">
               <div className="flex items-center gap-1.5">
-                <Check className="w-3.5 h-3.5 text-[#66c310]" />
+                <Check className="w-3.5 h-3.5 text-[#62c110]" />
                 <span>{feedback}</span>
               </div>
               {score && (
-                <span className="bg-[#66c310] text-[#0b2d22] px-2 py-0.5 rounded-md font-black text-[10px]">
+                <span className="bg-[#62c110] text-[#07221a] px-2 py-0.5 rounded-md font-black text-[10px]">
                   {score}%
                 </span>
               )}
@@ -161,7 +161,7 @@ export const FloatingPracticeWidget: React.FC<FloatingPracticeWidgetProps> = ({
                 setIsOpen(false);
                 onOpenQuiz();
               }}
-              className="text-[#66c310] font-extrabold hover:underline cursor-pointer"
+              className="text-[#62c110] font-bold hover:underline cursor-pointer"
             >
               {language === 'es' ? 'Hacer Test Completo →' : 'Take Full Quiz →'}
             </button>
@@ -170,7 +170,7 @@ export const FloatingPracticeWidget: React.FC<FloatingPracticeWidgetProps> = ({
                 setIsOpen(false);
                 onOpenBooking();
               }}
-              className="text-stone-300 hover:text-white cursor-pointer"
+              className="text-stone-300 hover:text-white cursor-pointer font-medium"
             >
               {language === 'es' ? 'Sesión 1 a 1' : '1-on-1 Call'}
             </button>
@@ -182,18 +182,18 @@ export const FloatingPracticeWidget: React.FC<FloatingPracticeWidgetProps> = ({
       {/* Floating Pill Trigger */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="px-4 py-2.5 rounded-full bg-[#0d382c] hover:bg-[#164c3c] text-white border-2 border-[#66c310] shadow-2xl flex items-center gap-2.5 cursor-pointer transition-all hover:scale-105 glow-lime-sm group"
+        className="px-4 py-2.5 rounded-full bg-[#07221a] hover:bg-[#0d382c] text-white border border-[#164c3c] shadow-2xl flex items-center gap-2.5 cursor-pointer transition-all hover:scale-105 glow-lime-sm group"
         aria-label="Open daily pronunciation practice"
       >
-        <div className="w-7 h-7 rounded-full bg-[#66c310] text-[#0b2d22] flex items-center justify-center font-bold text-xs shadow-xs">
-          🎧
+        <div className="w-7 h-7 rounded-full bg-[#62c110] text-[#07221a] flex items-center justify-center font-bold text-xs shadow-xs">
+          <Headphones className="w-3.5 h-3.5 stroke-[2.5]" />
         </div>
         <div className="text-left hidden sm:block">
           <div className="text-xs font-black text-white flex items-center gap-1">
             <span>{language === 'es' ? 'Micro-Práctica de Acento' : '20s Accent Workout'}</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#66c310] animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#62c110] animate-pulse" />
           </div>
-          <p className="text-[10px] text-[#a8e874] font-medium">
+          <p className="text-[10px] text-[#d7f7c2] font-medium">
             {language === 'es' ? 'Practica una frase en voz alta' : 'Shadow today’s phrase'}
           </p>
         </div>
@@ -204,3 +204,4 @@ export const FloatingPracticeWidget: React.FC<FloatingPracticeWidgetProps> = ({
     </div>
   );
 };
+

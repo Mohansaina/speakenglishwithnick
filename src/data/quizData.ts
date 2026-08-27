@@ -60,7 +60,7 @@ export const quizQuestions: QuizQuestion[] = [
       {
         label: 'Just 5 to 10 minutes between daily tasks',
         description: 'Micro-drills and instant survival phrases for immediate recall.',
-        iconName: 'Zap',
+        iconName: 'Clock',
         points: { routine: 'basics', recommendedCourseId: 'commute-blueprint' }
       }
     ]
@@ -92,7 +92,7 @@ export const quizQuestions: QuizQuestion[] = [
       {
         label: 'Build an unbreakable daily speaking habit from scratch',
         description: 'Stop giving up after a week and maintain automatic daily practice.',
-        iconName: 'Sparkles',
+        iconName: 'Compass',
         points: { routine: 'commute', recommendedCourseId: 'commute-blueprint' }
       }
     ]

@@ -30,44 +30,45 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
   );
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-150">
-      <div className="w-full max-w-xl bg-white rounded-3xl border border-stone-200 shadow-2xl overflow-hidden animate-in zoom-in-95 duration-150">
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-12 sm:pt-20 px-3 sm:px-4 bg-black/75 backdrop-blur-md animate-in fade-in duration-150">
+      <div className="w-full max-w-xl bg-white rounded-3xl border border-stone-200 shadow-[0_20px_60px_rgba(0,0,0,0.15)] overflow-hidden animate-in zoom-in-95 duration-150">
         
         {/* Search Input Bar */}
-        <div className="p-4 sm:p-5 border-b border-stone-100 flex items-center gap-3">
-          <Search className="w-5 h-5 text-[#66c310] shrink-0" />
+        <div className="p-3.5 sm:p-5 border-b border-stone-100 flex items-center gap-3">
+          <Search className="w-5 h-5 text-[#62c110] shrink-0" />
           <input
             type="text"
             autoFocus
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={language === 'es' ? 'Buscar sonidos, acento, lecciones...' : 'Search sounds, accent drills, video lessons...'}
-            className="w-full bg-transparent text-stone-900 placeholder-stone-400 text-sm sm:text-base font-semibold focus:outline-hidden"
+            className="w-full bg-transparent text-stone-900 placeholder-stone-400 text-sm sm:text-base font-bold focus:outline-none"
           />
           <button
             onClick={onClose}
-            className="p-1.5 rounded-full hover:bg-stone-100 text-stone-400 hover:text-stone-700 transition-colors cursor-pointer"
+            className="p-1.5 sm:p-2 rounded-full hover:bg-stone-100 text-stone-400 hover:text-stone-700 transition-colors cursor-pointer"
+            aria-label="Close search"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Results List */}
-        <div className="max-h-80 overflow-y-auto p-3 space-y-1">
+        <div className="max-h-80 overflow-y-auto touch-scroll p-3 space-y-1">
           {filtered.length > 0 ? (
             filtered.map((item, idx) => (
               <a
                 key={idx}
                 href={item.anchor}
                 onClick={onClose}
-                className="flex items-center justify-between p-3 rounded-2xl hover:bg-[#f4fbf0] border border-transparent hover:border-[#c4eeb0] transition-colors group"
+                className="flex items-center justify-between p-3 rounded-2xl hover:bg-[#f6fcf3] border border-transparent hover:border-[#c4eeb0] transition-colors group"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-xl bg-stone-100 group-hover:bg-[#66c310] text-stone-700 group-hover:text-[#0b2d22] flex items-center justify-center transition-colors">
+                  <div className="w-8 h-8 rounded-xl bg-stone-100 group-hover:bg-[#62c110] text-stone-700 group-hover:text-[#07221a] flex items-center justify-center transition-colors">
                     {item.cat === 'Videos' ? <Video className="w-4 h-4" /> : <Headphones className="w-4 h-4" />}
                   </div>
                   <div>
-                    <h4 className="text-xs sm:text-sm font-bold text-stone-900 group-hover:text-[#0d382c]">
+                    <h4 className="text-xs sm:text-sm font-bold text-stone-900 group-hover:text-[#07221a]">
                       {item.title}
                     </h4>
                     <span className="text-[10px] text-stone-500 font-medium">
@@ -75,7 +76,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
                     </span>
                   </div>
                 </div>
-                <ArrowRight className="w-4 h-4 text-stone-300 group-hover:text-[#0d382c] group-hover:translate-x-1 transition-all" />
+                <ArrowRight className="w-4 h-4 text-stone-300 group-hover:text-[#07221a] group-hover:translate-x-1 transition-all" />
               </a>
             ))
           ) : (
@@ -94,3 +95,4 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
     </div>
   );
 };
+

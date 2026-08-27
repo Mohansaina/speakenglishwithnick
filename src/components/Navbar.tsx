@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X, ChevronDown, Search, ArrowRight, Sparkles, BookOpen, Headphones, Shield, Video, Globe } from 'lucide-react';
+import { Menu, X, ChevronDown, Search, ArrowRight, BookOpen, Headphones, Shield, Video } from 'lucide-react';
+import { InstagramIcon, YoutubeIcon, FacebookIcon, TwitterIcon } from '@/components/icons/BrandIcons';
 import { useLanguage } from '@/context/LanguageContext';
 import { translations } from '@/data/translations';
 
@@ -24,12 +25,12 @@ export const Navbar: React.FC<NavbarProps> = ({
   
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [videosDropdown, setVideosDropdown] = useState(false);
-  const [resourcesDropdown, setResourcesDropdown] = useState(false);
+  const [coursesDropdown, setCoursesDropdown] = useState(false);
+  const [lessonsDropdown, setLessonsDropdown] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 15);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -37,246 +38,260 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <header
-      className={`sticky top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md transition-all duration-200 border-b border-stone-200/80 ${
-        isScrolled ? 'shadow-[0_4px_24px_rgba(0,0,0,0.05)] py-2.5 sm:py-3' : 'py-3.5 sm:py-4'
+      className={`sticky top-0 left-0 right-0 z-40 bg-white transition-all duration-200 border-b border-stone-200 ${
+        isScrolled ? 'shadow-[0_4px_20px_rgba(0,0,0,0.06)] py-2 sm:py-2.5' : 'py-2.5 sm:py-3.5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
         
-        {/* 1. Brand Logo */}
-        <Link href="/" className="flex items-center gap-3 shrink-0 group">
-          <div className="w-10 h-10 rounded-2xl bg-[#0d382c] text-[#66c310] font-black flex items-center justify-center text-base tracking-tighter shadow-xs group-hover:scale-105 transition-all border border-[#1a5d49]">
-            N
-          </div>
-          <div>
-            <div className="font-extrabold text-[#0d382c] tracking-tight text-lg sm:text-xl flex items-center gap-1.5 leading-none">
-              <span>Speak English</span>
-              <span className="font-serif italic font-normal text-[#237059]">with Nick</span>
-            </div>
-            <p className="text-[10px] text-stone-500 font-bold tracking-wider uppercase mt-1">
-              American Accent & Fluency
-            </p>
+        {/* 1. Left: Official Brand Logo (Nick Avatar + USA Badge matching reference) */}
+        <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
+          <div className="h-11 sm:h-13 w-auto flex items-center">
+            <img
+              src="/logo.jpg"
+              alt="Speak English with Nick"
+              className="h-11 sm:h-13 w-auto object-contain transition-transform group-hover:scale-102"
+            />
           </div>
         </Link>
 
-        {/* 2. Center Navigation Links (Clean, Spacious & Refined) */}
-        <nav className="hidden lg:flex items-center gap-1 xl:gap-2 text-sm font-semibold text-stone-700">
-          
-          <a
-            href="#about"
-            className="px-3.5 py-2 rounded-full hover:bg-stone-100/90 hover:text-[#0d382c] transition-all"
-          >
-            {t.about}
-          </a>
-
-          {/* Free Videos Dropdown */}
-          <div
-            className="relative"
-            onMouseEnter={() => setVideosDropdown(true)}
-            onMouseLeave={() => setVideosDropdown(false)}
-          >
-            <button className="flex items-center gap-1 px-3.5 py-2 rounded-full hover:bg-stone-100/90 hover:text-[#0d382c] transition-all cursor-pointer">
-              <span>{t.freeVideos}</span>
-              <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${videosDropdown ? 'rotate-180 text-[#0d382c]' : 'text-stone-400'}`} />
-            </button>
-
-            {videosDropdown && (
-              <div className="absolute top-full left-0 w-64 pt-2 animate-in fade-in slide-in-from-top-2 duration-150 z-50">
-                <div className="bg-white rounded-2xl border border-stone-200/90 p-2 shadow-2xl space-y-1">
-                  <a
-                    href="#popular-lessons"
-                    onClick={() => setVideosDropdown(false)}
-                    className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-[#f4fbf0] text-stone-800 hover:text-[#0d382c] transition-colors"
-                  >
-                    <Video className="w-4 h-4 text-[#66c310] mt-0.5 shrink-0" />
-                    <div>
-                      <div className="text-xs font-bold">10 Real Conversations</div>
-                      <div className="text-[11px] text-stone-500 font-normal">Stop translating in your head</div>
-                    </div>
-                  </a>
-                  <a
-                    href="#popular-lessons"
-                    onClick={() => setVideosDropdown(false)}
-                    className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-[#f4fbf0] text-stone-800 hover:text-[#0d382c] transition-colors"
-                  >
-                    <Headphones className="w-4 h-4 text-[#66c310] mt-0.5 shrink-0" />
-                    <div>
-                      <div className="text-xs font-bold">5 Vowels Masterclass</div>
-                      <div className="text-[11px] text-stone-500 font-normal">American vowel secrets</div>
-                    </div>
-                  </a>
-                  <a
-                    href="#reels"
-                    onClick={() => setVideosDropdown(false)}
-                    className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-[#f4fbf0] text-stone-800 hover:text-[#0d382c] transition-colors"
-                  >
-                    <Sparkles className="w-4 h-4 text-[#66c310] mt-0.5 shrink-0" />
-                    <div>
-                      <div className="text-xs font-bold">60-Sec Instagram Drills</div>
-                      <div className="text-[11px] text-stone-500 font-normal">Quick commute tips</div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Resources Dropdown */}
-          <div
-            className="relative"
-            onMouseEnter={() => setResourcesDropdown(true)}
-            onMouseLeave={() => setResourcesDropdown(false)}
-          >
-            <button className="flex items-center gap-1 px-3.5 py-2 rounded-full hover:bg-stone-100/90 hover:text-[#0d382c] transition-all cursor-pointer">
-              <span>{t.resources}</span>
-              <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${resourcesDropdown ? 'rotate-180 text-[#0d382c]' : 'text-stone-400'}`} />
-            </button>
-
-            {resourcesDropdown && (
-              <div className="absolute top-full left-0 w-72 pt-2 animate-in fade-in slide-in-from-top-2 duration-150 z-50">
-                <div className="bg-white rounded-2xl border border-stone-200/90 p-2 shadow-2xl space-y-1">
-                  <a
-                    href="#drills"
-                    onClick={() => setResourcesDropdown(false)}
-                    className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-[#f4fbf0] text-stone-800 hover:text-[#0d382c] transition-colors"
-                  >
-                    <Headphones className="w-4 h-4 text-[#0d382c] mt-0.5 shrink-0" />
-                    <div>
-                      <div className="text-xs font-bold">{t.drills}</div>
-                      <div className="text-[11px] text-stone-500 font-normal">Acoustic shadowing studio</div>
-                    </div>
-                  </a>
-                  <a
-                    href="#spanish-hub"
-                    onClick={() => setResourcesDropdown(false)}
-                    className="flex items-start gap-2.5 p-2.5 rounded-xl bg-[#eefae8] text-[#0d382c] transition-colors"
-                  >
-                    <Sparkles className="w-4 h-4 text-[#66c310] mt-0.5 shrink-0" />
-                    <div>
-                      <div className="text-xs font-bold">{t.spanishGuide}</div>
-                      <div className="text-[11px] text-stone-600 font-normal">Fix 4 biggest Spanish traps</div>
-                    </div>
-                  </a>
-                  <button
-                    onClick={() => {
-                      setResourcesDropdown(false);
-                      onOpenQuiz();
-                    }}
-                    className="w-full text-left flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-stone-50 text-stone-800 hover:text-[#0d382c] transition-colors cursor-pointer"
-                  >
-                    <Shield className="w-4 h-4 text-[#0d382c] mt-0.5 shrink-0" />
-                    <div>
-                      <div className="text-xs font-bold">{t.quiz}</div>
-                      <div className="text-[11px] text-stone-500 font-normal">2-Min speaking diagnostic</div>
-                    </div>
-                  </button>
-                  <button
-                    onClick={() => {
-                      setResourcesDropdown(false);
-                      onOpenLeadMagnet();
-                    }}
-                    className="w-full text-left flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-stone-50 text-stone-800 hover:text-[#0d382c] transition-colors cursor-pointer"
-                  >
-                    <BookOpen className="w-4 h-4 text-[#0d382c] mt-0.5 shrink-0" />
-                    <div>
-                      <div className="text-xs font-bold">Accent Cheat Sheet (PDF)</div>
-                      <div className="text-[11px] text-stone-500 font-normal">Downloadable reference guide</div>
-                    </div>
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-
-          <a
-            href="#spanish-hub"
-            className="px-3.5 py-2 rounded-full text-[#0d382c] font-bold hover:bg-[#eefae8] transition-all flex items-center gap-1.5"
-          >
-            <span className="w-2 h-2 rounded-full bg-[#66c310] animate-pulse"></span>
-            <span>{t.spanishGuide}</span>
-          </a>
-
-          <a
-            href="#programs"
-            className="px-3.5 py-2 rounded-full hover:bg-stone-100/90 hover:text-[#0d382c] transition-all"
-          >
-            {t.programs}
-          </a>
-
-        </nav>
-
-        {/* 3. Right Side: Refined Segmented Language Control + Search + CTA */}
-        <div className="hidden sm:flex items-center gap-2.5 lg:gap-3 shrink-0">
-          
-          {/* Dual-Box Language Switcher */}
-          <div className="flex items-center p-1 rounded-2xl bg-stone-100/90 border border-stone-200/90 shadow-2xs">
+        {/* 2. Middle: English & Español Switcher Box */}
+        <div className="hidden md:flex items-center justify-center">
+          <div className="flex items-center p-1 rounded-2xl bg-stone-100 border border-stone-200/90 shadow-2xs">
             <button
               type="button"
               onClick={() => setLanguage('en')}
-              className={`px-3 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
+              className={`px-4 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 ${
                 language === 'en'
-                  ? 'bg-[#0d382c] text-white shadow-xs'
+                  ? 'bg-[#07221a] text-white shadow-xs'
                   : 'text-stone-600 hover:text-stone-900 hover:bg-white/60'
               }`}
             >
-              <span>🇺🇸</span>
               <span>English</span>
             </button>
             <button
               type="button"
               onClick={() => setLanguage('es')}
-              className={`px-3 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
+              className={`px-4 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 ${
                 language === 'es'
-                  ? 'bg-[#0d382c] text-[#66c310] shadow-xs'
+                  ? 'bg-[#07221a] text-[#82e635] shadow-xs'
                   : 'text-stone-600 hover:text-stone-900 hover:bg-white/60'
               }`}
             >
-              <span>🇲🇽</span>
               <span>Español</span>
             </button>
           </div>
+        </div>
 
-          {/* Quick Search Button */}
+        {/* 3. Right: Exact Reference Navigation Menu + Social Icons */}
+        <div className="hidden lg:flex items-center gap-6">
+          
+          <nav className="flex items-center gap-6 text-sm sm:text-[15px] font-bold text-stone-900">
+            {/* Home with active golden underline (just like Vanessa's site) */}
+            <Link
+              href="/"
+              className="relative py-1 font-extrabold text-stone-950 hover:text-amber-600 transition-colors after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-amber-500"
+            >
+              {language === 'es' ? 'Inicio' : 'Home'}
+            </Link>
+
+            {/* English Courses Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setCoursesDropdown(true)}
+              onMouseLeave={() => setCoursesDropdown(false)}
+            >
+              <button className="flex items-center gap-1 py-1 hover:text-amber-600 transition-colors cursor-pointer font-bold">
+                <span>{language === 'es' ? 'Cursos de Inglés' : 'English Courses'}</span>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${coursesDropdown ? 'rotate-180 text-amber-600' : 'text-stone-400'}`} />
+              </button>
+
+              {coursesDropdown && (
+                <div className="absolute top-full left-0 w-72 pt-2 animate-in fade-in slide-in-from-top-2 duration-150 z-50">
+                  <div className="bg-white rounded-2xl border border-stone-200 p-2 shadow-2xl space-y-1">
+                    <a
+                      href="#programs"
+                      onClick={() => setCoursesDropdown(false)}
+                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-amber-50/60 text-stone-800 hover:text-amber-900 transition-colors"
+                    >
+                      <Headphones className="w-4 h-4 text-amber-600 mt-0.5 shrink-0" />
+                      <div>
+                        <div className="text-xs font-bold">{language === 'es' ? 'Método 20 Minutos al Día' : '20-Min Daily Commute'}</div>
+                        <div className="text-[11px] text-stone-500 font-normal">{language === 'es' ? 'Audio diario paso a paso' : 'Hands-free daily audio'}</div>
+                      </div>
+                    </a>
+                    <button
+                      onClick={() => {
+                        setCoursesDropdown(false);
+                        onOpenBooking();
+                      }}
+                      className="w-full text-left flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-amber-50/60 text-stone-800 hover:text-amber-900 transition-colors cursor-pointer"
+                    >
+                      <Shield className="w-4 h-4 text-[#07221a] mt-0.5 shrink-0" />
+                      <div>
+                        <div className="text-xs font-bold">{language === 'es' ? 'Mentoría VIP 1 a 1' : '1-on-1 VIP Mentorship'}</div>
+                        <div className="text-[11px] text-stone-500 font-normal">{language === 'es' ? 'Sesiones privadas con Nick' : 'Live private coaching'}</div>
+                      </div>
+                    </button>
+                    <a
+                      href="#programs"
+                      onClick={() => setCoursesDropdown(false)}
+                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-amber-50/60 text-stone-800 hover:text-amber-900 transition-colors"
+                    >
+                      <Video className="w-4 h-4 text-[#07221a] mt-0.5 shrink-0" />
+                      <div>
+                        <div className="text-xs font-bold">{language === 'es' ? 'Masterclass de Conversación' : 'Conversation Vault'}</div>
+                        <div className="text-[11px] text-stone-500 font-normal">{language === 'es' ? '60+ lecciones en video' : '60+ HD video lessons'}</div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Free Lessons Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setLessonsDropdown(true)}
+              onMouseLeave={() => setLessonsDropdown(false)}
+            >
+              <button className="flex items-center gap-1 py-1 hover:text-amber-600 transition-colors cursor-pointer font-bold">
+                <span>{language === 'es' ? 'Lecciones Gratis' : 'Free Lessons'}</span>
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${lessonsDropdown ? 'rotate-180 text-amber-600' : 'text-stone-400'}`} />
+              </button>
+
+              {lessonsDropdown && (
+                <div className="absolute top-full left-0 w-72 pt-2 animate-in fade-in slide-in-from-top-2 duration-150 z-50">
+                  <div className="bg-white rounded-2xl border border-stone-200 p-2 shadow-2xl space-y-1">
+                    <a
+                      href="#drills"
+                      onClick={() => setLessonsDropdown(false)}
+                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-stone-50 text-stone-800 hover:text-[#07221a] transition-colors"
+                    >
+                      <Headphones className="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" />
+                      <div>
+                        <div className="text-xs font-bold">{t.drills}</div>
+                        <div className="text-[11px] text-stone-500 font-normal">Acoustic shadowing lab</div>
+                      </div>
+                    </a>
+                    <a
+                      href="#spanish-hub"
+                      onClick={() => setLessonsDropdown(false)}
+                      className="flex items-start gap-2.5 p-2.5 rounded-xl bg-[#edfbe6] text-[#07221a] transition-colors"
+                    >
+                      <BookOpen className="w-4 h-4 text-[#62c110] mt-0.5 shrink-0" />
+                      <div>
+                        <div className="text-xs font-bold">{t.spanishGuide}</div>
+                        <div className="text-[11px] text-stone-600 font-normal">Fix 4 Spanish accent traps</div>
+                      </div>
+                    </a>
+                    <button
+                      onClick={() => {
+                        setLessonsDropdown(false);
+                        onOpenLeadMagnet();
+                      }}
+                      className="w-full text-left flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-stone-50 text-stone-800 hover:text-[#07221a] transition-colors cursor-pointer"
+                    >
+                      <BookOpen className="w-4 h-4 text-[#07221a] mt-0.5 shrink-0" />
+                      <div>
+                        <div className="text-xs font-bold">Accent Cheat Sheet (PDF)</div>
+                        <div className="text-[11px] text-stone-500 font-normal">Instant 50 phrase guide</div>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Contact */}
+            <button
+              onClick={onOpenBooking}
+              className="py-1 hover:text-amber-600 transition-colors cursor-pointer font-bold"
+            >
+              {language === 'es' ? 'Contacto' : 'Contact'}
+            </button>
+          </nav>
+
+          {/* Social Icons row (YouTube, Instagram, Facebook, Twitter) - exactly like reference */}
+          <div className="flex items-center gap-3 text-stone-900">
+            <a
+              href="https://www.youtube.com/@speakenglishwithnick"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-stone-900 hover:text-red-600 transition-colors"
+              title="YouTube"
+            >
+              <YoutubeIcon className="w-4 h-4" />
+            </a>
+            <a
+              href="https://www.instagram.com/speak.english.with.nick/?hl=en"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-stone-900 hover:text-pink-600 transition-colors"
+              title="Instagram"
+            >
+              <InstagramIcon className="w-4 h-4" />
+            </a>
+            <a
+              href="https://www.facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-stone-900 hover:text-blue-600 transition-colors"
+              title="Facebook"
+            >
+              <FacebookIcon className="w-4 h-4" />
+            </a>
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-stone-900 hover:text-sky-500 transition-colors"
+              title="Twitter / X"
+            >
+              <TwitterIcon className="w-4 h-4" />
+            </a>
+          </div>
+
+          {/* Quick Search */}
           <button
             onClick={onOpenSearch}
-            className="w-10 h-10 rounded-2xl border border-stone-200 hover:border-stone-400 hover:bg-stone-50 text-stone-700 flex items-center justify-center transition-all cursor-pointer shadow-2xs"
-            aria-label="Search site"
+            className="p-2 rounded-full hover:bg-stone-100 text-stone-700 hover:text-black transition-colors cursor-pointer"
+            title="Search"
           >
             <Search className="w-4 h-4" />
           </button>
 
-          {/* Join Academy CTA Button */}
-          <button
-            onClick={onOpenBooking}
-            className="px-5 py-2.5 rounded-2xl bg-[#0d382c] hover:bg-[#164c3c] text-white font-bold text-xs sm:text-sm shadow-md transition-all hover:scale-[1.02] flex items-center gap-1.5 cursor-pointer"
-          >
-            <span>{t.joinAcademy}</span>
-            <ArrowRight className="w-3.5 h-3.5 text-[#66c310]" />
-          </button>
-
         </div>
 
-        {/* Mobile Header Right: Language Toggle & Menu Button */}
-        <div className="flex xl:hidden items-center gap-2">
-          
+        {/* Mobile Header: Search, Language Switcher & Hamburger Toggle */}
+        <div className="flex lg:hidden items-center gap-2">
+          {/* Quick Search on mobile header */}
+          <button
+            onClick={onOpenSearch}
+            className="p-2 rounded-xl text-stone-700 hover:bg-stone-100 transition-colors cursor-pointer"
+            aria-label="Search"
+          >
+            <Search className="w-4 h-4" />
+          </button>
+
           {/* Mobile Dual-Box Language Switcher */}
           <div className="flex items-center p-0.5 rounded-xl bg-stone-100 border border-stone-200 text-xs font-black">
             <button
               onClick={() => setLanguage('en')}
-              className={`px-2 py-1 rounded-lg transition-all text-[11px] ${
+              className={`px-2.5 py-1 rounded-lg transition-all text-xs cursor-pointer ${
                 language === 'en'
-                  ? 'bg-[#0d382c] text-white shadow-2xs font-extrabold'
-                  : 'text-stone-600'
+                  ? 'bg-[#07221a] text-white shadow-xs font-black'
+                  : 'text-stone-600 hover:text-stone-900'
               }`}
             >
               EN
             </button>
             <button
               onClick={() => setLanguage('es')}
-              className={`px-2 py-1 rounded-lg transition-all text-[11px] ${
+              className={`px-2.5 py-1 rounded-lg transition-all text-xs cursor-pointer ${
                 language === 'es'
-                  ? 'bg-[#0d382c] text-[#66c310] shadow-2xs font-extrabold'
-                  : 'text-stone-600'
+                  ? 'bg-[#07221a] text-[#82e635] shadow-xs font-black'
+                  : 'text-stone-600 hover:text-stone-900'
               }`}
             >
               ES
@@ -285,47 +300,19 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-xl border border-stone-200 text-stone-800 bg-white shadow-2xs cursor-pointer"
-            aria-label="Toggle menu"
+            className="p-2 rounded-xl bg-stone-100 hover:bg-stone-200/80 text-stone-900 transition-colors cursor-pointer active:scale-95"
+            aria-label="Toggle mobile navigation menu"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileMenuOpen ? <X className="w-5 h-5 text-[#07221a]" /> : <Menu className="w-5 h-5 text-[#07221a]" />}
           </button>
         </div>
 
       </div>
 
-      {/* Mobile Menu Drawer */}
+      {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="xl:hidden bg-white border-t border-stone-200 px-5 sm:px-6 py-6 space-y-4 shadow-xl animate-in slide-in-from-top-4 duration-150">
+        <div className="lg:hidden border-t border-stone-200 bg-white px-4 py-5 space-y-4 animate-in slide-in-from-top-3 duration-200 shadow-2xl max-h-[85vh] overflow-y-auto touch-scroll">
           
-          {/* Language Switcher in Drawer (Two distinct boxes) */}
-          <div className="p-1 rounded-2xl bg-stone-100 border border-stone-200 flex items-center gap-1">
-            <button
-              type="button"
-              onClick={() => setLanguage('en')}
-              className={`flex-1 py-2.5 rounded-xl text-xs font-black transition-all flex items-center justify-center gap-1.5 ${
-                language === 'en'
-                  ? 'bg-[#0d382c] text-white shadow-xs'
-                  : 'text-stone-600 hover:text-stone-900'
-              }`}
-            >
-              <span>🇺🇸</span>
-              <span>English</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setLanguage('es')}
-              className={`flex-1 py-2.5 rounded-xl text-xs font-black transition-all flex items-center justify-center gap-1.5 ${
-                language === 'es'
-                  ? 'bg-[#0d382c] text-[#66c310] shadow-xs'
-                  : 'text-stone-600 hover:text-stone-900'
-              }`}
-            >
-              <span>🇲🇽</span>
-              <span>Español</span>
-            </button>
-          </div>
-
           {/* Quick Search bar in mobile drawer */}
           <button
             onClick={() => {
@@ -334,85 +321,103 @@ export const Navbar: React.FC<NavbarProps> = ({
             }}
             className="w-full p-3 rounded-2xl bg-stone-50 hover:bg-stone-100 border border-stone-200 text-stone-500 text-xs font-semibold flex items-center justify-between cursor-pointer transition-colors"
           >
-            <span className="flex items-center gap-2">
-              <Search className="w-4 h-4 text-[#66c310]" />
-              <span>{t.searchPlaceholder || "Search lessons, sounds..."}</span>
-            </span>
-            <span className="text-[10px] uppercase font-bold bg-white px-2 py-0.5 rounded border border-stone-200 text-stone-400">Search</span>
+            <span>{language === 'es' ? 'Buscar lecciones, sonidos, acento...' : 'Search drills, sounds, lessons...'}</span>
+            <Search className="w-4 h-4 text-stone-400" />
           </button>
 
-          <div className="flex flex-col space-y-1.5 text-sm font-bold text-stone-800">
-            <a
-              href="#about"
+          <nav className="flex flex-col space-y-1 text-sm font-bold text-stone-800">
+            <Link
+              href="/"
               onClick={() => setMobileMenuOpen(false)}
-              className="py-2.5 px-3 rounded-xl hover:bg-stone-50 hover:text-[#0d382c]"
+              className="p-3 rounded-xl hover:bg-stone-50 text-[#07221a] flex items-center justify-between"
             >
-              {t.about}
-            </a>
-            <a
-              href="#popular-lessons"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-2.5 px-3 rounded-xl hover:bg-stone-50 hover:text-[#0d382c]"
-            >
-              {t.freeVideos}
-            </a>
-            <a
-              href="#spanish-hub"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-2.5 px-3 rounded-xl bg-[#eefae8] text-[#0d382c] font-black flex items-center gap-2"
-            >
-              <span className="w-2 h-2 rounded-full bg-[#66c310]"></span>
-              <span>{t.spanishGuide}</span>
-            </a>
-            <a
-              href="#drills"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-2.5 px-3 rounded-xl hover:bg-stone-50 hover:text-[#0d382c]"
-            >
-              {t.drills}
-            </a>
+              <span>{language === 'es' ? 'Inicio' : 'Home'}</span>
+            </Link>
+
             <a
               href="#programs"
               onClick={() => setMobileMenuOpen(false)}
-              className="py-2.5 px-3 rounded-xl hover:bg-stone-50 hover:text-[#0d382c]"
+              className="p-3 rounded-xl hover:bg-stone-50 text-stone-800 flex items-center justify-between"
             >
-              {t.programs}
+              <span>{language === 'es' ? 'Cursos y Programas 1 a 1' : '1-on-1 Coaching & Programs'}</span>
+              <span className="text-[10px] uppercase font-black text-[#164c3c] bg-[#edfbe6] px-2 py-0.5 rounded-md border border-[#c4eeb0]">
+                {language === 'es' ? 'Populares' : 'Popular'}
+              </span>
             </a>
+
+            <a
+              href="#spanish-hub"
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-3 rounded-xl bg-[#edfbe6] text-[#07221a] font-black flex items-center justify-between"
+            >
+              <span>{t.spanishGuide}</span>
+              <span className="w-2 h-2 rounded-full bg-[#62c110]"></span>
+            </a>
+
+            <a
+              href="#drills"
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-3 rounded-xl hover:bg-stone-50 text-stone-800 flex items-center justify-between"
+            >
+              <span>{language === 'es' ? 'Estudio de Práctica de Audio' : 'Audio Practice Studio'}</span>
+            </a>
+
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenQuiz();
               }}
-              className="text-left py-2.5 px-3 rounded-xl hover:bg-stone-50 text-stone-800 font-bold hover:text-[#0d382c] cursor-pointer"
+              className="p-3 rounded-xl hover:bg-stone-50 text-stone-800 text-left cursor-pointer flex items-center justify-between"
             >
-              {t.quiz}
+              <span>{language === 'es' ? 'Test de Diagnóstico de Fluidez' : 'Fluency Diagnostic Quiz'}</span>
             </button>
-          </div>
 
-          <div className="pt-4 border-t border-stone-100 flex flex-col gap-2">
+            <a
+              href="#faq"
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-3 rounded-xl hover:bg-stone-50 text-stone-800 flex items-center justify-between"
+            >
+              <span>{t.faq}</span>
+            </a>
+          </nav>
+
+          <div className="pt-2">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenBooking();
               }}
-              className="w-full text-center font-black py-3.5 rounded-2xl bg-[#0d382c] hover:bg-[#164c3c] text-white shadow-xs cursor-pointer flex items-center justify-center gap-2"
+              className="w-full py-4 rounded-2xl bg-[#62c110] hover:bg-[#82e635] text-[#07221a] font-black text-sm shadow-md flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-[0.99]"
             >
-              <span>{t.joinAcademy}</span>
-              <ArrowRight className="w-4 h-4 text-[#66c310]" />
-            </button>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenLeadMagnet();
-              }}
-              className="w-full text-center font-bold py-3 rounded-2xl border-2 border-stone-200 text-stone-700 bg-stone-50 hover:bg-stone-100 cursor-pointer text-xs"
-            >
-              Free Accent Cheat Sheet (PDF)
+              <span>{language === 'es' ? 'Agendar Sesión 1 a 1 con Nick' : 'Book 1-on-1 Session with Nick'}</span>
+              <ArrowRight className="w-4 h-4 stroke-[2.5]" />
             </button>
           </div>
+
+          {/* Social icons in mobile drawer */}
+          <div className="pt-3 border-t border-stone-200 flex items-center justify-center gap-4 text-stone-600">
+            <a
+              href="https://www.youtube.com/@speakenglishwithnick"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full bg-stone-100 text-stone-700 hover:text-red-600 transition-colors"
+            >
+              <YoutubeIcon className="w-4 h-4" />
+            </a>
+            <a
+              href="https://www.instagram.com/speak.english.with.nick/?hl=en"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-full bg-stone-100 text-stone-700 hover:text-pink-600 transition-colors"
+            >
+              <InstagramIcon className="w-4 h-4" />
+            </a>
+          </div>
+
         </div>
       )}
     </header>
   );
 };
+
 

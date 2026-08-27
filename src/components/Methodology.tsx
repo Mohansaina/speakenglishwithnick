@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Car, Headphones, Sparkles, Check } from 'lucide-react';
+import { Car, Headphones, Award, Check } from 'lucide-react';
 
 export const Methodology: React.FC = () => {
   const steps = [
@@ -26,7 +26,7 @@ export const Methodology: React.FC = () => {
       title: 'Rescue Phrasing Mastery',
       subtitle: 'Zero hesitation when caught off-guard',
       description: 'Internalize verbal bridges for buying time, asking people to slow down politely, and summarizing thoughts with simple, sharp words.',
-      icon: <Sparkles className="w-5 h-5 text-amber-800" />,
+      icon: <Award className="w-5 h-5 text-amber-800" />,
       tag: 'Real-Life Fluency'
     }
   ];
@@ -38,7 +38,7 @@ export const Methodology: React.FC = () => {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto space-y-2.5 mb-14 sm:mb-16">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white border border-stone-200 text-stone-800 text-xs font-semibold shadow-2xs">
-            <Sparkles className="w-3.5 h-3.5 text-amber-700" />
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-700" />
             The Habit Architecture
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-stone-900 tracking-tight leading-tight">

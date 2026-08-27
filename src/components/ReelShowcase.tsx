@@ -2,11 +2,13 @@
 
 import React, { useState } from 'react';
 import { reels } from '@/data/reels';
-import { Play, Heart, Eye, ExternalLink, Sparkles } from 'lucide-react';
+import { Play, Heart, Eye, ExternalLink } from 'lucide-react';
 import { InstagramIcon } from '@/components/icons/BrandIcons';
 import { VideoPlayerModal, VideoModalData } from '@/components/VideoPlayerModal';
+import { useLanguage } from '@/context/LanguageContext';
 
 export const ReelShowcase: React.FC = () => {
+  const { language } = useLanguage();
   const [selectedReel, setSelectedReel] = useState<VideoModalData | null>(null);
 
   const handlePlayReel = (reel: any) => {
@@ -32,21 +34,33 @@ export const ReelShowcase: React.FC = () => {
   };
 
   return (
-    <section id="reels" className="py-16 sm:py-24 relative bg-white border-t border-stone-200/80">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="reels" className="py-20 sm:py-28 relative bg-[#fcfcfb] border-t border-stone-200/70">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-6 mb-10 sm:mb-14">
-          <div className="space-y-2 text-center md:text-left">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-50 text-pink-700 text-xs font-semibold">
+        <div className="flex flex-col md:flex-row items-center md:items-end justify-between gap-6 mb-12 sm:mb-16">
+          <div className="space-y-3 text-center md:text-left">
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-pink-50 border border-pink-200/80 text-pink-700 text-xs font-black uppercase tracking-wider">
               <InstagramIcon className="w-3.5 h-3.5" />
-              <span>Instagram Quick Drills</span>
+              <span>{language === 'es' ? 'Mini Clases en Instagram' : 'Instagram Quick Drills'}</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-black text-stone-900 tracking-tight">
-              Watch Nick&apos;s <span className="font-serif italic font-normal text-[#0d382c]">60-Sec Speaking Tips</span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#07221a] tracking-tight">
+              {language === 'es' ? (
+                <>
+                  Lecciones en Video de <br className="hidden sm:inline" />
+                  <span className="font-serif italic font-normal text-[#164c3c]">60 Segundos con Nick</span>
+                </>
+              ) : (
+                <>
+                  Nick&apos;s 60-Second <br className="hidden sm:inline" />
+                  <span className="font-serif italic font-normal text-[#164c3c]">Acoustic Quick Drills</span>
+                </>
+              )}
             </h2>
-            <p className="text-xs sm:text-sm text-stone-600 max-w-lg">
-              Short, high-impact lessons designed to watch on your daily commute or coffee break.
+            <p className="text-xs sm:text-sm text-stone-600 max-w-lg font-normal">
+              {language === 'es'
+                ? 'Consejos rápidos de alto impacto diseñados para ver en tu camino al trabajo o en pausas de café.'
+                : 'High-impact speaking bite-sized lessons designed to watch on your commute or coffee break.'}
             </p>
           </div>
 
@@ -54,25 +68,25 @@ export const ReelShowcase: React.FC = () => {
             href="https://www.instagram.com/speak.english.with.nick/?hl=en"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto px-5 py-3 rounded-full bg-[#0d382c] hover:bg-[#164c3c] text-white text-xs font-bold shadow-sm flex items-center justify-center gap-2 transition-all shrink-0 hover:scale-105"
+            className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-[#07221a] hover:bg-[#164c3c] text-white text-xs font-bold shadow-md flex items-center justify-center gap-2.5 transition-all shrink-0 hover:scale-[1.02] border border-[#164c3c]"
           >
-            <InstagramIcon className="w-3.5 h-3.5 text-pink-400" />
-            <span>Follow @speak.english.with.nick</span>
-            <ExternalLink className="w-3 h-3 text-stone-400" />
+            <InstagramIcon className="w-4 h-4 text-pink-400" />
+            <span>@speak.english.with.nick</span>
+            <ExternalLink className="w-3.5 h-3.5 text-stone-400" />
           </a>
         </div>
 
-        {/* Instagram Cards Grid (Responsive 1-col on tiny mobile, 2-col on phone, 3-col on tablet, 5-col on desktop) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        {/* Instagram Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {reels.map((reel) => (
             <div
               key={reel.id}
               onClick={() => handlePlayReel(reel)}
-              className="group rounded-3xl bg-[#fafafa] border-2 border-stone-200/90 hover:border-[#66c310] p-5 transition-all cursor-pointer shadow-xs hover:shadow-xl hover:-translate-y-1.5 flex flex-col justify-between min-h-[300px] sm:min-h-[340px]"
+              className="group rounded-3xl bg-white border border-stone-200/90 hover:border-[#62c110] p-5 transition-all cursor-pointer shadow-xs hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between min-h-[300px] sm:min-h-[330px]"
             >
               {/* Card Top */}
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-[#eefae8] text-[#0d382c] border border-[#c4eeb0]">
+                <span className="text-[10px] font-black px-2.5 py-0.5 rounded-full bg-[#edfbe6] text-[#07221a] border border-[#c4eeb0]">
                   {reel.highlightTag}
                 </span>
                 <span className="text-[10px] font-mono text-stone-400 font-bold">
@@ -82,17 +96,17 @@ export const ReelShowcase: React.FC = () => {
 
               {/* Center Play Graphic */}
               <div className="text-center space-y-2.5 py-4">
-                <div className="w-12 h-12 rounded-full bg-[#0d382c] text-[#66c310] flex items-center justify-center mx-auto shadow-md group-hover:scale-110 group-hover:bg-[#66c310] group-hover:text-[#0b2d22] transition-transform">
+                <div className="w-12 h-12 rounded-full bg-[#07221a] text-[#62c110] flex items-center justify-center mx-auto shadow-md group-hover:scale-110 group-hover:bg-[#62c110] group-hover:text-[#07221a] transition-all">
                   <Play className="w-5 h-5 fill-current ml-0.5" />
                 </div>
-                <h4 className="font-extrabold text-stone-900 text-xs sm:text-sm line-clamp-3 leading-snug group-hover:text-[#0d382c]">
+                <h4 className="font-black text-stone-900 text-xs sm:text-sm line-clamp-3 leading-snug group-hover:text-[#07221a]">
                   {reel.hook}
                 </h4>
               </div>
 
               {/* Bottom Info */}
-              <div className="pt-3 border-t border-stone-200/80 space-y-2">
-                <p className="text-[11px] text-stone-600 line-clamp-2 leading-relaxed font-medium">
+              <div className="pt-3 border-t border-stone-100 space-y-2">
+                <p className="text-[11px] text-stone-600 line-clamp-2 leading-relaxed font-normal">
                   {reel.keyTakeaway}
                 </p>
                 <div className="flex items-center justify-between text-[10px] text-stone-500 font-semibold">
@@ -122,4 +136,5 @@ export const ReelShowcase: React.FC = () => {
     </section>
   );
 };
+
 

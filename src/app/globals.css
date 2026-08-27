@@ -6,24 +6,28 @@
 }
 
 :root {
-  --background: #ffffff;
+  --background: #fdfdfc;
   --foreground: #18181b;
-  --brand-forest: #0d382c;
-  --brand-forest-dark: #07221a;
+  --brand-forest: #07221a;
+  --brand-forest-mid: #0d382c;
   --brand-forest-light: #164c3c;
-  --brand-lime: #66c310;
-  --brand-lime-hover: #54a50b;
+  --brand-emerald: #10b981;
+  --brand-lime: #62c110;
+  --brand-lime-hover: #52a60d;
   --brand-lime-light: #eaf8dd;
-  --brand-glow: rgba(102, 195, 16, 0.35);
+  --brand-glow: rgba(98, 193, 16, 0.35);
+  --brand-gold: #f59e0b;
 }
 
 body {
-  background-color: #ffffff;
+  background-color: #fdfdfc;
   color: #18181b;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .font-serif {
@@ -32,6 +36,22 @@ body {
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Prevent iOS Safari auto-zoom on input focus */
+@media (max-width: 768px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+/* Smooth Touch Scrolling */
+.touch-scroll {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
 }
 
 /* Hide scrollbars for horizontal tab lists */
@@ -41,41 +61,42 @@ html {
 .scrollbar-none {
   -ms-overflow-style: none;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Premium Lime Green Selection Highlight */
 ::selection {
-  background-color: #d0f4bd;
-  color: #0b2d22;
+  background-color: #d7f7c2;
+  color: #07221a;
 }
 
 /* Custom Pulsing Soundwave Bars */
 @keyframes soundwave {
   0%, 100% {
     height: 6px;
-    opacity: 0.4;
+    opacity: 0.45;
   }
   50% {
-    height: 28px;
+    height: 24px;
     opacity: 1;
   }
 }
 
 @keyframes pulseGlow {
   0%, 100% {
-    box-shadow: 0 0 15px rgba(102, 195, 16, 0.2);
+    box-shadow: 0 0 15px rgba(98, 193, 16, 0.15);
   }
   50% {
-    box-shadow: 0 0 35px rgba(102, 195, 16, 0.5);
+    box-shadow: 0 0 30px rgba(98, 193, 16, 0.45);
   }
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px);
   }
-  100% {
-    background-position: 200% 0;
+  50% {
+    transform: translateY(-5px);
   }
 }
 
@@ -104,24 +125,36 @@ html {
   animation: pulseGlow 3s ease-in-out infinite;
 }
 
+.animate-float {
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
 /* Glowing card halo */
 .glow-lime-sm {
-  box-shadow: 0 0 25px -5px rgba(102, 195, 16, 0.25);
+  box-shadow: 0 4px 20px -5px rgba(98, 193, 16, 0.25);
 }
 
 .glow-lime-lg {
-  box-shadow: 0 10px 40px -10px rgba(102, 195, 16, 0.45);
+  box-shadow: 0 10px 35px -10px rgba(98, 193, 16, 0.45);
 }
 
 .glass-dark {
-  background: rgba(13, 56, 44, 0.85);
+  background: rgba(7, 34, 26, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
 
 .glass-white {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+}
+
+/* Subtle background mesh grid */
+.bg-grid-subtle {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
 }
 

@@ -65,46 +65,46 @@ export const FAQ: React.FC<FAQProps> = ({ onOpenBooking }) => {
   };
 
   return (
-    <section id="faq" className="py-20 sm:py-28 relative bg-white border-b border-stone-200/80">
+    <section id="faq" className="py-20 sm:py-28 relative bg-[#fdfdfc] border-b border-stone-200/70">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center space-y-3 mb-14 sm:mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#eaf8dd] border border-[#66c310]/40 text-[#0d382c] text-xs font-black uppercase tracking-wider">
-            <HelpCircle className="w-3.5 h-3.5 text-[#66c310]" />
-            {t.tag}
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#edfbe6] border border-[#b2e896] text-[#07221a] text-xs font-black uppercase tracking-wider">
+            <HelpCircle className="w-3.5 h-3.5 text-[#62c110]" />
+            <span>{t.tag}</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0d382c] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#07221a] tracking-tight">
             {t.title}
           </h2>
-          <p className="text-sm sm:text-base text-stone-600">
+          <p className="text-sm sm:text-base text-stone-600 font-normal">
             {t.subtitle}
           </p>
         </div>
 
         {/* Accordion List */}
-        <div className="space-y-4">
+        <div className="space-y-3">
           {faqData.map((item, idx) => {
             const isOpen = openIndex === idx;
             return (
               <div
                 key={idx}
-                className="rounded-3xl bg-[#fafafa] border border-stone-200/90 overflow-hidden transition-colors"
+                className="rounded-2xl sm:rounded-3xl bg-white border border-stone-200/90 overflow-hidden transition-all shadow-2xs hover:border-stone-300"
               >
                 <button
                   onClick={() => toggleFAQ(idx)}
-                  className="w-full text-left p-6 sm:p-7 flex items-center justify-between gap-4 font-extrabold text-[#0d382c] text-base sm:text-lg hover:text-[#66c310] transition-colors cursor-pointer"
+                  className="w-full text-left p-4 sm:p-6 md:p-7 flex items-center justify-between gap-3 font-black text-[#07221a] text-sm sm:text-base md:text-lg hover:text-[#164c3c] transition-colors cursor-pointer"
                 >
-                  <span>{item.q}</span>
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 ${
-                    isOpen ? 'rotate-180 bg-[#0d382c] text-[#66c310]' : 'bg-white text-stone-600 border border-stone-200'
+                  <span className="leading-snug">{item.q}</span>
+                  <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 ${
+                    isOpen ? 'rotate-180 bg-[#07221a] text-[#62c110]' : 'bg-[#fafafa] text-stone-600 border border-stone-200'
                   }`}>
                     <ChevronDown className="w-4 h-4 stroke-[2.5]" />
                   </div>
                 </button>
 
                 {isOpen && (
-                  <div className="px-6 sm:px-7 pb-6 sm:pb-7 text-sm sm:text-[15px] text-stone-700 leading-relaxed border-t border-stone-100 pt-5 animate-in fade-in duration-150">
+                  <div className="px-4 sm:px-6 md:px-7 pb-5 sm:pb-7 text-xs sm:text-sm md:text-[15px] text-stone-600 leading-relaxed border-t border-stone-100 pt-4 sm:pt-5 animate-in fade-in duration-150 font-normal">
                     {item.a}
                   </div>
                 )}
@@ -114,12 +114,12 @@ export const FAQ: React.FC<FAQProps> = ({ onOpenBooking }) => {
         </div>
 
         {/* Still Have Questions CTA Banner */}
-        <div className="mt-14 p-6 sm:p-8 rounded-3xl bg-[#f4fbf0] border-2 border-[#d0f4bd] flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
+        <div className="mt-10 sm:mt-14 p-5 sm:p-8 rounded-3xl bg-[#f6fcf3] border border-[#c4eeb0] flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-5 text-center sm:text-left">
           <div className="space-y-1">
-            <h4 className="font-black text-[#0d382c] text-base sm:text-lg">
+            <h4 className="font-black text-[#07221a] text-sm sm:text-base md:text-lg">
               {language === 'es' ? '¿Tienes una pregunta específica para Coach Nick?' : 'Have a specific question for Coach Nick?'}
             </h4>
-            <p className="text-xs sm:text-sm text-stone-600">
+            <p className="text-xs sm:text-sm text-stone-600 font-normal">
               {language === 'es'
                 ? 'Agenda una sesión diagnóstica rápida para evaluar tu nivel y metas.'
                 : 'Book a quick 1-on-1 diagnostic call to discuss your fluency roadmap.'}
@@ -127,10 +127,10 @@ export const FAQ: React.FC<FAQProps> = ({ onOpenBooking }) => {
           </div>
           <button
             onClick={onOpenBooking}
-            className="px-6 py-3.5 rounded-full bg-[#0d382c] hover:bg-[#164c3c] text-white font-bold text-xs sm:text-sm shadow-xs shrink-0 flex items-center gap-2 cursor-pointer"
+            className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#07221a] hover:bg-[#164c3c] text-white font-bold text-xs sm:text-sm shadow-md shrink-0 flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-[1.02] border border-[#164c3c] active:scale-95"
           >
             <span>{language === 'es' ? 'Agendar Llamada' : 'Book 1-on-1 Call'}</span>
-            <ArrowRight className="w-3.5 h-3.5 text-[#66c310]" />
+            <ArrowRight className="w-3.5 h-3.5 text-[#62c110]" />
           </button>
         </div>
 
@@ -138,3 +138,4 @@ export const FAQ: React.FC<FAQProps> = ({ onOpenBooking }) => {
     </section>
   );
 };
+

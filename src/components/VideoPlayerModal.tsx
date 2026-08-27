@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { X, Play, Pause, Volume2, VolumeX, RotateCcw, Sparkles, Check, Bookmark, ExternalLink, Flame, MessageSquare, Headphones, Award } from 'lucide-react';
+import { X, Play, Pause, Volume2, VolumeX, RotateCcw, Check, Bookmark, ExternalLink, MessageSquare, Headphones, Award } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import confetti from 'canvas-confetti';
 
@@ -78,7 +78,7 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
   if (!isOpen || !video) return null;
 
   const handleSpeakPhrase = (text: string) => {
-    if ('speechSynthesis' in window) {
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
       window.speechSynthesis.cancel();
       if (isPracticingAudio) {
         setIsPracticingAudio(false);
@@ -111,12 +111,12 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-150">
-      <div className="relative w-full max-w-3xl max-h-[92vh] overflow-y-auto rounded-3xl bg-[#09241c] border border-[#1e614d] text-white shadow-2xl animate-in zoom-in-95 duration-150 flex flex-col">
+      <div className="relative w-full max-w-3xl max-h-[92vh] overflow-y-auto rounded-3xl bg-[#07221a] border border-[#164c3c] text-white shadow-[0_20px_60px_rgba(0,0,0,0.4)] animate-in zoom-in-95 duration-150 flex flex-col">
         
         {/* Modal Top Bar */}
-        <div className="flex items-center justify-between p-4 sm:p-5 border-b border-[#164c3c] bg-[#07221a]/90 backdrop-blur-sm sticky top-0 z-20">
+        <div className="flex items-center justify-between p-4 sm:p-5 border-b border-[#164c3c] bg-[#051913]/90 backdrop-blur-sm sticky top-0 z-20">
           <div className="flex items-center gap-2.5">
-            <span className="px-3 py-1 rounded-full bg-[#66c310] text-[#0b2d22] text-[11px] font-black uppercase tracking-wider">
+            <span className="px-3 py-1 rounded-full bg-[#62c110] text-[#07221a] text-[11px] font-black uppercase tracking-wider">
               {video.category}
             </span>
             <span className="text-xs text-stone-300 font-medium hidden sm:inline">
@@ -129,8 +129,8 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
               onClick={handleBookmarkToggle}
               className={`p-2 rounded-full border transition-all cursor-pointer ${
                 isBookmarked
-                  ? 'bg-[#66c310] text-[#0b2d22] border-[#66c310]'
-                  : 'bg-[#103e30] text-stone-300 border-[#1e614d] hover:text-white'
+                  ? 'bg-[#62c110] text-[#07221a] border-[#62c110]'
+                  : 'bg-[#0d382c] text-stone-300 border-[#164c3c] hover:text-white'
               }`}
               title="Save to favorites"
             >
@@ -138,7 +138,7 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
             </button>
             <button
               onClick={onClose}
-              className="p-2 rounded-full bg-[#103e30] border border-[#1e614d] text-stone-300 hover:text-white transition-colors cursor-pointer"
+              className="p-2 rounded-full bg-[#0d382c] border border-[#164c3c] text-stone-300 hover:text-white transition-colors cursor-pointer"
               aria-label="Close modal"
             >
               <X className="w-4 h-4" />
@@ -154,23 +154,23 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
             alt={video.title}
             className={`w-full h-full object-cover filter transition-transform duration-700 ${isPlaying ? 'scale-105 opacity-60' : 'opacity-40'}`}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#09241c] via-black/40 to-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#07221a] via-black/40 to-black/60" />
 
           {/* Center Play/Pause Large Pulse Button */}
           <button
             onClick={() => setIsPlaying(!isPlaying)}
-            className="absolute z-10 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#66c310] hover:bg-[#54a50b] text-[#0b2d22] flex items-center justify-center shadow-2xl transition-transform hover:scale-110 cursor-pointer glow-lime-lg"
+            className="absolute z-10 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#62c110] hover:bg-[#52a60d] text-[#07221a] flex items-center justify-center shadow-2xl transition-transform hover:scale-110 cursor-pointer glow-lime-lg"
           >
             {isPlaying ? (
-              <Pause className="w-8 h-8 fill-[#0b2d22]" />
+              <Pause className="w-8 h-8 fill-[#07221a]" />
             ) : (
-              <Play className="w-8 h-8 fill-[#0b2d22] ml-1" />
+              <Play className="w-8 h-8 fill-[#07221a] ml-1" />
             )}
           </button>
 
           {/* Coach Overlay Badge */}
           <div className="absolute top-4 left-4 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 text-xs">
-            <div className="w-2 h-2 rounded-full bg-[#66c310] animate-ping" />
+            <div className="w-2 h-2 rounded-full bg-[#62c110] animate-ping" />
             <span className="font-bold text-white">Live Lesson Demonstration</span>
           </div>
 
@@ -186,7 +186,7 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
             {/* Scrubber Bar */}
             <div className="w-full bg-white/20 h-1.5 rounded-full overflow-hidden cursor-pointer">
               <div
-                className="bg-[#66c310] h-full transition-all duration-150 rounded-full"
+                className="bg-[#62c110] h-full transition-all duration-150 rounded-full"
                 style={{ width: `${progress}%` }}
               />
             </div>
@@ -195,13 +195,13 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
               <div className="flex items-center gap-3">
                 <button
                   onClick={() => setIsPlaying(!isPlaying)}
-                  className="hover:text-[#66c310] transition-colors cursor-pointer"
+                  className="hover:text-[#62c110] transition-colors cursor-pointer"
                 >
                   {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
                 </button>
                 <button
                   onClick={() => setIsMuted(!isMuted)}
-                  className="hover:text-[#66c310] transition-colors cursor-pointer"
+                  className="hover:text-[#62c110] transition-colors cursor-pointer"
                 >
                   {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
                 </button>
@@ -218,7 +218,7 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
                     onClick={() => setPlaybackSpeed(spd)}
                     className={`px-2 py-0.5 rounded-md font-bold text-[11px] transition-colors cursor-pointer ${
                       playbackSpeed === spd
-                        ? 'bg-[#66c310] text-[#0b2d22]'
+                        ? 'bg-[#62c110] text-[#07221a]'
                         : 'text-stone-300 hover:text-white'
                     }`}
                   >
@@ -236,16 +236,16 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
             <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight">
               {video.title}
             </h2>
-            <p className="text-xs sm:text-sm text-stone-300 leading-relaxed">
+            <p className="text-xs sm:text-sm text-stone-300 leading-relaxed font-normal">
               {video.desc || video.keyTakeaway || "In this masterclass, discover Coach Nick's proven method to eliminate hesitation and speak English with crisp American cadence."}
             </p>
           </div>
 
           {/* Interactive Shadowing Practice Box */}
-          <div className="p-5 rounded-2xl bg-[#0d382c] border border-[#237058] space-y-3">
+          <div className="p-5 rounded-2xl bg-[#051913] border border-[#164c3c] space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-[11px] font-black text-[#66c310] uppercase tracking-wider flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5" />
+              <span className="text-[11px] font-black text-[#62c110] uppercase tracking-wider flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#62c110]" />
                 {language === 'es' ? 'Frase Clave para Repetir en Voz Alta' : 'Key Phrase for Acoustic Shadowing'}
               </span>
               <span className="text-[10px] text-stone-400 font-mono">
@@ -260,7 +260,7 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
             <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
               <button
                 onClick={() => handleSpeakPhrase(video.practicePhrase || subtitles[activeSubtitleIndex])}
-                className="px-5 py-2.5 rounded-full bg-[#66c310] hover:bg-[#54a50b] text-[#0b2d22] font-black text-xs flex items-center gap-2 transition-all cursor-pointer"
+                className="px-5 py-2.5 rounded-full bg-[#62c110] hover:bg-[#52a60d] text-[#07221a] font-black text-xs flex items-center gap-2 transition-all cursor-pointer shadow-xs"
               >
                 {isPracticingAudio ? (
                   <>
@@ -276,15 +276,15 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
               </button>
 
               <div className="flex items-center gap-3 text-xs text-stone-400 font-semibold">
-                {video.views && <span>👁️ {video.views} learners watched</span>}
-                {video.likes && <span className="text-rose-400">❤️ {video.likes} likes</span>}
+                {video.views && <span>{video.views} learners</span>}
+                {video.likes && <span className="text-stone-300">{video.likes} likes</span>}
               </div>
             </div>
           </div>
 
           {/* Call to Action Footer */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 border-t border-[#164c3c]">
-            <span className="text-xs text-stone-300 text-center sm:text-left">
+            <span className="text-xs text-stone-300 text-center sm:text-left font-normal">
               {language === 'es' ? '¿Quieres feedback en vivo de tu pronunciación?' : 'Want personalized 1-on-1 feedback with Nick?'}
             </span>
             <button
@@ -292,10 +292,10 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
                 onClose();
                 if (onOpenBooking) onOpenBooking();
               }}
-              className="w-full sm:w-auto px-6 py-3 rounded-full bg-[#164c3c] hover:bg-[#20634f] text-white font-bold text-xs border border-[#277a62] flex items-center justify-center gap-2 transition-all cursor-pointer"
+              className="w-full sm:w-auto px-6 py-3 rounded-full bg-[#0d382c] hover:bg-[#164c3c] text-white font-bold text-xs border border-[#164c3c] flex items-center justify-center gap-2 transition-all cursor-pointer"
             >
               <span>{language === 'es' ? 'Agendar Sesión Privada' : 'Book 1-on-1 Diagnostic Call'}</span>
-              <Award className="w-3.5 h-3.5 text-[#66c310]" />
+              <Award className="w-3.5 h-3.5 text-[#62c110]" />
             </button>
           </div>
         </div>
@@ -304,3 +304,4 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
     </div>
   );
 };
+

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { X, Download, BookOpen, ShieldCheck, Check, Sparkles } from 'lucide-react';
+import { X, Download, BookOpen, ShieldCheck, Check } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import confetti from 'canvas-confetti';
 
@@ -37,6 +37,8 @@ export const LeadMagnetModal: React.FC<LeadMagnetModalProps> = ({ isOpen, onClos
   };
 
   const handleDownload = () => {
+    if (typeof window === 'undefined') return;
+
     const guideContent = language === 'es' ? `GUÍA RÁPIDA DE ACENTO Y MODISMOS EN INGLÉS AMERICANO
 Por Coach Nick (@speak.english.with.nick)
 
@@ -96,13 +98,13 @@ Instagram: @speak.english.with.nick
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-150">
-      <div className="relative w-full max-w-md max-h-[92vh] overflow-y-auto rounded-3xl bg-white border border-stone-200 p-6 sm:p-8 shadow-2xl space-y-5 text-stone-900 animate-in zoom-in-95 duration-150">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-md animate-in fade-in duration-150">
+      <div className="relative w-full max-w-md max-h-[92vh] overflow-y-auto touch-scroll rounded-3xl bg-white border border-stone-200 p-5 sm:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.15)] space-y-4 sm:space-y-5 text-stone-900 animate-in zoom-in-95 duration-150">
         
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-1.5 rounded-full hover:bg-stone-100 text-stone-400 hover:text-stone-700 transition-colors cursor-pointer"
+          className="absolute top-4 right-4 sm:top-5 sm:right-5 p-1.5 sm:p-2 rounded-full hover:bg-stone-100 text-stone-400 hover:text-stone-700 transition-colors cursor-pointer"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
@@ -111,14 +113,14 @@ Instagram: @speak.english.with.nick
         {!submitted ? (
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-1.5">
-              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#eefae8] text-[#0d382c] text-xs font-black uppercase tracking-wider border border-[#c4eeb0]">
-                <BookOpen className="w-3.5 h-3.5 text-[#66c310]" />
+              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#edfbe6] text-[#07221a] text-xs font-black uppercase tracking-wider border border-[#b2e896]">
+                <BookOpen className="w-3.5 h-3.5 text-[#62c110]" />
                 <span>{language === 'es' ? 'Guía Rápida Gratuita' : 'Free Accent Cheat Sheet'}</span>
               </div>
-              <h3 className="text-xl sm:text-2xl font-black text-[#0d382c]">
+              <h3 className="text-xl sm:text-2xl font-black text-[#07221a]">
                 {language === 'es' ? 'Guía de Sonidos y Frases en Inglés' : 'Sounds of American English Cheat Sheet'}
               </h3>
-              <p className="text-xs sm:text-sm text-stone-600">
+              <p className="text-xs sm:text-sm text-stone-600 font-normal">
                 {language === 'es'
                   ? 'Descarga las 50 frases conversacionales indispensables y la guía de corrección de acento de Coach Nick.'
                   : 'Download Coach Nick’s 50 essential conversational phrases and acoustic cheat sheet for your daily practice.'}
@@ -136,7 +138,7 @@ Instagram: @speak.english.with.nick
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder={language === 'es' ? 'Ej. Sofia' : 'e.g. Sarah'}
-                  className="w-full px-3.5 py-2.5 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm focus:outline-hidden focus:border-[#0d382c] focus:bg-white transition-colors"
+                  className="w-full px-3.5 py-2.5 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm focus:outline-none focus:border-[#07221a] focus:bg-white transition-colors"
                 />
               </div>
 
@@ -150,7 +152,7 @@ Instagram: @speak.english.with.nick
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="sofia@empresa.com"
-                  className="w-full px-3.5 py-2.5 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm focus:outline-hidden focus:border-[#0d382c] focus:bg-white transition-colors"
+                  className="w-full px-3.5 py-2.5 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm focus:outline-none focus:border-[#07221a] focus:bg-white transition-colors"
                 />
               </div>
 
@@ -161,7 +163,7 @@ Instagram: @speak.english.with.nick
                 <select
                   value={goal}
                   onChange={(e) => setGoal(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-xs sm:text-sm focus:outline-hidden focus:border-[#0d382c] focus:bg-white transition-colors"
+                  className="w-full px-3.5 py-2.5 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-xs sm:text-sm focus:outline-none focus:border-[#07221a] focus:bg-white transition-colors"
                 >
                   <option value="workplace">
                     {language === 'es' ? 'Hablar con seguridad en reuniones de trabajo' : 'Speaking in business & work meetings'}
@@ -182,7 +184,7 @@ Instagram: @speak.english.with.nick
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-4 rounded-full bg-[#66c310] hover:bg-[#58a80d] text-[#0b2d22] font-black text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full py-4 rounded-full bg-[#62c110] hover:bg-[#52a60d] text-[#07221a] font-black text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.02]"
             >
               {loading ? (
                 <span>{language === 'es' ? 'Generando Guía...' : 'Preparing Cheat Sheet...'}</span>
@@ -194,21 +196,21 @@ Instagram: @speak.english.with.nick
               )}
             </button>
 
-            <p className="text-[11px] text-center text-stone-500 flex items-center justify-center gap-1">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#66c310]" />
+            <p className="text-[11px] text-center text-stone-500 flex items-center justify-center gap-1 font-normal">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#62c110]" />
               <span>{language === 'es' ? '100% Gratis • Sin Spam • Acceso Inmediato' : '100% Free • No Spam • Instant Access'}</span>
             </p>
           </form>
         ) : (
           <div className="text-center space-y-4 py-2 animate-in zoom-in-95 duration-150">
-            <div className="w-14 h-14 rounded-full bg-[#eefae8] text-[#0d382c] border border-[#c4eeb0] flex items-center justify-center mx-auto">
-              <Check className="w-7 h-7 text-[#66c310]" />
+            <div className="w-14 h-14 rounded-full bg-[#edfbe6] text-[#07221a] border border-[#b2e896] flex items-center justify-center mx-auto">
+              <Check className="w-7 h-7 text-[#62c110]" />
             </div>
             <div className="space-y-1">
-              <h3 className="text-2xl font-black text-[#0d382c]">
+              <h3 className="text-2xl font-black text-[#07221a]">
                 {language === 'es' ? `¡Todo Listo, ${name}!` : `You're All Set, ${name}!`}
               </h3>
-              <p className="text-xs sm:text-sm text-stone-600">
+              <p className="text-xs sm:text-sm text-stone-600 font-normal">
                 {language === 'es'
                   ? `Te enviamos una copia a ${email}. También puedes descargarla ahora mismo:`
                   : `We sent a copy to ${email}. You can also download it right now:`}
@@ -217,9 +219,9 @@ Instagram: @speak.english.with.nick
 
             <button
               onClick={handleDownload}
-              className="w-full py-4 rounded-full bg-[#0d382c] hover:bg-[#164c3c] text-white font-black text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full py-4 rounded-full bg-[#07221a] hover:bg-[#164c3c] text-white font-black text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.02] border border-[#164c3c]"
             >
-              <Download className="w-4 h-4 text-[#66c310]" />
+              <Download className="w-4 h-4 text-[#62c110]" />
               <span>{language === 'es' ? 'Descargar Guía Rápida Ahora' : 'Download Cheat Sheet Now'}</span>
             </button>
 
@@ -236,3 +238,4 @@ Instagram: @speak.english.with.nick
     </div>
   );
 };
+

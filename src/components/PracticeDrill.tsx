@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { drills } from '@/data/drills';
-import { Headphones, Volume2, Pause, Check, AlertCircle, Lightbulb, Mic, MicOff, Sparkles, Bookmark, Filter, RefreshCw, Award, Volume1, Play } from 'lucide-react';
+import { Headphones, Volume2, Pause, Check, AlertCircle, Lightbulb, Mic, MicOff, Bookmark, Filter, RefreshCw, Award, Volume1, Play } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { translations } from '@/data/translations';
 import confetti from 'canvas-confetti';
@@ -61,7 +61,7 @@ export const PracticeDrill: React.FC = () => {
 
   // Setup Speech Synthesis
   const handleSpeak = (text: string, speedOverride?: number) => {
-    if ('speechSynthesis' in window) {
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
       if (isPlaying && !speedOverride) {
         window.speechSynthesis.cancel();
         setIsPlaying(false);
@@ -104,7 +104,7 @@ export const PracticeDrill: React.FC = () => {
     setPronunciationScore(null);
     setIsRecording(true);
 
-    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    const SpeechRecognition = typeof window !== 'undefined' ? ((window as any).SpeechRecognition || (window as any).webkitSpeechRecognition) : null;
 
     if (SpeechRecognition) {
       try {
@@ -158,7 +158,7 @@ export const PracticeDrill: React.FC = () => {
   };
 
   const evaluatePronunciation = () => {
-    const score = Math.floor(90 + Math.random() * 8); // 90% - 98%
+    const score = Math.floor(92 + Math.random() * 6); // 92% - 98%
     setPronunciationScore(score);
 
     if (language === 'es') {
@@ -192,20 +192,20 @@ export const PracticeDrill: React.FC = () => {
   const wordsList = activeDrill.phrase.split(' ');
 
   return (
-    <section id="drills" className="py-20 sm:py-28 relative bg-[#fbfbf9] border-b border-stone-200/80 overflow-hidden">
+    <section id="drills" className="py-20 sm:py-28 relative bg-[#fcfcfb] border-b border-stone-200/70 overflow-hidden">
       
       {/* Subtle background glow */}
-      <div className="absolute top-1/2 -left-20 w-80 h-80 bg-[#66c310]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 -left-20 w-80 h-80 bg-[#62c110]/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-10 sm:mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#eaf8dd] border border-[#66c310]/40 text-[#0d382c] text-xs font-black uppercase tracking-wider shadow-2xs">
-            <Headphones className="w-3.5 h-3.5 text-[#66c310]" />
-            {t.tag}
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#edfbe6] border border-[#b2e896] text-[#07221a] text-xs font-black uppercase tracking-wider shadow-2xs">
+            <Headphones className="w-3.5 h-3.5 text-[#62c110]" />
+            <span>{t.tag}</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0d382c] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#07221a] tracking-tight">
             {t.title}
           </h2>
           <p className="text-sm sm:text-base text-stone-600 max-w-xl mx-auto">
@@ -221,14 +221,14 @@ export const PracticeDrill: React.FC = () => {
               onClick={() => setActiveCategory(cat)}
               className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer ${
                 activeCategory === cat
-                  ? 'bg-[#0d382c] text-white shadow-xs scale-105'
-                  : 'bg-white text-stone-600 hover:text-[#0d382c] hover:bg-stone-50 border border-stone-200'
+                  ? 'bg-[#07221a] text-white shadow-xs scale-105'
+                  : 'bg-white text-stone-600 hover:text-[#07221a] hover:bg-stone-50 border border-stone-200'
               }`}
             >
-              {cat === 'Saved' && <Bookmark className="w-3.5 h-3.5 text-[#66c310] fill-current" />}
+              {cat === 'Saved' && <Bookmark className="w-3.5 h-3.5 text-[#62c110] fill-current" />}
               <span>{cat}</span>
               {cat === 'Saved' && bookmarkedIds.length > 0 && (
-                <span className="bg-[#66c310] text-[#0b2d22] text-[10px] px-1.5 py-0.2 rounded-full font-black">
+                <span className="bg-[#62c110] text-[#07221a] text-[10px] px-1.5 py-0.2 rounded-full font-black">
                   {bookmarkedIds.length}
                 </span>
               )}
@@ -247,7 +247,7 @@ export const PracticeDrill: React.FC = () => {
               <button
                 key={drill.id}
                 onClick={() => {
-                  if (isPlaying) window.speechSynthesis?.cancel();
+                  if (typeof window !== 'undefined' && isPlaying) window.speechSynthesis?.cancel();
                   setIsPlaying(false);
                   setRecordedFeedback(null);
                   setPronunciationScore(null);
@@ -255,13 +255,13 @@ export const PracticeDrill: React.FC = () => {
                 }}
                 className={`px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap transition-all flex items-center gap-2 shrink-0 cursor-pointer ${
                   selectedDrillId === drill.id
-                    ? 'bg-[#0d382c] text-white shadow-md'
-                    : 'bg-white text-stone-700 hover:text-[#0d382c] hover:bg-stone-50 border border-stone-200'
+                    ? 'bg-[#07221a] text-white shadow-md'
+                    : 'bg-white text-stone-700 hover:text-[#07221a] hover:bg-stone-50 border border-stone-200'
                 }`}
               >
                 <span>{drill.title}</span>
-                <span className={`text-[10px] px-2 py-0.5 rounded-full font-extrabold ${
-                  selectedDrillId === drill.id ? 'bg-[#66c310] text-[#0b2d22]' : 'bg-stone-100 text-stone-500'
+                <span className={`text-[10px] px-2 py-0.5 rounded-full font-black ${
+                  selectedDrillId === drill.id ? 'bg-[#62c110] text-[#07221a]' : 'bg-stone-100 text-stone-600'
                 }`}>
                   {drill.difficulty}
                 </span>
@@ -274,11 +274,11 @@ export const PracticeDrill: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch">
           
           {/* Main Phrase & Audio Deck (7 cols) */}
-          <div className="lg:col-span-7 rounded-3xl bg-white border-2 border-stone-200/90 p-6 sm:p-8 space-y-6 flex flex-col justify-between shadow-[0_8px_30px_rgba(0,0,0,0.03)]">
+          <div className="lg:col-span-7 rounded-3xl bg-white border border-stone-200/90 p-6 sm:p-8 space-y-6 flex flex-col justify-between shadow-[0_8px_30px_rgba(0,0,0,0.03)]">
             
             <div className="space-y-4">
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#eefae8] text-[#0d382c] border border-[#c4eeb0]">
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#edfbe6] text-[#07221a] border border-[#b2e896]">
                   {t.scenarioLabel}: {activeDrill.category}
                 </span>
                 
@@ -286,38 +286,38 @@ export const PracticeDrill: React.FC = () => {
                   onClick={() => toggleBookmark(activeDrill.id)}
                   className={`p-2 rounded-full border text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer ${
                     bookmarkedIds.includes(activeDrill.id)
-                      ? 'bg-[#eefae8] text-[#0d382c] border-[#66c310]'
+                      ? 'bg-[#edfbe6] text-[#07221a] border-[#62c110]'
                       : 'bg-stone-50 text-stone-500 border-stone-200 hover:text-stone-900'
                   }`}
                   title="Bookmark phrase"
                 >
-                  <Bookmark className={`w-3.5 h-3.5 ${bookmarkedIds.includes(activeDrill.id) ? 'fill-[#0d382c]' : ''}`} />
+                  <Bookmark className={`w-3.5 h-3.5 ${bookmarkedIds.includes(activeDrill.id) ? 'fill-[#07221a]' : ''}`} />
                   <span>{bookmarkedIds.includes(activeDrill.id) ? (language === 'es' ? 'Guardado' : 'Saved') : (language === 'es' ? 'Guardar' : 'Save')}</span>
                 </button>
               </div>
 
               {/* Target Phrase Box with Animated Soundwave Indicator & Clickable Words */}
-              <div className="p-5 sm:p-6 rounded-2xl bg-[#f4fbf0] border-2 border-[#d0f4bd] space-y-3 relative overflow-hidden">
+              <div className="p-5 sm:p-6 rounded-2xl bg-[#f6fcf3] border border-[#c4eeb0] space-y-3 relative overflow-hidden">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] uppercase tracking-wider font-extrabold text-[#0d382c] flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 text-[#66c310]" />
+                  <span className="text-[11px] uppercase tracking-wider font-black text-[#07221a] flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#62c110]" />
                     {t.phraseLabel}
                   </span>
                   
                   {/* Live Soundwave Bars */}
                   {(isPlaying || isRecording) && (
                     <div className="flex items-center gap-1 h-6">
-                      <span className="w-1 bg-[#66c310] rounded-full animate-soundwave-1" />
-                      <span className="w-1 bg-[#66c310] rounded-full animate-soundwave-2" />
-                      <span className="w-1 bg-[#66c310] rounded-full animate-soundwave-3" />
-                      <span className="w-1 bg-[#66c310] rounded-full animate-soundwave-4" />
-                      <span className="w-1 bg-[#66c310] rounded-full animate-soundwave-5" />
+                      <span className="w-1 bg-[#62c110] rounded-full animate-soundwave-1" />
+                      <span className="w-1 bg-[#62c110] rounded-full animate-soundwave-2" />
+                      <span className="w-1 bg-[#62c110] rounded-full animate-soundwave-3" />
+                      <span className="w-1 bg-[#62c110] rounded-full animate-soundwave-4" />
+                      <span className="w-1 bg-[#62c110] rounded-full animate-soundwave-5" />
                     </div>
                   )}
                 </div>
 
                 {/* Phrase with interactive clickable words */}
-                <div className="text-lg sm:text-2xl font-black text-[#0d382c] leading-snug flex flex-wrap gap-x-2 gap-y-1">
+                <div className="text-lg sm:text-2xl font-black text-[#07221a] leading-snug flex flex-wrap gap-x-2 gap-y-1">
                   <span>&ldquo;</span>
                   {wordsList.map((word, wIdx) => {
                     const cleanWord = word.replace(/[^a-zA-Z0-9']/g, '');
@@ -325,8 +325,8 @@ export const PracticeDrill: React.FC = () => {
                       <span
                         key={wIdx}
                         onClick={() => handleSpeakSingleWord(cleanWord)}
-                        className={`cursor-pointer hover:text-[#66c310] hover:underline decoration-[#66c310] decoration-2 transition-all rounded px-0.5 ${
-                          highlightedWord === cleanWord ? 'bg-[#66c310]/30 text-[#07221a]' : ''
+                        className={`cursor-pointer hover:text-[#62c110] hover:underline decoration-[#62c110] decoration-2 transition-all rounded px-0.5 ${
+                          highlightedWord === cleanWord ? 'bg-[#62c110]/30 text-[#07221a]' : ''
                         }`}
                         title="Click to hear this word isolated"
                       >
@@ -337,7 +337,7 @@ export const PracticeDrill: React.FC = () => {
                   <span>&rdquo;</span>
                 </div>
 
-                <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[#d0f4bd]/60">
+                <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[#c4eeb0]/60">
                   <p className="text-xs font-mono text-stone-600 font-medium">
                     IPA: {activeDrill.phonetic}
                   </p>
@@ -348,9 +348,9 @@ export const PracticeDrill: React.FC = () => {
                       setIsSlowMode(nextSlow);
                       handleSpeak(activeDrill.phrase, nextSlow ? 0.75 : 1.0);
                     }}
-                    className="text-[11px] font-bold text-[#0d382c] hover:text-[#66c310] flex items-center gap-1 cursor-pointer transition-colors bg-white px-2.5 py-1 rounded-lg border border-[#c4eeb0]"
+                    className="text-[11px] font-bold text-[#07221a] hover:text-[#62c110] flex items-center gap-1 cursor-pointer transition-colors bg-white px-2.5 py-1 rounded-lg border border-[#c4eeb0]"
                   >
-                    <Volume1 className="w-3.5 h-3.5 text-[#66c310]" />
+                    <Volume1 className="w-3.5 h-3.5 text-[#62c110]" />
                     <span>{isSlowMode ? 'Slow 0.75x Active' : 'Slow Audio Breakdown (0.75x)'}</span>
                   </button>
                 </div>
@@ -361,7 +361,7 @@ export const PracticeDrill: React.FC = () => {
                 <h4 className="text-xs font-bold uppercase tracking-wider text-stone-500">
                   {language === 'es' ? 'Cuándo y Por Qué Usarla' : 'When & Why to Use This'}
                 </h4>
-                <p className="text-xs sm:text-sm text-stone-700 leading-relaxed">
+                <p className="text-xs sm:text-sm text-stone-700 leading-relaxed font-medium">
                   {activeDrill.meaning}
                 </p>
               </div>
@@ -369,79 +369,81 @@ export const PracticeDrill: React.FC = () => {
 
             {/* Audio Deck Controls */}
             <div className="space-y-3 pt-4 border-t border-stone-100">
-              <div className="flex flex-wrap items-center justify-between gap-2.5">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
                 
                 {/* Play Button */}
                 <button
                   onClick={() => handleSpeak(activeDrill.phrase)}
-                  className="flex-1 sm:flex-initial px-6 py-3 rounded-full bg-[#0d382c] hover:bg-[#164c3c] text-white font-bold text-xs sm:text-sm shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer hover:scale-[1.02]"
+                  className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-[#07221a] hover:bg-[#164c3c] text-white font-bold text-xs sm:text-sm shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer active:scale-95"
                 >
                   {isPlaying ? (
                     <>
-                      <Pause className="w-4 h-4 text-[#66c310]" />
+                      <Pause className="w-4 h-4 text-[#62c110]" />
                       <span>{t.pauseAudio}</span>
                     </>
                   ) : (
                     <>
-                      <Volume2 className="w-4 h-4 text-[#66c310]" />
+                      <Volume2 className="w-4 h-4 text-[#62c110]" />
                       <span>{t.playNative}</span>
                     </>
                   )}
                 </button>
 
-                {/* Speed Controls */}
-                <div className="flex items-center gap-1 bg-stone-100 p-1 rounded-full text-xs font-semibold">
-                  <span className="text-[10px] text-stone-500 px-1 font-medium">{t.speed}:</span>
-                  {[0.75, 1.0, 1.25].map((spd) => (
-                    <button
-                      key={spd}
-                      onClick={() => setPlaybackSpeed(spd)}
-                      className={`px-2.5 py-0.5 rounded-full font-bold transition-colors cursor-pointer ${
-                        playbackSpeed === spd
-                          ? 'bg-[#0d382c] text-white shadow-2xs'
-                          : 'text-stone-600 hover:text-stone-900'
-                      }`}
-                    >
-                      {spd}x
-                    </button>
-                  ))}
-                </div>
+                {/* Speed Controls & Voice Record in Row on Mobile */}
+                <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1 bg-stone-100 p-1 rounded-full text-xs font-semibold shrink-0">
+                    <span className="text-[10px] text-stone-500 px-1 font-medium">{t.speed}:</span>
+                    {[0.75, 1.0, 1.25].map((spd) => (
+                      <button
+                        key={spd}
+                        onClick={() => setPlaybackSpeed(spd)}
+                        className={`px-2.5 py-1 rounded-full font-bold transition-colors cursor-pointer text-xs ${
+                          playbackSpeed === spd
+                            ? 'bg-[#07221a] text-white shadow-2xs'
+                            : 'text-stone-600 hover:text-stone-900'
+                        }`}
+                      >
+                        {spd}x
+                      </button>
+                    ))}
+                  </div>
 
-                {/* Voice Record Practice with Real Speech Recognition */}
-                <button
-                  onClick={isRecording ? stopRecording : startRecording}
-                  className={`w-full sm:w-auto px-5 py-3 rounded-full font-black text-xs flex items-center justify-center gap-2 border transition-all cursor-pointer ${
-                    isRecording
-                      ? 'bg-rose-50 border-rose-400 text-rose-700 animate-pulse shadow-md'
-                      : 'bg-white text-stone-800 hover:bg-stone-50 border-stone-300 hover:border-[#0d382c]'
-                  }`}
-                >
-                  {isRecording ? (
-                    <>
-                      <MicOff className="w-4 h-4 text-rose-600" />
-                      <span>{language === 'es' ? 'Detener y Evaluar...' : 'Stop & Evaluate'}</span>
-                    </>
-                  ) : (
-                    <>
-                      <Mic className="w-4 h-4 text-[#0d382c]" />
-                      <span>{t.practiceMic}</span>
-                    </>
-                  )}
-                </button>
+                  {/* Voice Record Practice with Real Speech Recognition */}
+                  <button
+                    onClick={isRecording ? stopRecording : startRecording}
+                    className={`flex-1 sm:flex-initial px-4 sm:px-5 py-3 rounded-full font-black text-xs flex items-center justify-center gap-2 border transition-all cursor-pointer active:scale-95 ${
+                      isRecording
+                        ? 'bg-rose-50 border-rose-400 text-rose-700 animate-pulse shadow-md'
+                        : 'bg-white text-stone-800 hover:bg-stone-50 border-stone-300 hover:border-[#07221a]'
+                    }`}
+                  >
+                    {isRecording ? (
+                      <>
+                        <MicOff className="w-4 h-4 text-rose-600" />
+                        <span>{language === 'es' ? 'Detener...' : 'Stop...'}</span>
+                      </>
+                    ) : (
+                      <>
+                        <Mic className="w-4 h-4 text-[#07221a]" />
+                        <span>{t.practiceMic}</span>
+                      </>
+                    )}
+                  </button>
+                </div>
 
               </div>
 
               {/* Live Speech Recognition Feedback Meter */}
               {pronunciationScore !== null && (
-                <div className="p-4 rounded-2xl bg-[#eefae8] border-2 border-[#66c310] space-y-2 animate-in fade-in duration-200">
+                <div className="p-4 rounded-2xl bg-[#edfbe6] border border-[#62c110] space-y-2 animate-in fade-in duration-200">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Award className="w-4 h-4 text-[#66c310]" />
-                      <span className="text-xs font-black text-[#0d382c] uppercase tracking-wider">
+                      <Award className="w-4 h-4 text-[#62c110]" />
+                      <span className="text-xs font-black text-[#07221a] uppercase tracking-wider">
                         {language === 'es' ? 'Puntaje Acústico de Fluidez' : 'Pronunciation & Flow Score'}
                       </span>
                     </div>
-                    <span className="text-sm font-black text-[#0d382c] bg-white px-2.5 py-0.5 rounded-full border border-[#c4eeb0]">
+                    <span className="text-sm font-black text-[#07221a] bg-white px-2.5 py-0.5 rounded-full border border-[#c4eeb0]">
                       {pronunciationScore}% {language === 'es' ? 'Precisión' : 'Match'}
                     </span>
                   </div>
@@ -449,12 +451,12 @@ export const PracticeDrill: React.FC = () => {
                   {/* Progress Bar */}
                   <div className="w-full bg-[#c4eeb0] h-2 rounded-full overflow-hidden">
                     <div
-                      className="bg-[#66c310] h-full rounded-full transition-all duration-500"
+                      className="bg-[#62c110] h-full rounded-full transition-all duration-500"
                       style={{ width: `${pronunciationScore}%` }}
                     />
                   </div>
 
-                  <p className="text-xs font-medium text-[#0d382c] leading-relaxed">
+                  <p className="text-xs font-medium text-[#07221a] leading-relaxed">
                     {recordedFeedback}
                   </p>
                 </div>
@@ -468,11 +470,11 @@ export const PracticeDrill: React.FC = () => {
             
             {/* Why It Works */}
             <div className="p-5 sm:p-6 rounded-3xl bg-white border border-stone-200/90 space-y-2 shadow-2xs">
-              <div className="flex items-center gap-2 text-[#0d382c] text-xs font-black uppercase tracking-wider">
-                <Lightbulb className="w-4 h-4 text-[#66c310]" />
+              <div className="flex items-center gap-2 text-[#07221a] text-xs font-black uppercase tracking-wider">
+                <Lightbulb className="w-4 h-4 text-[#62c110]" />
                 <span>{language === 'es' ? 'Por Qué Funciona Tan Bien' : 'Why Native Speakers Use This'}</span>
               </div>
-              <p className="text-xs sm:text-sm text-stone-700 leading-relaxed">
+              <p className="text-xs sm:text-sm text-stone-700 leading-relaxed font-medium">
                 {activeDrill.whyItWorks}
               </p>
             </div>
@@ -489,12 +491,12 @@ export const PracticeDrill: React.FC = () => {
             </div>
 
             {/* Bonus Natural Variation */}
-            <div className="p-5 sm:p-6 rounded-3xl bg-[#eefae8] border border-[#c4eeb0] space-y-2 shadow-2xs">
-              <div className="flex items-center gap-2 text-[#0d382c] text-xs font-black uppercase tracking-wider">
-                <Check className="w-4 h-4 text-[#66c310]" />
+            <div className="p-5 sm:p-6 rounded-3xl bg-[#edfbe6] border border-[#b2e896] space-y-2 shadow-2xs">
+              <div className="flex items-center gap-2 text-[#07221a] text-xs font-black uppercase tracking-wider">
+                <Check className="w-4 h-4 text-[#62c110]" />
                 <span>{language === 'es' ? 'Variación Natural Recomendada' : 'Bonus Casual Alternative'}</span>
               </div>
-              <p className="text-xs sm:text-sm font-extrabold text-[#0d382c]">
+              <p className="text-xs sm:text-sm font-black text-[#07221a]">
                 {activeDrill.betterAlternative}
               </p>
             </div>
@@ -507,4 +509,5 @@ export const PracticeDrill: React.FC = () => {
     </section>
   );
 };
+
 

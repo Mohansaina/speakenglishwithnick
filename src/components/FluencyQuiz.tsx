@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { quizQuestions, calculateQuizResult } from '@/data/quizData';
 import { QuizResult } from '@/types';
-import { Sparkles, Brain, ShieldAlert, Ear, BookOpen, Car, Clock, UserCheck, Zap, Briefcase, MessageSquare, Mic, ArrowRight, RotateCcw, Check, Compass, Award, Download, Calendar, BarChart3 } from 'lucide-react';
+import { Brain, ShieldAlert, Ear, BookOpen, Car, Clock, UserCheck, Briefcase, MessageSquare, Mic, ArrowRight, RotateCcw, Check, Compass, Award, Download, Calendar, BarChart3 } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import confetti from 'canvas-confetti';
 
@@ -75,7 +75,7 @@ export const FluencyQuiz: React.FC<FluencyQuizProps> = ({
         {
           label: '5 a 10 minutos entre pausas de mi trabajo',
           description: 'Micro-ejercicios y frases de rescate para uso inmediato.',
-          iconName: 'Zap',
+          iconName: 'Clock',
         }
       ]
     },
@@ -100,59 +100,15 @@ export const FluencyQuiz: React.FC<FluencyQuizProps> = ({
           iconName: 'Mic',
         },
         {
-          label: 'Crear un hábito diario indestructible de práctica de inglés',
-          description: 'Dejar de abandonar después de una semana y mantener el progreso constante.',
-          iconName: 'Sparkles',
-        }
-      ]
-    },
-    {
-      id: 4,
-      question: '¿Cuál es tu mayor desafío con la pronunciación del inglés americano?',
-      subtitle: 'Entender tu patrón fonético nos permite calibrar tus ejercicios de repetición.',
-      options: [
-        {
-          label: 'La diferencia entre vocales cortas y largas (ej. ship vs sheep, live vs leave)',
-          description: 'Tendencia a pronunciarlas todas iguales como en el español.',
-          iconName: 'Ear',
-        },
-        {
-          label: 'Agregar una "E" involuntaria antes de palabras con S (ej. "espeak", "eschool")',
-          description: 'Patrón automático del español que afecta tu fluidez inicial.',
-          iconName: 'Mic',
-        },
-        {
-          label: 'La pronunciación de la R americana y la unión de consonantes (ej. world, girl)',
-          description: 'Posición lingual y tensión muscular en la parte posterior del paladar.',
-          iconName: 'Sparkles',
-        },
-        {
-          label: 'El ritmo acentual y conectar palabras fluidamente sin sonar robótico',
-          description: 'Sonido Schwa /ə/ y reducción de sílabas no acentuadas.',
-          iconName: 'Brain',
+          label: 'Hablar de manera automática sin traducir en mi mente',
+          description: 'Desarrollar reflejo directo en inglés para pensar y responder sin esfuerzo.',
+          iconName: 'Compass',
         }
       ]
     }
   ];
 
   const activeQuestions = language === 'es' ? spanishQuestions : quizQuestions;
-
-  const getIcon = (iconName: string) => {
-    switch (iconName) {
-      case 'Brain': return <Brain className="w-4 h-4 text-[#0d382c]" />;
-      case 'ShieldAlert': return <ShieldAlert className="w-4 h-4 text-[#0d382c]" />;
-      case 'Ear': return <Ear className="w-4 h-4 text-[#0d382c]" />;
-      case 'BookOpen': return <BookOpen className="w-4 h-4 text-[#0d382c]" />;
-      case 'Car': return <Car className="w-4 h-4 text-[#0d382c]" />;
-      case 'Clock': return <Clock className="w-4 h-4 text-[#0d382c]" />;
-      case 'UserCheck': return <UserCheck className="w-4 h-4 text-[#0d382c]" />;
-      case 'Zap': return <Zap className="w-4 h-4 text-[#0d382c]" />;
-      case 'Briefcase': return <Briefcase className="w-4 h-4 text-[#0d382c]" />;
-      case 'MessageSquare': return <MessageSquare className="w-4 h-4 text-[#0d382c]" />;
-      case 'Mic': return <Mic className="w-4 h-4 text-[#0d382c]" />;
-      default: return <Sparkles className="w-4 h-4 text-[#0d382c]" />;
-    }
-  };
 
   const handleSelectOption = (optionIndex: number) => {
     const newAnswers = [...answers, optionIndex];
@@ -161,12 +117,12 @@ export const FluencyQuiz: React.FC<FluencyQuizProps> = ({
     if (currentStep < activeQuestions.length - 1) {
       setCurrentStep(currentStep + 1);
     } else {
-      const calculated = calculateQuizResult(newAnswers);
-      setResult(calculated);
+      const calculatedResult = calculateQuizResult(newAnswers);
+      setResult(calculatedResult);
       try {
         confetti({
-          particleCount: 60,
-          spread: 70,
+          particleCount: 50,
+          spread: 60,
           origin: { y: 0.6 }
         });
       } catch {
@@ -181,22 +137,38 @@ export const FluencyQuiz: React.FC<FluencyQuizProps> = ({
     setResult(null);
   };
 
-  const getSpanishArchetype = (r: QuizResult) => {
+  const getIcon = (iconName: string) => {
+    switch (iconName) {
+      case 'Brain': return <Brain className="w-5 h-5 text-[#62c110]" />;
+      case 'ShieldAlert': return <ShieldAlert className="w-5 h-5 text-[#62c110]" />;
+      case 'Ear': return <Ear className="w-5 h-5 text-[#62c110]" />;
+      case 'BookOpen': return <BookOpen className="w-5 h-5 text-[#62c110]" />;
+      case 'Car': return <Car className="w-5 h-5 text-[#62c110]" />;
+      case 'Clock': return <Clock className="w-5 h-5 text-[#62c110]" />;
+      case 'UserCheck': return <UserCheck className="w-5 h-5 text-[#62c110]" />;
+      case 'Briefcase': return <Briefcase className="w-5 h-5 text-[#62c110]" />;
+      case 'MessageSquare': return <MessageSquare className="w-5 h-5 text-[#62c110]" />;
+      case 'Mic': return <Mic className="w-5 h-5 text-[#62c110]" />;
+      default: return <Compass className="w-5 h-5 text-[#62c110]" />;
+    }
+  };
+
+  const getSpanishArchetype = (res: QuizResult) => {
     if (answers[0] === 0) {
       return {
         archetype: 'El Traductor Mental',
-        tagline: 'Atrapado traduciendo palabra por palabra desde el español',
-        summary: 'Tienes buen conocimiento de vocabulario en tu mente, pero el filtro de traducción genera un retraso de 3 a 5 segundos. Tu ruta más rápida hacia la fluidez es la repetición acústica de frases completas sin traducción.',
-        barrier: 'Retraso de traducción interna y sobreanálisis gramatical',
+        tagline: 'Construyes la frase en español antes de hablar en inglés',
+        summary: 'Tu vocabulario pasivo es bueno, pero sufres fatiga mental porque tu cerebro procesa en dos idiomas a la vez. Necesitas entrenamiento de reflejo directo mediante frases de rescate acústicas.',
+        barrier: 'Traducción simultánea español-inglés',
         scores: {
           accent: 78,
-          confidence: 65,
-          speed: 55,
-          agility: 82,
+          confidence: 55,
+          speed: 48,
+          agility: 80,
         },
         plan: [
-          'Reemplaza la lectura silenciosa por repetición en voz alta 20 min/día en tus traslados.',
-          'Usa conectores verbales de rescate para ganar segundos sin silencios incómodos.',
+          'Reemplaza la gramática con 20 minutos diarios de repetición en voz alta ("shadowing").',
+          'Memoriza patrones de 3 a 5 palabras completas en lugar de palabras sueltas.',
           'Deja de auto-corregirte en tiempo real: apunta a 80% de precisión y 100% de soltura.'
         ]
       };
@@ -286,33 +258,35 @@ Agenda tu sesión diagnóstica en: https://speakenglishwithnick.com
 ¡Mucho éxito en tu camino hacia la fluidez natural!
 `;
 
-    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `Plan_Fluidez_90_Dias_${archetypeTitle.replace(/\s+/g, '_')}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    if (typeof window !== 'undefined') {
+      const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Plan_Fluidez_90_Dias_${archetypeTitle.replace(/\s+/g, '_')}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto rounded-3xl bg-white border-2 border-[#d0f4bd] shadow-2xl p-6 sm:p-10 text-stone-900 glow-lime-sm">
+    <div className="w-full max-w-3xl mx-auto rounded-3xl bg-white border border-stone-200/90 shadow-[0_12px_40px_rgba(0,0,0,0.06)] p-5 sm:p-8 md:p-10 text-stone-900 glow-lime-sm">
       
       {!result ? (
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           
           {/* Header & Step progress */}
-          <div className="space-y-3.5">
+          <div className="space-y-3">
             <div className="flex items-center justify-between text-xs font-bold text-stone-500">
-              <span className="flex items-center gap-1.5 text-[#0d382c]">
-                <Compass className="w-3.5 h-3.5 text-[#66c310]" />
+              <span className="flex items-center gap-1.5 text-[#07221a]">
+                <Compass className="w-3.5 h-3.5 text-[#62c110]" />
                 {language === 'es'
                   ? `Pregunta ${currentStep + 1} de ${activeQuestions.length}`
                   : `Question ${currentStep + 1} of ${activeQuestions.length}`}
               </span>
-              <span className="text-stone-400 font-semibold">
+              <span className="text-stone-400 font-semibold text-[11px] sm:text-xs">
                 {language === 'es' ? 'Diagnóstico Personalizado' : 'Diagnostic Assessment'}
               </span>
             </div>
@@ -320,13 +294,13 @@ Agenda tu sesión diagnóstica en: https://speakenglishwithnick.com
             {/* Clean Progress Bar with Green Theme */}
             <div className="w-full h-2 rounded-full bg-[#f4fbf0] overflow-hidden border border-[#d0f4bd]">
               <div
-                className="h-full bg-[#66c310] rounded-full transition-all duration-300 shadow-sm"
+                className="h-full bg-[#62c110] rounded-full transition-all duration-300 shadow-xs"
                 style={{ width: `${((currentStep + 1) / activeQuestions.length) * 100}%` }}
               />
             </div>
 
-            <div className="pt-2">
-              <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-[#0d382c] tracking-tight">
+            <div className="pt-1.5">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-[#07221a] tracking-tight leading-snug">
                 {activeQuestions[currentStep].question}
               </h3>
               <p className="text-xs sm:text-sm text-stone-600 mt-1">
@@ -336,26 +310,26 @@ Agenda tu sesión diagnóstica en: https://speakenglishwithnick.com
           </div>
 
           {/* Options Grid */}
-          <div className="space-y-3">
+          <div className="space-y-2.5 sm:space-y-3">
             {activeQuestions[currentStep].options.map((option, idx) => (
               <button
                 key={idx}
                 onClick={() => handleSelectOption(idx)}
-                className="w-full text-left p-4 sm:p-5 rounded-2xl bg-[#fafafa] hover:bg-[#f4fbf0] border border-stone-200 hover:border-[#66c310] group transition-all flex items-start gap-4 cursor-pointer hover:scale-[1.01] hover:shadow-md"
+                className="w-full text-left p-3.5 sm:p-5 rounded-2xl bg-[#fafafa] hover:bg-[#f6fcf3] border border-stone-200/90 hover:border-[#62c110] group transition-all flex items-start gap-3 sm:gap-4 cursor-pointer hover:scale-[1.01] hover:shadow-md active:scale-[0.99]"
               >
-                <div className="p-2.5 rounded-xl bg-white border border-stone-200 group-hover:border-[#66c310] shrink-0 shadow-2xs group-hover:bg-[#eefae8] transition-colors">
+                <div className="p-2 sm:p-2.5 rounded-xl bg-white border border-stone-200 group-hover:border-[#62c110] shrink-0 shadow-2xs group-hover:bg-[#edfbe6] transition-colors">
                   {getIcon(option.iconName)}
                 </div>
-                <div className="flex-1 space-y-0.5">
-                  <h4 className="font-extrabold text-stone-900 text-sm sm:text-base group-hover:text-[#0d382c]">
+                <div className="flex-1 space-y-0.5 min-w-0">
+                  <h4 className="font-bold text-stone-900 text-xs sm:text-base group-hover:text-[#07221a] leading-snug">
                     {option.label}
                   </h4>
-                  <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                  <p className="text-[11px] sm:text-sm text-stone-600 leading-relaxed font-normal">
                     {option.description}
                   </p>
                 </div>
-                <div className="w-7 h-7 rounded-full border border-stone-300 flex items-center justify-center shrink-0 mt-1 group-hover:border-[#66c310] group-hover:bg-[#66c310] group-hover:text-[#0b2d22] transition-colors">
-                  <ArrowRight className="w-4 h-4 text-stone-400 group-hover:text-[#0b2d22]" />
+                <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full border border-stone-300 flex items-center justify-center shrink-0 mt-1 group-hover:border-[#62c110] group-hover:bg-[#62c110] group-hover:text-[#07221a] transition-colors">
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-stone-400 group-hover:text-[#07221a]" />
                 </div>
               </button>
             ))}
@@ -368,7 +342,7 @@ Agenda tu sesión diagnóstica en: https://speakenglishwithnick.com
                   setCurrentStep(currentStep - 1);
                   setAnswers(answers.slice(0, -1));
                 }}
-                className="text-xs font-bold text-stone-500 hover:text-[#0d382c] transition-colors cursor-pointer"
+                className="text-xs font-bold text-stone-500 hover:text-[#07221a] transition-colors cursor-pointer"
               >
                 {language === 'es' ? '← Volver a la pregunta anterior' : '← Back to previous question'}
               </button>
@@ -391,13 +365,13 @@ Agenda tu sesión diagnóstica en: https://speakenglishwithnick.com
             return (
               <>
                 <div className="text-center space-y-2.5 pb-6 border-b border-stone-100">
-                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#eefae8] border border-[#c4eeb0] text-[#0d382c] text-xs font-black uppercase tracking-wider">
-                    <Award className="w-3.5 h-3.5 text-[#66c310]" />
+                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#edfbe6] border border-[#b2e896] text-[#07221a] text-xs font-black uppercase tracking-wider">
+                    <Award className="w-3.5 h-3.5 text-[#62c110]" />
                     <span>{language === 'es' ? 'Diagnóstico Completado' : 'Diagnostic Complete'}</span>
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-black text-[#0d382c]">
+                  <h3 className="text-2xl sm:text-3xl font-black text-[#07221a]">
                     {language === 'es' ? 'Tu Perfil al Hablar: ' : 'Your Speaking Archetype: '} <br />
-                    <span className="text-[#66c310]">{archetypeTitle}</span>
+                    <span className="text-[#62c110]">{archetypeTitle}</span>
                   </h3>
                   <p className="text-xs sm:text-sm text-stone-600 max-w-md mx-auto italic font-serif">
                     &ldquo;{taglineText}&rdquo;
@@ -406,9 +380,9 @@ Agenda tu sesión diagnóstica en: https://speakenglishwithnick.com
 
                 {/* Multi-Dimensional Skill Radar Breakdown */}
                 <div className="p-5 rounded-2xl bg-[#fafafa] border border-stone-200 space-y-3">
-                  <div className="flex items-center justify-between text-xs font-black text-[#0d382c] uppercase tracking-wider">
+                  <div className="flex items-center justify-between text-xs font-black text-[#07221a] uppercase tracking-wider">
                     <span className="flex items-center gap-1.5">
-                      <BarChart3 className="w-4 h-4 text-[#66c310]" />
+                      <BarChart3 className="w-4 h-4 text-[#62c110]" />
                       {language === 'es' ? 'Desglose de Habilidades al Hablar' : 'Speaking Capability Dimensions'}
                     </span>
                     <span className="text-stone-500 font-normal">0 - 100%</span>
@@ -418,40 +392,40 @@ Agenda tu sesión diagnóstica en: https://speakenglishwithnick.com
                     <div className="space-y-1">
                       <div className="flex justify-between text-xs font-bold text-stone-700">
                         <span>{language === 'es' ? 'Acento y Fonética' : 'Pronunciation & Accent'}</span>
-                        <span className="text-[#0d382c] font-black">{scores.accent}%</span>
+                        <span className="text-[#07221a] font-black">{scores.accent}%</span>
                       </div>
                       <div className="w-full bg-stone-200 h-2 rounded-full overflow-hidden">
-                        <div className="bg-[#66c310] h-full rounded-full" style={{ width: `${scores.accent}%` }} />
+                        <div className="bg-[#62c110] h-full rounded-full" style={{ width: `${scores.accent}%` }} />
                       </div>
                     </div>
 
                     <div className="space-y-1">
                       <div className="flex justify-between text-xs font-bold text-stone-700">
                         <span>{language === 'es' ? 'Confianza sin Ansiedad' : 'Confidence & Calm'}</span>
-                        <span className="text-[#0d382c] font-black">{scores.confidence}%</span>
+                        <span className="text-[#07221a] font-black">{scores.confidence}%</span>
                       </div>
                       <div className="w-full bg-stone-200 h-2 rounded-full overflow-hidden">
-                        <div className="bg-[#66c310] h-full rounded-full" style={{ width: `${scores.confidence}%` }} />
+                        <div className="bg-[#62c110] h-full rounded-full" style={{ width: `${scores.confidence}%` }} />
                       </div>
                     </div>
 
                     <div className="space-y-1">
                       <div className="flex justify-between text-xs font-bold text-stone-700">
                         <span>{language === 'es' ? 'Velocidad de Respuesta' : 'Response Speed (No translation)'}</span>
-                        <span className="text-[#0d382c] font-black">{scores.speed}%</span>
+                        <span className="text-[#07221a] font-black">{scores.speed}%</span>
                       </div>
                       <div className="w-full bg-stone-200 h-2 rounded-full overflow-hidden">
-                        <div className="bg-[#66c310] h-full rounded-full" style={{ width: `${scores.speed}%` }} />
+                        <div className="bg-[#62c110] h-full rounded-full" style={{ width: `${scores.speed}%` }} />
                       </div>
                     </div>
 
                     <div className="space-y-1">
                       <div className="flex justify-between text-xs font-bold text-stone-700">
                         <span>{language === 'es' ? 'Agilidad de Vocabulario' : 'Vocabulary Agility'}</span>
-                        <span className="text-[#0d382c] font-black">{scores.agility}%</span>
+                        <span className="text-[#07221a] font-black">{scores.agility}%</span>
                       </div>
                       <div className="w-full bg-stone-200 h-2 rounded-full overflow-hidden">
-                        <div className="bg-[#66c310] h-full rounded-full" style={{ width: `${scores.agility}%` }} />
+                        <div className="bg-[#62c110] h-full rounded-full" style={{ width: `${scores.agility}%` }} />
                       </div>
                     </div>
                   </div>
@@ -460,10 +434,10 @@ Agenda tu sesión diagnóstica en: https://speakenglishwithnick.com
                 {/* Analysis Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="p-5 rounded-2xl bg-[#fafafa] border border-stone-200 space-y-1.5">
-                    <span className="text-[11px] font-black text-[#0d382c] uppercase tracking-wider">
+                    <span className="text-[11px] font-black text-[#07221a] uppercase tracking-wider">
                       {language === 'es' ? 'Bloqueo Principal' : 'Primary Speaking Bottleneck'}
                     </span>
-                    <p className="text-sm font-extrabold text-stone-900">
+                    <p className="text-sm font-black text-stone-900">
                       {barrierText}
                     </p>
                     <p className="text-xs text-stone-600 leading-relaxed pt-1">
@@ -472,10 +446,10 @@ Agenda tu sesión diagnóstica en: https://speakenglishwithnick.com
                   </div>
 
                   <div className="p-5 rounded-2xl bg-[#fafafa] border border-stone-200 space-y-1.5">
-                    <span className="text-[11px] font-black text-[#0d382c] uppercase tracking-wider">
+                    <span className="text-[11px] font-black text-[#07221a] uppercase tracking-wider">
                       {language === 'es' ? 'Rutina Diaria Recomendada' : 'Recommended Daily Routine'}
                     </span>
-                    <div className="text-2xl font-black text-[#0d382c]">
+                    <div className="text-2xl font-black text-[#07221a]">
                       {result.recommendedDailyMinutes} {language === 'es' ? 'Minutos / Día' : 'Minutes / Day'}
                     </div>
                     <p className="text-xs text-stone-600 pt-1">
@@ -488,16 +462,16 @@ Agenda tu sesión diagnóstica en: https://speakenglishwithnick.com
                 </div>
 
                 {/* Action Plan */}
-                <div className="p-5 rounded-2xl bg-[#f4fbf0] border-2 border-[#d0f4bd] space-y-3">
+                <div className="p-5 rounded-2xl bg-[#f6fcf3] border border-[#c4eeb0] space-y-3">
                   <div className="flex items-center justify-between">
-                    <h4 className="text-xs font-black text-[#0d382c] uppercase tracking-wider flex items-center gap-1.5">
-                      <Sparkles className="w-3.5 h-3.5 text-[#66c310]" />
+                    <h4 className="text-xs font-black text-[#07221a] uppercase tracking-wider flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#62c110]" />
                       <span>{language === 'es' ? 'Plan de Acción Sugerido por Coach Nick' : "Coach Nick's 3-Step Action Plan"}</span>
                     </h4>
 
                     <button
                       onClick={() => handleDownloadRoadmap(archetypeTitle, planList)}
-                      className="text-xs font-bold text-[#0d382c] hover:text-[#66c310] flex items-center gap-1 cursor-pointer transition-colors"
+                      className="text-xs font-bold text-[#07221a] hover:text-[#62c110] flex items-center gap-1 cursor-pointer transition-colors"
                     >
                       <Download className="w-3.5 h-3.5" />
                       <span>{language === 'es' ? 'Descargar Plan (TXT)' : 'Download Roadmap'}</span>
@@ -507,7 +481,7 @@ Agenda tu sesión diagnóstica en: https://speakenglishwithnick.com
                   <div className="space-y-2">
                     {planList.map((step, idx) => (
                       <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-800 font-medium">
-                        <Check className="w-4 h-4 text-[#66c310] shrink-0 mt-0.5" />
+                        <Check className="w-4 h-4 text-[#62c110] shrink-0 mt-0.5" />
                         <span>{step}</span>
                       </div>
                     ))}
@@ -524,9 +498,9 @@ Agenda tu sesión diagnóstica en: https://speakenglishwithnick.com
                         onSelectCourse(result.recommendedCourseId);
                       }
                     }}
-                    className="w-full sm:flex-1 py-4 rounded-full bg-[#0d382c] hover:bg-[#164c3c] text-white font-black text-center text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.02]"
+                    className="w-full sm:flex-1 py-4 rounded-full bg-[#07221a] hover:bg-[#164c3c] text-white font-black text-center text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.02]"
                   >
-                    <Calendar className="w-4 h-4 text-[#66c310]" />
+                    <Calendar className="w-4 h-4 text-[#62c110]" />
                     <span>{language === 'es' ? 'Agendar Sesión con mi Diagnóstico' : 'Book 1-on-1 with My Diagnostic Attached'}</span>
                   </button>
 
