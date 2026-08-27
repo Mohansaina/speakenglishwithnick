@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X, ChevronDown, Search, ArrowRight, BookOpen, Headphones, Shield, Video } from 'lucide-react';
 import { InstagramIcon, YoutubeIcon, FacebookIcon, TwitterIcon } from '@/components/icons/BrandIcons';
 import { useLanguage } from '@/context/LanguageContext';
@@ -46,10 +47,13 @@ export const Navbar: React.FC<NavbarProps> = ({
         
         {/* 1. Left: Official Brand Logo (Nick Avatar + Text) */}
         <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
-          <div className="h-10 w-10 sm:h-11 sm:w-11 rounded-full overflow-hidden border-2 border-[#164c3c] shadow-xs shrink-0 ring-2 ring-[#62c110]/40">
-            <img
+          <div className="relative h-10 w-10 sm:h-11 sm:w-11 rounded-full overflow-hidden border-2 border-[#164c3c] shadow-xs shrink-0 ring-2 ring-[#62c110]/40">
+            <Image
               src="/nick.png"
               alt="Coach Nick"
+              width={48}
+              height={48}
+              priority
               className="h-full w-full object-cover object-top transition-transform group-hover:scale-105"
             />
           </div>

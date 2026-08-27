@@ -23,6 +23,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://speakenglishwithnick.com'),
   title: 'Speak English with Nick | American English Accent & Fluency Coach',
   description: 'Top-rated American English accent and fluency training. Specialized for Spanish speakers and ambitious professionals to speak effortless, natural English with total confidence.',
   icons: {
