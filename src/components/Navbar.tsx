@@ -377,7 +377,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => setMobileMenuOpen(false)}
               className="p-3 rounded-xl hover:bg-stone-50 text-stone-800 flex items-center justify-between"
             >
-              <span>{t.faq}</span>
+              <span>{language === 'es' ? 'Preguntas Frecuentes' : 'FAQ'}</span>
             </a>
           </nav>
 
