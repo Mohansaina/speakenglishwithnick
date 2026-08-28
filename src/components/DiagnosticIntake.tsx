@@ -404,13 +404,17 @@ How can we get started?`;
 
               <div className="space-y-1">
                 <h3 className="text-xl sm:text-2xl font-black text-[#07221a]">
-                  {language === 'es' ? `¡Diagnóstico Enviado a tu Correo!` : `Diagnostic Sent to Your Email!`}
+                  {language === 'es' ? `¡Diagnóstico Enviado con Éxito!` : `Diagnostic Sent Successfully!`}
                 </h3>
                 <p className="text-xs sm:text-sm text-stone-600 font-normal">
                   {language === 'es'
-                    ? `Hemos enviado tu plan y diagnóstico personalizado a ${email}.`
-                    : `We sent your custom diagnostic report and 5-day action plan to ${email}.`}
+                    ? `Hemos remitido tus datos a Coach Nick (speakenglishwithnick@gmail.com) y enviado una copia a ${email}.`
+                    : `Your diagnostic was forwarded to Coach Nick (speakenglishwithnick@gmail.com) and a copy sent to ${email}.`}
                 </p>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#edfbe6] text-[#07221a] text-[11px] font-black border border-[#b2e896] mt-2">
+                  <Mail className="w-3.5 h-3.5 text-[#16a34a]" />
+                  <span>speakenglishwithnick@gmail.com</span>
+                </div>
               </div>
 
               {/* Summary */}
@@ -421,7 +425,7 @@ How can we get started?`;
                 </div>
                 <div className="flex justify-between pb-1.5 border-b border-stone-200 font-bold">
                   <span className="text-stone-500">WhatsApp:</span>
-                  <span className="text-stone-900">{phone}</span>
+                  <span className="text-stone-900">{phone || 'N/A'}</span>
                 </div>
                 <div className="flex justify-between pb-1.5 border-b border-stone-200 font-bold">
                   <span className="text-stone-500">{language === 'es' ? 'Entiendes / Hablas:' : 'Understand / Speak:'}</span>
@@ -434,32 +438,32 @@ How can we get started?`;
               </div>
 
               {/* Next step buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 pt-2">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-2">
                 <button
                   type="button"
                   onClick={handleDownloadCopy}
-                  className="flex-1 py-3.5 px-5 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-800 font-bold text-xs sm:text-sm shadow-xs flex items-center justify-center gap-2 cursor-pointer transition-all"
+                  className="py-3 px-4 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-800 font-bold text-xs shadow-xs flex items-center justify-center gap-1.5 cursor-pointer transition-all"
                 >
                   <Download className="w-4 h-4 text-stone-600" />
-                  <span>{language === 'es' ? 'Descargar Copia (.TXT)' : 'Download Copy (.TXT)'}</span>
+                  <span>{language === 'es' ? 'Descargar (.TXT)' : 'Download (.TXT)'}</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={handleSendWhatsApp}
-                  className="flex-1 py-3.5 px-5 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-black font-black text-xs sm:text-sm shadow-md flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-[1.02]"
+                  className="py-3 px-4 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-black font-black text-xs shadow-md flex items-center justify-center gap-1.5 cursor-pointer transition-all hover:scale-[1.02]"
                 >
                   <MessageCircle className="w-4 h-4 fill-black" />
-                  <span>{language === 'es' ? 'Enviar a Nick por WhatsApp' : 'Send to Nick on WhatsApp'}</span>
+                  <span>{language === 'es' ? 'WhatsApp Nick' : 'WhatsApp Nick'}</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={handleBookDirect}
-                  className="flex-1 py-3.5 px-5 rounded-full bg-[#07221a] hover:bg-[#164c3c] text-white font-bold text-xs sm:text-sm shadow-md flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-[1.02]"
+                  className="py-3 px-4 rounded-full bg-[#07221a] hover:bg-[#164c3c] text-white font-bold text-xs shadow-md flex items-center justify-center gap-1.5 cursor-pointer transition-all hover:scale-[1.02]"
                 >
                   <Calendar className="w-4 h-4 text-[#62c110]" />
-                  <span>{language === 'es' ? 'Agendar Sesión 1 a 1' : 'Book 1-on-1 Session'}</span>
+                  <span>{language === 'es' ? 'Agendar 1 a 1' : 'Book 1-on-1'}</span>
                 </button>
               </div>
 

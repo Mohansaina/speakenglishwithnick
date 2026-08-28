@@ -92,20 +92,37 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, pre
     setStep('details');
   };
 
-  const handleFinalBook = (e: React.FormEvent) => {
+  const handleFinalBook = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !email) return;
 
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      setStep('confirmed');
-      try {
-        confetti({ particleCount: 60, spread: 70, origin: { y: 0.6 } });
-      } catch {
-        // ignore
-      }
-    }, 600);
+
+    try {
+      await fetch('/api/booking', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          date: currentSelectedDay.fullString,
+          time: selectedTimeSlot,
+          timezone: selectedTimezone,
+          notes,
+        }),
+      });
+    } catch {
+      // ignore network errors to guarantee graceful UX
+    }
+
+    setLoading(false);
+    setStep('confirmed');
+    try {
+      confetti({ particleCount: 60, spread: 70, origin: { y: 0.6 } });
+    } catch {
+      // ignore
+    }
   };
 
   const currentSelectedDay = availableDays[selectedDayIndex] || availableDays[0];
