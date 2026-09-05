@@ -63,6 +63,10 @@ export const translations = {
       quote1En: "I felt embarrassed walking into a restaurant... I only smiled when people talked to me.. Now I feel more confident answering.",
       student1: "David",
       country1: "Inglés específico (Specific English)",
+      quote2: "Me siento cómodo practicando inglés con el profesor Nick, y él corrige mis errores. Estoy ganando más confianza al hablar inglés.",
+      quote2En: "I feel comfortable practicing English with Teacher Nick and he corrects my mistakes. I'm gaining confidence in English speaking.",
+      student2: "Javier",
+      country2: "Práctica de conversación (Conversation Practice)",
     },
     spanishSection: {
       badge: "Tailored For Hispanohablantes",
@@ -228,6 +232,10 @@ export const translations = {
       quote1En: "I felt embarrassed walking into a restaurant... I only smiled when people talked to me.. Now I feel more confident answering.",
       student1: "David",
       country1: "Inglés específico",
+      quote2: "Me siento cómodo practicando inglés con el profesor Nick, y él corrige mis errores. Estoy ganando más confianza al hablar inglés.",
+      quote2En: "I feel comfortable practicing English with Teacher Nick and he corrects my mistakes. I'm gaining confidence in English speaking.",
+      student2: "Javier",
+      country2: "Práctica de conversación",
     },
     spanishSection: {
       badge: "Especial Para Hispanohablantes",

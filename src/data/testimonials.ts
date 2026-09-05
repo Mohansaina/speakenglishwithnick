@@ -36,5 +36,17 @@ export const testimonials: Testimonial[] = [
     before: 'Scared of small talk before meetings started',
     after: 'Effortlessly chatting about weekends and news',
     tag: 'Masterclass Vault'
+  },
+  {
+    id: '4',
+    name: 'Javier',
+    role: 'Conversation Practice Student',
+    location: 'Verified Student',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80',
+    rating: 5,
+    quote: "I feel comfortable practicing English with Teacher Nick and he corrects my mistakes. I'm gaining confidence in English speaking.",
+    before: 'Hesitating and afraid of making mistakes when speaking',
+    after: 'Gaining confidence and speaking comfortably with Coach Nick',
+    tag: 'Conversation Practice'
   }
 ];
