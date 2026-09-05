@@ -117,7 +117,7 @@ export const Hero: React.FC<HeroProps> = ({
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
             
-            {/* Box 1: Start English from 0 */}
+            {/* Box 1: English from 0 */}
             <button
               onClick={onOpenBooking}
               className="group p-5 sm:p-7 lg:p-9 rounded-3xl bg-[#07221a] hover:bg-[#0c3629] text-white border-2 border-[#164c3c] hover:border-[#62c110] text-left transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between min-h-[190px] sm:min-h-[250px] cursor-pointer relative overflow-hidden active:scale-[0.99]"
@@ -125,16 +125,13 @@ export const Hero: React.FC<HeroProps> = ({
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#62c110]/10 rounded-full blur-2xl pointer-events-none" />
 
               <div className="space-y-2.5 sm:space-y-3 relative z-10">
-                <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[#164c3c] text-[#82e635] inline-block">
-                  {language === 'es' ? 'Paso 1' : 'Level 1'}
-                </span>
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white group-hover:text-[#62c110] leading-tight tracking-tight transition-colors">
-                  {language === 'es' ? 'Inglés desde 0' : 'Start English from 0'}
+                  {language === 'es' ? 'Inglés desde 0' : 'English from 0'}
                 </h3>
                 <p className="text-xs sm:text-sm text-stone-300 font-medium leading-relaxed">
                   {language === 'es'
-                    ? 'Empieza con las bases, construye confianza y domina las estructuras esenciales.'
-                    : 'Start with the basics, build core vocabulary and master sentence structure.'}
+                    ? 'Lee, escribe y habla oraciones básicas en inglés.'
+                    : 'Read, write, and speak basic English sentences'}
                 </p>
               </div>
 
@@ -156,16 +153,13 @@ export const Hero: React.FC<HeroProps> = ({
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#62c110]/10 rounded-full blur-2xl pointer-events-none" />
 
               <div className="space-y-2.5 sm:space-y-3 relative z-10">
-                <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[#164c3c] text-[#82e635] inline-block">
-                  {language === 'es' ? 'Paso 2' : 'Level 2'}
-                </span>
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white group-hover:text-[#62c110] leading-tight tracking-tight transition-colors">
                   {language === 'es' ? 'Inglés Específico' : 'Specific English'}
                 </h3>
                 <p className="text-xs sm:text-sm text-stone-300 font-medium leading-relaxed">
                   {language === 'es'
-                    ? 'Trabajo, restaurantes, reuniones, viajes de negocios y situaciones del mundo real.'
-                    : 'Work, drinks, restaurants, executive meetings, and real-life scenarios.'}
+                    ? 'Aprende inglés para el trabajo, negocios, tareas cotidianas y otras situaciones de la vida real.'
+                    : 'Learn English for work, business, everyday tasks, and other real-life scenarios.'}
                 </p>
               </div>
 
@@ -179,7 +173,7 @@ export const Hero: React.FC<HeroProps> = ({
               </div>
             </button>
 
-            {/* Box 3: English Conversation Practice */}
+            {/* Box 3: Conversation Practice */}
             <button
               onClick={onOpenBooking}
               className="group p-5 sm:p-7 lg:p-9 rounded-3xl bg-[#07221a] hover:bg-[#0c3629] text-white border-2 border-[#164c3c] hover:border-[#62c110] text-left transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between min-h-[190px] sm:min-h-[250px] cursor-pointer relative overflow-hidden active:scale-[0.99]"
@@ -187,16 +181,13 @@ export const Hero: React.FC<HeroProps> = ({
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#62c110]/10 rounded-full blur-2xl pointer-events-none" />
 
               <div className="space-y-2.5 sm:space-y-3 relative z-10">
-                <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[#164c3c] text-[#82e635] inline-block">
-                  {language === 'es' ? 'Paso 3' : 'Level 3'}
-                </span>
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white group-hover:text-[#62c110] leading-tight tracking-tight transition-colors">
-                  {language === 'es' ? 'Práctica de Conversación' : 'English Conversation Practice'}
+                  {language === 'es' ? 'Práctica de Conversación' : 'Conversation Practice'}
                 </h3>
                 <p className="text-xs sm:text-sm text-stone-300 font-medium leading-relaxed">
                   {language === 'es'
-                    ? 'Fluidez, confianza al hablar, ritmo natural y comunicación sin traducción mental.'
-                    : 'Confidence speaking, natural cadence, stress timing, and effortless flow.'}
+                    ? 'Gana confianza al hablar, aprende más vocabulario y corrige tus errores.'
+                    : 'Gain confidence as a speaker, learn more vocabulary, and correct your mistakes.'}
                 </p>
               </div>
 
