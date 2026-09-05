@@ -44,7 +44,7 @@ export const AboutNick: React.FC<AboutNickProps> = ({ onOpenBooking }) => {
                     Teacher Nick
                   </h3>
                   <span className="text-[11px] font-bold text-[#164c3c] bg-[#edfbe6] px-2.5 py-0.5 rounded-full border border-[#c4eeb0]">
-                    Native USA Accent Coach
+                    Accent & Fluency Coach
                   </span>
                 </div>
                 <p className="text-xs sm:text-sm text-stone-600 font-medium">

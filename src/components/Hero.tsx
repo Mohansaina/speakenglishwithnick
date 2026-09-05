@@ -40,7 +40,7 @@ export const Hero: React.FC<HeroProps> = ({
                     <span className="w-1.5 h-1.5 rounded-full bg-[#62c110]" />
                   </div>
                   <p className="text-[10px] sm:text-[11px] text-stone-300 font-medium">
-                    {language === 'es' ? 'Especialista en Acento y Fluidez • Nativo EE.UU.' : 'Accent & Fluency Specialist • Native USA'}
+                    {language === 'es' ? 'Especialista en Acento y Fluidez' : 'Accent & Fluency Specialist'}
                   </p>
                 </div>
                 <span className="text-[9px] sm:text-[10px] uppercase font-black px-2 sm:px-2.5 py-1 rounded-full bg-[#62c110] text-[#07221a] shrink-0">

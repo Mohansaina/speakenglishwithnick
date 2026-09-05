@@ -57,14 +57,9 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="h-full w-full object-cover object-top transition-transform group-hover:scale-105"
             />
           </div>
-          <div className="flex flex-col">
-            <div className="font-black text-[#07221a] tracking-tight text-sm sm:text-base leading-tight flex items-center gap-1">
-              <span>Speak English</span>
-              <span className="font-serif italic font-normal text-[#164c3c]">with Nick</span>
-            </div>
-            <span className="text-[10px] sm:text-[11px] font-bold text-stone-500 tracking-normal">
-              American Accent & Fluency
-            </span>
+          <div className="font-black text-[#07221a] tracking-tight text-sm sm:text-base leading-tight flex items-center gap-1">
+            <span>Speak English</span>
+            <span className="font-serif italic font-normal text-[#164c3c]">with Nick</span>
           </div>
         </Link>
 

@@ -82,7 +82,7 @@ export const TransformationSection: React.FC = () => {
 
               {/* Quote text */}
               <blockquote className="text-stone-800 text-sm sm:text-lg md:text-xl leading-relaxed italic font-serif pt-1 border-l-3 border-[#62c110] pl-4 sm:pl-5">
-                &ldquo;{language === 'es' ? t.quote1 : (t.quote1En || t.quote1)}&rdquo;
+                {language === 'es' ? t.quote1 : (t.quote1En || t.quote1)}
               </blockquote>
 
               {/* Before vs After Milestone Chip */}
