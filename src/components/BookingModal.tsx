@@ -102,6 +102,26 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, pre
     setStep('details');
   };
 
+  const currentSelectedDay = availableDays[selectedDayIndex] || availableDays[0];
+  const zoomLink = "https://zoom.us/j/9482746194?pwd=speakenglishwithnick";
+
+  const mailtoSubject = encodeURIComponent(
+    language === 'es' ? `Reserva de Clase de Inglés - ${name}` : `English Session Booking - ${name}`
+  );
+  const mailtoBody = encodeURIComponent(
+    language === 'es'
+      ? `Hola Coach Nick,\n\nQuiero confirmar mi reserva de clase de inglés:\n\n• Nombre: ${name}\n• Email: ${email}\n• WhatsApp/Teléfono: ${phone || 'No indicado'}\n• Fecha y Hora: ${currentSelectedDay.fullString} @ ${selectedTimeSlot} (${selectedTimezone})\n• Formato y Notas: ${notes || 'Sin notas'}\n\n¡Gracias!`
+      : `Hi Coach Nick,\n\nI want to confirm my English session booking:\n\n• Name: ${name}\n• Email: ${email}\n• Phone/WhatsApp: ${phone || 'Not provided'}\n• Date & Time: ${currentSelectedDay.fullString} @ ${selectedTimeSlot} (${selectedTimezone})\n• Format & Notes: ${notes || 'No notes'}\n\nThank you!`
+  );
+  const mailtoUrl = `mailto:speakenglishwithnick@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+
+  const whatsappText = encodeURIComponent(
+    language === 'es'
+      ? `Hola Coach Nick! Mi nombre es ${name}. Acabo de reservar mi clase de inglés para ${currentSelectedDay.fullString} a las ${selectedTimeSlot}. Mi correo es ${email}.`
+      : `Hi Coach Nick! My name is ${name}. I just booked my English session for ${currentSelectedDay.fullString} at ${selectedTimeSlot}. My email is ${email}.`
+  );
+  const whatsappUrl = `https://wa.me/?text=${whatsappText}`;
+
   const handleFinalBook = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name || !email) return;
@@ -128,15 +148,20 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, pre
 
     setLoading(false);
     setStep('confirmed');
+
+    // Auto-launch mailto to ensure 100% guaranteed delivery to speakenglishwithnick@gmail.com
+    try {
+      window.location.href = mailtoUrl;
+    } catch {
+      // ignore popup blocks
+    }
+
     try {
       confetti({ particleCount: 60, spread: 70, origin: { y: 0.6 } });
     } catch {
       // ignore
     }
   };
-
-  const currentSelectedDay = availableDays[selectedDayIndex] || availableDays[0];
-  const zoomLink = "https://zoom.us/j/9482746194?pwd=speakenglishwithnick";
 
   const handleDownloadIcs = () => {
     const icsContent = `BEGIN:VCALENDAR
@@ -645,9 +670,31 @@ END:VCALENDAR`;
               </button>
             </div>
 
+            {/* Direct Email & WhatsApp Fallback Buttons */}
+            <div className="space-y-2 pt-1">
+              <a
+                href={mailtoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-3.5 rounded-2xl bg-[#07221a] hover:bg-[#164c3c] text-white font-black text-xs flex items-center justify-center gap-2 transition-all border border-[#164c3c]"
+              >
+                <span>{language === 'es' ? '✉️ Abrir Email para Nick (speakenglishwithnick@gmail.com)' : '✉️ Open Email App to Nick (speakenglishwithnick@gmail.com)'}</span>
+              </a>
+
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-3 rounded-2xl bg-[#16a34a] hover:bg-[#15803d] text-white font-black text-xs flex items-center justify-center gap-2 transition-all shadow-xs"
+              >
+                <span>{language === 'es' ? '💬 Enviar Confirmación por WhatsApp' : '💬 Send Confirmation via WhatsApp'}</span>
+              </a>
+            </div>
+
             {/* Add to Calendar Action */}
             <div className="flex gap-2">
               <button
+                type="button"
                 onClick={handleDownloadIcs}
                 className="flex-1 py-3 rounded-2xl bg-[#edfbe6] hover:bg-[#dcf5cc] text-[#07221a] font-black text-xs border border-[#b2e896] flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
               >

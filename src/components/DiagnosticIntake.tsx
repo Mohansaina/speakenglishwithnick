@@ -116,6 +116,18 @@ Coach Nick (@speak.english.with.nick)
     URL.revokeObjectURL(url);
   };
 
+  const handleSendEmail = () => {
+    const subject = encodeURIComponent(
+      language === 'es' ? `Diagnóstico de Inglés - ${name || 'Estudiante'}` : `English Diagnostic - ${name || 'Student'}`
+    );
+    const body = encodeURIComponent(
+      language === 'es'
+        ? `Hola Coach Nick! 👋\n\nAcabo de realizar mi diagnóstico en la web:\n\n• Nombre: ${name}\n• Email: ${email}\n• WhatsApp/Teléfono: ${phone || 'N/A'}\n• Entiendo de Inglés: ${understandPercent}%\n• Hablo de Inglés: ${speakPercent}%\n• Lo que quiero aprender: ${wantToLearn || 'Mejorar mi fluidez y soltura'}\n\n¿Cómo podemos empezar mi plan?`
+        : `Hi Coach Nick! 👋\n\nI just completed my diagnostic intake:\n\n• Name: ${name}\n• Email: ${email}\n• Phone/WhatsApp: ${phone || 'N/A'}\n• Understand English: ${understandPercent}%\n• Speak English: ${speakPercent}%\n• What I want to learn: ${wantToLearn || 'Improve speaking confidence'}\n\nHow can we get started?`
+    );
+    window.location.href = `mailto:speakenglishwithnick@gmail.com?subject=${subject}&body=${body}`;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !email.trim()) return;
@@ -142,6 +154,13 @@ Coach Nick (@speak.english.with.nick)
 
     setLoading(false);
     setSubmitted(true);
+
+    // Auto launch direct email to speakenglishwithnick@gmail.com
+    try {
+      handleSendEmail();
+    } catch {
+      // ignore popup block
+    }
 
     try {
       confetti({ particleCount: 50, spread: 60, origin: { y: 0.6 } });
