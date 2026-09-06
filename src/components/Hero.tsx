@@ -6,7 +6,7 @@ import { useLanguage } from '@/context/LanguageContext';
 
 interface HeroProps {
   onOpenQuiz?: () => void;
-  onOpenBooking?: () => void;
+  onOpenBooking?: (focusTopic?: string) => void;
   onOpenLeadMagnet?: () => void;
 }
 
@@ -119,7 +119,7 @@ export const Hero: React.FC<HeroProps> = ({
             
             {/* Box 1: English from 0 */}
             <button
-              onClick={onOpenBooking}
+              onClick={() => onOpenBooking(language === 'es' ? 'Inglés desde 0' : 'English from 0')}
               className="group p-5 sm:p-7 lg:p-9 rounded-3xl bg-[#07221a] hover:bg-[#0c3629] text-white border-2 border-[#164c3c] hover:border-[#62c110] text-left transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between min-h-[190px] sm:min-h-[250px] cursor-pointer relative overflow-hidden active:scale-[0.99]"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#62c110]/10 rounded-full blur-2xl pointer-events-none" />
@@ -147,7 +147,7 @@ export const Hero: React.FC<HeroProps> = ({
 
             {/* Box 2: Specific English */}
             <button
-              onClick={onOpenBooking}
+              onClick={() => onOpenBooking(language === 'es' ? 'Inglés Específico' : 'Specific English')}
               className="group p-5 sm:p-7 lg:p-9 rounded-3xl bg-[#07221a] hover:bg-[#0c3629] text-white border-2 border-[#164c3c] hover:border-[#62c110] text-left transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between min-h-[190px] sm:min-h-[250px] cursor-pointer relative overflow-hidden active:scale-[0.99]"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#62c110]/10 rounded-full blur-2xl pointer-events-none" />
@@ -175,7 +175,7 @@ export const Hero: React.FC<HeroProps> = ({
 
             {/* Box 3: Conversation Practice */}
             <button
-              onClick={onOpenBooking}
+              onClick={() => onOpenBooking(language === 'es' ? 'Práctica de Conversación' : 'Conversation Practice')}
               className="group p-5 sm:p-7 lg:p-9 rounded-3xl bg-[#07221a] hover:bg-[#0c3629] text-white border-2 border-[#164c3c] hover:border-[#62c110] text-left transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between min-h-[190px] sm:min-h-[250px] cursor-pointer relative overflow-hidden active:scale-[0.99]"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#62c110]/10 rounded-full blur-2xl pointer-events-none" />
@@ -208,9 +208,5 @@ export const Hero: React.FC<HeroProps> = ({
     </section>
   );
 };
-
-
-
-
 
 

@@ -39,16 +39,22 @@ function MainContent() {
     setBookingModalOpen(true);
   };
 
+  const handleOpenBooking = (focusTopic?: string) => {
+    if (focusTopic) {
+      setBookingNotes(focusTopic);
+    } else {
+      setBookingNotes('');
+    }
+    setBookingModalOpen(true);
+  };
+
   return (
     <main className="min-h-screen bg-white text-stone-900 selection:bg-[#d0f4bd] selection:text-[#0b2d22]">
       
       {/* 1. Clean White Header Navbar */}
       <Navbar
         onOpenQuiz={handleScrollToQuiz}
-        onOpenBooking={() => {
-          setBookingNotes('');
-          setBookingModalOpen(true);
-        }}
+        onOpenBooking={() => handleOpenBooking()}
         onOpenLeadMagnet={() => setLeadMagnetOpen(true)}
         onOpenSearch={() => setSearchModalOpen(true)}
       />
@@ -56,10 +62,7 @@ function MainContent() {
       {/* 3. Deep Forest Green Iconic Hero Section */}
       <Hero
         onOpenQuiz={handleScrollToQuiz}
-        onOpenBooking={() => {
-          setBookingNotes('');
-          setBookingModalOpen(true);
-        }}
+        onOpenBooking={(focusTopic) => handleOpenBooking(focusTopic)}
         onOpenLeadMagnet={() => setLeadMagnetOpen(true)}
       />
 
