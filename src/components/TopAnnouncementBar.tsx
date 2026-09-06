@@ -18,7 +18,7 @@ export const TopAnnouncementBar: React.FC<TopAnnouncementBarProps> = ({
   const t = translations[language].banner;
 
   return (
-    <aside aria-label="Announcement" className="bg-[#051c15] text-white py-2 sm:py-2.5 px-4 sm:px-6 relative z-50 border-b border-[#144737]/80 text-xs shadow-xs">
+    <aside aria-label="Announcement" className="bg-[#051c15] text-white py-2 sm:py-2.5 px-3 sm:px-6 relative z-50 border-b border-[#144737]/80 text-xs shadow-xs max-w-full overflow-x-hidden">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
         
         {/* Left: Free Cheat Sheet Announcement */}

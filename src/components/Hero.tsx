@@ -25,7 +25,7 @@ export const Hero: React.FC<HeroProps> = ({
           
           {/* Left Column: Teacher Nick Photo */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-[340px] sm:max-w-[420px] rounded-3xl overflow-hidden shadow-xl border border-stone-200 bg-white group">
+            <div className="relative w-full max-w-[280px] xs:max-w-[320px] sm:max-w-[420px] rounded-3xl overflow-hidden shadow-xl border border-stone-200 bg-white group">
               <img
                 src="/nick-hero.jpg"
                 alt="Teacher Nick - Native American English Coach"
@@ -60,7 +60,7 @@ export const Hero: React.FC<HeroProps> = ({
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-[28px] sm:text-4xl lg:text-5xl xl:text-[54px] font-black text-stone-900 tracking-tight leading-[1.12]">
+            <h1 className="text-[24px] xs:text-[28px] sm:text-4xl lg:text-5xl xl:text-[54px] font-black text-stone-900 tracking-tight leading-[1.12] break-words">
               {language === 'es' ? (
                 <>
                   Donde hablar inglés <br />
