@@ -21,7 +21,7 @@ export interface BookingEmailData {
 }
 
 // Destination email for Coach Nick / Admin
-export const COACH_EMAIL = process.env.COACH_EMAIL || 'ruttalamohan23@gmail.com';
+export const COACH_EMAIL = process.env.COACH_EMAIL || 'speakenglishwithnick@gmail.com';
 const FALLBACK_RESEND_KEY = ['re_18AJ2yJr_', 'BtSxyvABuu877F1Y59YjXRW4'].join('');
 export const RESEND_API_KEY = process.env.RESEND_API_KEY || FALLBACK_RESEND_KEY;
 
