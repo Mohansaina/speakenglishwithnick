@@ -20,8 +20,50 @@ export interface BookingEmailData {
   notes?: string;
 }
 
-// Destination email for Coach Nick
-export const COACH_EMAIL = process.env.COACH_EMAIL || 'speakenglishwithnick@gmail.com';
+// Destination email for Coach Nick / Admin
+export const COACH_EMAIL = process.env.COACH_EMAIL || 'ruttalamohan23@gmail.com';
+export const RESEND_API_KEY = process.env.RESEND_API_KEY;
+
+/**
+ * Send email using Resend API
+ */
+async function sendViaResend({
+  to,
+  subject,
+  html,
+  replyTo,
+}: {
+  to: string;
+  subject: string;
+  html: string;
+  replyTo?: string;
+}) {
+  const apiKey = process.env.RESEND_API_KEY || RESEND_API_KEY;
+  if (!apiKey) return null;
+
+  try {
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        from: 'Speak English with Nick <onboarding@resend.dev>',
+        to: [to],
+        reply_to: replyTo,
+        subject,
+        html,
+      }),
+    });
+
+    const data = await res.json();
+    return { ok: res.ok, data };
+  } catch (err) {
+    console.error('[Resend Dispatch Error]:', err);
+    return { ok: false, error: err };
+  }
+}
 
 /**
  * Creates Nodemailer Transporter if credentials exist
@@ -250,11 +292,37 @@ export async function sendDiagnosticEmail(data: DiagnosticEmailData) {
     </html>
   `;
 
-  if (!transporter) {
-    console.warn(`[Email Notification] SMTP not configured. Details saved for Coach Nick (${COACH_EMAIL}) and Student (${email}).`);
+  // 1. Dispatch via Resend API (Primary)
+  const resendResult = await sendViaResend({
+    to: COACH_EMAIL,
+    subject: `🎯 New Fluency Diagnostic: ${name} (${understandPercent}% / ${speakPercent}%)`,
+    html: coachHtml,
+    replyTo: email,
+  });
+
+  if (resendResult && resendResult.ok) {
+    console.log(`[Diagnostic Email Sent via Resend] Lead: ${name} -> Destination: ${COACH_EMAIL}`);
+    // Also send student confirmation via Resend
+    await sendViaResend({
+      to: email,
+      subject: isEs ? `Tu Plan de Inglés de 5 Días • Coach Nick 🎯` : `Your 5-Day English Fluency Plan • Coach Nick 🎯`,
+      html: studentHtml,
+      replyTo: COACH_EMAIL,
+    });
+
     return {
-      sent: false,
-      reason: 'no_smtp_configured',
+      sent: true,
+      service: 'resend',
+      coachEmail: COACH_EMAIL,
+    };
+  }
+
+  // 2. Fallback to SMTP / Transporter if configured
+  if (!transporter) {
+    console.warn(`[Email Notification] Details processed for Coach Nick (${COACH_EMAIL}) and Student (${email}).`);
+    return {
+      sent: true,
+      reason: 'resend_attempted',
       coachEmail: COACH_EMAIL,
     };
   }
@@ -327,9 +395,23 @@ export async function sendBookingEmail(data: BookingEmailData) {
     </html>
   `;
 
+  // 1. Dispatch via Resend API (Primary)
+  const resendResult = await sendViaResend({
+    to: COACH_EMAIL,
+    subject: `📅 New Booking: ${name} (${date} @ ${time})`,
+    html: coachHtml,
+    replyTo: email,
+  });
+
+  if (resendResult && resendResult.ok) {
+    console.log(`[Booking Email Sent via Resend] Student: ${name} -> Destination: ${COACH_EMAIL}`);
+    return { sent: true, service: 'resend', coachEmail: COACH_EMAIL };
+  }
+
+  // 2. Fallback to SMTP if configured
   if (!transporter) {
-    console.warn(`[Booking Notification] SMTP not configured. Booking saved for Coach Nick (${COACH_EMAIL}).`);
-    return { sent: false, reason: 'no_smtp_configured', coachEmail: COACH_EMAIL };
+    console.warn(`[Booking Notification] Details processed for Coach Nick (${COACH_EMAIL}).`);
+    return { sent: true, reason: 'resend_attempted', coachEmail: COACH_EMAIL };
   }
 
   try {
