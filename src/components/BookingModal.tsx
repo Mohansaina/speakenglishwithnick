@@ -149,13 +149,6 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, pre
     setLoading(false);
     setStep('confirmed');
 
-    // Auto-launch mailto to ensure 100% guaranteed delivery to speakenglishwithnick@gmail.com
-    try {
-      window.location.href = mailtoUrl;
-    } catch {
-      // ignore popup blocks
-    }
-
     try {
       confetti({ particleCount: 60, spread: 70, origin: { y: 0.6 } });
     } catch {

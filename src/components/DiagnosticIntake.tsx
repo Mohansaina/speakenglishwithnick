@@ -155,13 +155,6 @@ Coach Nick (@speak.english.with.nick)
     setLoading(false);
     setSubmitted(true);
 
-    // Auto launch direct email to speakenglishwithnick@gmail.com
-    try {
-      handleSendEmail();
-    } catch {
-      // ignore popup block
-    }
-
     try {
       confetti({ particleCount: 50, spread: 60, origin: { y: 0.6 } });
     } catch {
