@@ -59,7 +59,48 @@ async function sendViaResend({
     });
 
     const data = await res.json();
-    return { ok: res.ok, data };
+
+    if (res.ok) {
+      return { ok: true, data };
+    }
+
+    // Handle Resend onboarding domain restriction (403 testing limit)
+    const isTestLimitError = 
+      data?.statusCode === 403 || 
+      (typeof data?.message === 'string' && data.message.includes('own email address'));
+
+    if (isTestLimitError && to !== 'ruttalamohan23@gmail.com') {
+      console.warn(`[Resend Test Mode] Target email (${to}) restricted by onboarding domain. Falling back to registered account email (ruttalamohan23@gmail.com).`);
+      
+      const fallbackHtml = `
+        <div style="background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 12px 16px; border-radius: 10px; margin-bottom: 20px; font-size: 13px; font-family: sans-serif;">
+          <strong>ℹ️ Resend Testing Mode Notification:</strong><br/>
+          This notification was intended for <strong>${to}</strong>.<br/>
+          <em>Because Resend test mode (onboarding@resend.dev) restricts delivery to the account owner's email, this copy was delivered to ruttalamohan23@gmail.com. To enable direct delivery to ${to}, verify your custom domain at <a href="https://resend.com/domains" target="_blank">resend.com/domains</a>.</em>
+        </div>
+        ${html}
+      `;
+
+      const fallbackRes = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+          from: 'onboarding@resend.dev',
+          to: ['ruttalamohan23@gmail.com'],
+          reply_to: replyTo,
+          subject: `[For: ${to}] ${subject}`,
+          html: fallbackHtml,
+        }),
+      });
+
+      const fallbackData = await fallbackRes.json();
+      return { ok: fallbackRes.ok, data: fallbackData, fallbackUsed: true };
+    }
+
+    return { ok: false, data };
   } catch (err) {
     console.error('[Resend Dispatch Error]:', err);
     return { ok: false, error: err };
