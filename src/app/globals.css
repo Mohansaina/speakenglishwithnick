@@ -165,3 +165,26 @@ html {
     linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
 }
 
+/* Infinite Auto-Running Horizontal Marquee Ticker */
+@keyframes infiniteMarquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-infinite-marquee {
+  display: flex;
+  width: max-content;
+  animation: infiniteMarquee 28s linear infinite;
+  will-change: transform;
+}
+
+.animate-infinite-marquee:hover,
+.animate-infinite-marquee:focus-within {
+  animation-play-state: paused;
+}
+
+
