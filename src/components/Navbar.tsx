@@ -43,11 +43,11 @@ export const Navbar: React.FC<NavbarProps> = ({
         isScrolled ? 'shadow-[0_4px_20px_rgba(0,0,0,0.06)] py-2 sm:py-2.5' : 'py-2.5 sm:py-3.5'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+      <div className="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8 flex items-center justify-between gap-1.5 sm:gap-4">
         
         {/* 1. Left: Official Brand Logo (Nick Avatar + Text) */}
-        <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
-          <div className="relative h-10 w-10 sm:h-11 sm:w-11 rounded-full overflow-hidden border-2 border-[#164c3c] shadow-xs shrink-0 ring-2 ring-[#62c110]/40">
+        <Link href="/" className="flex items-center gap-2 shrink-0 group">
+          <div className="relative h-9 w-9 sm:h-11 sm:w-11 rounded-full overflow-hidden border-2 border-[#164c3c] shadow-xs shrink-0 ring-2 ring-[#62c110]/40">
             <Image
               src="/nick.png"
               alt="Coach Nick"
@@ -57,9 +57,9 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="h-full w-full object-cover object-top transition-transform group-hover:scale-105"
             />
           </div>
-          <div className="font-black text-[#07221a] tracking-tight text-sm sm:text-base leading-tight flex items-center gap-1">
+          <div className="font-black text-[#07221a] tracking-tight text-xs sm:text-base leading-tight flex items-center gap-1">
             <span>Speak English</span>
-            <span className="font-serif italic font-normal text-[#164c3c]">with Nick</span>
+            <span className="hidden min-[380px]:inline font-serif italic font-normal text-[#164c3c]">with Nick</span>
           </div>
         </Link>
 
@@ -272,43 +272,31 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         {/* Mobile Header: Search, Language Switcher & Hamburger Toggle */}
-        <div className="flex lg:hidden items-center gap-2">
+        <div className="flex lg:hidden items-center gap-1 sm:gap-2 shrink-0">
           {/* Quick Search on mobile header */}
           <button
             onClick={onOpenSearch}
-            className="p-2 rounded-xl text-stone-700 hover:bg-stone-100 transition-colors cursor-pointer"
+            className="p-1.5 rounded-xl text-stone-700 hover:bg-stone-100 transition-colors cursor-pointer"
             aria-label="Search"
           >
             <Search className="w-4 h-4" />
           </button>
 
-          {/* Mobile Dual-Box Language Switcher */}
-          <div className="flex items-center p-0.5 rounded-xl bg-stone-100 border border-stone-200 text-xs font-black">
-            <button
-              onClick={() => setLanguage('en')}
-              className={`px-2.5 py-1 rounded-lg transition-all text-xs cursor-pointer ${
-                language === 'en'
-                  ? 'bg-[#07221a] text-white shadow-xs font-black'
-                  : 'text-stone-600 hover:text-stone-900'
-              }`}
-            >
-              EN
-            </button>
-            <button
-              onClick={() => setLanguage('es')}
-              className={`px-2.5 py-1 rounded-lg transition-all text-xs cursor-pointer ${
-                language === 'es'
-                  ? 'bg-[#07221a] text-[#82e635] shadow-xs font-black'
-                  : 'text-stone-600 hover:text-stone-900'
-              }`}
-            >
-              ES
-            </button>
-          </div>
+          {/* Mobile Sleek Single-Tap Language Toggle Pill */}
+          <button
+            type="button"
+            onClick={() => setLanguage(language === 'en' ? 'es' : 'en')}
+            className="flex items-center gap-1 px-2 py-1 rounded-xl bg-[#07221a] text-white border border-[#164c3c] text-[11px] font-black cursor-pointer shadow-2xs hover:bg-[#0c3629] transition-all active:scale-95 shrink-0"
+            title="Switch Language"
+          >
+            <span className={language === 'en' ? 'text-white' : 'text-stone-400'}>EN</span>
+            <span className="text-[#62c110] font-normal">/</span>
+            <span className={language === 'es' ? 'text-[#82e635]' : 'text-stone-400'}>ES</span>
+          </button>
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-xl bg-stone-100 hover:bg-stone-200/80 text-stone-900 transition-colors cursor-pointer active:scale-95"
+            className="p-1.5 rounded-xl bg-stone-100 hover:bg-stone-200/80 text-stone-900 transition-colors cursor-pointer active:scale-95 shrink-0"
             aria-label="Toggle mobile navigation menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5 text-[#07221a]" /> : <Menu className="w-5 h-5 text-[#07221a]" />}
@@ -320,6 +308,33 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
         <div className="lg:hidden border-t border-stone-200 bg-white px-4 py-5 space-y-4 animate-in slide-in-from-top-3 duration-200 shadow-2xl max-h-[85vh] overflow-y-auto touch-scroll">
+          
+          {/* Language Selector inside mobile drawer */}
+          <div className="flex items-center justify-between p-2 rounded-2xl bg-stone-100 border border-stone-200">
+            <span className="text-xs font-bold text-stone-600 pl-2">
+              {language === 'es' ? 'Idioma / Language:' : 'Language / Idioma:'}
+            </span>
+            <div className="flex items-center gap-1">
+              <button
+                type="button"
+                onClick={() => setLanguage('en')}
+                className={`px-3 py-1 rounded-xl text-xs font-black transition-all cursor-pointer ${
+                  language === 'en' ? 'bg-[#07221a] text-white shadow-xs' : 'text-stone-600'
+                }`}
+              >
+                English
+              </button>
+              <button
+                type="button"
+                onClick={() => setLanguage('es')}
+                className={`px-3 py-1 rounded-xl text-xs font-black transition-all cursor-pointer ${
+                  language === 'es' ? 'bg-[#07221a] text-[#82e635] shadow-xs' : 'text-stone-600'
+                }`}
+              >
+                Español
+              </button>
+            </div>
+          </div>
           
           {/* Quick Search bar in mobile drawer */}
           <button
