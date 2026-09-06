@@ -307,24 +307,26 @@ export const Footer: React.FC<FooterProps> = ({
                 <button
                   type="button"
                   onClick={() => setLanguage('en')}
-                  className={`px-3 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                  className={`px-3 py-1 rounded-lg font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                     language === 'en'
                       ? 'bg-stone-800 text-white shadow-xs'
                       : 'text-stone-400 hover:text-white'
                   }`}
                 >
-                  English
+                  <span>🇺🇸</span>
+                  <span>English</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setLanguage('es')}
-                  className={`px-3 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                  className={`px-3 py-1 rounded-lg font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                     language === 'es'
                       ? 'bg-stone-800 text-[#82e635] shadow-xs'
                       : 'text-stone-400 hover:text-white'
                   }`}
                 >
-                  Español
+                  <span>🇪🇸</span>
+                  <span>Español</span>
                 </button>
               </div>
 

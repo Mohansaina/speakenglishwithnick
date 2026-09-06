@@ -75,6 +75,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   : 'text-stone-600 hover:text-stone-900 hover:bg-white/60'
               }`}
             >
+              <span>🇺🇸</span>
               <span>English</span>
             </button>
             <button
@@ -86,6 +87,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   : 'text-stone-600 hover:text-stone-900 hover:bg-white/60'
               }`}
             >
+              <span>🇪🇸</span>
               <span>Español</span>
             </button>
           </div>
@@ -286,9 +288,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             type="button"
             onClick={() => setLanguage(language === 'en' ? 'es' : 'en')}
-            className="flex items-center gap-1 px-2 py-1 rounded-xl bg-[#07221a] text-white border border-[#164c3c] text-[11px] font-black cursor-pointer shadow-2xs hover:bg-[#0c3629] transition-all active:scale-95 shrink-0"
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-[#07221a] text-white border border-[#164c3c] text-[11px] font-black cursor-pointer shadow-2xs hover:bg-[#0c3629] transition-all active:scale-95 shrink-0"
             title="Switch Language"
           >
+            <span>{language === 'en' ? '🇺🇸' : '🇪🇸'}</span>
             <span className={language === 'en' ? 'text-white' : 'text-stone-400'}>EN</span>
             <span className="text-[#62c110] font-normal">/</span>
             <span className={language === 'es' ? 'text-[#82e635]' : 'text-stone-400'}>ES</span>
@@ -318,20 +321,22 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 type="button"
                 onClick={() => setLanguage('en')}
-                className={`px-3 py-1 rounded-xl text-xs font-black transition-all cursor-pointer ${
+                className={`px-3 py-1 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
                   language === 'en' ? 'bg-[#07221a] text-white shadow-xs' : 'text-stone-600'
                 }`}
               >
-                English
+                <span>🇺🇸</span>
+                <span>English</span>
               </button>
               <button
                 type="button"
                 onClick={() => setLanguage('es')}
-                className={`px-3 py-1 rounded-xl text-xs font-black transition-all cursor-pointer ${
+                className={`px-3 py-1 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
                   language === 'es' ? 'bg-[#07221a] text-[#82e635] shadow-xs' : 'text-stone-600'
                 }`}
               >
-                Español
+                <span>🇪🇸</span>
+                <span>Español</span>
               </button>
             </div>
           </div>
