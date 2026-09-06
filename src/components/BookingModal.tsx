@@ -663,24 +663,16 @@ END:VCALENDAR`;
               </button>
             </div>
 
-            {/* Direct Email & WhatsApp Fallback Buttons */}
+            {/* Direct WhatsApp Confirmation */}
             <div className="space-y-2 pt-1">
-              <a
-                href={mailtoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-3.5 rounded-2xl bg-[#07221a] hover:bg-[#164c3c] text-white font-black text-xs flex items-center justify-center gap-2 transition-all border border-[#164c3c]"
-              >
-                <span>{language === 'es' ? '✉️ Abrir Email para Nick (speakenglishwithnick@gmail.com)' : '✉️ Open Email App to Nick (speakenglishwithnick@gmail.com)'}</span>
-              </a>
-
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3 rounded-2xl bg-[#16a34a] hover:bg-[#15803d] text-white font-black text-xs flex items-center justify-center gap-2 transition-all shadow-xs"
+                className="w-full py-3 rounded-2xl bg-[#25D366] hover:bg-[#20bd5a] text-black font-black text-xs flex items-center justify-center gap-2 transition-all shadow-md hover:scale-[1.01]"
               >
-                <span>{language === 'es' ? '💬 Enviar Confirmación por WhatsApp' : '💬 Send Confirmation via WhatsApp'}</span>
+                <MessageCircle className="w-4 h-4 fill-black" />
+                <span>{language === 'es' ? '💬 Confirmar por WhatsApp con Nick' : '💬 Send Confirmation via WhatsApp'}</span>
               </a>
             </div>
 

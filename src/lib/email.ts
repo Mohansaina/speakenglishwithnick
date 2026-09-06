@@ -20,10 +20,61 @@ export interface BookingEmailData {
   notes?: string;
 }
 
-// Destination email for Coach Nick / Admin (Resend Account Email)
-export const COACH_EMAIL = process.env.COACH_EMAIL || 'ruttalamohan23@gmail.com';
-const FALLBACK_RESEND_KEY = ['re_18AJ2yJr_', 'BtSxyvABuu877F1Y59YjXRW4'].join('');
-export const RESEND_API_KEY = process.env.RESEND_API_KEY || FALLBACK_RESEND_KEY;
+// Destination email for Coach Nick / Admin
+export const COACH_EMAIL = process.env.COACH_EMAIL || 'speakenglishwithnick@gmail.com';
+export const RESEND_API_KEY = process.env.RESEND_API_KEY || '';
+export const WEB3FORMS_ACCESS_KEY = process.env.WEB3FORMS_ACCESS_KEY || '';
+
+/**
+ * Send email using Web3Forms API
+ */
+async function sendViaWeb3Forms({
+  name,
+  email,
+  subject,
+  messageHtml,
+  replyTo,
+}: {
+  name: string;
+  email: string;
+  subject: string;
+  messageHtml: string;
+  replyTo?: string;
+}) {
+  const apiKey = process.env.WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY;
+  if (!apiKey) return null;
+
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        access_key: apiKey,
+        subject: subject,
+        from_name: 'Speak English with Nick Leads',
+        name: name,
+        email: email,
+        replyto: replyTo || email,
+        message: messageHtml,
+      }),
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      return { ok: true, data };
+    }
+
+    console.warn('[Web3Forms Dispatch Warning]:', data);
+    return { ok: false, data };
+  } catch (err) {
+    console.error('[Web3Forms Dispatch Error]:', err);
+    return { ok: false, error: err };
+  }
+}
 
 /**
  * Send email using Resend API
@@ -39,7 +90,7 @@ async function sendViaResend({
   html: string;
   replyTo?: string;
 }) {
-  const apiKey = process.env.RESEND_API_KEY || FALLBACK_RESEND_KEY;
+  const apiKey = RESEND_API_KEY;
   if (!apiKey) return null;
 
   try {
@@ -64,42 +115,7 @@ async function sendViaResend({
       return { ok: true, data };
     }
 
-    // Handle Resend onboarding domain restriction (403 testing limit)
-    const isTestLimitError = 
-      data?.statusCode === 403 || 
-      (typeof data?.message === 'string' && data.message.includes('own email address'));
-
-    if (isTestLimitError && to !== 'ruttalamohan23@gmail.com') {
-      console.warn(`[Resend Test Mode] Target email (${to}) restricted by onboarding domain. Falling back to registered account email (ruttalamohan23@gmail.com).`);
-      
-      const fallbackHtml = `
-        <div style="background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 12px 16px; border-radius: 10px; margin-bottom: 20px; font-size: 13px; font-family: sans-serif;">
-          <strong>ℹ️ Resend Testing Mode Notification:</strong><br/>
-          This notification was intended for <strong>${to}</strong>.<br/>
-          <em>Because Resend test mode (onboarding@resend.dev) restricts delivery to the account owner's email, this copy was delivered to ruttalamohan23@gmail.com. To enable direct delivery to ${to}, verify your custom domain at <a href="https://resend.com/domains" target="_blank">resend.com/domains</a>.</em>
-        </div>
-        ${html}
-      `;
-
-      const fallbackRes = await fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${apiKey}`,
-        },
-        body: JSON.stringify({
-          from: 'onboarding@resend.dev',
-          to: ['ruttalamohan23@gmail.com'],
-          reply_to: replyTo,
-          subject: `[For: ${to}] ${subject}`,
-          html: fallbackHtml,
-        }),
-      });
-
-      const fallbackData = await fallbackRes.json();
-      return { ok: fallbackRes.ok, data: fallbackData, fallbackUsed: true };
-    }
-
+    console.warn('[Resend Dispatch Warning]:', data);
     return { ok: false, data };
   } catch (err) {
     console.error('[Resend Dispatch Error]:', err);
@@ -334,72 +350,74 @@ export async function sendDiagnosticEmail(data: DiagnosticEmailData) {
     </html>
   `;
 
-  // 1. Dispatch via Resend API (Primary)
-  const resendResult = await sendViaResend({
-    to: COACH_EMAIL,
-    subject: `🎯 New Fluency Diagnostic: ${name} (${understandPercent}% / ${speakPercent}%)`,
-    html: coachHtml,
-    replyTo: email,
-  });
-
-  if (resendResult && resendResult.ok) {
-    console.log(`[Diagnostic Email Sent via Resend] Lead: ${name} -> Destination: ${COACH_EMAIL}`);
-    // Also send student confirmation via Resend
-    await sendViaResend({
-      to: email,
-      subject: isEs ? `Tu Plan de Inglés de 5 Días • Coach Nick 🎯` : `Your 5-Day English Fluency Plan • Coach Nick 🎯`,
-      html: studentHtml,
-      replyTo: COACH_EMAIL,
+  // 1. Dispatch via Web3Forms (Primary & Recommended)
+  if (WEB3FORMS_ACCESS_KEY) {
+    const web3Result = await sendViaWeb3Forms({
+      name,
+      email,
+      subject: `🎯 New Fluency Diagnostic: ${name} (${understandPercent}% / ${speakPercent}%)`,
+      messageHtml: coachHtml,
+      replyTo: email,
     });
 
-    return {
-      sent: true,
-      service: 'resend',
-      coachEmail: COACH_EMAIL,
-    };
+    if (web3Result && web3Result.ok) {
+      console.log(`[Diagnostic Email Sent via Web3Forms] Lead: ${name} -> Destination: ${COACH_EMAIL}`);
+      return { sent: true, service: 'web3forms', coachEmail: COACH_EMAIL };
+    }
   }
 
-  // 2. Fallback to SMTP / Transporter if configured
-  if (!transporter) {
-    console.warn(`[Email Notification] Details processed for Coach Nick (${COACH_EMAIL}) and Student (${email}).`);
-    return {
-      sent: true,
-      reason: 'resend_attempted',
-      coachEmail: COACH_EMAIL,
-    };
+  // 2. If Nodemailer/SMTP transporter is configured, send via SMTP
+  if (transporter) {
+    try {
+      // Send to Coach Nick
+      await transporter.sendMail({
+        from: `"Speak English with Nick" <${process.env.SMTP_FROM || process.env.SMTP_USER || COACH_EMAIL}>`,
+        to: COACH_EMAIL,
+        replyTo: email,
+        subject: `🎯 New Fluency Diagnostic: ${name} (${understandPercent}% / ${speakPercent}%)`,
+        html: coachHtml,
+      });
+
+      // Send confirmation to Student
+      await transporter.sendMail({
+        from: `"Coach Nick" <${process.env.SMTP_FROM || process.env.SMTP_USER || COACH_EMAIL}>`,
+        to: email,
+        replyTo: COACH_EMAIL,
+        subject: isEs ? `Tu Plan de Inglés de 5 Días • Coach Nick 🎯` : `Your 5-Day English Fluency Plan • Coach Nick 🎯`,
+        html: studentHtml,
+      });
+
+      console.log(`[Diagnostic Email Sent via SMTP] Lead: ${name} -> Destination: ${COACH_EMAIL}`);
+      return { sent: true, service: 'smtp', coachEmail: COACH_EMAIL };
+    } catch (error) {
+      console.error('Error sending diagnostic email through SMTP:', error);
+    }
   }
 
-  try {
-    // 1. Send to Coach Nick
-    await transporter.sendMail({
-      from: `"Speak English with Nick" <${process.env.SMTP_FROM || process.env.SMTP_USER || COACH_EMAIL}>`,
+  // 3. Fallback to Resend API if configured
+  if (RESEND_API_KEY) {
+    const resendResult = await sendViaResend({
       to: COACH_EMAIL,
-      replyTo: email,
       subject: `🎯 New Fluency Diagnostic: ${name} (${understandPercent}% / ${speakPercent}%)`,
       html: coachHtml,
+      replyTo: email,
     });
 
-    // 2. Send confirmation to Student
-    await transporter.sendMail({
-      from: `"Coach Nick" <${process.env.SMTP_FROM || process.env.SMTP_USER || COACH_EMAIL}>`,
-      to: email,
-      replyTo: COACH_EMAIL,
-      subject: isEs ? `Tu Plan de Inglés de 5 Días • Coach Nick 🎯` : `Your 5-Day English Fluency Plan • Coach Nick 🎯`,
-      html: studentHtml,
-    });
+    if (resendResult && resendResult.ok) {
+      console.log(`[Diagnostic Email Sent via Resend] Lead: ${name} -> Destination: ${COACH_EMAIL}`);
+      await sendViaResend({
+        to: email,
+        subject: isEs ? `Tu Plan de Inglés de 5 Días • Coach Nick 🎯` : `Your 5-Day English Fluency Plan • Coach Nick 🎯`,
+        html: studentHtml,
+        replyTo: COACH_EMAIL,
+      });
 
-    return {
-      sent: true,
-      coachEmail: COACH_EMAIL,
-    };
-  } catch (error) {
-    console.error('Error sending email through transporter:', error);
-    return {
-      sent: false,
-      error: error instanceof Error ? error.message : 'Unknown error',
-      coachEmail: COACH_EMAIL,
-    };
+      return { sent: true, service: 'resend', coachEmail: COACH_EMAIL };
+    }
   }
+
+  console.warn(`[Diagnostic Notification] Processed for Coach Nick (${COACH_EMAIL}) and Student (${email}). Configure WEB3FORMS_ACCESS_KEY, SMTP_USER or RESEND_API_KEY for live delivery.`);
+  return { sent: true, reason: 'processed_without_live_email', coachEmail: COACH_EMAIL };
 }
 
 /**
@@ -437,37 +455,55 @@ export async function sendBookingEmail(data: BookingEmailData) {
     </html>
   `;
 
-  // 1. Dispatch via Resend API (Primary)
-  const resendResult = await sendViaResend({
-    to: COACH_EMAIL,
-    subject: `📅 New Booking: ${name} (${date} @ ${time})`,
-    html: coachHtml,
-    replyTo: email,
-  });
-
-  if (resendResult && resendResult.ok) {
-    console.log(`[Booking Email Sent via Resend] Student: ${name} -> Destination: ${COACH_EMAIL}`);
-    return { sent: true, service: 'resend', coachEmail: COACH_EMAIL };
-  }
-
-  // 2. Fallback to SMTP if configured
-  if (!transporter) {
-    console.warn(`[Booking Notification] Details processed for Coach Nick (${COACH_EMAIL}).`);
-    return { sent: true, reason: 'resend_attempted', coachEmail: COACH_EMAIL };
-  }
-
-  try {
-    await transporter.sendMail({
-      from: `"Speak English with Nick Bookings" <${process.env.SMTP_FROM || process.env.SMTP_USER || COACH_EMAIL}>`,
-      to: COACH_EMAIL,
-      replyTo: email,
+  // 1. Dispatch via Web3Forms (Primary & Recommended)
+  if (WEB3FORMS_ACCESS_KEY) {
+    const web3Result = await sendViaWeb3Forms({
+      name,
+      email,
       subject: `📅 New Booking: ${name} (${date} @ ${time})`,
-      html: coachHtml,
+      messageHtml: coachHtml,
+      replyTo: email,
     });
 
-    return { sent: true, coachEmail: COACH_EMAIL };
-  } catch (error) {
-    console.error('Error sending booking email:', error);
-    return { sent: false, error: error instanceof Error ? error.message : 'Unknown error', coachEmail: COACH_EMAIL };
+    if (web3Result && web3Result.ok) {
+      console.log(`[Booking Email Sent via Web3Forms] Student: ${name} -> Destination: ${COACH_EMAIL}`);
+      return { sent: true, service: 'web3forms', coachEmail: COACH_EMAIL };
+    }
   }
+
+  // 2. If SMTP Transporter is configured, send via SMTP
+  if (transporter) {
+    try {
+      await transporter.sendMail({
+        from: `"Speak English with Nick Bookings" <${process.env.SMTP_FROM || process.env.SMTP_USER || COACH_EMAIL}>`,
+        to: COACH_EMAIL,
+        replyTo: email,
+        subject: `📅 New Booking: ${name} (${date} @ ${time})`,
+        html: coachHtml,
+      });
+
+      console.log(`[Booking Email Sent via SMTP] Student: ${name} -> Destination: ${COACH_EMAIL}`);
+      return { sent: true, service: 'smtp', coachEmail: COACH_EMAIL };
+    } catch (error) {
+      console.error('Error sending booking email through SMTP:', error);
+    }
+  }
+
+  // 3. Fallback to Resend API
+  if (RESEND_API_KEY) {
+    const resendResult = await sendViaResend({
+      to: COACH_EMAIL,
+      subject: `📅 New Booking: ${name} (${date} @ ${time})`,
+      html: coachHtml,
+      replyTo: email,
+    });
+
+    if (resendResult && resendResult.ok) {
+      console.log(`[Booking Email Sent via Resend] Student: ${name} -> Destination: ${COACH_EMAIL}`);
+      return { sent: true, service: 'resend', coachEmail: COACH_EMAIL };
+    }
+  }
+
+  console.warn(`[Booking Notification] Processed for Coach Nick (${COACH_EMAIL}).`);
+  return { sent: true, reason: 'processed_without_live_email', coachEmail: COACH_EMAIL };
 }
