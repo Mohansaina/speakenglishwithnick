@@ -21,6 +21,7 @@ import {
   TikTokIcon, 
   TwitterIcon 
 } from '@/components/icons/BrandIcons';
+import { USAFlag, SpainFlag } from '@/components/icons/FlagIcons';
 import { useLanguage } from '@/context/LanguageContext';
 
 interface FooterProps {
@@ -307,25 +308,25 @@ export const Footer: React.FC<FooterProps> = ({
                 <button
                   type="button"
                   onClick={() => setLanguage('en')}
-                  className={`px-3 py-1 rounded-lg font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                  className={`px-3 py-1 rounded-lg font-bold transition-all cursor-pointer flex items-center gap-2 ${
                     language === 'en'
                       ? 'bg-stone-800 text-white shadow-xs'
                       : 'text-stone-400 hover:text-white'
                   }`}
                 >
-                  <span>🇺🇸</span>
+                  <USAFlag className="w-4 h-3" />
                   <span>English</span>
                 </button>
                 <button
                   type="button"
                   onClick={() => setLanguage('es')}
-                  className={`px-3 py-1 rounded-lg font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                  className={`px-3 py-1 rounded-lg font-bold transition-all cursor-pointer flex items-center gap-2 ${
                     language === 'es'
                       ? 'bg-stone-800 text-[#82e635] shadow-xs'
                       : 'text-stone-400 hover:text-white'
                   }`}
                 >
-                  <span>🇪🇸</span>
+                  <SpainFlag className="w-4 h-3" />
                   <span>Español</span>
                 </button>
               </div>

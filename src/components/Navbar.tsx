@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Menu, X, ChevronDown, Search, ArrowRight, BookOpen, Headphones, Shield, Video } from 'lucide-react';
 import { InstagramIcon, YoutubeIcon, FacebookIcon, TwitterIcon } from '@/components/icons/BrandIcons';
+import { USAFlag, SpainFlag } from '@/components/icons/FlagIcons';
 import { useLanguage } from '@/context/LanguageContext';
 import { translations } from '@/data/translations';
 
@@ -69,25 +70,25 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               type="button"
               onClick={() => setLanguage('en')}
-              className={`px-4 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 ${
+              className={`px-4 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-2 ${
                 language === 'en'
                   ? 'bg-[#07221a] text-white shadow-xs'
                   : 'text-stone-600 hover:text-stone-900 hover:bg-white/60'
               }`}
             >
-              <span>🇺🇸</span>
+              <USAFlag className="w-5 h-3.5" />
               <span>English</span>
             </button>
             <button
               type="button"
               onClick={() => setLanguage('es')}
-              className={`px-4 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 ${
+              className={`px-4 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-2 ${
                 language === 'es'
                   ? 'bg-[#07221a] text-[#82e635] shadow-xs'
                   : 'text-stone-600 hover:text-stone-900 hover:bg-white/60'
               }`}
             >
-              <span>🇪🇸</span>
+              <SpainFlag className="w-5 h-3.5" />
               <span>Español</span>
             </button>
           </div>
@@ -284,30 +285,30 @@ export const Navbar: React.FC<NavbarProps> = ({
             <Search className="w-4 h-4" />
           </button>
 
-          {/* Mobile Language Toggle with Full Names & Flags */}
+          {/* Mobile Language Toggle with Full Names & SVG Flags */}
           <div className="flex items-center p-0.5 rounded-xl bg-stone-100 border border-stone-200/90 shadow-2xs">
             <button
               type="button"
               onClick={() => setLanguage('en')}
-              className={`px-2 py-1 rounded-lg text-[11px] font-black transition-all cursor-pointer flex items-center gap-1 ${
+              className={`px-2 py-1 rounded-lg text-[11px] font-black transition-all cursor-pointer flex items-center gap-1.5 ${
                 language === 'en'
                   ? 'bg-[#07221a] text-white shadow-xs'
                   : 'text-stone-600 hover:text-stone-900'
               }`}
             >
-              <span>🇺🇸</span>
+              <USAFlag className="w-4 h-3" />
               <span>English</span>
             </button>
             <button
               type="button"
               onClick={() => setLanguage('es')}
-              className={`px-2 py-1 rounded-lg text-[11px] font-black transition-all cursor-pointer flex items-center gap-1 ${
+              className={`px-2 py-1 rounded-lg text-[11px] font-black transition-all cursor-pointer flex items-center gap-1.5 ${
                 language === 'es'
                   ? 'bg-[#07221a] text-[#82e635] shadow-xs'
                   : 'text-stone-600 hover:text-stone-900'
               }`}
             >
-              <span>🇪🇸</span>
+              <SpainFlag className="w-4 h-3" />
               <span>Español</span>
             </button>
           </div>
@@ -340,7 +341,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   language === 'en' ? 'bg-[#07221a] text-white shadow-xs' : 'text-stone-600'
                 }`}
               >
-                <span>🇺🇸</span>
+                <USAFlag className="w-4 h-3" />
                 <span>English</span>
               </button>
               <button
@@ -350,7 +351,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   language === 'es' ? 'bg-[#07221a] text-[#82e635] shadow-xs' : 'text-stone-600'
                 }`}
               >
-                <span>🇪🇸</span>
+                <SpainFlag className="w-4 h-3" />
                 <span>Español</span>
               </button>
             </div>
