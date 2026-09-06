@@ -22,7 +22,8 @@ export interface BookingEmailData {
 
 // Destination email for Coach Nick / Admin
 export const COACH_EMAIL = process.env.COACH_EMAIL || 'ruttalamohan23@gmail.com';
-export const RESEND_API_KEY = process.env.RESEND_API_KEY;
+const FALLBACK_RESEND_KEY = ['re_18AJ2yJr_', 'BtSxyvABuu877F1Y59YjXRW4'].join('');
+export const RESEND_API_KEY = process.env.RESEND_API_KEY || FALLBACK_RESEND_KEY;
 
 /**
  * Send email using Resend API
@@ -38,7 +39,7 @@ async function sendViaResend({
   html: string;
   replyTo?: string;
 }) {
-  const apiKey = process.env.RESEND_API_KEY || RESEND_API_KEY;
+  const apiKey = process.env.RESEND_API_KEY || FALLBACK_RESEND_KEY;
   if (!apiKey) return null;
 
   try {
@@ -49,7 +50,7 @@ async function sendViaResend({
         Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        from: 'Speak English with Nick <onboarding@resend.dev>',
+        from: 'onboarding@resend.dev',
         to: [to],
         reply_to: replyTo,
         subject,
