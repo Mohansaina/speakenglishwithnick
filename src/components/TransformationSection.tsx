@@ -166,58 +166,7 @@ export const TransformationSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Mateo Card */}
-            <div className="shrink-0 w-[300px] sm:w-[380px] md:w-[420px] bg-white rounded-3xl p-5 sm:p-7 border border-stone-200/90 shadow-[0_12px_40px_rgba(0,0,0,0.04)] space-y-5 flex flex-col justify-between hover:border-[#62c110]/60 transition-all group relative overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#62c110] to-[#07221a]" />
-              <div className="space-y-4 pt-1">
-                <div className="flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-2xl bg-[#07221a] text-[#82e635] font-black flex items-center justify-center text-lg border border-[#164c3c] shadow-xs shrink-0">
-                      M
-                    </div>
-                    <div>
-                      <h4 className="font-black text-stone-900 text-base leading-tight">Mateo Silva</h4>
-                      <span className="inline-block text-[10px] font-bold text-[#164c3c] bg-[#edfbe6] px-2 py-0.5 rounded-md border border-[#c4eeb0] mt-0.5">
-                        Software Engineer
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-0.5 text-[#f59e0b] shrink-0">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-[#f59e0b]" />
-                    ))}
-                  </div>
-                </div>
 
-                <blockquote className="text-stone-800 text-sm sm:text-base leading-relaxed italic font-serif pt-1 border-l-3 border-[#62c110] pl-3.5">
-                  &ldquo;Nick&apos;s 20-minute daily commuter audio exercises completely eliminated my anxiety in sprint planning with my US team.&rdquo;
-                </blockquote>
-
-                <div className="p-3.5 rounded-2xl bg-[#f8faf7] border border-stone-200/80 space-y-2 text-xs">
-                  <div className="text-stone-600 flex items-start gap-2">
-                    <span className="font-bold text-stone-800 uppercase text-[10px] tracking-wider bg-stone-200 px-1.5 py-0.5 rounded shrink-0">
-                      {language === 'es' ? 'Antes' : 'Before'}
-                    </span>
-                    <span className="leading-snug">Translating word-by-word with awkward pauses.</span>
-                  </div>
-                  <div className="text-[#07221a] font-semibold flex items-start gap-2 pt-2 border-t border-stone-200/60">
-                    <span className="font-black text-[#07221a] uppercase text-[10px] tracking-wider bg-[#d2edd6] px-1.5 py-0.5 rounded flex items-center gap-1 shrink-0">
-                      <CheckCircle2 className="w-3 h-3 text-[#164c3c]" />
-                      {language === 'es' ? 'Ahora' : 'Now'}
-                    </span>
-                    <span className="leading-snug">Led my first international tech demo with zero panic.</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-3 border-t border-stone-100 flex items-center justify-between text-xs">
-                <span className="font-bold text-[#164c3c] flex items-center gap-1">
-                  <ShieldCheck className="w-4 h-4 text-[#62c110]" />
-                  <span>20-Min Commuter</span>
-                </span>
-                <span className="text-stone-500 text-[11px]">São Paulo, Brazil</span>
-              </div>
-            </div>
 
             {/* Duplicate Set for Seamless Infinite Loop */}
             {/* David Card Copy */}
@@ -326,58 +275,7 @@ export const TransformationSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Mateo Card Copy */}
-            <div className="shrink-0 w-[300px] sm:w-[380px] md:w-[420px] bg-white rounded-3xl p-5 sm:p-7 border border-stone-200/90 shadow-[0_12px_40px_rgba(0,0,0,0.04)] space-y-5 flex flex-col justify-between hover:border-[#62c110]/60 transition-all group relative overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#62c110] to-[#07221a]" />
-              <div className="space-y-4 pt-1">
-                <div className="flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-2xl bg-[#07221a] text-[#82e635] font-black flex items-center justify-center text-lg border border-[#164c3c] shadow-xs shrink-0">
-                      M
-                    </div>
-                    <div>
-                      <h4 className="font-black text-stone-900 text-base leading-tight">Mateo Silva</h4>
-                      <span className="inline-block text-[10px] font-bold text-[#164c3c] bg-[#edfbe6] px-2 py-0.5 rounded-md border border-[#c4eeb0] mt-0.5">
-                        Software Engineer
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-0.5 text-[#f59e0b] shrink-0">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-[#f59e0b]" />
-                    ))}
-                  </div>
-                </div>
 
-                <blockquote className="text-stone-800 text-sm sm:text-base leading-relaxed italic font-serif pt-1 border-l-3 border-[#62c110] pl-3.5">
-                  &ldquo;Nick&apos;s 20-minute daily commuter audio exercises completely eliminated my anxiety in sprint planning with my US team.&rdquo;
-                </blockquote>
-
-                <div className="p-3.5 rounded-2xl bg-[#f8faf7] border border-stone-200/80 space-y-2 text-xs">
-                  <div className="text-stone-600 flex items-start gap-2">
-                    <span className="font-bold text-stone-800 uppercase text-[10px] tracking-wider bg-stone-200 px-1.5 py-0.5 rounded shrink-0">
-                      {language === 'es' ? 'Antes' : 'Before'}
-                    </span>
-                    <span className="leading-snug">Translating word-by-word with awkward pauses.</span>
-                  </div>
-                  <div className="text-[#07221a] font-semibold flex items-start gap-2 pt-2 border-t border-stone-200/60">
-                    <span className="font-black text-[#07221a] uppercase text-[10px] tracking-wider bg-[#d2edd6] px-1.5 py-0.5 rounded flex items-center gap-1 shrink-0">
-                      <CheckCircle2 className="w-3 h-3 text-[#164c3c]" />
-                      {language === 'es' ? 'Ahora' : 'Now'}
-                    </span>
-                    <span className="leading-snug">Led my first international tech demo with zero panic.</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-3 border-t border-stone-100 flex items-center justify-between text-xs">
-                <span className="font-bold text-[#164c3c] flex items-center gap-1">
-                  <ShieldCheck className="w-4 h-4 text-[#62c110]" />
-                  <span>20-Min Commuter</span>
-                </span>
-                <span className="text-stone-500 text-[11px]">São Paulo, Brazil</span>
-              </div>
-            </div>
 
           </div>
 

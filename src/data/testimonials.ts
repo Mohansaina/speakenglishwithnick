@@ -2,18 +2,6 @@ import { Testimonial } from '@/types';
 
 export const testimonials: Testimonial[] = [
   {
-    id: '1',
-    name: 'Mateo Silva',
-    role: 'Software Engineer',
-    location: 'São Paulo, Brazil',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
-    rating: 5,
-    quote: "I used to freeze in sprint planning meetings with my US team. Nick's 20-minute daily commuter audio exercises completely eliminated my anxiety in just 3 weeks.",
-    before: 'Translating word-by-word with 5-second awkward pauses',
-    after: 'Led my first international tech demo with zero panic',
-    tag: '20-Min Commuter Student'
-  },
-  {
     id: '2',
     name: 'Elena Rostova',
     role: 'Product Designer',
