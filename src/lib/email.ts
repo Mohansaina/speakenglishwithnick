@@ -23,7 +23,7 @@ export interface BookingEmailData {
 // Destination email for Coach Nick / Admin
 export const COACH_EMAIL = process.env.COACH_EMAIL || 'speakenglishwithnick@gmail.com';
 export const RESEND_API_KEY = process.env.RESEND_API_KEY || '';
-export const WEB3FORMS_ACCESS_KEY = process.env.WEB3FORMS_ACCESS_KEY || '';
+export const WEB3FORMS_ACCESS_KEY = process.env.WEB3FORMS_ACCESS_KEY || '95e2795a-6c55-4b7a-bda3-26b98c09baaa';
 
 /**
  * Send email using Web3Forms API
@@ -32,16 +32,18 @@ async function sendViaWeb3Forms({
   name,
   email,
   subject,
-  messageHtml,
+  messageText,
   replyTo,
+  extraFields = {},
 }: {
   name: string;
   email: string;
   subject: string;
-  messageHtml: string;
+  messageText: string;
   replyTo?: string;
+  extraFields?: Record<string, string | number>;
 }) {
-  const apiKey = process.env.WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY;
+  const apiKey = process.env.WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY || '95e2795a-6c55-4b7a-bda3-26b98c09baaa';
   if (!apiKey) return null;
 
   try {
@@ -58,7 +60,8 @@ async function sendViaWeb3Forms({
         name: name,
         email: email,
         replyto: replyTo || email,
-        message: messageHtml,
+        message: messageText,
+        ...extraFields,
       }),
     });
 
@@ -352,12 +355,50 @@ export async function sendDiagnosticEmail(data: DiagnosticEmailData) {
 
   // 1. Dispatch via Web3Forms (Primary & Recommended)
   if (WEB3FORMS_ACCESS_KEY) {
+    const diagnosticMessageText = `
+🎯 NEW STUDENT FLUENCY DIAGNOSTIC
+
+STUDENT DETAILS:
+----------------------------------------
+• Student Name: ${name}
+• Email: ${email}
+• WhatsApp / Phone: ${phone || 'Not provided'}
+• Preferred Language: ${isEs ? 'Spanish (Español)' : 'English'}
+• Date Submitted: ${new Date().toLocaleString()}
+
+DIAGNOSTIC BREAKDOWN:
+----------------------------------------
+• Listening Comprehension: ${understandPercent}%
+• Speaking Output: ${speakPercent}%
+• Mental Translation Gap: ${fluencyGap}%
+
+WHAT THEY WANT TO LEARN:
+----------------------------------------
+"${formattedGoal}"
+
+DIRECT ACTIONS:
+----------------------------------------
+• Reply to Student: ${email}
+${phone ? `• Open WhatsApp Chat: https://wa.me/${phone.replace(/[^0-9]/g, '')}` : ''}
+`;
+
     const web3Result = await sendViaWeb3Forms({
       name,
       email,
       subject: `🎯 New Fluency Diagnostic: ${name} (${understandPercent}% / ${speakPercent}%)`,
-      messageHtml: coachHtml,
+      messageText: diagnosticMessageText,
       replyTo: email,
+      extraFields: {
+        "Student Name": name,
+        "Student Email": email,
+        "WhatsApp / Phone": phone || 'Not provided',
+        "Language": isEs ? 'Spanish (Español)' : 'English',
+        "Listening Score": `${understandPercent}%`,
+        "Speaking Score": `${speakPercent}%`,
+        "Mental Translation Gap": `${fluencyGap}%`,
+        "What They Want to Learn": formattedGoal,
+        "WhatsApp Link": phone ? `https://wa.me/${phone.replace(/[^0-9]/g, '')}` : 'N/A'
+      }
     });
 
     if (web3Result && web3Result.ok) {
@@ -457,12 +498,41 @@ export async function sendBookingEmail(data: BookingEmailData) {
 
   // 1. Dispatch via Web3Forms (Primary & Recommended)
   if (WEB3FORMS_ACCESS_KEY) {
+    const bookingMessageText = `
+📅 NEW 1-ON-1 SESSION BOOKED!
+
+BOOKING DETAILS:
+----------------------------------------
+• Student Name: ${name}
+• Email: ${email}
+• Phone / WhatsApp: ${phone || 'Not provided'}
+• Date & Time: ${date} at ${time}
+• Timezone: ${timezone || 'Student Local Time'}
+• Notes / Goals: ${notes || 'None'}
+• Date Booked: ${new Date().toLocaleString()}
+
+DIRECT ACTIONS:
+----------------------------------------
+• Reply to Student: ${email}
+${phone ? `• Open WhatsApp Chat: https://wa.me/${phone.replace(/[^0-9]/g, '')}` : ''}
+`;
+
     const web3Result = await sendViaWeb3Forms({
       name,
       email,
       subject: `📅 New Booking: ${name} (${date} @ ${time})`,
-      messageHtml: coachHtml,
+      messageText: bookingMessageText,
       replyTo: email,
+      extraFields: {
+        "Student Name": name,
+        "Student Email": email,
+        "WhatsApp / Phone": phone || 'Not provided',
+        "Session Date": date,
+        "Session Time": time,
+        "Timezone": timezone || 'Student Local Time',
+        "Intake Notes & Goals": notes || 'None',
+        "WhatsApp Link": phone ? `https://wa.me/${phone.replace(/[^0-9]/g, '')}` : 'N/A'
+      }
     });
 
     if (web3Result && web3Result.ok) {
