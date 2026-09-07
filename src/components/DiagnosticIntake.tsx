@@ -134,8 +134,68 @@ Coach Nick (@speak.english.with.nick)
 
     setLoading(true);
 
+    const fluencyGap = Math.max(0, understandPercent - speakPercent);
+    const formattedGoal = wantToLearn?.trim() ? wantToLearn : (language === 'es' ? 'Mejorar fluidez y pronunciación' : 'Improve speaking confidence, accent and fluency');
+
     try {
-      await fetch('/api/diagnostic', {
+      // 1. Send directly to Web3Forms API from client browser (bypasses server-side bot block)
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: '95e2795a-6c55-4b7a-bda3-26b98c09baaa',
+          subject: `🎯 New Fluency Diagnostic: ${name} (${understandPercent}% / ${speakPercent}%)`,
+          from_name: 'Speak English with Nick Leads',
+          name: name,
+          email: email,
+          replyto: email,
+          message: `
+🎯 NEW STUDENT FLUENCY DIAGNOSTIC
+
+STUDENT DETAILS:
+----------------------------------------
+• Student Name: ${name}
+• Email: ${email}
+• WhatsApp / Phone: ${phone || 'Not provided'}
+• Preferred Language: ${language === 'es' ? 'Spanish (Español)' : 'English'}
+
+DIAGNOSTIC BREAKDOWN:
+----------------------------------------
+• Listening Comprehension: ${understandPercent}%
+• Speaking Output: ${speakPercent}%
+• Mental Translation Gap: ${fluencyGap}%
+
+WHAT THEY WANT TO LEARN:
+----------------------------------------
+"${formattedGoal}"
+
+DIRECT ACTIONS:
+----------------------------------------
+• Reply to Student: ${email}
+${phone ? `• Open WhatsApp Chat: https://wa.me/${phone.replace(/[^0-9]/g, '')}` : ''}
+`,
+          "Student Name": name,
+          "Student Email": email,
+          "WhatsApp Phone": phone || 'Not provided',
+          "Listening Score": `${understandPercent}%`,
+          "Speaking Score": `${speakPercent}%`,
+          "Translation Gap": `${fluencyGap}%`,
+          "Student Goal": formattedGoal,
+        }),
+      });
+
+      const resData = await res.json();
+      console.log('[Web3Forms Diagnostic Dispatch Result]:', resData);
+    } catch (err) {
+      console.error('[Web3Forms Submission Error]:', err);
+    }
+
+    // Also notify internal route as backup
+    try {
+      fetch('/api/diagnostic', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -147,9 +207,9 @@ Coach Nick (@speak.english.with.nick)
           wantToLearn,
           language,
         }),
-      });
+      }).catch(() => {});
     } catch {
-      // ignore network glitch, proceed to confirmed screen
+      // ignore
     }
 
     setLoading(false);

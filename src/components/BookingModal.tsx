@@ -129,7 +129,56 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, pre
     setLoading(true);
 
     try {
-      await fetch('/api/booking', {
+      // 1. Send directly to Web3Forms API from client browser
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: '95e2795a-6c55-4b7a-bda3-26b98c09baaa',
+          subject: `📅 New Booking: ${name} (${currentSelectedDay.fullString} @ ${selectedTimeSlot})`,
+          from_name: 'Speak English with Nick Bookings',
+          name: name,
+          email: email,
+          replyto: email,
+          message: `
+📅 NEW 1-ON-1 SESSION BOOKED!
+
+BOOKING DETAILS:
+----------------------------------------
+• Student Name: ${name}
+• Email: ${email}
+• WhatsApp / Phone: ${phone || 'Not provided'}
+• Date & Time: ${currentSelectedDay.fullString} at ${selectedTimeSlot}
+• Timezone: ${selectedTimezone}
+• Notes / Goals: ${notes || 'None'}
+
+DIRECT ACTIONS:
+----------------------------------------
+• Reply to Student: ${email}
+${phone ? `• Open WhatsApp Chat: https://wa.me/${phone.replace(/[^0-9]/g, '')}` : ''}
+`,
+          "Student Name": name,
+          "Student Email": email,
+          "WhatsApp Phone": phone || 'Not provided',
+          "Session Date": currentSelectedDay.fullString,
+          "Session Time": selectedTimeSlot,
+          "Timezone": selectedTimezone,
+          "Intake Notes & Goals": notes || 'None',
+        }),
+      });
+
+      const resData = await res.json();
+      console.log('[Web3Forms Booking Dispatch Result]:', resData);
+    } catch (err) {
+      console.error('[Web3Forms Booking Error]:', err);
+    }
+
+    // Backup call to internal API route
+    try {
+      fetch('/api/booking', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -141,9 +190,9 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, pre
           timezone: selectedTimezone,
           notes,
         }),
-      });
+      }).catch(() => {});
     } catch {
-      // ignore network errors to guarantee graceful UX
+      // ignore
     }
 
     setLoading(false);
