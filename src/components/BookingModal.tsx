@@ -113,7 +113,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, pre
       ? `Hola Coach Nick,\n\nQuiero confirmar mi reserva de clase de inglés:\n\n• Nombre: ${name}\n• Email: ${email}\n• WhatsApp/Teléfono: ${phone || 'No indicado'}\n• Fecha y Hora: ${currentSelectedDay.fullString} @ ${selectedTimeSlot} (${selectedTimezone})\n• Formato y Notas: ${notes || 'Sin notas'}\n\n¡Gracias!`
       : `Hi Coach Nick,\n\nI want to confirm my English session booking:\n\n• Name: ${name}\n• Email: ${email}\n• Phone/WhatsApp: ${phone || 'Not provided'}\n• Date & Time: ${currentSelectedDay.fullString} @ ${selectedTimeSlot} (${selectedTimezone})\n• Format & Notes: ${notes || 'No notes'}\n\nThank you!`
   );
-  const mailtoUrl = `mailto:ruttalamohan23@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+  const mailtoUrl = `mailto:speakenglishwithnick@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
 
   const whatsappText = encodeURIComponent(
     language === 'es'

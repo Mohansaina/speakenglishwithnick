@@ -21,7 +21,7 @@ export interface BookingEmailData {
 }
 
 // Destination email for Coach Nick / Admin
-export const COACH_EMAIL = process.env.COACH_EMAIL || 'ruttalamohan23@gmail.com';
+export const COACH_EMAIL = process.env.COACH_EMAIL || 'speakenglishwithnick@gmail.com';
 export const RESEND_API_KEY = process.env.RESEND_API_KEY || '';
 export const WEB3FORMS_ACCESS_KEY = process.env.WEB3FORMS_ACCESS_KEY || '95e2795a-6c55-4b7a-bda3-26b98c09baaa';
 
