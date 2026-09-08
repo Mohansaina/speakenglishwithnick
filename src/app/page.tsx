@@ -16,6 +16,7 @@ import { LeadMagnetModal } from '@/components/LeadMagnetModal';
 import { BookingModal } from '@/components/BookingModal';
 import { StudentLoginModal } from '@/components/StudentLoginModal';
 import { SearchModal } from '@/components/SearchModal';
+import { ScrollObserver } from '@/components/ScrollObserver';
 import { Calendar, BookOpen, ArrowRight } from 'lucide-react';
 import { translations } from '@/data/translations';
 
@@ -49,7 +50,8 @@ function MainContent() {
   };
 
   return (
-    <main className="min-h-screen bg-white text-stone-900 selection:bg-[#d0f4bd] selection:text-[#0b2d22]">
+    <ScrollObserver>
+      <main className="min-h-screen animate-page-entry bg-white text-stone-900 selection:bg-[#d0f4bd] selection:text-[#0b2d22]">
       
       {/* 1. Clean White Header Navbar */}
       <Navbar
@@ -156,6 +158,7 @@ function MainContent() {
       />
 
     </main>
+    </ScrollObserver>
   );
 }
 
