@@ -125,7 +125,7 @@ Coach Nick (@speak.english.with.nick)
         ? `Hola Coach Nick! 👋\n\nAcabo de realizar mi diagnóstico en la web:\n\n• Nombre: ${name}\n• Email: ${email}\n• WhatsApp/Teléfono: ${phone || 'N/A'}\n• Entiendo de Inglés: ${understandPercent}%\n• Hablo de Inglés: ${speakPercent}%\n• Lo que quiero aprender: ${wantToLearn || 'Mejorar mi fluidez y soltura'}\n\n¿Cómo podemos empezar mi plan?`
         : `Hi Coach Nick! 👋\n\nI just completed my diagnostic intake:\n\n• Name: ${name}\n• Email: ${email}\n• Phone/WhatsApp: ${phone || 'N/A'}\n• Understand English: ${understandPercent}%\n• Speak English: ${speakPercent}%\n• What I want to learn: ${wantToLearn || 'Improve speaking confidence'}\n\nHow can we get started?`
     );
-    window.location.href = `mailto:speakenglishwithnick@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:ruttalamohan23@gmail.com?subject=${subject}&body=${body}`;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -480,12 +480,12 @@ How can we get started?`;
                 </h3>
                 <p className="text-xs sm:text-sm text-stone-600 font-normal">
                   {language === 'es'
-                    ? `Hemos remitido tus datos a Coach Nick (speakenglishwithnick@gmail.com) y enviado una copia a ${email}.`
-                    : `Your diagnostic was forwarded to Coach Nick (speakenglishwithnick@gmail.com) and a copy sent to ${email}.`}
+                    ? `Hemos remitido tus datos a Coach Nick (ruttalamohan23@gmail.com) y enviado una copia a ${email}.`
+                    : `Your diagnostic was forwarded to Coach Nick (ruttalamohan23@gmail.com) and a copy sent to ${email}.`}
                 </p>
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#edfbe6] text-[#07221a] text-[11px] font-black border border-[#b2e896] mt-2">
                   <Mail className="w-3.5 h-3.5 text-[#16a34a]" />
-                  <span>speakenglishwithnick@gmail.com</span>
+                  <span>ruttalamohan23@gmail.com</span>
                 </div>
               </div>
 
