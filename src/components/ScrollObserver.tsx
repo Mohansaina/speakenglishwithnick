@@ -3,68 +3,90 @@
 import React, { useEffect } from 'react';
 
 /**
- * ScrollObserver automatically attaches an IntersectionObserver to elements 
- * with `[data-reveal]`, `.reveal-on-scroll`, `.reveal-stagger`, or section tags,
- * animating them smoothly into view as the user scrolls down the page.
+ * ScrollObserver automatically detects every section, card, and content block
+ * on the website and applies a buttery-smooth 60fps scroll reveal animation.
  */
 export const ScrollObserver: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   useEffect(() => {
-    // Fallback for SSR or legacy browsers
     if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return;
 
-    const revealElements = document.querySelectorAll(
-      '[data-reveal], .reveal-on-scroll, section > div > h2, section > div > div > .grid > div, section > div > .grid > div'
-    );
+    const setupObservers = () => {
+      // Target all sections, main containers, grid items, and cards
+      const targetSelectors = [
+        'section',
+        'main > div',
+        'main > header',
+        'main > footer',
+        '[data-reveal]',
+        '.reveal-on-scroll',
+        'section .grid > *',
+        'section .flex > .card',
+        'section article',
+      ];
 
-    revealElements.forEach((el, index) => {
-      // Add base class if missing
-      if (!el.classList.contains('reveal-on-scroll')) {
-        el.classList.add('reveal-on-scroll');
-      }
+      const elements = Array.from(
+        document.querySelectorAll(targetSelectors.join(', '))
+      ) as HTMLElement[];
 
-      // Add stagger index data attribute for sequential child animations
-      const element = el as HTMLElement;
-      if (!element.style.getPropertyValue('--reveal-delay')) {
-        const delay = (index % 6) * 90; // smooth 90ms step
-        element.style.setProperty('--reveal-delay', `${delay}ms`);
-      }
-    });
+      if (!elements.length) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-revealed');
-            // Unobserve after revealing for optimal performance
-            observer.unobserve(entry.target);
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const target = entry.target as HTMLElement;
+              target.classList.add('is-revealed');
+              observer.unobserve(target);
+            }
+          });
+        },
+        {
+          threshold: 0.08,
+          rootMargin: '0px 0px -30px 0px',
+        }
+      );
+
+      elements.forEach((el, index) => {
+        // Only apply reveal class if not explicitly excluded
+        if (!el.classList.contains('no-reveal')) {
+          el.classList.add('reveal-on-scroll');
+
+          // Check if element is already in the upper viewport on load
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight * 0.85) {
+            el.classList.add('is-revealed');
+          } else {
+            // Apply lightweight stagger delay based on parent sibling index
+            const parent = el.parentElement;
+            if (parent && parent.children.length > 1) {
+              const siblingIndex = Array.from(parent.children).indexOf(el);
+              const delay = Math.min(siblingIndex * 70, 350); // cap max delay at 350ms for snappy feel
+              el.style.setProperty('--reveal-delay', `${delay}ms`);
+            }
+            observer.observe(el);
           }
-        });
-      },
-      {
-        threshold: 0.1,
-        rootMargin: '0px 0px -40px 0px',
-      }
-    );
+        }
+      });
 
-    revealElements.forEach((el) => observer.observe(el));
-
-    return () => {
-      revealElements.forEach((el) => observer.unobserve(el));
+      return observer;
     };
+
+    // Run setup after brief DOM tick for Next.js hydration
+    const timer = setTimeout(() => {
+      setupObservers();
+    }, 40);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return <>{children}</>;
 };
 
-/**
- * TextStagger Component splits a string into animated words/letters
- * that pop up smoothly when scrolled into view.
- */
 export const TextStagger: React.FC<{
   text: string;
   className?: string;
   delayStepMs?: number;
-}> = ({ text, className = '', delayStepMs = 40 }) => {
+}> = ({ text, className = '', delayStepMs = 35 }) => {
   const words = text.split(' ');
 
   return (
@@ -72,7 +94,7 @@ export const TextStagger: React.FC<{
       {words.map((word, wIdx) => (
         <span key={wIdx} className="inline-block whitespace-nowrap mr-[0.25em]">
           {word.split('').map((char, cIdx) => {
-            const overallIndex = wIdx * 5 + cIdx;
+            const overallIndex = wIdx * 4 + cIdx;
             return (
               <span
                 key={cIdx}
