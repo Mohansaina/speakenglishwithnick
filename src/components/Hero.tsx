@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Calendar, MessageCircle, ArrowRight, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { Calendar, MessageCircle, ArrowRight } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
 interface HeroProps {
@@ -102,9 +102,7 @@ export const Hero: React.FC<HeroProps> = ({
                 </div>
               </div>
             </div>
-
           </div>
-
         </div>
 
         {/* 3 Prominent Large Option Boxes Positioned Underneath */}

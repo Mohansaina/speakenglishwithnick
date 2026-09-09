@@ -16,7 +16,8 @@ import { LeadMagnetModal } from '@/components/LeadMagnetModal';
 import { BookingModal } from '@/components/BookingModal';
 import { StudentLoginModal } from '@/components/StudentLoginModal';
 import { SearchModal } from '@/components/SearchModal';
-import { ScrollObserver } from '@/components/ScrollObserver';
+import { StickyConversionBar } from '@/components/StickyConversionBar';
+import { ExitIntentModal } from '@/components/ExitIntentModal';
 import { Calendar, BookOpen, ArrowRight } from 'lucide-react';
 import { translations } from '@/data/translations';
 
@@ -27,6 +28,21 @@ function MainContent() {
   const [leadMagnetOpen, setLeadMagnetOpen] = useState(false);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [searchModalOpen, setSearchModalOpen] = useState(false);
+  const [exitIntentOpen, setExitIntentOpen] = useState(false);
+  const [exitTriggered, setExitTriggered] = useState(false);
+
+  // Exit intent listener for desktop
+  React.useEffect(() => {
+    const handleMouseLeave = (e: MouseEvent) => {
+      if (e.clientY <= 10 && !exitTriggered) {
+        setExitTriggered(true);
+        setExitIntentOpen(true);
+      }
+    };
+
+    document.documentElement.addEventListener('mouseleave', handleMouseLeave);
+    return () => document.documentElement.removeEventListener('mouseleave', handleMouseLeave);
+  }, [exitTriggered]);
 
   const handleScrollToQuiz = () => {
     const el = document.getElementById('fluency-quiz-section');
@@ -50,8 +66,7 @@ function MainContent() {
   };
 
   return (
-    <ScrollObserver>
-      <main className="min-h-screen animate-page-entry bg-white text-stone-900 selection:bg-[#d0f4bd] selection:text-[#0b2d22]">
+    <main className="min-h-screen bg-white text-stone-900 selection:bg-[#d0f4bd] selection:text-[#0b2d22]">
       
       {/* 1. Clean White Header Navbar */}
       <Navbar
@@ -157,8 +172,18 @@ function MainContent() {
         onClose={() => setSearchModalOpen(false)}
       />
 
+      <StickyConversionBar
+        onOpenBooking={() => handleOpenBooking()}
+        onOpenQuiz={handleScrollToQuiz}
+      />
+
+      <ExitIntentModal
+        isOpen={exitIntentOpen}
+        onClose={() => setExitIntentOpen(false)}
+        onOpenBooking={() => handleOpenBooking()}
+      />
+
     </main>
-    </ScrollObserver>
   );
 }
 

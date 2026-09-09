@@ -2,39 +2,27 @@ import { Testimonial } from '@/types';
 
 export const testimonials: Testimonial[] = [
   {
+    id: '1',
+    name: 'David',
+    role: '1-on-1 Student',
+    location: 'Verified Student',
+    avatar: 'D',
+    rating: 5,
+    quote: 'Vergüenza al ordenar en restaurantes y sonreír por no entender. Ahora tengo seguridad total al responder y mantener conversaciones.',
+    before: 'Vergüenza al ordenar en restaurantes y sonreír por no entender',
+    after: 'Seguridad total al responder y mantener conversaciones',
+    tag: '1-on-1 Student'
+  },
+  {
     id: '2',
-    name: 'Elena Rostova',
-    role: 'Product Designer',
-    location: 'Lisbon, Portugal',
-    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80',
-    rating: 5,
-    quote: "Nick taught me that I don't need fancy Shakespearean words to sound professional. Speaking with simple, punchy structures got me hired by a remote UK startup!",
-    before: 'Hesitating and over-apologizing for my accent',
-    after: 'Passed 4 rounds of English interviews and secured job',
-    tag: '1-on-1 Coaching'
-  },
-  {
-    id: '3',
-    name: 'Carlos Mendoza',
-    role: 'Financial Analyst',
-    location: 'Mexico City, Mexico',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
-    rating: 5,
-    quote: "The best part is how practical the phrases are. No grammar tables—just real phrases like 'let's make sure we're on the same page' that I use in client emails and Zoom calls every day.",
-    before: 'Scared of small talk before meetings started',
-    after: 'Effortlessly chatting about weekends and news',
-    tag: 'Masterclass Vault'
-  },
-  {
-    id: '4',
     name: 'Javier',
     role: 'Conversation Practice Student',
     location: 'Verified Student',
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80',
+    avatar: 'J',
     rating: 5,
     quote: "I feel comfortable practicing English with Teacher Nick and he corrects my mistakes. I'm gaining confidence in English speaking.",
-    before: 'Hesitating and afraid of making mistakes when speaking',
-    after: 'Gaining confidence and speaking comfortably with Coach Nick',
+    before: 'Inseguridad y miedo a cometer errores al hablar inglés',
+    after: 'Comodidad practicando con Nick, corrigiendo errores y ganando confianza',
     tag: 'Conversation Practice'
   }
 ];
