@@ -195,17 +195,17 @@ export const PracticeDrill: React.FC = () => {
     <section id="drills" className="py-20 sm:py-28 relative bg-[#fcfcfb] border-b border-stone-200/70 overflow-hidden">
       
       {/* Subtle background glow */}
-      <div className="absolute top-1/2 -left-20 w-80 h-80 bg-[#62c110]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 -left-20 w-80 h-80 bg-[#48529e]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-10 sm:mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#edfbe6] border border-[#b2e896] text-[#07221a] text-xs font-black uppercase tracking-wider shadow-2xs">
-            <Headphones className="w-3.5 h-3.5 text-[#62c110]" />
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#e4ebf9] border border-[#c4d4f7] text-[#48529e] text-xs font-black uppercase tracking-wider shadow-2xs">
+            <Headphones className="w-3.5 h-3.5 text-[#48529e]" />
             <span>{t.tag}</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#07221a] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#18181b] tracking-tight">
             {t.title}
           </h2>
           <p className="text-sm sm:text-base text-stone-600 max-w-xl mx-auto">
@@ -221,14 +221,14 @@ export const PracticeDrill: React.FC = () => {
               onClick={() => setActiveCategory(cat)}
               className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer ${
                 activeCategory === cat
-                  ? 'bg-[#07221a] text-white shadow-xs scale-105'
-                  : 'bg-white text-stone-600 hover:text-[#07221a] hover:bg-stone-50 border border-stone-200'
+                  ? 'bg-[#48529e] text-white shadow-xs scale-105'
+                  : 'bg-white text-stone-600 hover:text-[#48529e] hover:bg-stone-50 border border-stone-200'
               }`}
             >
-              {cat === 'Saved' && <Bookmark className="w-3.5 h-3.5 text-[#62c110] fill-current" />}
+              {cat === 'Saved' && <Bookmark className="w-3.5 h-3.5 text-[#f15555] fill-current" />}
               <span>{cat}</span>
               {cat === 'Saved' && bookmarkedIds.length > 0 && (
-                <span className="bg-[#62c110] text-[#07221a] text-[10px] px-1.5 py-0.2 rounded-full font-black">
+                <span className="bg-[#f15555] text-white text-[10px] px-1.5 py-0.2 rounded-full font-black">
                   {bookmarkedIds.length}
                 </span>
               )}
@@ -255,13 +255,13 @@ export const PracticeDrill: React.FC = () => {
                 }}
                 className={`px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap transition-all flex items-center gap-2 shrink-0 cursor-pointer ${
                   selectedDrillId === drill.id
-                    ? 'bg-[#07221a] text-white shadow-md'
-                    : 'bg-white text-stone-700 hover:text-[#07221a] hover:bg-stone-50 border border-stone-200'
+                    ? 'bg-[#48529e] text-white shadow-md'
+                    : 'bg-white text-stone-700 hover:text-[#48529e] hover:bg-stone-50 border border-stone-200'
                 }`}
               >
                 <span>{drill.title}</span>
                 <span className={`text-[10px] px-2 py-0.5 rounded-full font-black ${
-                  selectedDrillId === drill.id ? 'bg-[#62c110] text-[#07221a]' : 'bg-stone-100 text-stone-600'
+                  selectedDrillId === drill.id ? 'bg-[#f15555] text-white' : 'bg-stone-100 text-stone-600'
                 }`}>
                   {drill.difficulty}
                 </span>
@@ -278,7 +278,7 @@ export const PracticeDrill: React.FC = () => {
             
             <div className="space-y-4">
               <div className="flex flex-wrap items-center justify-between gap-2">
-                <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#edfbe6] text-[#07221a] border border-[#b2e896]">
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#e4ebf9] text-[#48529e] border border-[#c2d4f8]">
                   {t.scenarioLabel}: {activeDrill.category}
                 </span>
                 
@@ -286,38 +286,38 @@ export const PracticeDrill: React.FC = () => {
                   onClick={() => toggleBookmark(activeDrill.id)}
                   className={`p-2 rounded-full border text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer ${
                     bookmarkedIds.includes(activeDrill.id)
-                      ? 'bg-[#edfbe6] text-[#07221a] border-[#62c110]'
+                      ? 'bg-[#e4ebf9] text-[#48529e] border-[#c2d4f8]'
                       : 'bg-stone-50 text-stone-500 border-stone-200 hover:text-stone-900'
                   }`}
                   title="Bookmark phrase"
                 >
-                  <Bookmark className={`w-3.5 h-3.5 ${bookmarkedIds.includes(activeDrill.id) ? 'fill-[#07221a]' : ''}`} />
+                  <Bookmark className={`w-3.5 h-3.5 ${bookmarkedIds.includes(activeDrill.id) ? 'fill-[#48529e]' : ''}`} />
                   <span>{bookmarkedIds.includes(activeDrill.id) ? (language === 'es' ? 'Guardado' : 'Saved') : (language === 'es' ? 'Guardar' : 'Save')}</span>
                 </button>
               </div>
 
               {/* Target Phrase Box with Animated Soundwave Indicator & Clickable Words */}
-              <div className="p-5 sm:p-6 rounded-2xl bg-[#f6fcf3] border border-[#c4eeb0] space-y-3 relative overflow-hidden">
+              <div className="p-5 sm:p-6 rounded-2xl bg-[#f4f7fd] border border-[#c2d4f8] space-y-3 relative overflow-hidden">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] uppercase tracking-wider font-black text-[#07221a] flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#62c110]" />
+                  <span className="text-[11px] uppercase tracking-wider font-black text-[#48529e] flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#f15555]" />
                     {t.phraseLabel}
                   </span>
                   
                   {/* Live Soundwave Bars */}
                   {(isPlaying || isRecording) && (
                     <div className="flex items-center gap-1 h-6">
-                      <span className="w-1 bg-[#62c110] rounded-full animate-soundwave-1" />
-                      <span className="w-1 bg-[#62c110] rounded-full animate-soundwave-2" />
-                      <span className="w-1 bg-[#62c110] rounded-full animate-soundwave-3" />
-                      <span className="w-1 bg-[#62c110] rounded-full animate-soundwave-4" />
-                      <span className="w-1 bg-[#62c110] rounded-full animate-soundwave-5" />
+                      <span className="w-1 bg-[#f15555] rounded-full animate-soundwave-1" />
+                      <span className="w-1 bg-[#f15555] rounded-full animate-soundwave-2" />
+                      <span className="w-1 bg-[#f15555] rounded-full animate-soundwave-3" />
+                      <span className="w-1 bg-[#f15555] rounded-full animate-soundwave-4" />
+                      <span className="w-1 bg-[#f15555] rounded-full animate-soundwave-5" />
                     </div>
                   )}
                 </div>
 
                 {/* Phrase with interactive clickable words */}
-                <div className="text-lg sm:text-2xl font-black text-[#07221a] leading-snug flex flex-wrap gap-x-2 gap-y-1">
+                <div className="text-lg sm:text-2xl font-black text-[#48529e] leading-snug flex flex-wrap gap-x-2 gap-y-1">
                   <span>&ldquo;</span>
                   {wordsList.map((word, wIdx) => {
                     const cleanWord = word.replace(/[^a-zA-Z0-9']/g, '');
@@ -325,8 +325,8 @@ export const PracticeDrill: React.FC = () => {
                       <span
                         key={wIdx}
                         onClick={() => handleSpeakSingleWord(cleanWord)}
-                        className={`cursor-pointer hover:text-[#62c110] hover:underline decoration-[#62c110] decoration-2 transition-all rounded px-0.5 ${
-                          highlightedWord === cleanWord ? 'bg-[#62c110]/30 text-[#07221a]' : ''
+                        className={`cursor-pointer hover:text-[#f15555] hover:underline decoration-[#f15555] decoration-2 transition-all rounded px-0.5 ${
+                          highlightedWord === cleanWord ? 'bg-[#f15555]/20 text-[#48529e]' : ''
                         }`}
                         title="Click to hear this word isolated"
                       >
@@ -337,7 +337,7 @@ export const PracticeDrill: React.FC = () => {
                   <span>&rdquo;</span>
                 </div>
 
-                <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[#c4eeb0]/60">
+                <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[#c2d4f8]/60">
                   <p className="text-xs font-mono text-stone-600 font-medium">
                     IPA: {activeDrill.phonetic}
                   </p>
@@ -348,9 +348,9 @@ export const PracticeDrill: React.FC = () => {
                       setIsSlowMode(nextSlow);
                       handleSpeak(activeDrill.phrase, nextSlow ? 0.75 : 1.0);
                     }}
-                    className="text-[11px] font-bold text-[#07221a] hover:text-[#62c110] flex items-center gap-1 cursor-pointer transition-colors bg-white px-2.5 py-1 rounded-lg border border-[#c4eeb0]"
+                    className="text-[11px] font-bold text-[#48529e] hover:text-[#f15555] flex items-center gap-1 cursor-pointer transition-colors bg-white px-2.5 py-1 rounded-lg border border-[#c2d4f8]"
                   >
-                    <Volume1 className="w-3.5 h-3.5 text-[#62c110]" />
+                    <Volume1 className="w-3.5 h-3.5 text-[#f15555]" />
                     <span>{isSlowMode ? 'Slow 0.75x Active' : 'Slow Audio Breakdown (0.75x)'}</span>
                   </button>
                 </div>
@@ -374,16 +374,16 @@ export const PracticeDrill: React.FC = () => {
                 {/* Play Button */}
                 <button
                   onClick={() => handleSpeak(activeDrill.phrase)}
-                  className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-[#07221a] hover:bg-[#164c3c] text-white font-bold text-xs sm:text-sm shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer active:scale-95"
+                  className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-[#f15555] hover:bg-[#d01f1f] text-white font-bold text-xs sm:text-sm shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer active:scale-95"
                 >
                   {isPlaying ? (
                     <>
-                      <Pause className="w-4 h-4 text-[#62c110]" />
+                      <Pause className="w-4 h-4 text-white" />
                       <span>{t.pauseAudio}</span>
                     </>
                   ) : (
                     <>
-                      <Volume2 className="w-4 h-4 text-[#62c110]" />
+                      <Volume2 className="w-4 h-4 text-white" />
                       <span>{t.playNative}</span>
                     </>
                   )}
@@ -399,7 +399,7 @@ export const PracticeDrill: React.FC = () => {
                         onClick={() => setPlaybackSpeed(spd)}
                         className={`px-2.5 py-1 rounded-full font-bold transition-colors cursor-pointer text-xs ${
                           playbackSpeed === spd
-                            ? 'bg-[#07221a] text-white shadow-2xs'
+                            ? 'bg-[#48529e] text-white shadow-2xs'
                             : 'text-stone-600 hover:text-stone-900'
                         }`}
                       >
@@ -414,7 +414,7 @@ export const PracticeDrill: React.FC = () => {
                     className={`flex-1 sm:flex-initial px-4 sm:px-5 py-3 rounded-full font-black text-xs flex items-center justify-center gap-2 border transition-all cursor-pointer active:scale-95 ${
                       isRecording
                         ? 'bg-rose-50 border-rose-400 text-rose-700 animate-pulse shadow-md'
-                        : 'bg-white text-stone-800 hover:bg-stone-50 border-stone-300 hover:border-[#07221a]'
+                        : 'bg-white text-stone-800 hover:bg-stone-50 border-stone-300 hover:border-[#48529e]'
                     }`}
                   >
                     {isRecording ? (
@@ -424,7 +424,7 @@ export const PracticeDrill: React.FC = () => {
                       </>
                     ) : (
                       <>
-                        <Mic className="w-4 h-4 text-[#07221a]" />
+                        <Mic className="w-4 h-4 text-[#48529e]" />
                         <span>{t.practiceMic}</span>
                       </>
                     )}
@@ -435,28 +435,28 @@ export const PracticeDrill: React.FC = () => {
 
               {/* Live Speech Recognition Feedback Meter */}
               {pronunciationScore !== null && (
-                <div className="p-4 rounded-2xl bg-[#edfbe6] border border-[#62c110] space-y-2 animate-in fade-in duration-200">
+                <div className="p-4 rounded-2xl bg-[#e4ebf9] border border-[#c2d4f8] space-y-2 animate-in fade-in duration-200">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <Award className="w-4 h-4 text-[#62c110]" />
-                      <span className="text-xs font-black text-[#07221a] uppercase tracking-wider">
+                      <Award className="w-4 h-4 text-[#f15555]" />
+                      <span className="text-xs font-black text-[#48529e] uppercase tracking-wider">
                         {language === 'es' ? 'Puntaje Acústico de Fluidez' : 'Pronunciation & Flow Score'}
                       </span>
                     </div>
-                    <span className="text-sm font-black text-[#07221a] bg-white px-2.5 py-0.5 rounded-full border border-[#c4eeb0]">
+                    <span className="text-sm font-black text-[#48529e] bg-white px-2.5 py-0.5 rounded-full border border-[#c2d4f8]">
                       {pronunciationScore}% {language === 'es' ? 'Precisión' : 'Match'}
                     </span>
                   </div>
 
                   {/* Progress Bar */}
-                  <div className="w-full bg-[#c4eeb0] h-2 rounded-full overflow-hidden">
+                  <div className="w-full bg-[#c2d4f8] h-2 rounded-full overflow-hidden">
                     <div
-                      className="bg-[#62c110] h-full rounded-full transition-all duration-500"
+                      className="bg-[#f15555] h-full rounded-full transition-all duration-500"
                       style={{ width: `${pronunciationScore}%` }}
                     />
                   </div>
 
-                  <p className="text-xs font-medium text-[#07221a] leading-relaxed">
+                  <p className="text-xs font-medium text-[#48529e] leading-relaxed">
                     {recordedFeedback}
                   </p>
                 </div>
@@ -470,8 +470,8 @@ export const PracticeDrill: React.FC = () => {
             
             {/* Why It Works */}
             <div className="p-5 sm:p-6 rounded-3xl bg-white border border-stone-200/90 space-y-2 shadow-2xs">
-              <div className="flex items-center gap-2 text-[#07221a] text-xs font-black uppercase tracking-wider">
-                <Lightbulb className="w-4 h-4 text-[#62c110]" />
+              <div className="flex items-center gap-2 text-[#48529e] text-xs font-black uppercase tracking-wider">
+                <Lightbulb className="w-4 h-4 text-[#f15555]" />
                 <span>{language === 'es' ? 'Por Qué Funciona Tan Bien' : 'Why Native Speakers Use This'}</span>
               </div>
               <p className="text-xs sm:text-sm text-stone-700 leading-relaxed font-medium">
@@ -491,12 +491,12 @@ export const PracticeDrill: React.FC = () => {
             </div>
 
             {/* Bonus Natural Variation */}
-            <div className="p-5 sm:p-6 rounded-3xl bg-[#edfbe6] border border-[#b2e896] space-y-2 shadow-2xs">
-              <div className="flex items-center gap-2 text-[#07221a] text-xs font-black uppercase tracking-wider">
-                <Check className="w-4 h-4 text-[#62c110]" />
+            <div className="p-5 sm:p-6 rounded-3xl bg-[#e4ebf9] border border-[#c2d4f8] space-y-2 shadow-2xs">
+              <div className="flex items-center gap-2 text-[#48529e] text-xs font-black uppercase tracking-wider">
+                <Check className="w-4 h-4 text-[#f15555]" />
                 <span>{language === 'es' ? 'Variación Natural Recomendada' : 'Bonus Casual Alternative'}</span>
               </div>
-              <p className="text-xs sm:text-sm font-black text-[#07221a]">
+              <p className="text-xs sm:text-sm font-black text-[#48529e]">
                 {activeDrill.betterAlternative}
               </p>
             </div>

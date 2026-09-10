@@ -6,17 +6,17 @@
 }
 
 :root {
-  --background: #fdfdfc;
+  --background: #fcfdfe;
   --foreground: #18181b;
-  --brand-forest: #07221a;
-  --brand-forest-mid: #0d382c;
-  --brand-forest-light: #164c3c;
-  --brand-emerald: #10b981;
-  --brand-lime: #62c110;
-  --brand-lime-hover: #52a60d;
-  --brand-lime-light: #eaf8dd;
-  --brand-glow: rgba(98, 193, 16, 0.35);
-  --brand-gold: #f59e0b;
+  --brand-forest: #48529e;
+  --brand-forest-mid: #373f7a;
+  --brand-forest-light: #5964b3;
+  --brand-emerald: #48529e;
+  --brand-lime: #f15555;
+  --brand-lime-hover: #e04444;
+  --brand-lime-light: #e4ebf9;
+  --brand-glow: rgba(72, 82, 158, 0.35);
+  --brand-gold: #f15555;
 }
 
 html,
@@ -92,10 +92,10 @@ html.lenis, html.lenis body {
   -webkit-overflow-scrolling: touch;
 }
 
-/* Premium Lime Green Selection Highlight */
+/* Premium Selection Highlight */
 ::selection {
-  background-color: #d7f7c2;
-  color: #07221a;
+  background-color: #e4ebf9;
+  color: #48529e;
 }
 
 /* Custom Pulsing Soundwave Bars */
@@ -358,5 +358,5 @@ section {
   transition: background-color 0.2s ease;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #164c3c;
+  background: #48529e;
 }

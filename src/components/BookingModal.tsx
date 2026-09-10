@@ -251,18 +251,18 @@ END:VCALENDAR`;
         {step === 'format' && (
           <div className="space-y-6">
             <div className="space-y-2 text-center sm:text-left">
-              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#edfbe6] text-[#07221a] text-xs font-black uppercase tracking-wider border border-[#b2e896]">
-                <Sparkles className="w-3.5 h-3.5 text-[#62c110]" />
+              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#e4ebf9] text-[#48529e] text-xs font-black uppercase tracking-wider border border-[#c2d4f8]">
+                <Sparkles className="w-3.5 h-3.5 text-[#f15555]" />
                 <span>{language === 'es' ? 'Paso 1: Selecciona el Formato' : 'Step 1: Choose Class Format'}</span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-black text-[#07221a] tracking-tight">
+              <h3 className="text-2xl sm:text-3xl font-black text-[#48529e] tracking-tight">
                 {language === 'es' ? '¿Cómo te gustaría aprender?' : 'How would you like to learn?'}
               </h3>
               <p className="text-xs sm:text-sm text-stone-600 font-normal leading-relaxed">
                 {prefilledNotes ? (
                   <span>
                     {language === 'es' ? 'Programa seleccionado: ' : 'Selected Focus: '}
-                    <strong className="text-[#07221a] font-bold">{prefilledNotes}</strong>. {language === 'es' ? 'Elige tu modalidad preferida a continuación:' : 'Choose your preferred class format below:'}
+                    <strong className="text-[#48529e] font-bold">{prefilledNotes}</strong>. {language === 'es' ? 'Elige tu modalidad preferida a continuación:' : 'Choose your preferred class format below:'}
                   </span>
                 ) : (
                   <span>
@@ -281,51 +281,51 @@ END:VCALENDAR`;
               <button
                 type="button"
                 onClick={() => handleSelectFormat(language === 'es' ? 'Individual (1 a 1)' : 'Individual (1-on-1)')}
-                className="group p-5 sm:p-6 rounded-3xl bg-[#07221a] hover:bg-[#0c3629] text-white border-2 border-[#164c3c] hover:border-[#62c110] text-left transition-all duration-300 shadow-xl hover:shadow-2xl flex flex-col justify-between cursor-pointer relative overflow-hidden active:scale-[0.98] min-h-[260px]"
+                className="group p-5 sm:p-6 rounded-3xl bg-[#48529e] hover:bg-[#373f7a] text-white border-2 border-[#373f7a] hover:border-[#f15555] text-left transition-all duration-300 shadow-xl hover:shadow-2xl flex flex-col justify-between cursor-pointer relative overflow-hidden active:scale-[0.98] min-h-[260px]"
               >
-                <div className="absolute top-0 right-0 w-28 h-28 bg-[#62c110]/10 rounded-full blur-xl pointer-events-none" />
+                <div className="absolute top-0 right-0 w-28 h-28 bg-[#f15555]/10 rounded-full blur-xl pointer-events-none" />
 
                 <div className="space-y-3 relative z-10">
                   <div className="flex items-center justify-between">
-                    <div className="w-10 h-10 rounded-2xl bg-[#164c3c] text-[#62c110] flex items-center justify-center font-black shadow-inner">
+                    <div className="w-10 h-10 rounded-2xl bg-[#373f7a] text-[#f15555] flex items-center justify-center font-black shadow-inner">
                       <User className="w-5 h-5" />
                     </div>
-                    <span className="text-[10px] font-black uppercase px-2.5 py-1 rounded-full bg-[#62c110] text-[#07221a]">
+                    <span className="text-[10px] font-black uppercase px-2.5 py-1 rounded-full bg-[#f15555] text-white">
                       {language === 'es' ? '100% Personalizado' : '100% Private'}
                     </span>
                   </div>
 
                   <div>
-                    <h4 className="text-xl sm:text-2xl font-black text-white group-hover:text-[#62c110] transition-colors leading-tight">
+                    <h4 className="text-xl sm:text-2xl font-black text-white group-hover:text-[#e4ebf9] transition-colors leading-tight">
                       {language === 'es' ? 'Individual (1 a 1)' : 'Individual (1-on-1)'}
                     </h4>
-                    <p className="text-xs text-stone-300 font-medium mt-1 leading-relaxed">
+                    <p className="text-xs text-stone-200 font-medium mt-1 leading-relaxed">
                       {language === 'es'
                         ? 'Atención privada enfocada al 100% en tu ritmo, pronunciación y objetivos profesionales.'
                         : '100% dedicated private coaching tailored to your exact pace, accent, and career goals.'}
                     </p>
                   </div>
 
-                  <ul className="space-y-1.5 text-xs text-stone-200 font-medium pt-2 border-t border-[#1a5a47]">
+                  <ul className="space-y-1.5 text-xs text-stone-100 font-medium pt-2 border-t border-[#606cb7]">
                     <li className="flex items-center gap-2">
-                      <Check className="w-3.5 h-3.5 text-[#62c110] shrink-0" />
+                      <Check className="w-3.5 h-3.5 text-[#f15555] shrink-0" />
                       <span>{language === 'es' ? 'Clases en vivo 1 a 1 con Nick' : '1-on-1 live session with Nick'}</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <Check className="w-3.5 h-3.5 text-[#62c110] shrink-0" />
+                      <Check className="w-3.5 h-3.5 text-[#f15555] shrink-0" />
                       <span>{language === 'es' ? '5 días de práctica por WhatsApp' : '5 days WhatsApp practice'}</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <Check className="w-3.5 h-3.5 text-[#62c110] shrink-0" />
+                      <Check className="w-3.5 h-3.5 text-[#f15555] shrink-0" />
                       <span>{language === 'es' ? 'Plan y horarios flexibles' : 'Custom schedule & feedback'}</span>
                     </li>
                   </ul>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-[#1a5a47] flex items-center justify-between text-xs font-black text-[#62c110] uppercase tracking-wider relative z-10">
+                <div className="mt-4 pt-3 border-t border-[#606cb7] flex items-center justify-between text-xs font-black text-[#e4ebf9] uppercase tracking-wider relative z-10">
                   <span>{language === 'es' ? 'Elegir Individual →' : 'Select Individual →'}</span>
-                  <div className="w-7 h-7 rounded-full bg-[#164c3c] group-hover:bg-[#62c110] flex items-center justify-center transition-colors">
-                    <ArrowRight className="w-3.5 h-3.5 text-[#62c110] group-hover:text-[#07221a]" />
+                  <div className="w-7 h-7 rounded-full bg-[#373f7a] group-hover:bg-[#f15555] flex items-center justify-center transition-colors">
+                    <ArrowRight className="w-3.5 h-3.5 text-[#e4ebf9] group-hover:text-white" />
                   </div>
                 </div>
               </button>
@@ -334,51 +334,51 @@ END:VCALENDAR`;
               <button
                 type="button"
                 onClick={() => handleSelectFormat(language === 'es' ? 'Clases en Grupo' : 'Group Class')}
-                className="group p-5 sm:p-6 rounded-3xl bg-[#07221a] hover:bg-[#0c3629] text-white border-2 border-[#164c3c] hover:border-[#62c110] text-left transition-all duration-300 shadow-xl hover:shadow-2xl flex flex-col justify-between cursor-pointer relative overflow-hidden active:scale-[0.98] min-h-[260px]"
+                className="group p-5 sm:p-6 rounded-3xl bg-[#48529e] hover:bg-[#373f7a] text-white border-2 border-[#373f7a] hover:border-[#f15555] text-left transition-all duration-300 shadow-xl hover:shadow-2xl flex flex-col justify-between cursor-pointer relative overflow-hidden active:scale-[0.98] min-h-[260px]"
               >
-                <div className="absolute top-0 right-0 w-28 h-28 bg-[#62c110]/10 rounded-full blur-xl pointer-events-none" />
+                <div className="absolute top-0 right-0 w-28 h-28 bg-[#f15555]/10 rounded-full blur-xl pointer-events-none" />
 
                 <div className="space-y-3 relative z-10">
                   <div className="flex items-center justify-between">
-                    <div className="w-10 h-10 rounded-2xl bg-[#164c3c] text-[#62c110] flex items-center justify-center font-black shadow-inner">
+                    <div className="w-10 h-10 rounded-2xl bg-[#373f7a] text-[#f15555] flex items-center justify-center font-black shadow-inner">
                       <Users className="w-5 h-5" />
                     </div>
-                    <span className="text-[10px] font-black uppercase px-2.5 py-1 rounded-full bg-[#edfbe6] text-[#07221a]">
+                    <span className="text-[10px] font-black uppercase px-2.5 py-1 rounded-full bg-[#e4ebf9] text-[#48529e]">
                       {language === 'es' ? 'Práctica Grupal' : 'Group Practice'}
                     </span>
                   </div>
 
                   <div>
-                    <h4 className="text-xl sm:text-2xl font-black text-white group-hover:text-[#62c110] transition-colors leading-tight">
+                    <h4 className="text-xl sm:text-2xl font-black text-white group-hover:text-[#e4ebf9] transition-colors leading-tight">
                       {language === 'es' ? 'Clases en Grupo' : 'Group (Group Class)'}
                     </h4>
-                    <p className="text-xs text-stone-300 font-medium mt-1 leading-relaxed">
+                    <p className="text-xs text-stone-200 font-medium mt-1 leading-relaxed">
                       {language === 'es'
                         ? 'Grupos reducidos e interactivos (máx. 4-6 alumnos) para practicar conversación en vivo.'
                         : 'Small interactive cohorts (max 4-6 students) designed for dynamic roleplay & practice.'}
                     </p>
                   </div>
 
-                  <ul className="space-y-1.5 text-xs text-stone-200 font-medium pt-2 border-t border-[#1a5a47]">
+                  <ul className="space-y-1.5 text-xs text-stone-100 font-medium pt-2 border-t border-[#606cb7]">
                     <li className="flex items-center gap-2">
-                      <Check className="w-3.5 h-3.5 text-[#62c110] shrink-0" />
+                      <Check className="w-3.5 h-3.5 text-[#f15555] shrink-0" />
                       <span>{language === 'es' ? 'Grupos reducidos (máx. 4-6 alumnos)' : 'Small cohorts (max 4-6)'}</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <Check className="w-3.5 h-3.5 text-[#62c110] shrink-0" />
+                      <Check className="w-3.5 h-3.5 text-[#f15555] shrink-0" />
                       <span>{language === 'es' ? 'Dinámicas de conversación guiada' : 'Active roleplay & drills'}</span>
                     </li>
                     <li className="flex items-center gap-2">
-                      <Check className="w-3.5 h-3.5 text-[#62c110] shrink-0" />
+                      <Check className="w-3.5 h-3.5 text-[#f15555] shrink-0" />
                       <span>{language === 'es' ? 'Ambiente cercano y motivador' : 'Supportive & interactive'}</span>
                     </li>
                   </ul>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-[#1a5a47] flex items-center justify-between text-xs font-black text-[#62c110] uppercase tracking-wider relative z-10">
+                <div className="mt-4 pt-3 border-t border-[#606cb7] flex items-center justify-between text-xs font-black text-[#e4ebf9] uppercase tracking-wider relative z-10">
                   <span>{language === 'es' ? 'Elegir Grupo →' : 'Select Group →'}</span>
-                  <div className="w-7 h-7 rounded-full bg-[#164c3c] group-hover:bg-[#62c110] flex items-center justify-center transition-colors">
-                    <ArrowRight className="w-3.5 h-3.5 text-[#62c110] group-hover:text-[#07221a]" />
+                  <div className="w-7 h-7 rounded-full bg-[#373f7a] group-hover:bg-[#f15555] flex items-center justify-center transition-colors">
+                    <ArrowRight className="w-3.5 h-3.5 text-[#e4ebf9] group-hover:text-white" />
                   </div>
                 </div>
               </button>
@@ -393,15 +393,15 @@ END:VCALENDAR`;
             
             {/* Format pill header */}
             {selectedFormat && (
-              <div className="p-3 rounded-2xl bg-[#edfbe6] border border-[#b2e896] flex items-center justify-between text-xs text-[#07221a] font-bold">
+              <div className="p-3 rounded-2xl bg-[#e4ebf9] border border-[#c2d4f8] flex items-center justify-between text-xs text-[#48529e] font-bold">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#62c110]" />
+                  <span className="w-2 h-2 rounded-full bg-[#f15555]" />
                   <span>{language === 'es' ? `Modalidad: ${selectedFormat}` : `Format: ${selectedFormat}`}</span>
                 </div>
                 <button
                   type="button"
                   onClick={() => setStep('format')}
-                  className="text-[11px] underline text-[#164c3c] font-extrabold hover:text-[#07221a] cursor-pointer"
+                  className="text-[11px] underline text-[#373f7a] font-extrabold hover:text-[#48529e] cursor-pointer"
                 >
                   {language === 'es' ? 'Cambiar' : 'Change'}
                 </button>
@@ -409,11 +409,11 @@ END:VCALENDAR`;
             )}
 
             <div className="space-y-1.5">
-              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#edfbe6] text-[#07221a] text-xs font-black uppercase tracking-wider border border-[#b2e896]">
-                <Video className="w-3.5 h-3.5 text-[#62c110]" />
+              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#e4ebf9] text-[#48529e] text-xs font-black uppercase tracking-wider border border-[#c2d4f8]">
+                <Video className="w-3.5 h-3.5 text-[#f15555]" />
                 <span>{language === 'es' ? 'Paso 2: Elige Fecha y Hora' : 'Step 2: Choose Date & Time'}</span>
               </div>
-              <h3 className="text-xl sm:text-2xl font-black text-[#07221a]">
+              <h3 className="text-xl sm:text-2xl font-black text-[#48529e]">
                 {language === 'es' ? 'Agenda tu Sesión con Nick' : 'Schedule Strategy Session with Nick'}
               </h3>
               <p className="text-xs sm:text-sm text-stone-600 font-normal">
@@ -426,13 +426,13 @@ END:VCALENDAR`;
             {/* Timezone Selector */}
             <div className="space-y-1">
               <label className="text-xs font-bold text-stone-700 flex items-center gap-1">
-                <Globe className="w-3.5 h-3.5 text-[#62c110]" />
+                <Globe className="w-3.5 h-3.5 text-[#f15555]" />
                 <span>{language === 'es' ? 'Tu Zona Horaria:' : 'Your Timezone:'}</span>
               </label>
               <select
                 value={selectedTimezone}
                 onChange={(e) => setSelectedTimezone(e.target.value)}
-                className="w-full p-2.5 rounded-xl bg-stone-50 border border-stone-200 text-xs font-bold text-stone-800 focus:bg-white focus:border-[#07221a]"
+                className="w-full p-2.5 rounded-xl bg-stone-50 border border-stone-200 text-xs font-bold text-stone-800 focus:bg-white focus:border-[#48529e]"
               >
                 {timezones.map((tz) => (
                   <option key={tz} value={tz}>{tz}</option>
@@ -443,7 +443,7 @@ END:VCALENDAR`;
             {/* Interactive Day Carousel Picker */}
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-stone-700 flex items-center gap-1">
-                <CalendarIcon className="w-3.5 h-3.5 text-[#62c110]" />
+                <CalendarIcon className="w-3.5 h-3.5 text-[#f15555]" />
                 <span>{language === 'es' ? 'Selecciona un Día Disponible:' : 'Select Available Date:'}</span>
               </label>
               <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none">
@@ -454,7 +454,7 @@ END:VCALENDAR`;
                     onClick={() => setSelectedDayIndex(idx)}
                     className={`p-3 rounded-2xl flex flex-col items-center shrink-0 w-16 border transition-all cursor-pointer ${
                       selectedDayIndex === idx
-                        ? 'bg-[#07221a] text-white border-[#07221a] shadow-md scale-105'
+                        ? 'bg-[#48529e] text-white border-[#48529e] shadow-md scale-105'
                         : 'bg-stone-50 text-stone-700 border-stone-200 hover:bg-stone-100'
                     }`}
                   >
@@ -469,7 +469,7 @@ END:VCALENDAR`;
             {/* Available Time Slots */}
             <div className="space-y-2">
               <label className="text-xs font-bold text-stone-700 flex items-center gap-1">
-                <Clock className="w-3.5 h-3.5 text-[#62c110]" />
+                <Clock className="w-3.5 h-3.5 text-[#f15555]" />
                 <span>{language === 'es' ? 'Horarios Disponibles:' : 'Available Time Slots:'}</span>
               </label>
 
@@ -483,7 +483,7 @@ END:VCALENDAR`;
                       onClick={() => setSelectedTimeSlot(slot)}
                       className={`py-2 px-2.5 rounded-xl text-xs font-bold border transition-all cursor-pointer text-center ${
                         selectedTimeSlot === slot
-                          ? 'bg-[#62c110] text-[#07221a] border-[#62c110] shadow-xs'
+                          ? 'bg-[#f15555] text-white border-[#f15555] shadow-xs'
                           : 'bg-stone-50 border-stone-200 text-stone-700 hover:bg-stone-100'
                       }`}
                     >
@@ -495,9 +495,9 @@ END:VCALENDAR`;
             </div>
 
             {/* Selected Summary Pill */}
-            <div className="p-3 rounded-2xl bg-[#f6fcf3] border border-[#c4eeb0] flex items-center justify-between text-xs text-[#07221a] font-bold">
+            <div className="p-3 rounded-2xl bg-[#f4f7fd] border border-[#c2d4f8] flex items-center justify-between text-xs text-[#48529e] font-bold">
               <span>{currentSelectedDay.fullString} @ {selectedTimeSlot}</span>
-              <span className="text-[10px] uppercase bg-white px-2 py-0.5 rounded-md border border-[#c4eeb0]">Confirmed Slot</span>
+              <span className="text-[10px] uppercase bg-white px-2 py-0.5 rounded-md border border-[#c2d4f8]">Confirmed Slot</span>
             </div>
 
             <div className="flex gap-2 pt-1">
@@ -511,10 +511,10 @@ END:VCALENDAR`;
 
               <button
                 type="submit"
-                className="flex-1 py-4 rounded-full bg-[#07221a] hover:bg-[#164c3c] text-white font-black text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.02] border border-[#164c3c]"
+                className="flex-1 py-4 rounded-full bg-[#f15555] hover:bg-[#d01f1f] text-white font-black text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.02]"
               >
                 <span>{language === 'es' ? 'Continuar con Mis Datos' : 'Continue to Personal Details'}</span>
-                <ArrowRight className="w-4 h-4 text-[#62c110]" />
+                <ArrowRight className="w-4 h-4 text-white" />
               </button>
             </div>
           </form>
@@ -524,10 +524,10 @@ END:VCALENDAR`;
         {step === 'details' && (
           <form onSubmit={handleFinalBook} className="space-y-4">
             <div className="space-y-1">
-              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#edfbe6] text-[#07221a] text-xs font-black uppercase tracking-wider border border-[#b2e896]">
+              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#e4ebf9] text-[#48529e] text-xs font-black uppercase tracking-wider border border-[#c2d4f8]">
                 <span>{language === 'es' ? 'Paso 3: Datos de Contacto' : 'Step 3: Contact Info'}</span>
               </div>
-              <h3 className="text-xl sm:text-2xl font-black text-[#07221a]">
+              <h3 className="text-xl sm:text-2xl font-black text-[#48529e]">
                 {language === 'es' ? 'Detalles de tu Reserva' : 'Complete Your Booking'}
               </h3>
               <p className="text-xs text-stone-600 font-normal">
@@ -548,7 +548,7 @@ END:VCALENDAR`;
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder={language === 'es' ? 'Ej. Mateo Silva' : 'e.g. Maria Silva'}
-                    className="w-full px-3.5 py-2.5 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm focus:outline-none focus:border-[#07221a] focus:bg-white transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm focus:outline-none focus:border-[#48529e] focus:bg-white transition-colors"
                   />
                 </div>
 
@@ -562,7 +562,7 @@ END:VCALENDAR`;
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="+1 (555) 000-0000"
-                    className="w-full px-3.5 py-2.5 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm focus:outline-none focus:border-[#07221a] focus:bg-white transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm focus:outline-none focus:border-[#48529e] focus:bg-white transition-colors"
                   />
                 </div>
               </div>
@@ -577,13 +577,13 @@ END:VCALENDAR`;
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="mateo@empresa.com"
-                  className="w-full px-3.5 py-2.5 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm focus:outline-none focus:border-[#07221a] focus:bg-white transition-colors"
+                  className="w-full px-3.5 py-2.5 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm focus:outline-none focus:border-[#48529e] focus:bg-white transition-colors"
                 />
               </div>
 
               {/* Understand % vs Speak % Interactive Box */}
-              <div className="p-3.5 rounded-2xl bg-[#f7faf5] border border-[#c4eeb0] space-y-3">
-                <div className="text-[11px] font-black uppercase text-[#07221a] tracking-wider flex items-center justify-between">
+              <div className="p-3.5 rounded-2xl bg-[#f4f7fd] border border-[#c2d4f8] space-y-3">
+                <div className="text-[11px] font-black uppercase text-[#48529e] tracking-wider flex items-center justify-between">
                   <span>{language === 'es' ? 'Diagnóstico de tu Nivel Actual:' : 'Your English Fluency Ratio:'}</span>
                 </div>
 
@@ -591,7 +591,7 @@ END:VCALENDAR`;
                 <div className="space-y-1">
                   <div className="flex justify-between text-xs font-bold text-stone-800">
                     <span>{language === 'es' ? 'Entiendo de inglés:' : 'I understand of English:'}</span>
-                    <span className="text-[#164c3c] font-black">{understandPercent}%</span>
+                    <span className="text-[#373f7a] font-black">{understandPercent}%</span>
                   </div>
                   <input
                     type="range"
@@ -600,7 +600,7 @@ END:VCALENDAR`;
                     step="5"
                     value={understandPercent}
                     onChange={(e) => setUnderstandPercent(Number(e.target.value))}
-                    className="w-full h-2 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-[#62c110]"
+                    className="w-full h-2 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-[#48529e]"
                   />
                 </div>
 
@@ -608,7 +608,7 @@ END:VCALENDAR`;
                 <div className="space-y-1">
                   <div className="flex justify-between text-xs font-bold text-stone-800">
                     <span>{language === 'es' ? 'Hablo de inglés:' : 'I speak of English:'}</span>
-                    <span className="text-amber-700 font-black">{speakPercent}%</span>
+                    <span className="text-[#f15555] font-black">{speakPercent}%</span>
                   </div>
                   <input
                     type="range"
@@ -617,7 +617,7 @@ END:VCALENDAR`;
                     step="5"
                     value={speakPercent}
                     onChange={(e) => setSpeakPercent(Number(e.target.value))}
-                    className="w-full h-2 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-[#f59e0b]"
+                    className="w-full h-2 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-[#f15555]"
                   />
                 </div>
               </div>
@@ -638,7 +638,7 @@ END:VCALENDAR`;
                       key={idx}
                       type="button"
                       onClick={() => handleAddGoalChip(chip)}
-                      className="px-2.5 py-1 rounded-full bg-stone-100 hover:bg-[#edfbe6] text-stone-700 hover:text-[#07221a] border border-stone-200 text-[11px] font-bold transition-all cursor-pointer"
+                      className="px-2.5 py-1 rounded-full bg-stone-100 hover:bg-[#e4ebf9] text-stone-700 hover:text-[#48529e] border border-stone-200 text-[11px] font-bold transition-all cursor-pointer"
                     >
                       +{chip}
                     </button>
@@ -650,7 +650,7 @@ END:VCALENDAR`;
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   placeholder={language === 'es' ? 'Ej. Hablar sin traducir en mi cabeza, sentir seguridad en reuniones de trabajo y restaurantes...' : 'e.g. Speak without translating mentally, sound natural in work meetings & travel...'}
-                  className="w-full px-3.5 py-2.5 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-xs sm:text-sm focus:outline-none focus:border-[#07221a] focus:bg-white transition-colors resize-none"
+                  className="w-full px-3.5 py-2.5 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-xs sm:text-sm focus:outline-none focus:border-[#48529e] focus:bg-white transition-colors resize-none"
                 />
               </div>
             </div>
@@ -667,10 +667,10 @@ END:VCALENDAR`;
               <button
                 type="submit"
                 disabled={loading}
-                className="flex-1 py-3.5 rounded-full bg-[#07221a] hover:bg-[#164c3c] text-white font-black text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer border border-[#164c3c]"
+                className="flex-1 py-3.5 rounded-full bg-[#f15555] hover:bg-[#d01f1f] text-white font-black text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
                 <span>{loading ? (language === 'es' ? 'Confirmando...' : 'Confirming Slot...') : (language === 'es' ? 'Confirmar Sesión' : 'Confirm Session')}</span>
-                <ArrowRight className="w-4 h-4 text-[#62c110]" />
+                <ArrowRight className="w-4 h-4 text-white" />
               </button>
             </div>
           </form>
@@ -679,11 +679,11 @@ END:VCALENDAR`;
         {/* STEP 4: Confirmed Screen */}
         {step === 'confirmed' && (
           <div className="text-center space-y-4 py-2 animate-in zoom-in-95 duration-150">
-            <div className="w-14 h-14 rounded-full bg-[#edfbe6] text-[#07221a] border border-[#b2e896] flex items-center justify-center mx-auto">
-              <Check className="w-7 h-7 text-[#62c110]" />
+            <div className="w-14 h-14 rounded-full bg-[#e4ebf9] text-[#48529e] border border-[#c2d4f8] flex items-center justify-center mx-auto">
+              <Check className="w-7 h-7 text-[#f15555]" />
             </div>
             <div className="space-y-1">
-              <h3 className="text-2xl font-black text-[#07221a]">
+              <h3 className="text-2xl font-black text-[#48529e]">
                 {language === 'es' ? '¡Sesión Confirmada con Éxito!' : 'Session Confirmed!'}
               </h3>
               <p className="text-xs sm:text-sm text-stone-700 font-bold">
@@ -700,14 +700,14 @@ END:VCALENDAR`;
             <div className="p-3.5 rounded-2xl bg-stone-50 border border-stone-200 flex items-center justify-between gap-2 text-left">
               <div className="truncate">
                 <span className="text-[10px] uppercase font-bold text-stone-400 block">Zoom Meeting Room</span>
-                <span className="text-xs font-mono font-bold text-[#07221a] truncate">{zoomLink}</span>
+                <span className="text-xs font-mono font-bold text-[#48529e] truncate">{zoomLink}</span>
               </div>
               <button
                 type="button"
                 onClick={handleCopyZoom}
-                className="px-3 py-1.5 rounded-xl bg-[#07221a] text-white text-xs font-bold flex items-center gap-1 shrink-0 cursor-pointer"
+                className="px-3 py-1.5 rounded-xl bg-[#48529e] text-white text-xs font-bold flex items-center gap-1 shrink-0 cursor-pointer"
               >
-                <Copy className="w-3 h-3 text-[#62c110]" />
+                <Copy className="w-3 h-3 text-[#f15555]" />
                 <span>{copiedLink ? 'Copied!' : 'Copy'}</span>
               </button>
             </div>
@@ -730,9 +730,9 @@ END:VCALENDAR`;
               <button
                 type="button"
                 onClick={handleDownloadIcs}
-                className="flex-1 py-3 rounded-2xl bg-[#edfbe6] hover:bg-[#dcf5cc] text-[#07221a] font-black text-xs border border-[#b2e896] flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                className="flex-1 py-3 rounded-2xl bg-[#e4ebf9] hover:bg-[#c2d4f8] text-[#48529e] font-black text-xs border border-[#c2d4f8] flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
               >
-                <Download className="w-3.5 h-3.5 text-[#62c110]" />
+                <Download className="w-3.5 h-3.5 text-[#f15555]" />
                 <span>{language === 'es' ? 'Guardar en mi Calendario (.ICS)' : 'Add to Calendar (.ICS)'}</span>
               </button>
             </div>
@@ -742,7 +742,7 @@ END:VCALENDAR`;
                 setStep('format');
                 onClose();
               }}
-              className="w-full py-3.5 rounded-full bg-[#07221a] hover:bg-[#164c3c] text-white font-black text-sm shadow-md transition-all cursor-pointer border border-[#164c3c]"
+              className="w-full py-3.5 rounded-full bg-[#48529e] hover:bg-[#373f7a] text-white font-black text-sm shadow-md transition-all cursor-pointer border border-[#373f7a]"
             >
               {language === 'es' ? 'Listo, Volver a la Web' : 'Done, Return to Portal'}
             </button>

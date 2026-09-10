@@ -45,12 +45,12 @@ export const Testimonials: React.FC = () => {
                 </p>
 
                 {/* Before / After Tag */}
-                <div className="p-3 rounded-2xl bg-[#F9F9F7] border border-stone-100 text-xs space-y-1">
+                <div className="p-3 rounded-2xl bg-[#f4f7fd] border border-[#e4ebf9] text-xs space-y-1">
                   <div className="text-stone-500">
                     <strong className="text-stone-800">Before:</strong> {item.before}
                   </div>
-                  <div className="text-emerald-800 font-semibold flex items-center gap-1">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                  <div className="text-[#373f7a] font-semibold flex items-center gap-1">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#f15555]" />
                     <span><strong>Now:</strong> {item.after}</span>
                   </div>
                 </div>
@@ -63,7 +63,7 @@ export const Testimonials: React.FC = () => {
                   <p className="text-[11px] text-stone-500">{item.role}</p>
                 </div>
                 <div className="text-right">
-                  <span className="text-[10px] font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
+                  <span className="text-[10px] font-semibold text-[#48529e] bg-[#e4ebf9] px-2 py-0.5 rounded-md border border-[#c2d4f8]">
                     Verified
                   </span>
                   <p className="text-[10px] text-stone-400 mt-0.5">{item.timeframe}</p>

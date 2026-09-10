@@ -15,7 +15,7 @@ export const AboutNick: React.FC<AboutNickProps> = ({ onOpenBooking }) => {
     <section id="about" className="py-20 sm:py-28 bg-[#fdfdfc] border-b border-stone-200/70 overflow-hidden relative">
       
       {/* Ambient background glow */}
-      <div className="absolute top-1/2 -left-20 w-96 h-96 bg-[#62c110]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 -left-20 w-96 h-96 bg-[#48529e]/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
@@ -24,7 +24,7 @@ export const AboutNick: React.FC<AboutNickProps> = ({ onOpenBooking }) => {
           <div className="lg:col-span-5 relative flex justify-center">
             <div className="w-full max-w-[380px] rounded-3xl bg-white border border-stone-200/90 p-5 shadow-[0_12px_40px_rgba(0,0,0,0.06)] space-y-4 relative group">
               
-              <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-[#07221a] border border-stone-200 shadow-inner">
+              <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-[#48529e] border border-stone-200 shadow-inner">
                 <img
                   src="/nick.png"
                   alt="Teacher Nick"
@@ -32,8 +32,8 @@ export const AboutNick: React.FC<AboutNickProps> = ({ onOpenBooking }) => {
                 />
                 
                 {/* Floating pill badge */}
-                <div className="absolute top-3 left-3 bg-[#07221a]/90 backdrop-blur-md border border-[#164c3c] text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-sm">
-                  <Globe className="w-3.5 h-3.5 text-[#62c110]" />
+                <div className="absolute top-3 left-3 bg-[#48529e]/90 backdrop-blur-md border border-white/20 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-sm">
+                  <Globe className="w-3.5 h-3.5 text-[#f15555]" />
                   <span>5 Fluent Languages</span>
                 </div>
               </div>
@@ -43,7 +43,7 @@ export const AboutNick: React.FC<AboutNickProps> = ({ onOpenBooking }) => {
                   <h3 className="font-black text-xl sm:text-2xl text-stone-900 leading-tight">
                     Teacher Nick
                   </h3>
-                  <span className="text-[11px] font-bold text-[#164c3c] bg-[#edfbe6] px-2.5 py-0.5 rounded-full border border-[#c4eeb0]">
+                  <span className="text-[11px] font-bold text-[#48529e] bg-[#e4ebf9] px-2.5 py-0.5 rounded-full border border-[#c4d4f7]">
                     Accent & Fluency Coach
                   </span>
                 </div>
@@ -57,21 +57,21 @@ export const AboutNick: React.FC<AboutNickProps> = ({ onOpenBooking }) => {
 
           {/* Right: Nick's Story & Philosophy */}
           <div className="lg:col-span-7 space-y-6 text-stone-800">
-            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#edfbe6] border border-[#b2e896] text-[#07221a] text-xs font-black uppercase tracking-wider">
-              <Award className="w-3.5 h-3.5 text-[#62c110]" />
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#e4ebf9] border border-[#c4d4f7] text-[#48529e] text-xs font-black uppercase tracking-wider">
+              <Award className="w-3.5 h-3.5 text-[#48529e]" />
               <span>{language === 'es' ? 'Conoce a tu Profesor' : 'Meet Your Teacher'}</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#07221a] tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-stone-900 tracking-tight leading-tight">
               {language === 'es' ? (
                 <>
                   Fluidez Real. Sin memorizar <br />
-                  <span className="font-serif italic font-normal text-[#164c3c]">tablas de gramática aburridas.</span>
+                  <span className="font-serif italic font-normal text-[#48529e]">tablas de gramática aburridas.</span>
                 </>
               ) : (
                 <>
                   Real English Fluency. <br />
-                  <span className="font-serif italic font-normal text-[#164c3c]">Without the textbook grammar anxiety.</span>
+                  <span className="font-serif italic font-normal text-[#48529e]">Without the textbook grammar anxiety.</span>
                 </>
               )}
             </h2>
@@ -91,9 +91,9 @@ export const AboutNick: React.FC<AboutNickProps> = ({ onOpenBooking }) => {
 
             {/* 3 Core Pillars */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2">
-              <div className="p-4 rounded-2xl bg-white border border-stone-200/90 space-y-1 shadow-2xs hover:border-[#62c110] transition-colors">
-                <div className="text-xs font-black text-[#07221a] uppercase tracking-wider flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#62c110]" />
+              <div className="p-4 rounded-2xl bg-white border border-stone-200/90 space-y-1 shadow-2xs hover:border-[#48529e] transition-colors">
+                <div className="text-xs font-black text-stone-900 uppercase tracking-wider flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#f15555]" />
                   <span>{language === 'es' ? '1. Inglés desde 0' : '1. English from 0'}</span>
                 </div>
                 <p className="text-xs text-stone-500 font-medium">
@@ -101,9 +101,9 @@ export const AboutNick: React.FC<AboutNickProps> = ({ onOpenBooking }) => {
                 </p>
               </div>
 
-              <div className="p-4 rounded-2xl bg-white border border-stone-200/90 space-y-1 shadow-2xs hover:border-[#62c110] transition-colors">
-                <div className="text-xs font-black text-[#07221a] uppercase tracking-wider flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#62c110]" />
+              <div className="p-4 rounded-2xl bg-white border border-stone-200/90 space-y-1 shadow-2xs hover:border-[#48529e] transition-colors">
+                <div className="text-xs font-black text-stone-900 uppercase tracking-wider flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#f15555]" />
                   <span>{language === 'es' ? '2. Inglés Específico' : '2. Specific English'}</span>
                 </div>
                 <p className="text-xs text-stone-500 font-medium">
@@ -111,12 +111,12 @@ export const AboutNick: React.FC<AboutNickProps> = ({ onOpenBooking }) => {
                 </p>
               </div>
 
-              <div className="p-4 rounded-2xl bg-[#edfbe6] border border-[#b2e896] space-y-1 shadow-2xs">
-                <div className="text-xs font-black text-[#07221a] uppercase tracking-wider flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#164c3c]" />
+              <div className="p-4 rounded-2xl bg-[#e4ebf9] border border-[#c4d4f7] space-y-1 shadow-2xs">
+                <div className="text-xs font-black text-[#48529e] uppercase tracking-wider flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#48529e]" />
                   <span>{language === 'es' ? '3. Práctica WhatsApp' : '3. WhatsApp Voice'}</span>
                 </div>
-                <p className="text-xs text-[#164c3c] font-bold">
+                <p className="text-xs text-[#373f7a] font-bold">
                   {language === 'es' ? '5 días por semana de feedback de voz' : '5 days a week of direct voice guidance'}
                 </p>
               </div>
@@ -126,10 +126,10 @@ export const AboutNick: React.FC<AboutNickProps> = ({ onOpenBooking }) => {
             <div className="pt-2">
               <button
                 onClick={onOpenBooking}
-                className="px-8 py-4 rounded-full bg-[#07221a] hover:bg-[#164c3c] text-white font-bold text-xs sm:text-sm shadow-md flex items-center gap-2.5 transition-all hover:scale-[1.02] cursor-pointer border border-[#164c3c]"
+                className="px-8 py-4 rounded-full bg-[#f15555] hover:bg-[#e04444] text-white font-bold text-xs sm:text-sm shadow-md flex items-center gap-2.5 transition-all hover:scale-[1.02] cursor-pointer"
               >
                 <span>{language === 'es' ? 'Agendar Sesión Privada con Nick' : 'Book 1-on-1 Strategy Session with Nick'}</span>
-                <ArrowRight className="w-4 h-4 text-[#62c110]" />
+                <ArrowRight className="w-4 h-4 text-white" />
               </button>
             </div>
 

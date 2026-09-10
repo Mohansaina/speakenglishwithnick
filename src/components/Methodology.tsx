@@ -37,13 +37,13 @@ export const Methodology: React.FC = () => {
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto space-y-2.5 mb-14 sm:mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white border border-stone-200 text-stone-800 text-xs font-semibold shadow-2xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-700" />
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white border border-[#c2d4f8] text-[#48529e] text-xs font-semibold shadow-2xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#f15555]" />
             The Habit Architecture
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-stone-900 tracking-tight leading-tight">
             Why 20 Minutes a Day <br />
-            <span className="font-serif italic font-normal text-amber-900">beats 2-hour weekend classes</span>
+            <span className="font-serif italic font-normal text-[#48529e]">beats 2-hour weekend classes</span>
           </h2>
           <p className="text-xs sm:text-sm md:text-base text-stone-600">
             Language is a daily acoustic habit, not an academic subject. Here is how Coach Nick&apos;s system builds automatic speaking confidence.
@@ -62,13 +62,13 @@ export const Methodology: React.FC = () => {
                   <span className="text-3xl font-black text-stone-200 font-mono">
                     {step.number}
                   </span>
-                  <div className="p-2.5 rounded-2xl bg-[#F9F9F7] border border-stone-200/60 shadow-2xs">
+                  <div className="p-2.5 rounded-2xl bg-[#f4f7fd] border border-[#e4ebf9] shadow-2xs">
                     {step.icon}
                   </div>
                 </div>
 
                 <div className="space-y-1">
-                  <span className="text-[10px] font-bold text-amber-900 uppercase tracking-wider">
+                  <span className="text-[10px] font-bold text-[#48529e] uppercase tracking-wider">
                     {step.tag}
                   </span>
                   <h3 className="text-lg font-bold text-stone-900">
@@ -85,7 +85,7 @@ export const Methodology: React.FC = () => {
               </div>
 
               <div className="pt-4 border-t border-stone-100 flex items-center gap-2 text-xs font-semibold text-stone-800">
-                <Check className="w-4 h-4 text-emerald-600" />
+                <Check className="w-4 h-4 text-[#f15555]" />
                 <span>Automatic daily retention</span>
               </div>
             </div>

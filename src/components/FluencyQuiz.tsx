@@ -139,17 +139,17 @@ export const FluencyQuiz: React.FC<FluencyQuizProps> = ({
 
   const getIcon = (iconName: string) => {
     switch (iconName) {
-      case 'Brain': return <Brain className="w-5 h-5 text-[#62c110]" />;
-      case 'ShieldAlert': return <ShieldAlert className="w-5 h-5 text-[#62c110]" />;
-      case 'Ear': return <Ear className="w-5 h-5 text-[#62c110]" />;
-      case 'BookOpen': return <BookOpen className="w-5 h-5 text-[#62c110]" />;
-      case 'Car': return <Car className="w-5 h-5 text-[#62c110]" />;
-      case 'Clock': return <Clock className="w-5 h-5 text-[#62c110]" />;
-      case 'UserCheck': return <UserCheck className="w-5 h-5 text-[#62c110]" />;
-      case 'Briefcase': return <Briefcase className="w-5 h-5 text-[#62c110]" />;
-      case 'MessageSquare': return <MessageSquare className="w-5 h-5 text-[#62c110]" />;
-      case 'Mic': return <Mic className="w-5 h-5 text-[#62c110]" />;
-      default: return <Compass className="w-5 h-5 text-[#62c110]" />;
+      case 'Brain': return <Brain className="w-5 h-5 text-[#48529e]" />;
+      case 'ShieldAlert': return <ShieldAlert className="w-5 h-5 text-[#48529e]" />;
+      case 'Ear': return <Ear className="w-5 h-5 text-[#48529e]" />;
+      case 'BookOpen': return <BookOpen className="w-5 h-5 text-[#48529e]" />;
+      case 'Car': return <Car className="w-5 h-5 text-[#48529e]" />;
+      case 'Clock': return <Clock className="w-5 h-5 text-[#48529e]" />;
+      case 'UserCheck': return <UserCheck className="w-5 h-5 text-[#48529e]" />;
+      case 'Briefcase': return <Briefcase className="w-5 h-5 text-[#48529e]" />;
+      case 'MessageSquare': return <MessageSquare className="w-5 h-5 text-[#48529e]" />;
+      case 'Mic': return <Mic className="w-5 h-5 text-[#48529e]" />;
+      default: return <Compass className="w-5 h-5 text-[#48529e]" />;
     }
   };
 
@@ -272,7 +272,7 @@ Agenda tu sesión diagnóstica en: https://speakenglishwithnick.com
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto rounded-3xl bg-white border border-stone-200/90 shadow-[0_12px_40px_rgba(0,0,0,0.06)] p-5 sm:p-8 md:p-10 text-stone-900 glow-lime-sm">
+    <div className="w-full max-w-3xl mx-auto rounded-3xl bg-white border border-stone-200/90 shadow-[0_12px_40px_rgba(0,0,0,0.06)] p-5 sm:p-8 md:p-10 text-stone-900">
       
       {!result ? (
         <div className="space-y-6 sm:space-y-8">
@@ -280,8 +280,8 @@ Agenda tu sesión diagnóstica en: https://speakenglishwithnick.com
           {/* Header & Step progress */}
           <div className="space-y-3">
             <div className="flex items-center justify-between text-xs font-bold text-stone-500">
-              <span className="flex items-center gap-1.5 text-[#07221a]">
-                <Compass className="w-3.5 h-3.5 text-[#62c110]" />
+              <span className="flex items-center gap-1.5 text-[#48529e]">
+                <Compass className="w-3.5 h-3.5 text-[#f15555]" />
                 {language === 'es'
                   ? `Pregunta ${currentStep + 1} de ${activeQuestions.length}`
                   : `Question ${currentStep + 1} of ${activeQuestions.length}`}
@@ -291,16 +291,16 @@ Agenda tu sesión diagnóstica en: https://speakenglishwithnick.com
               </span>
             </div>
 
-            {/* Clean Progress Bar with Green Theme */}
-            <div className="w-full h-2 rounded-full bg-[#f4fbf0] overflow-hidden border border-[#d0f4bd]">
+            {/* Clean Progress Bar with Indigo Theme */}
+            <div className="w-full h-2 rounded-full bg-[#e4ebf9] overflow-hidden border border-[#c2d4f8]">
               <div
-                className="h-full bg-[#62c110] rounded-full transition-all duration-300 shadow-xs"
+                className="h-full bg-[#48529e] rounded-full transition-all duration-300 shadow-xs"
                 style={{ width: `${((currentStep + 1) / activeQuestions.length) * 100}%` }}
               />
             </div>
 
             <div className="pt-1.5">
-              <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-[#07221a] tracking-tight leading-snug">
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-[#1e244d] tracking-tight leading-snug">
                 {activeQuestions[currentStep].question}
               </h3>
               <p className="text-xs sm:text-sm text-stone-600 mt-1">
@@ -315,21 +315,21 @@ Agenda tu sesión diagnóstica en: https://speakenglishwithnick.com
               <button
                 key={idx}
                 onClick={() => handleSelectOption(idx)}
-                className="w-full text-left p-3.5 sm:p-5 rounded-2xl bg-[#fafafa] hover:bg-[#f6fcf3] border border-stone-200/90 hover:border-[#62c110] group transition-all flex items-start gap-3 sm:gap-4 cursor-pointer hover:scale-[1.01] hover:shadow-md active:scale-[0.99]"
+                className="w-full text-left p-3.5 sm:p-5 rounded-2xl bg-[#fafafa] hover:bg-[#e4ebf9]/40 border border-stone-200/90 hover:border-[#48529e] group transition-all flex items-start gap-3 sm:gap-4 cursor-pointer hover:scale-[1.01] hover:shadow-md active:scale-[0.99]"
               >
-                <div className="p-2 sm:p-2.5 rounded-xl bg-white border border-stone-200 group-hover:border-[#62c110] shrink-0 shadow-2xs group-hover:bg-[#edfbe6] transition-colors">
+                <div className="p-2 sm:p-2.5 rounded-xl bg-white border border-stone-200 group-hover:border-[#48529e] shrink-0 shadow-2xs group-hover:bg-[#e4ebf9] transition-colors">
                   {getIcon(option.iconName)}
                 </div>
                 <div className="flex-1 space-y-0.5 min-w-0">
-                  <h4 className="font-bold text-stone-900 text-xs sm:text-base group-hover:text-[#07221a] leading-snug">
+                  <h4 className="font-bold text-stone-900 text-xs sm:text-base group-hover:text-[#48529e] leading-snug">
                     {option.label}
                   </h4>
                   <p className="text-[11px] sm:text-sm text-stone-600 leading-relaxed font-normal">
                     {option.description}
                   </p>
                 </div>
-                <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full border border-stone-300 flex items-center justify-center shrink-0 mt-1 group-hover:border-[#62c110] group-hover:bg-[#62c110] group-hover:text-[#07221a] transition-colors">
-                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-stone-400 group-hover:text-[#07221a]" />
+                <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full border border-stone-300 flex items-center justify-center shrink-0 mt-1 group-hover:border-[#48529e] group-hover:bg-[#48529e] group-hover:text-white transition-colors">
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-stone-400 group-hover:text-white" />
                 </div>
               </button>
             ))}
@@ -342,7 +342,7 @@ Agenda tu sesión diagnóstica en: https://speakenglishwithnick.com
                   setCurrentStep(currentStep - 1);
                   setAnswers(answers.slice(0, -1));
                 }}
-                className="text-xs font-bold text-stone-500 hover:text-[#07221a] transition-colors cursor-pointer"
+                className="text-xs font-bold text-stone-500 hover:text-[#48529e] transition-colors cursor-pointer"
               >
                 {language === 'es' ? '← Volver a la pregunta anterior' : '← Back to previous question'}
               </button>
@@ -365,13 +365,13 @@ Agenda tu sesión diagnóstica en: https://speakenglishwithnick.com
             return (
               <>
                 <div className="text-center space-y-2.5 pb-6 border-b border-stone-100">
-                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#edfbe6] border border-[#b2e896] text-[#07221a] text-xs font-black uppercase tracking-wider">
-                    <Award className="w-3.5 h-3.5 text-[#62c110]" />
+                  <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#e4ebf9] border border-[#c2d4f8] text-[#48529e] text-xs font-black uppercase tracking-wider">
+                    <Award className="w-3.5 h-3.5 text-[#f15555]" />
                     <span>{language === 'es' ? 'Diagnóstico Completado' : 'Diagnostic Complete'}</span>
                   </div>
-                  <h3 className="text-2xl sm:text-3xl font-black text-[#07221a]">
+                  <h3 className="text-2xl sm:text-3xl font-black text-[#1e244d]">
                     {language === 'es' ? 'Tu Perfil al Hablar: ' : 'Your Speaking Archetype: '} <br />
-                    <span className="text-[#62c110]">{archetypeTitle}</span>
+                    <span className="text-[#48529e]">{archetypeTitle}</span>
                   </h3>
                   <p className="text-xs sm:text-sm text-stone-600 max-w-md mx-auto italic font-serif">
                     &ldquo;{taglineText}&rdquo;
@@ -380,9 +380,9 @@ Agenda tu sesión diagnóstica en: https://speakenglishwithnick.com
 
                 {/* Multi-Dimensional Skill Radar Breakdown */}
                 <div className="p-5 rounded-2xl bg-[#fafafa] border border-stone-200 space-y-3">
-                  <div className="flex items-center justify-between text-xs font-black text-[#07221a] uppercase tracking-wider">
+                  <div className="flex items-center justify-between text-xs font-black text-[#48529e] uppercase tracking-wider">
                     <span className="flex items-center gap-1.5">
-                      <BarChart3 className="w-4 h-4 text-[#62c110]" />
+                      <BarChart3 className="w-4 h-4 text-[#f15555]" />
                       {language === 'es' ? 'Desglose de Habilidades al Hablar' : 'Speaking Capability Dimensions'}
                     </span>
                     <span className="text-stone-500 font-normal">0 - 100%</span>
@@ -392,40 +392,40 @@ Agenda tu sesión diagnóstica en: https://speakenglishwithnick.com
                     <div className="space-y-1">
                       <div className="flex justify-between text-xs font-bold text-stone-700">
                         <span>{language === 'es' ? 'Acento y Fonética' : 'Pronunciation & Accent'}</span>
-                        <span className="text-[#07221a] font-black">{scores.accent}%</span>
+                        <span className="text-[#48529e] font-black">{scores.accent}%</span>
                       </div>
                       <div className="w-full bg-stone-200 h-2 rounded-full overflow-hidden">
-                        <div className="bg-[#62c110] h-full rounded-full" style={{ width: `${scores.accent}%` }} />
+                        <div className="bg-[#48529e] h-full rounded-full" style={{ width: `${scores.accent}%` }} />
                       </div>
                     </div>
 
                     <div className="space-y-1">
                       <div className="flex justify-between text-xs font-bold text-stone-700">
                         <span>{language === 'es' ? 'Confianza sin Ansiedad' : 'Confidence & Calm'}</span>
-                        <span className="text-[#07221a] font-black">{scores.confidence}%</span>
+                        <span className="text-[#48529e] font-black">{scores.confidence}%</span>
                       </div>
                       <div className="w-full bg-stone-200 h-2 rounded-full overflow-hidden">
-                        <div className="bg-[#62c110] h-full rounded-full" style={{ width: `${scores.confidence}%` }} />
+                        <div className="bg-[#48529e] h-full rounded-full" style={{ width: `${scores.confidence}%` }} />
                       </div>
                     </div>
 
                     <div className="space-y-1">
                       <div className="flex justify-between text-xs font-bold text-stone-700">
                         <span>{language === 'es' ? 'Velocidad de Respuesta' : 'Response Speed (No translation)'}</span>
-                        <span className="text-[#07221a] font-black">{scores.speed}%</span>
+                        <span className="text-[#48529e] font-black">{scores.speed}%</span>
                       </div>
                       <div className="w-full bg-stone-200 h-2 rounded-full overflow-hidden">
-                        <div className="bg-[#62c110] h-full rounded-full" style={{ width: `${scores.speed}%` }} />
+                        <div className="bg-[#48529e] h-full rounded-full" style={{ width: `${scores.speed}%` }} />
                       </div>
                     </div>
 
                     <div className="space-y-1">
                       <div className="flex justify-between text-xs font-bold text-stone-700">
                         <span>{language === 'es' ? 'Agilidad de Vocabulario' : 'Vocabulary Agility'}</span>
-                        <span className="text-[#07221a] font-black">{scores.agility}%</span>
+                        <span className="text-[#48529e] font-black">{scores.agility}%</span>
                       </div>
                       <div className="w-full bg-stone-200 h-2 rounded-full overflow-hidden">
-                        <div className="bg-[#62c110] h-full rounded-full" style={{ width: `${scores.agility}%` }} />
+                        <div className="bg-[#48529e] h-full rounded-full" style={{ width: `${scores.agility}%` }} />
                       </div>
                     </div>
                   </div>
@@ -434,7 +434,7 @@ Agenda tu sesión diagnóstica en: https://speakenglishwithnick.com
                 {/* Analysis Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="p-5 rounded-2xl bg-[#fafafa] border border-stone-200 space-y-1.5">
-                    <span className="text-[11px] font-black text-[#07221a] uppercase tracking-wider">
+                    <span className="text-[11px] font-black text-[#48529e] uppercase tracking-wider">
                       {language === 'es' ? 'Bloqueo Principal' : 'Primary Speaking Bottleneck'}
                     </span>
                     <p className="text-sm font-black text-stone-900">
@@ -446,10 +446,10 @@ Agenda tu sesión diagnóstica en: https://speakenglishwithnick.com
                   </div>
 
                   <div className="p-5 rounded-2xl bg-[#fafafa] border border-stone-200 space-y-1.5">
-                    <span className="text-[11px] font-black text-[#07221a] uppercase tracking-wider">
+                    <span className="text-[11px] font-black text-[#48529e] uppercase tracking-wider">
                       {language === 'es' ? 'Rutina Diaria Recomendada' : 'Recommended Daily Routine'}
                     </span>
-                    <div className="text-2xl font-black text-[#07221a]">
+                    <div className="text-2xl font-black text-[#1e244d]">
                       {result.recommendedDailyMinutes} {language === 'es' ? 'Minutos / Día' : 'Minutes / Day'}
                     </div>
                     <p className="text-xs text-stone-600 pt-1">
@@ -462,16 +462,16 @@ Agenda tu sesión diagnóstica en: https://speakenglishwithnick.com
                 </div>
 
                 {/* Action Plan */}
-                <div className="p-5 rounded-2xl bg-[#f6fcf3] border border-[#c4eeb0] space-y-3">
+                <div className="p-5 rounded-2xl bg-[#e4ebf9]/60 border border-[#c2d4f8] space-y-3">
                   <div className="flex items-center justify-between">
-                    <h4 className="text-xs font-black text-[#07221a] uppercase tracking-wider flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#62c110]" />
+                    <h4 className="text-xs font-black text-[#48529e] uppercase tracking-wider flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#f15555]" />
                       <span>{language === 'es' ? 'Plan de Acción Sugerido por Coach Nick' : "Coach Nick's 3-Step Action Plan"}</span>
                     </h4>
 
                     <button
                       onClick={() => handleDownloadRoadmap(archetypeTitle, planList)}
-                      className="text-xs font-bold text-[#07221a] hover:text-[#62c110] flex items-center gap-1 cursor-pointer transition-colors"
+                      className="text-xs font-bold text-[#48529e] hover:text-[#f15555] flex items-center gap-1 cursor-pointer transition-colors"
                     >
                       <Download className="w-3.5 h-3.5" />
                       <span>{language === 'es' ? 'Descargar Plan (TXT)' : 'Download Roadmap'}</span>
@@ -481,7 +481,7 @@ Agenda tu sesión diagnóstica en: https://speakenglishwithnick.com
                   <div className="space-y-2">
                     {planList.map((step, idx) => (
                       <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-stone-800 font-medium">
-                        <Check className="w-4 h-4 text-[#62c110] shrink-0 mt-0.5" />
+                        <Check className="w-4 h-4 text-[#48529e] shrink-0 mt-0.5" />
                         <span>{step}</span>
                       </div>
                     ))}
@@ -498,9 +498,9 @@ Agenda tu sesión diagnóstica en: https://speakenglishwithnick.com
                         onSelectCourse(result.recommendedCourseId);
                       }
                     }}
-                    className="w-full sm:flex-1 py-4 rounded-full bg-[#07221a] hover:bg-[#164c3c] text-white font-black text-center text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.02]"
+                    className="w-full sm:flex-1 py-4 rounded-full bg-[#f15555] hover:bg-[#d01f1f] text-white font-black text-center text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.02]"
                   >
-                    <Calendar className="w-4 h-4 text-[#62c110]" />
+                    <Calendar className="w-4 h-4 text-white" />
                     <span>{language === 'es' ? 'Agendar Sesión con mi Diagnóstico' : 'Book 1-on-1 with My Diagnostic Attached'}</span>
                   </button>
 

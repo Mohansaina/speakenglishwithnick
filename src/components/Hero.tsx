@@ -33,17 +33,17 @@ export const Hero: React.FC<HeroProps> = ({
               />
               
               {/* Bottom Credential Bar */}
-              <div className="p-3 sm:p-3.5 bg-[#07221a] text-white flex items-center justify-between">
+              <div className="p-3 sm:p-3.5 bg-[#48529e] text-white flex items-center justify-between">
                 <div>
                   <div className="font-extrabold text-xs sm:text-sm flex items-center gap-1.5">
                     <span>Teacher Nick</span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#62c110]" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#f15555]" />
                   </div>
-                  <p className="text-[10px] sm:text-[11px] text-stone-300 font-medium">
+                  <p className="text-[10px] sm:text-[11px] text-white/80 font-medium">
                     {language === 'es' ? 'Especialista en Acento y Fluidez' : 'Accent & Fluency Specialist'}
                   </p>
                 </div>
-                <span className="text-[9px] sm:text-[10px] uppercase font-black px-2 sm:px-2.5 py-1 rounded-full bg-[#62c110] text-[#07221a] shrink-0">
+                <span className="text-[9px] sm:text-[10px] uppercase font-black px-2 sm:px-2.5 py-1 rounded-full bg-[#f15555] text-white shrink-0">
                   5 Languages
                 </span>
               </div>
@@ -54,8 +54,8 @@ export const Hero: React.FC<HeroProps> = ({
           <div className="lg:col-span-7 space-y-4 sm:space-y-5 text-left">
             
             {/* Top Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#edfbe6] text-[#07221a] text-xs font-black uppercase tracking-wider border border-[#b2e896] shadow-2xs">
-              <span className="w-2 h-2 rounded-full bg-[#62c110]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#e4ebf9] text-[#48529e] text-xs font-black uppercase tracking-wider border border-[#c4d4f7] shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-[#f15555]" />
               <span>SPEAK ENGLISH WITH NICK</span>
             </div>
 
@@ -64,12 +64,12 @@ export const Hero: React.FC<HeroProps> = ({
               {language === 'es' ? (
                 <>
                   Donde hablar inglés <br />
-                  <span className="font-serif italic font-normal text-[#164c3c]">es posible</span>
+                  <span className="font-serif italic font-normal text-[#48529e]">es posible</span>
                 </>
               ) : (
                 <>
                   Where speaking English <br />
-                  <span className="font-serif italic font-normal text-[#164c3c]">is possible</span>
+                  <span className="font-serif italic font-normal text-[#48529e]">is possible</span>
                 </>
               )}
             </h1>
@@ -82,10 +82,10 @@ export const Hero: React.FC<HeroProps> = ({
             </p>
 
             {/* Class Layout Schedule Box */}
-            <div className="p-4 sm:p-5 rounded-2xl bg-[#07221a] text-white border border-[#164c3c] shadow-md">
+            <div className="p-4 sm:p-5 rounded-2xl bg-[#1e244d] text-white border border-[#373f7a] shadow-md">
               <div className="space-y-2.5 sm:space-y-3 text-xs sm:text-sm text-stone-200 font-medium">
                 <div className="flex items-start sm:items-center gap-2.5 sm:gap-3">
-                  <Calendar className="w-4 h-4 text-[#62c110] shrink-0 mt-0.5 sm:mt-0" />
+                  <Calendar className="w-4 h-4 text-[#f15555] shrink-0 mt-0.5 sm:mt-0" />
                   <span className="text-stone-100 font-semibold text-xs sm:text-sm md:text-base leading-snug">
                     {language === 'es'
                       ? '1 sesión por semana en un horario cómodo (Presencial u online)'
@@ -93,7 +93,7 @@ export const Hero: React.FC<HeroProps> = ({
                   </span>
                 </div>
                 <div className="flex items-start sm:items-center gap-2.5 sm:gap-3">
-                  <MessageCircle className="w-4 h-4 text-[#62c110] shrink-0 mt-0.5 sm:mt-0" />
+                  <MessageCircle className="w-4 h-4 text-[#f15555] shrink-0 mt-0.5 sm:mt-0" />
                   <span className="text-stone-100 font-semibold text-xs sm:text-sm md:text-base leading-snug">
                     {language === 'es'
                       ? '5 días de práctica guiada a través de WhatsApp'
@@ -118,55 +118,27 @@ export const Hero: React.FC<HeroProps> = ({
             {/* Box 1: English from 0 */}
             <button
               onClick={() => onOpenBooking(language === 'es' ? 'Inglés desde 0' : 'English from 0')}
-              className="group p-5 sm:p-7 lg:p-9 rounded-3xl bg-[#07221a] hover:bg-[#0c3629] text-white border-2 border-[#164c3c] hover:border-[#62c110] text-left transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between min-h-[190px] sm:min-h-[250px] cursor-pointer relative overflow-hidden active:scale-[0.99]"
+              className="group p-5 sm:p-7 lg:p-9 rounded-3xl bg-[#48529e] hover:bg-[#373f7a] text-white border-2 border-[#373f7a] hover:border-[#f15555] text-left transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between min-h-[190px] sm:min-h-[250px] cursor-pointer relative overflow-hidden active:scale-[0.99]"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-[#62c110]/10 rounded-full blur-2xl pointer-events-none" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#f15555]/10 rounded-full blur-2xl pointer-events-none" />
 
               <div className="space-y-2.5 sm:space-y-3 relative z-10">
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white group-hover:text-[#62c110] leading-tight tracking-tight transition-colors">
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white group-hover:text-[#e4ebf9] leading-tight tracking-tight transition-colors">
                   {language === 'es' ? 'Inglés desde 0' : 'English from 0'}
                 </h3>
-                <p className="text-xs sm:text-sm text-stone-300 font-medium leading-relaxed">
+                <p className="text-xs sm:text-sm text-stone-200 font-medium leading-relaxed">
                   {language === 'es'
                     ? 'Lee, escribe y habla oraciones básicas en inglés.'
-                    : 'Read, write, and speak basic English sentences'}
-                </p>
-              </div>
-
-              <div className="pt-4 sm:pt-5 border-t border-[#1a5a47] flex items-center justify-between relative z-10 mt-3">
-                <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#62c110]">
-                  {language === 'es' ? 'Empezar desde cero' : 'Start with basics'}
-                </span>
-                <div className="w-8 h-8 rounded-full bg-[#164c3c] group-hover:bg-[#62c110] flex items-center justify-center transition-colors shadow-sm">
-                  <ArrowRight className="w-4 h-4 text-[#62c110] group-hover:text-[#07221a] group-hover:translate-x-0.5 transition-all" />
-                </div>
-              </div>
-            </button>
-
-            {/* Box 2: Specific English */}
-            <button
-              onClick={() => onOpenBooking(language === 'es' ? 'Inglés Específico' : 'Specific English')}
-              className="group p-5 sm:p-7 lg:p-9 rounded-3xl bg-[#07221a] hover:bg-[#0c3629] text-white border-2 border-[#164c3c] hover:border-[#62c110] text-left transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between min-h-[190px] sm:min-h-[250px] cursor-pointer relative overflow-hidden active:scale-[0.99]"
-            >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-[#62c110]/10 rounded-full blur-2xl pointer-events-none" />
-
-              <div className="space-y-2.5 sm:space-y-3 relative z-10">
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white group-hover:text-[#62c110] leading-tight tracking-tight transition-colors">
-                  {language === 'es' ? 'Inglés Específico' : 'Specific English'}
-                </h3>
-                <p className="text-xs sm:text-sm text-stone-300 font-medium leading-relaxed">
-                  {language === 'es'
-                    ? 'Aprende inglés para el trabajo, negocios, tareas cotidianas y otras situaciones de la vida real.'
                     : 'Learn English for work, business, everyday tasks, and other real-life scenarios.'}
                 </p>
               </div>
 
-              <div className="pt-4 sm:pt-5 border-t border-[#1a5a47] flex items-center justify-between relative z-10 mt-3">
-                <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#62c110]">
+              <div className="pt-4 sm:pt-5 border-t border-[#606cb7] flex items-center justify-between relative z-10 mt-3">
+                <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#e4ebf9]">
                   {language === 'es' ? 'Personalizar tema' : 'Custom situations'}
                 </span>
-                <div className="w-8 h-8 rounded-full bg-[#164c3c] group-hover:bg-[#62c110] flex items-center justify-center transition-colors shadow-sm">
-                  <ArrowRight className="w-4 h-4 text-[#62c110] group-hover:text-[#07221a] group-hover:translate-x-0.5 transition-all" />
+                <div className="w-8 h-8 rounded-full bg-[#373f7a] group-hover:bg-[#f15555] flex items-center justify-center transition-colors shadow-sm">
+                  <ArrowRight className="w-4 h-4 text-[#e4ebf9] group-hover:text-white group-hover:translate-x-0.5 transition-all" />
                 </div>
               </div>
             </button>
@@ -174,27 +146,27 @@ export const Hero: React.FC<HeroProps> = ({
             {/* Box 3: Conversation Practice */}
             <button
               onClick={() => onOpenBooking(language === 'es' ? 'Práctica de Conversación' : 'Conversation Practice')}
-              className="group p-5 sm:p-7 lg:p-9 rounded-3xl bg-[#07221a] hover:bg-[#0c3629] text-white border-2 border-[#164c3c] hover:border-[#62c110] text-left transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between min-h-[190px] sm:min-h-[250px] cursor-pointer relative overflow-hidden active:scale-[0.99]"
+              className="group p-5 sm:p-7 lg:p-9 rounded-3xl bg-[#48529e] hover:bg-[#373f7a] text-white border-2 border-[#373f7a] hover:border-[#f15555] text-left transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between min-h-[190px] sm:min-h-[250px] cursor-pointer relative overflow-hidden active:scale-[0.99]"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-[#62c110]/10 rounded-full blur-2xl pointer-events-none" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#f15555]/10 rounded-full blur-2xl pointer-events-none" />
 
               <div className="space-y-2.5 sm:space-y-3 relative z-10">
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white group-hover:text-[#62c110] leading-tight tracking-tight transition-colors">
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white group-hover:text-[#e4ebf9] leading-tight tracking-tight transition-colors">
                   {language === 'es' ? 'Práctica de Conversación' : 'Conversation Practice'}
                 </h3>
-                <p className="text-xs sm:text-sm text-stone-300 font-medium leading-relaxed">
+                <p className="text-xs sm:text-sm text-stone-200 font-medium leading-relaxed">
                   {language === 'es'
                     ? 'Gana confianza al hablar, aprende más vocabulario y corrige tus errores.'
                     : 'Gain confidence as a speaker, learn more vocabulary, and correct your mistakes.'}
                 </p>
               </div>
 
-              <div className="pt-4 sm:pt-5 border-t border-[#1a5a47] flex items-center justify-between relative z-10 mt-3">
-                <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#62c110]">
+              <div className="pt-4 sm:pt-5 border-t border-[#606cb7] flex items-center justify-between relative z-10 mt-3">
+                <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#e4ebf9]">
                   {language === 'es' ? 'Hablar con confianza' : 'Confidence speaking'}
                 </span>
-                <div className="w-8 h-8 rounded-full bg-[#164c3c] group-hover:bg-[#62c110] flex items-center justify-center transition-colors shadow-sm">
-                  <ArrowRight className="w-4 h-4 text-[#62c110] group-hover:text-[#07221a] group-hover:translate-x-0.5 transition-all" />
+                <div className="w-8 h-8 rounded-full bg-[#373f7a] group-hover:bg-[#f15555] flex items-center justify-center transition-colors shadow-sm">
+                  <ArrowRight className="w-4 h-4 text-[#e4ebf9] group-hover:text-white group-hover:translate-x-0.5 transition-all" />
                 </div>
               </div>
             </button>

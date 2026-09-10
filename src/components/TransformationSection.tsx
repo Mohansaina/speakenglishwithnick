@@ -13,29 +13,29 @@ export const TransformationSection: React.FC = () => {
     <section className="py-20 sm:py-28 bg-[#f8f9f7] border-b border-stone-200/70 overflow-hidden relative">
       
       {/* Background ambient lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-[#62c110]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-[#48529e]/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#edfbe6] border border-[#b2e896] text-[#07221a] text-xs font-black uppercase tracking-wider shadow-2xs">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#62c110]" />
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#e4ebf9] border border-[#c4d4f7] text-[#48529e] text-xs font-black uppercase tracking-wider shadow-2xs">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#f15555]" />
             <span>{language === 'es' ? 'Historias Reales de Alumnos' : 'Real Student Stories'}</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#07221a] tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-stone-900 tracking-tight leading-tight">
             {language === 'es' ? (
               <>
                 Imagina finalmente hablar inglés <br className="hidden sm:inline" />
-                <span className="font-serif italic font-normal text-[#164c3c]">
+                <span className="font-serif italic font-normal text-[#48529e]">
                   con total soltura y confianza
                 </span>
               </>
             ) : (
               <>
                 Imagine finally speaking English <br className="hidden sm:inline" />
-                <span className="font-serif italic font-normal text-[#164c3c]">
+                <span className="font-serif italic font-normal text-[#48529e]">
                   with effortless confidence
                 </span>
               </>
@@ -61,17 +61,17 @@ export const TransformationSection: React.FC = () => {
             
             {/* Set 1 */}
             {/* David Card */}
-            <div className="shrink-0 w-[300px] sm:w-[380px] md:w-[420px] bg-white rounded-3xl p-5 sm:p-7 border border-stone-200/90 shadow-[0_12px_40px_rgba(0,0,0,0.04)] space-y-5 flex flex-col justify-between hover:border-[#62c110]/60 transition-all group relative overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#62c110] to-[#07221a]" />
+            <div className="shrink-0 w-[300px] sm:w-[380px] md:w-[420px] bg-white rounded-3xl p-5 sm:p-7 border border-stone-200/90 shadow-[0_12px_40px_rgba(0,0,0,0.04)] space-y-5 flex flex-col justify-between hover:border-[#48529e]/60 transition-all group relative overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#f15555] to-[#48529e]" />
               <div className="space-y-4 pt-1">
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-2xl bg-[#07221a] text-[#82e635] font-black flex items-center justify-center text-lg border border-[#164c3c] shadow-xs shrink-0">
+                    <div className="w-10 h-10 rounded-2xl bg-[#48529e] text-white font-black flex items-center justify-center text-lg border border-[#373f7a] shadow-xs shrink-0">
                       D
                     </div>
                     <div>
                       <h4 className="font-black text-stone-900 text-base leading-tight">{t.student1}</h4>
-                      <span className="inline-block text-[10px] font-bold text-[#164c3c] bg-[#edfbe6] px-2 py-0.5 rounded-md border border-[#c4eeb0] mt-0.5">
+                      <span className="inline-block text-[10px] font-bold text-[#48529e] bg-[#e4ebf9] px-2 py-0.5 rounded-md border border-[#c2d4f8] mt-0.5">
                         {t.country1}
                       </span>
                     </div>
@@ -83,20 +83,20 @@ export const TransformationSection: React.FC = () => {
                   </div>
                 </div>
 
-                <blockquote className="text-stone-800 text-sm sm:text-base leading-relaxed italic font-serif pt-1 border-l-3 border-[#62c110] pl-3.5">
+                <blockquote className="text-stone-800 text-sm sm:text-base leading-relaxed italic font-serif pt-1 border-l-3 border-[#f15555] pl-3.5">
                   {language === 'es' ? t.quote1 : (t.quote1En || t.quote1)}
                 </blockquote>
 
-                <div className="p-3.5 rounded-2xl bg-[#f8faf7] border border-stone-200/80 space-y-2 text-xs">
+                <div className="p-3.5 rounded-2xl bg-[#f4f7fd] border border-stone-200/80 space-y-2 text-xs">
                   <div className="text-stone-600 flex items-start gap-2">
                     <span className="font-bold text-stone-800 uppercase text-[10px] tracking-wider bg-stone-200 px-1.5 py-0.5 rounded shrink-0">
                       {language === 'es' ? 'Antes' : 'Before'}
                     </span>
                     <span className="leading-snug">{language === 'es' ? 'Vergüenza al ordenar en restaurantes y sonreír por no entender.' : 'Freezing at basic orders and smiling to hide confusion.'}</span>
                   </div>
-                  <div className="text-[#07221a] font-semibold flex items-start gap-2 pt-2 border-t border-stone-200/60">
-                    <span className="font-black text-[#07221a] uppercase text-[10px] tracking-wider bg-[#d2edd6] px-1.5 py-0.5 rounded flex items-center gap-1 shrink-0">
-                      <CheckCircle2 className="w-3 h-3 text-[#164c3c]" />
+                  <div className="text-[#48529e] font-semibold flex items-start gap-2 pt-2 border-t border-stone-200/60">
+                    <span className="font-black text-[#48529e] uppercase text-[10px] tracking-wider bg-[#e4ebf9] px-1.5 py-0.5 rounded flex items-center gap-1 shrink-0">
+                      <CheckCircle2 className="w-3 h-3 text-[#f15555]" />
                       {language === 'es' ? 'Ahora' : 'Now'}
                     </span>
                     <span className="leading-snug">{language === 'es' ? 'Seguridad total al responder y mantener conversaciones.' : 'Total confidence answering naturally and sustaining conversations.'}</span>
@@ -105,8 +105,8 @@ export const TransformationSection: React.FC = () => {
               </div>
 
               <div className="pt-3 border-t border-stone-100 flex items-center justify-between text-xs">
-                <span className="font-bold text-[#164c3c] flex items-center gap-1">
-                  <ShieldCheck className="w-4 h-4 text-[#62c110]" />
+                <span className="font-bold text-[#48529e] flex items-center gap-1">
+                  <ShieldCheck className="w-4 h-4 text-[#f15555]" />
                   <span>{language === 'es' ? 'Alumno 1 a 1' : '1-on-1 Student'}</span>
                 </span>
                 <span className="text-stone-500 text-[11px]">WhatsApp Practice</span>
@@ -114,17 +114,17 @@ export const TransformationSection: React.FC = () => {
             </div>
 
             {/* Javier Card */}
-            <div className="shrink-0 w-[300px] sm:w-[380px] md:w-[420px] bg-white rounded-3xl p-5 sm:p-7 border border-stone-200/90 shadow-[0_12px_40px_rgba(0,0,0,0.04)] space-y-5 flex flex-col justify-between hover:border-[#62c110]/60 transition-all group relative overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#62c110] to-[#07221a]" />
+            <div className="shrink-0 w-[300px] sm:w-[380px] md:w-[420px] bg-white rounded-3xl p-5 sm:p-7 border border-stone-200/90 shadow-[0_12px_40px_rgba(0,0,0,0.04)] space-y-5 flex flex-col justify-between hover:border-[#48529e]/60 transition-all group relative overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#f15555] to-[#48529e]" />
               <div className="space-y-4 pt-1">
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-2xl bg-[#07221a] text-[#82e635] font-black flex items-center justify-center text-lg border border-[#164c3c] shadow-xs shrink-0">
+                    <div className="w-10 h-10 rounded-2xl bg-[#48529e] text-white font-black flex items-center justify-center text-lg border border-[#373f7a] shadow-xs shrink-0">
                       J
                     </div>
                     <div>
                       <h4 className="font-black text-stone-900 text-base leading-tight">{t.student2}</h4>
-                      <span className="inline-block text-[10px] font-bold text-[#164c3c] bg-[#edfbe6] px-2 py-0.5 rounded-md border border-[#c4eeb0] mt-0.5">
+                      <span className="inline-block text-[10px] font-bold text-[#48529e] bg-[#e4ebf9] px-2 py-0.5 rounded-md border border-[#c2d4f8] mt-0.5">
                         {t.country2}
                       </span>
                     </div>
@@ -136,20 +136,20 @@ export const TransformationSection: React.FC = () => {
                   </div>
                 </div>
 
-                <blockquote className="text-stone-800 text-sm sm:text-base leading-relaxed italic font-serif pt-1 border-l-3 border-[#62c110] pl-3.5">
+                <blockquote className="text-stone-800 text-sm sm:text-base leading-relaxed italic font-serif pt-1 border-l-3 border-[#f15555] pl-3.5">
                   {language === 'es' ? t.quote2 : (t.quote2En || t.quote2)}
                 </blockquote>
 
-                <div className="p-3.5 rounded-2xl bg-[#f8faf7] border border-stone-200/80 space-y-2 text-xs">
+                <div className="p-3.5 rounded-2xl bg-[#f4f7fd] border border-stone-200/80 space-y-2 text-xs">
                   <div className="text-stone-600 flex items-start gap-2">
                     <span className="font-bold text-stone-800 uppercase text-[10px] tracking-wider bg-stone-200 px-1.5 py-0.5 rounded shrink-0">
                       {language === 'es' ? 'Antes' : 'Before'}
                     </span>
                     <span className="leading-snug">{language === 'es' ? 'Inseguridad y miedo a cometer errores al hablar inglés.' : 'Hesitation and fear of making mistakes while speaking.'}</span>
                   </div>
-                  <div className="text-[#07221a] font-semibold flex items-start gap-2 pt-2 border-t border-stone-200/60">
-                    <span className="font-black text-[#07221a] uppercase text-[10px] tracking-wider bg-[#d2edd6] px-1.5 py-0.5 rounded flex items-center gap-1 shrink-0">
-                      <CheckCircle2 className="w-3 h-3 text-[#164c3c]" />
+                  <div className="text-[#48529e] font-semibold flex items-start gap-2 pt-2 border-t border-stone-200/60">
+                    <span className="font-black text-[#48529e] uppercase text-[10px] tracking-wider bg-[#e4ebf9] px-1.5 py-0.5 rounded flex items-center gap-1 shrink-0">
+                      <CheckCircle2 className="w-3 h-3 text-[#f15555]" />
                       {language === 'es' ? 'Ahora' : 'Now'}
                     </span>
                     <span className="leading-snug">{language === 'es' ? 'Comodidad practicando con Nick, corrigiendo errores y ganando confianza.' : 'Comfortably practicing with Nick, correcting mistakes & building confidence.'}</span>
@@ -158,8 +158,8 @@ export const TransformationSection: React.FC = () => {
               </div>
 
               <div className="pt-3 border-t border-stone-100 flex items-center justify-between text-xs">
-                <span className="font-bold text-[#164c3c] flex items-center gap-1">
-                  <ShieldCheck className="w-4 h-4 text-[#62c110]" />
+                <span className="font-bold text-[#48529e] flex items-center gap-1">
+                  <ShieldCheck className="w-4 h-4 text-[#f15555]" />
                   <span>{language === 'es' ? 'Alumno Verificado' : 'Verified Student'}</span>
                 </span>
                 <span className="text-stone-500 text-[11px]">Conversation Practice</span>
@@ -170,17 +170,17 @@ export const TransformationSection: React.FC = () => {
 
             {/* Duplicate Set for Seamless Infinite Loop */}
             {/* David Card Copy */}
-            <div className="shrink-0 w-[300px] sm:w-[380px] md:w-[420px] bg-white rounded-3xl p-5 sm:p-7 border border-stone-200/90 shadow-[0_12px_40px_rgba(0,0,0,0.04)] space-y-5 flex flex-col justify-between hover:border-[#62c110]/60 transition-all group relative overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#62c110] to-[#07221a]" />
+            <div className="shrink-0 w-[300px] sm:w-[380px] md:w-[420px] bg-white rounded-3xl p-5 sm:p-7 border border-stone-200/90 shadow-[0_12px_40px_rgba(0,0,0,0.04)] space-y-5 flex flex-col justify-between hover:border-[#48529e]/60 transition-all group relative overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#f15555] to-[#48529e]" />
               <div className="space-y-4 pt-1">
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-2xl bg-[#07221a] text-[#82e635] font-black flex items-center justify-center text-lg border border-[#164c3c] shadow-xs shrink-0">
+                    <div className="w-10 h-10 rounded-2xl bg-[#48529e] text-white font-black flex items-center justify-center text-lg border border-[#373f7a] shadow-xs shrink-0">
                       D
                     </div>
                     <div>
                       <h4 className="font-black text-stone-900 text-base leading-tight">{t.student1}</h4>
-                      <span className="inline-block text-[10px] font-bold text-[#164c3c] bg-[#edfbe6] px-2 py-0.5 rounded-md border border-[#c4eeb0] mt-0.5">
+                      <span className="inline-block text-[10px] font-bold text-[#48529e] bg-[#e4ebf9] px-2 py-0.5 rounded-md border border-[#c2d4f8] mt-0.5">
                         {t.country1}
                       </span>
                     </div>
@@ -192,20 +192,20 @@ export const TransformationSection: React.FC = () => {
                   </div>
                 </div>
 
-                <blockquote className="text-stone-800 text-sm sm:text-base leading-relaxed italic font-serif pt-1 border-l-3 border-[#62c110] pl-3.5">
+                <blockquote className="text-stone-800 text-sm sm:text-base leading-relaxed italic font-serif pt-1 border-l-3 border-[#f15555] pl-3.5">
                   {language === 'es' ? t.quote1 : (t.quote1En || t.quote1)}
                 </blockquote>
 
-                <div className="p-3.5 rounded-2xl bg-[#f8faf7] border border-stone-200/80 space-y-2 text-xs">
+                <div className="p-3.5 rounded-2xl bg-[#f4f7fd] border border-stone-200/80 space-y-2 text-xs">
                   <div className="text-stone-600 flex items-start gap-2">
                     <span className="font-bold text-stone-800 uppercase text-[10px] tracking-wider bg-stone-200 px-1.5 py-0.5 rounded shrink-0">
                       {language === 'es' ? 'Antes' : 'Before'}
                     </span>
                     <span className="leading-snug">{language === 'es' ? 'Vergüenza al ordenar en restaurantes y sonreír por no entender.' : 'Freezing at basic orders and smiling to hide confusion.'}</span>
                   </div>
-                  <div className="text-[#07221a] font-semibold flex items-start gap-2 pt-2 border-t border-stone-200/60">
-                    <span className="font-black text-[#07221a] uppercase text-[10px] tracking-wider bg-[#d2edd6] px-1.5 py-0.5 rounded flex items-center gap-1 shrink-0">
-                      <CheckCircle2 className="w-3 h-3 text-[#164c3c]" />
+                  <div className="text-[#48529e] font-semibold flex items-start gap-2 pt-2 border-t border-stone-200/60">
+                    <span className="font-black text-[#48529e] uppercase text-[10px] tracking-wider bg-[#e4ebf9] px-1.5 py-0.5 rounded flex items-center gap-1 shrink-0">
+                      <CheckCircle2 className="w-3 h-3 text-[#f15555]" />
                       {language === 'es' ? 'Ahora' : 'Now'}
                     </span>
                     <span className="leading-snug">{language === 'es' ? 'Seguridad total al responder y mantener conversaciones.' : 'Total confidence answering naturally and sustaining conversations.'}</span>
@@ -214,8 +214,8 @@ export const TransformationSection: React.FC = () => {
               </div>
 
               <div className="pt-3 border-t border-stone-100 flex items-center justify-between text-xs">
-                <span className="font-bold text-[#164c3c] flex items-center gap-1">
-                  <ShieldCheck className="w-4 h-4 text-[#62c110]" />
+                <span className="font-bold text-[#48529e] flex items-center gap-1">
+                  <ShieldCheck className="w-4 h-4 text-[#f15555]" />
                   <span>{language === 'es' ? 'Alumno 1 a 1' : '1-on-1 Student'}</span>
                 </span>
                 <span className="text-stone-500 text-[11px]">WhatsApp Practice</span>
@@ -223,17 +223,17 @@ export const TransformationSection: React.FC = () => {
             </div>
 
             {/* Javier Card Copy */}
-            <div className="shrink-0 w-[300px] sm:w-[380px] md:w-[420px] bg-white rounded-3xl p-5 sm:p-7 border border-stone-200/90 shadow-[0_12px_40px_rgba(0,0,0,0.04)] space-y-5 flex flex-col justify-between hover:border-[#62c110]/60 transition-all group relative overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#62c110] to-[#07221a]" />
+            <div className="shrink-0 w-[300px] sm:w-[380px] md:w-[420px] bg-white rounded-3xl p-5 sm:p-7 border border-stone-200/90 shadow-[0_12px_40px_rgba(0,0,0,0.04)] space-y-5 flex flex-col justify-between hover:border-[#48529e]/60 transition-all group relative overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#f15555] to-[#48529e]" />
               <div className="space-y-4 pt-1">
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-2xl bg-[#07221a] text-[#82e635] font-black flex items-center justify-center text-lg border border-[#164c3c] shadow-xs shrink-0">
+                    <div className="w-10 h-10 rounded-2xl bg-[#48529e] text-white font-black flex items-center justify-center text-lg border border-[#373f7a] shadow-xs shrink-0">
                       J
                     </div>
                     <div>
                       <h4 className="font-black text-stone-900 text-base leading-tight">{t.student2}</h4>
-                      <span className="inline-block text-[10px] font-bold text-[#164c3c] bg-[#edfbe6] px-2 py-0.5 rounded-md border border-[#c4eeb0] mt-0.5">
+                      <span className="inline-block text-[10px] font-bold text-[#48529e] bg-[#e4ebf9] px-2 py-0.5 rounded-md border border-[#c2d4f8] mt-0.5">
                         {t.country2}
                       </span>
                     </div>
@@ -245,20 +245,20 @@ export const TransformationSection: React.FC = () => {
                   </div>
                 </div>
 
-                <blockquote className="text-stone-800 text-sm sm:text-base leading-relaxed italic font-serif pt-1 border-l-3 border-[#62c110] pl-3.5">
+                <blockquote className="text-stone-800 text-sm sm:text-base leading-relaxed italic font-serif pt-1 border-l-3 border-[#f15555] pl-3.5">
                   {language === 'es' ? t.quote2 : (t.quote2En || t.quote2)}
                 </blockquote>
 
-                <div className="p-3.5 rounded-2xl bg-[#f8faf7] border border-stone-200/80 space-y-2 text-xs">
+                <div className="p-3.5 rounded-2xl bg-[#f4f7fd] border border-stone-200/80 space-y-2 text-xs">
                   <div className="text-stone-600 flex items-start gap-2">
                     <span className="font-bold text-stone-800 uppercase text-[10px] tracking-wider bg-stone-200 px-1.5 py-0.5 rounded shrink-0">
                       {language === 'es' ? 'Antes' : 'Before'}
                     </span>
                     <span className="leading-snug">{language === 'es' ? 'Inseguridad y miedo a cometer errores al hablar inglés.' : 'Hesitation and fear of making mistakes while speaking.'}</span>
                   </div>
-                  <div className="text-[#07221a] font-semibold flex items-start gap-2 pt-2 border-t border-stone-200/60">
-                    <span className="font-black text-[#07221a] uppercase text-[10px] tracking-wider bg-[#d2edd6] px-1.5 py-0.5 rounded flex items-center gap-1 shrink-0">
-                      <CheckCircle2 className="w-3 h-3 text-[#164c3c]" />
+                  <div className="text-[#48529e] font-semibold flex items-start gap-2 pt-2 border-t border-stone-200/60">
+                    <span className="font-black text-[#48529e] uppercase text-[10px] tracking-wider bg-[#e4ebf9] px-1.5 py-0.5 rounded flex items-center gap-1 shrink-0">
+                      <CheckCircle2 className="w-3 h-3 text-[#f15555]" />
                       {language === 'es' ? 'Ahora' : 'Now'}
                     </span>
                     <span className="leading-snug">{language === 'es' ? 'Comodidad practicando con Nick, corrigiendo errores y ganando confianza.' : 'Comfortably practicing with Nick, correcting mistakes & building confidence.'}</span>
@@ -267,8 +267,8 @@ export const TransformationSection: React.FC = () => {
               </div>
 
               <div className="pt-3 border-t border-stone-100 flex items-center justify-between text-xs">
-                <span className="font-bold text-[#164c3c] flex items-center gap-1">
-                  <ShieldCheck className="w-4 h-4 text-[#62c110]" />
+                <span className="font-bold text-[#48529e] flex items-center gap-1">
+                  <ShieldCheck className="w-4 h-4 text-[#f15555]" />
                   <span>{language === 'es' ? 'Alumno Verificado' : 'Verified Student'}</span>
                 </span>
                 <span className="text-stone-500 text-[11px]">Conversation Practice</span>

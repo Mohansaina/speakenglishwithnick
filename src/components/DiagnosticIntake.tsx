@@ -259,12 +259,12 @@ How can we get started?`;
         
         {/* Clean Header */}
         <div className="text-center space-y-2 mb-8 sm:mb-10">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#edfbe6] border border-[#b2e896] text-[#07221a] text-xs font-black uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5 text-[#62c110]" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#e4ebf9] border border-[#c4d4f7] text-[#48529e] text-xs font-black uppercase tracking-wider">
+            <Sparkles className="w-3.5 h-3.5 text-[#48529e]" />
             <span>{language === 'es' ? 'Plan Personalizado con Nick' : 'Custom Action Plan with Nick'}</span>
           </div>
           
-          <h2 className="text-2xl sm:text-4xl font-black text-[#07221a] tracking-tight">
+          <h2 className="text-2xl sm:text-4xl font-black text-[#18181b] tracking-tight">
             {language === 'es' ? 'Cuéntale a Nick sobre tu nivel' : 'Tell Nick About Your English Goals'}
           </h2>
           
@@ -297,7 +297,7 @@ How can we get started?`;
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder={language === 'es' ? 'Tu nombre completo' : 'Your full name'}
-                      className="w-full pl-10 pr-3.5 py-3 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm font-medium focus:bg-white focus:outline-none focus:border-[#07221a] transition-all"
+                      className="w-full pl-10 pr-3.5 py-3 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm font-medium focus:bg-white focus:outline-none focus:border-[#48529e] transition-all"
                     />
                   </div>
                 </div>
@@ -308,7 +308,7 @@ How can we get started?`;
                     <label className="block text-xs font-black uppercase tracking-wider text-stone-700">
                       {language === 'es' ? 'Correo Electrónico:' : 'Email Address:'} <span className="text-red-500">*</span>
                     </label>
-                    <span className="text-[11px] text-[#164c3c] font-bold">
+                    <span className="text-[11px] text-[#48529e] font-bold">
                       {language === 'es' ? 'Recibirás aquí tu plan' : 'We will send your plan here'}
                     </span>
                   </div>
@@ -320,7 +320,7 @@ How can we get started?`;
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="tu.correo@ejemplo.com"
-                      className="w-full pl-10 pr-3.5 py-3 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm font-medium focus:bg-white focus:outline-none focus:border-[#07221a] transition-all"
+                      className="w-full pl-10 pr-3.5 py-3 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm font-medium focus:bg-white focus:outline-none focus:border-[#48529e] transition-all"
                     />
                   </div>
                 </div>
@@ -338,7 +338,7 @@ How can we get started?`;
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="+1 (555) 000-0000"
-                      className="w-full pl-10 pr-3.5 py-3 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm font-medium focus:bg-white focus:outline-none focus:border-[#07221a] transition-all"
+                      className="w-full pl-10 pr-3.5 py-3 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm font-medium focus:bg-white focus:outline-none focus:border-[#48529e] transition-all"
                     />
                   </div>
                 </div>
@@ -353,10 +353,10 @@ How can we get started?`;
                   <div className="flex items-center justify-between text-xs sm:text-sm font-black text-stone-900">
                     <span>
                       {language === 'es' ? 'Entiendo el:' : 'I understand:'}{' '}
-                      <span className="text-[#07221a] font-extrabold">{understandPercent}%</span>{' '}
+                      <span className="text-[#48529e] font-extrabold">{understandPercent}%</span>{' '}
                       {language === 'es' ? 'de inglés' : 'of English'}
                     </span>
-                    <span className="text-[11px] font-bold text-[#164c3c] bg-[#edfbe6] px-2.5 py-0.5 rounded-full border border-[#c4eeb0]">
+                    <span className="text-[11px] font-bold text-[#48529e] bg-[#e4ebf9] px-2.5 py-0.5 rounded-full border border-[#c2d4f8]">
                       {understandPercent}%
                     </span>
                   </div>
@@ -368,7 +368,7 @@ How can we get started?`;
                     step="5"
                     value={understandPercent}
                     onChange={(e) => setUnderstandPercent(Number(e.target.value))}
-                    className="w-full h-2.5 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-[#62c110]"
+                    className="w-full h-2.5 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-[#48529e]"
                   />
                   
                   <div className="flex justify-between text-[10px] text-stone-600 font-bold uppercase tracking-wider">
@@ -383,7 +383,7 @@ How can we get started?`;
                   <div className="flex items-center justify-between text-xs sm:text-sm font-black text-stone-900">
                     <span>
                       {language === 'es' ? 'Hablo el:' : 'I speak:'}{' '}
-                      <span className="text-[#07221a] font-extrabold">{speakPercent}%</span>{' '}
+                      <span className="text-[#48529e] font-extrabold">{speakPercent}%</span>{' '}
                       {language === 'es' ? 'de inglés' : 'of English'}
                     </span>
                     <span className="text-[11px] font-bold text-amber-900 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
@@ -426,7 +426,7 @@ How can we get started?`;
                       key={idx}
                       type="button"
                       onClick={() => handleAddSuggestion(item)}
-                      className="px-2.5 py-1 rounded-full bg-stone-100 hover:bg-[#edfbe6] text-stone-700 hover:text-[#07221a] border border-stone-200 text-[11px] font-bold transition-all cursor-pointer active:scale-95"
+                      className="px-2.5 py-1 rounded-full bg-stone-100 hover:bg-[#e4ebf9] text-stone-700 hover:text-[#48529e] border border-stone-200 text-[11px] font-bold transition-all cursor-pointer active:scale-95"
                     >
                       +{item}
                     </button>
@@ -442,7 +442,7 @@ How can we get started?`;
                   placeholder={language === 'es' 
                     ? 'Escribe aquí qué quieres lograr, tus metas de trabajo o qué situaciones te cuestan más...' 
                     : 'Describe what you want to learn, your work goals, or what speaking situations challenge you most...'}
-                  className="w-full p-3.5 sm:p-4 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 placeholder-stone-500 text-xs sm:text-sm font-medium focus:bg-white focus:outline-none focus:border-[#07221a] transition-all resize-none leading-relaxed"
+                  className="w-full p-3.5 sm:p-4 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 placeholder-stone-500 text-xs sm:text-sm font-medium focus:bg-white focus:outline-none focus:border-[#48529e] transition-all resize-none leading-relaxed"
                 />
               </div>
 
@@ -450,19 +450,19 @@ How can we get started?`;
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full py-4 rounded-full bg-[#07221a] hover:bg-[#164c3c] text-white font-black text-sm sm:text-base shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.01] active:scale-95 border border-[#164c3c]"
+                className="w-full py-4 rounded-full bg-[#f15555] hover:bg-[#d01f1f] text-white font-black text-sm sm:text-base shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.01] active:scale-95"
               >
-                <Send className="w-4 h-4 text-[#62c110]" />
+                <Send className="w-4 h-4 text-white" />
                 <span>
                   {loading 
                     ? (language === 'es' ? 'Enviando a tu correo...' : 'Sending to your email...') 
                     : (language === 'es' ? 'Enviar Diagnóstico a Mi Correo' : 'Send Diagnostic to My Email')}
                 </span>
-                <ArrowRight className="w-4 h-4 text-[#62c110]" />
+                <ArrowRight className="w-4 h-4 text-white" />
               </button>
 
               <div className="flex items-center justify-center gap-1.5 text-[11px] text-stone-500 pt-1">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#62c110]" />
+                <ShieldCheck className="w-3.5 h-3.5 text-[#48529e]" />
                 <span>{language === 'es' ? '100% Confidencial • Recibirás una copia en tu bandeja de entrada' : '100% Confidential • You will receive a copy in your inbox'}</span>
               </div>
 
@@ -470,12 +470,12 @@ How can we get started?`;
           ) : (
             /* Confirmation & Direct Connect */
             <div className="text-center space-y-5 py-4 animate-in zoom-in-95 duration-200">
-              <div className="w-14 h-14 rounded-full bg-[#edfbe6] text-[#07221a] border border-[#b2e896] flex items-center justify-center mx-auto">
-                <CheckCircle2 className="w-7 h-7 text-[#62c110]" />
+              <div className="w-14 h-14 rounded-full bg-[#e4ebf9] text-[#48529e] border border-[#c2d4f8] flex items-center justify-center mx-auto">
+                <CheckCircle2 className="w-7 h-7 text-[#48529e]" />
               </div>
 
               <div className="space-y-1">
-                <h3 className="text-xl sm:text-2xl font-black text-[#07221a]">
+                <h3 className="text-xl sm:text-2xl font-black text-[#1e244d]">
                   {language === 'es' ? `¡Diagnóstico Enviado con Éxito!` : `Diagnostic Sent Successfully!`}
                 </h3>
                 <p className="text-xs sm:text-sm text-stone-600 font-normal">
@@ -483,8 +483,8 @@ How can we get started?`;
                     ? `Hemos remitido tus datos a Coach Nick (speakenglishwithnick@gmail.com) y enviado una copia a ${email}.`
                     : `Your diagnostic was forwarded to Coach Nick (speakenglishwithnick@gmail.com) and a copy sent to ${email}.`}
                 </p>
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#edfbe6] text-[#07221a] text-[11px] font-black border border-[#b2e896] mt-2">
-                  <Mail className="w-3.5 h-3.5 text-[#16a34a]" />
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#e4ebf9] text-[#48529e] text-[11px] font-black border border-[#c2d4f8] mt-2">
+                  <Mail className="w-3.5 h-3.5 text-[#48529e]" />
                   <span>speakenglishwithnick@gmail.com</span>
                 </div>
               </div>
@@ -493,7 +493,7 @@ How can we get started?`;
               <div className="p-4 rounded-2xl bg-stone-50 border border-stone-200 text-left space-y-2 text-xs sm:text-sm">
                 <div className="flex justify-between pb-1.5 border-b border-stone-200 font-bold">
                   <span className="text-stone-500">Email:</span>
-                  <span className="text-[#164c3c] font-bold">{email}</span>
+                  <span className="text-[#48529e] font-bold">{email}</span>
                 </div>
                 <div className="flex justify-between pb-1.5 border-b border-stone-200 font-bold">
                   <span className="text-stone-500">WhatsApp:</span>
@@ -532,9 +532,9 @@ How can we get started?`;
                 <button
                   type="button"
                   onClick={handleBookDirect}
-                  className="py-3 px-4 rounded-full bg-[#07221a] hover:bg-[#164c3c] text-white font-bold text-xs shadow-md flex items-center justify-center gap-1.5 cursor-pointer transition-all hover:scale-[1.02]"
+                  className="py-3 px-4 rounded-full bg-[#f15555] hover:bg-[#d01f1f] text-white font-bold text-xs shadow-md flex items-center justify-center gap-1.5 cursor-pointer transition-all hover:scale-[1.02]"
                 >
-                  <Calendar className="w-4 h-4 text-[#62c110]" />
+                  <Calendar className="w-4 h-4 text-white" />
                   <span>{language === 'es' ? 'Agendar 1 a 1' : 'Book 1-on-1'}</span>
                 </button>
               </div>

@@ -82,10 +82,10 @@ export const StudentLoginModal: React.FC<StudentLoginModalProps> = ({ isOpen, on
           <div className="space-y-5">
             {/* Modal Header */}
             <div className="text-center space-y-2">
-              <div className="w-14 h-14 rounded-2xl bg-[#07221a] text-[#62c110] font-black flex items-center justify-center mx-auto text-xl shadow-md border border-[#164c3c]">
+              <div className="w-14 h-14 rounded-2xl bg-[#48529e] text-white font-black flex items-center justify-center mx-auto text-xl shadow-md border border-[#373f7a]">
                 N
               </div>
-              <h3 className="text-2xl font-black text-[#07221a]">
+              <h3 className="text-2xl font-black text-[#48529e]">
                 {language === 'es' ? 'Portal del Estudiante' : 'Student Portal Login'}
               </h3>
               <p className="text-xs sm:text-sm text-stone-600 font-normal">
@@ -98,9 +98,9 @@ export const StudentLoginModal: React.FC<StudentLoginModalProps> = ({ isOpen, on
             {/* Quick Demo Student Button */}
             <button
               onClick={handleDemoLogin}
-              className="w-full p-3.5 rounded-2xl bg-[#edfbe6] hover:bg-[#dcf5cc] border border-[#b2e896] text-[#07221a] font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer shadow-xs hover:scale-[1.01]"
+              className="w-full p-3.5 rounded-2xl bg-[#e4ebf9] hover:bg-[#c2d4f8] border border-[#c2d4f8] text-[#48529e] font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer shadow-xs hover:scale-[1.01]"
             >
-              <Award className="w-4 h-4 text-[#62c110]" />
+              <Award className="w-4 h-4 text-[#f15555]" />
               <span>{language === 'es' ? 'Probar Cuenta Demo de Estudiante (Acceso Inmediato)' : 'Explore Student Dashboard Demo (Instant Access)'}</span>
             </button>
 
@@ -117,7 +117,7 @@ export const StudentLoginModal: React.FC<StudentLoginModalProps> = ({ isOpen, on
                 <label className="text-xs font-bold text-stone-700">
                   {language === 'es' ? 'Correo Electrónico' : 'Email Address'}
                 </label>
-                <div className="flex items-center gap-2 p-3 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm focus-within:border-[#07221a] focus-within:bg-white transition-all">
+                <div className="flex items-center gap-2 p-3 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm focus-within:border-[#48529e] focus-within:bg-white transition-all">
                   <Mail className="w-4 h-4 text-stone-400" />
                   <input
                     type="email"
@@ -135,11 +135,11 @@ export const StudentLoginModal: React.FC<StudentLoginModalProps> = ({ isOpen, on
                   <label className="text-xs font-bold text-stone-700">
                     {language === 'es' ? 'Contraseña' : 'Password'}
                   </label>
-                  <span className="text-[11px] text-[#07221a] font-bold hover:underline cursor-pointer">
+                  <span className="text-[11px] text-[#48529e] font-bold hover:underline cursor-pointer">
                     {language === 'es' ? '¿Olvidaste?' : 'Forgot?'}
                   </span>
                 </div>
-                <div className="flex items-center gap-2 p-3 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm focus-within:border-[#07221a] focus-within:bg-white transition-all">
+                <div className="flex items-center gap-2 p-3 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm focus-within:border-[#48529e] focus-within:bg-white transition-all">
                   <Lock className="w-4 h-4 text-stone-400" />
                   <input
                     type="password"
@@ -154,10 +154,10 @@ export const StudentLoginModal: React.FC<StudentLoginModalProps> = ({ isOpen, on
 
               <button
                 type="submit"
-                className="w-full py-4 rounded-full bg-[#07221a] hover:bg-[#164c3c] text-white font-black text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.01] border border-[#164c3c]"
+                className="w-full py-4 rounded-full bg-[#f15555] hover:bg-[#d01f1f] text-white font-black text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.01]"
               >
                 <span>{language === 'es' ? 'Ingresar a mi Cuenta' : 'Log In to Academy'}</span>
-                <ArrowRight className="w-4 h-4 text-[#62c110]" />
+                <ArrowRight className="w-4 h-4 text-white" />
               </button>
             </form>
           </div>
@@ -165,25 +165,25 @@ export const StudentLoginModal: React.FC<StudentLoginModalProps> = ({ isOpen, on
           /* Interactive Student Learning Dashboard */
           <div className="space-y-5 animate-in zoom-in-95 duration-150">
             {/* Dashboard Student Header */}
-            <div className="flex items-center justify-between p-4 rounded-2xl bg-[#07221a] text-white border border-[#164c3c]">
+            <div className="flex items-center justify-between p-4 rounded-2xl bg-[#48529e] text-white border border-[#373f7a]">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-[#0d382c] border border-[#62c110] flex items-center justify-center font-black text-lg text-[#62c110]">
+                <div className="w-12 h-12 rounded-full bg-[#373f7a] border border-[#f15555] flex items-center justify-center font-black text-lg text-white">
                   MG
                 </div>
                 <div>
                   <div className="font-extrabold text-sm flex items-center gap-1.5">
                     <span>Maria Gonzalez</span>
-                    <span className="bg-[#62c110] text-[#07221a] text-[10px] px-2 py-0.5 rounded-full font-black">VIP Student</span>
+                    <span className="bg-[#f15555] text-white text-[10px] px-2 py-0.5 rounded-full font-black">VIP Student</span>
                   </div>
-                  <p className="text-xs text-stone-300 font-normal">
+                  <p className="text-xs text-stone-200 font-normal">
                     20-Minute Commute Blueprint • Module 3
                   </p>
                 </div>
               </div>
 
               {/* Streak Badge */}
-              <div className="flex items-center gap-1.5 bg-[#0d382c] px-3 py-1.5 rounded-xl border border-[#164c3c]">
-                <CheckCircle2 className="w-4 h-4 text-[#62c110]" />
+              <div className="flex items-center gap-1.5 bg-[#373f7a] px-3 py-1.5 rounded-xl border border-[#48529e]">
+                <CheckCircle2 className="w-4 h-4 text-[#f15555]" />
                 <span className="text-xs font-black text-white">14 Days Active</span>
               </div>
             </div>
@@ -192,18 +192,18 @@ export const StudentLoginModal: React.FC<StudentLoginModalProps> = ({ isOpen, on
             <div className="p-4 rounded-2xl bg-[#fafafa] border border-stone-200 space-y-2">
               <div className="flex items-center justify-between text-xs font-bold text-stone-700">
                 <span>Overall Blueprint Progress</span>
-                <span className="text-[#07221a] font-black">75% Completed (15/20)</span>
+                <span className="text-[#48529e] font-black">75% Completed (15/20)</span>
               </div>
               <div className="w-full bg-stone-200 h-2.5 rounded-full overflow-hidden">
-                <div className="bg-[#62c110] h-full rounded-full" style={{ width: '75%' }} />
+                <div className="bg-[#f15555] h-full rounded-full" style={{ width: '75%' }} />
               </div>
             </div>
 
             {/* Daily Audio Workout Playlist */}
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <h4 className="text-xs font-black text-[#07221a] uppercase tracking-wider flex items-center gap-1.5">
-                  <Volume2 className="w-4 h-4 text-[#62c110]" />
+                <h4 className="text-xs font-black text-[#48529e] uppercase tracking-wider flex items-center gap-1.5">
+                  <Volume2 className="w-4 h-4 text-[#f15555]" />
                   <span>{language === 'es' ? 'Tus Lecciones de Audio de Hoy' : 'Your Audio Workouts'}</span>
                 </h4>
                 <span className="text-[11px] text-stone-500 font-semibold">100% Hands-Free</span>
@@ -219,13 +219,13 @@ export const StudentLoginModal: React.FC<StudentLoginModalProps> = ({ isOpen, on
                     }}
                     className={`p-3.5 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-3 ${
                       activeLessonIndex === idx
-                        ? 'bg-[#f6fcf3] border-[#62c110] shadow-xs'
+                        ? 'bg-[#f4f7fd] border-[#48529e] shadow-xs'
                         : 'bg-white border-stone-200 hover:bg-stone-50'
                     }`}
                   >
                     <div className="flex items-center gap-3">
                       <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                        activeLessonIndex === idx ? 'bg-[#62c110] text-[#07221a]' : 'bg-stone-100 text-stone-700'
+                        activeLessonIndex === idx ? 'bg-[#f15555] text-white' : 'bg-stone-100 text-stone-700'
                       }`}>
                         {activeLessonIndex === idx && isPlayingAudio ? (
                           <Pause className="w-4 h-4 fill-current" />
@@ -240,8 +240,8 @@ export const StudentLoginModal: React.FC<StudentLoginModalProps> = ({ isOpen, on
                     </div>
 
                     {les.completed ? (
-                      <span className="text-[10px] font-bold text-[#07221a] bg-[#edfbe6] px-2 py-0.5 rounded-full border border-[#b2e896] flex items-center gap-1">
-                        <CheckCircle2 className="w-3 h-3 text-[#62c110]" /> Done
+                      <span className="text-[10px] font-bold text-[#48529e] bg-[#e4ebf9] px-2 py-0.5 rounded-full border border-[#c2d4f8] flex items-center gap-1">
+                        <CheckCircle2 className="w-3 h-3 text-[#f15555]" /> Done
                       </span>
                     ) : (
                       <span className="text-[10px] font-bold text-stone-500">Pending</span>
@@ -252,21 +252,21 @@ export const StudentLoginModal: React.FC<StudentLoginModalProps> = ({ isOpen, on
             </div>
 
             {/* Upcoming 1-on-1 Call with Nick */}
-            <div className="p-4 rounded-2xl bg-[#07221a] text-white flex items-center justify-between gap-3 border border-[#164c3c]">
+            <div className="p-4 rounded-2xl bg-[#48529e] text-white flex items-center justify-between gap-3 border border-[#373f7a]">
               <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-xl bg-[#0d382c] text-[#62c110] border border-[#164c3c]">
+                <div className="p-2.5 rounded-xl bg-[#373f7a] text-white border border-[#48529e]">
                   <Calendar className="w-5 h-5" />
                 </div>
                 <div>
                   <div className="text-xs font-black">Next 1-on-1 Live Call with Nick</div>
-                  <p className="text-[11px] text-stone-300 font-normal">Thursday @ 3:00 PM EST (Zoom)</p>
+                  <p className="text-[11px] text-stone-200 font-normal">Thursday @ 3:00 PM EST (Zoom)</p>
                 </div>
               </div>
               <a
                 href="https://zoom.us"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 rounded-full bg-[#62c110] text-[#07221a] font-black text-xs hover:bg-[#52a60d] transition-colors"
+                className="px-4 py-2 rounded-full bg-[#f15555] text-white font-black text-xs hover:bg-[#d01f1f] transition-colors"
               >
                 Join
               </a>

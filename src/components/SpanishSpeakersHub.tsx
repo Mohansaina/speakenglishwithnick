@@ -121,29 +121,29 @@ export const SpanishSpeakersHub: React.FC<SpanishSpeakersHubProps> = ({
     <section id="spanish-hub" className="py-20 sm:py-28 bg-[#f8f9f7] border-b border-stone-200/80 relative overflow-hidden">
       
       {/* Background Subtle Ambient Glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#62c110]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#48529e]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-14 sm:mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#edfbe6] border border-[#b2e896] text-[#07221a] text-xs font-black uppercase tracking-wider shadow-2xs">
-            <Sparkles className="w-3.5 h-3.5 text-[#62c110]" />
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#e4ebf9] border border-[#c4d4f7] text-[#48529e] text-xs font-black uppercase tracking-wider shadow-2xs">
+            <Sparkles className="w-3.5 h-3.5 text-[#48529e]" />
             <span>{language === 'es' ? 'Especial Para Hispanohablantes' : 'Tailored For Spanish Speakers'}</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#07221a] tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#18181b] tracking-tight leading-tight">
             {language === 'es' ? (
               <>
                 Por qué los hispanohablantes se bloquean al hablar <br className="hidden sm:inline" />
-                <span className="font-serif italic font-normal text-[#164c3c]">
+                <span className="font-serif italic font-normal text-[#48529e]">
                   (Y cómo solucionarlo con Coach Nick)
                 </span>
               </>
             ) : (
               <>
                 Why Spanish Speakers Get Stuck in English <br className="hidden sm:inline" />
-                <span className="font-serif italic font-normal text-[#164c3c]">
+                <span className="font-serif italic font-normal text-[#48529e]">
                   (And How to Fix It With Coach Nick)
                 </span>
               </>
@@ -153,7 +153,7 @@ export const SpanishSpeakersHub: React.FC<SpanishSpeakersHubProps> = ({
           <p className="text-sm sm:text-base text-stone-600 max-w-2xl mx-auto font-normal leading-relaxed">
             {language === 'es'
               ? 'El español es un idioma de ritmo silábico (plano y constante); el inglés es un idioma de ritmo acentual (ondas musicales). Nick te enseña a reprogramar tus hábitos de sonido.'
-              : 'Spanish is syllable-timed (flat, equal rhythm); English is stress-timed (musical waves). Coach Nick helps you rewire your acoustic habits step-by-step.'}
+              : 'Spanish is syllable-timed (flat rhythm); English is stress-timed (musical waves). Nick trains your muscles to switch rhythms naturally.'}
           </p>
         </div>
 
@@ -186,13 +186,13 @@ export const SpanishSpeakersHub: React.FC<SpanishSpeakersHubProps> = ({
             </div>
 
             {/* English Side */}
-            <div className="space-y-3 p-5 sm:p-6 rounded-2xl bg-[#edfbe6]/90 border border-[#b2e896]">
+            <div className="space-y-3 p-5 sm:p-6 rounded-2xl bg-[#f4f7fd]/90 border border-[#48529e]/30">
               <div className="flex items-center justify-between">
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-[#d3f4be] text-[#07221a] text-xs font-black uppercase tracking-wide">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#62c110]" />
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-[#e4ebf9] text-[#48529e] text-xs font-black uppercase tracking-wide">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#48529e]" />
                   {language === 'es' ? 'Ritmo del Inglés Americano' : 'English Rhythm'}
                 </span>
-                <span className="text-xs font-bold text-[#164c3c]">Stress-Timed (Ondas)</span>
+                <span className="text-xs font-bold text-[#48529e]">Stress-Timed (Ondas)</span>
               </div>
               <h4 className="text-base sm:text-lg font-black text-stone-900 leading-snug">
                 {language === 'es' ? 'Palabras clave resaltan, las demás se comprimen' : 'Key words pop high, grammatical words shrink'}
@@ -203,11 +203,11 @@ export const SpanishSpeakersHub: React.FC<SpanishSpeakersHubProps> = ({
                   : 'Musical waves (DA - da - DA - da). Minor words contract into the relaxed Schwa sound for natural speed.'}
               </p>
               <div className="flex items-center gap-1.5 pt-2">
-                <div className="h-4 w-1/4 rounded-full bg-[#62c110]" />
-                <div className="h-1.5 w-1/8 rounded-full bg-[#62c110]/50" />
-                <div className="h-5 w-1/3 rounded-full bg-[#62c110]" />
-                <div className="h-1.5 w-1/8 rounded-full bg-[#62c110]/50" />
-                <div className="h-3 w-1/5 rounded-full bg-[#62c110]" />
+                <div className="h-4 w-1/4 rounded-full bg-[#48529e]" />
+                <div className="h-1.5 w-1/8 rounded-full bg-[#48529e]/50" />
+                <div className="h-5 w-1/3 rounded-full bg-[#48529e]" />
+                <div className="h-1.5 w-1/8 rounded-full bg-[#48529e]/50" />
+                <div className="h-3 w-1/5 rounded-full bg-[#48529e]" />
               </div>
             </div>
 
@@ -219,12 +219,12 @@ export const SpanishSpeakersHub: React.FC<SpanishSpeakersHubProps> = ({
           {traps.map((trap) => (
             <div
               key={trap.id}
-              className="bg-white rounded-3xl p-6 sm:p-8 border border-stone-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-xl hover:border-[#62c110] transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
+              className="bg-white rounded-3xl p-6 sm:p-8 border border-stone-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-xl hover:border-[#48529e] transition-all duration-300 flex flex-col justify-between group relative overflow-hidden"
             >
               {/* Card Top */}
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="w-8 h-8 rounded-full bg-[#07221a] text-[#82e635] text-xs font-black flex items-center justify-center shadow-xs">
+                  <span className="w-8 h-8 rounded-full bg-[#48529e] text-white text-xs font-black flex items-center justify-center shadow-xs">
                     {trap.number}
                   </span>
                   <span className="text-[11px] font-bold text-stone-400 uppercase tracking-wider">
@@ -233,7 +233,7 @@ export const SpanishSpeakersHub: React.FC<SpanishSpeakersHubProps> = ({
                 </div>
 
                 <div>
-                  <h3 className="text-xl sm:text-2xl font-black text-stone-900 group-hover:text-[#07221a] transition-colors leading-snug">
+                  <h3 className="text-xl sm:text-2xl font-black text-stone-900 group-hover:text-[#48529e] transition-colors leading-snug">
                     {trap.title}
                   </h3>
                   <p className="text-xs sm:text-sm text-stone-600 mt-2 leading-relaxed">
@@ -272,14 +272,14 @@ export const SpanishSpeakersHub: React.FC<SpanishSpeakersHubProps> = ({
                   </div>
 
                   {/* Correct Box */}
-                  <div className="p-3 sm:p-3.5 rounded-2xl bg-[#edfbe6] border border-[#b2e896] flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs">
+                  <div className="p-3 sm:p-3.5 rounded-2xl bg-[#e4ebf9] border border-[#c2d4f8] flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 text-xs">
                     <div className="flex items-start gap-2 min-w-0">
-                      <CheckCircle2 className="w-4 h-4 text-[#164c3c] shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-4 h-4 text-[#48529e] shrink-0 mt-0.5" />
                       <div className="min-w-0">
-                        <span className="font-bold text-[#07221a] block">
+                        <span className="font-bold text-[#48529e] block">
                           {language === 'es' ? 'Inglés natural fluido:' : 'Natural Native English:'}
                         </span>
-                        <span className="font-mono text-[#164c3c] font-semibold text-[11px] block break-words">
+                        <span className="font-mono text-[#373f7a] font-semibold text-[11px] block break-words">
                           {trap.correct}
                         </span>
                       </div>
@@ -289,8 +289,8 @@ export const SpanishSpeakersHub: React.FC<SpanishSpeakersHubProps> = ({
                       onClick={() => handlePlayComparison(trap.id, 'good', trap.audioPromptGood)}
                       className={`px-3.5 py-1.5 rounded-full text-[11px] font-black shrink-0 self-start sm:self-auto transition-all cursor-pointer flex items-center gap-1 ${
                         activeAudioTrap === trap.id && playingVariant === 'good'
-                          ? 'bg-[#07221a] text-white shadow-sm'
-                          : 'bg-[#62c110] hover:bg-[#52a60d] text-[#07221a] shadow-xs'
+                          ? 'bg-[#48529e] text-white shadow-sm'
+                          : 'bg-[#f15555] hover:bg-[#d01f1f] text-white shadow-xs'
                       }`}
                     >
                       <Volume2 className="w-3 h-3" />
@@ -302,7 +302,7 @@ export const SpanishSpeakersHub: React.FC<SpanishSpeakersHubProps> = ({
 
                 {/* Pro Tip */}
                 <div className="pt-2 flex items-start gap-2 text-xs text-stone-500 italic">
-                  <span className="text-[#62c110] font-black not-italic shrink-0">💡 TIP:</span>
+                  <span className="text-[#f15555] font-black not-italic shrink-0">💡 TIP:</span>
                   <span className="leading-relaxed">{trap.tip}</span>
                 </div>
               </div>
@@ -314,7 +314,7 @@ export const SpanishSpeakersHub: React.FC<SpanishSpeakersHubProps> = ({
                 </span>
                 <button
                   onClick={onOpenBooking}
-                  className="text-xs font-black text-[#07221a] group-hover:text-[#62c110] flex items-center gap-1 transition-colors cursor-pointer"
+                  className="text-xs font-black text-[#48529e] group-hover:text-[#f15555] flex items-center gap-1 transition-colors cursor-pointer"
                 >
                   <span>{language === 'es' ? 'Corregir con Nick' : 'Practice with Nick'}</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -326,11 +326,11 @@ export const SpanishSpeakersHub: React.FC<SpanishSpeakersHubProps> = ({
         </div>
 
         {/* Bottom CTA Banner */}
-        <div className="mt-12 sm:mt-18 p-6 sm:p-10 rounded-3xl bg-[#07221a] text-white border border-[#164c3c] shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden text-center md:text-left">
-          <div className="absolute top-0 right-0 w-80 h-80 bg-[#62c110]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="mt-12 sm:mt-18 p-6 sm:p-10 rounded-3xl bg-[#48529e] text-white border border-[#373f7a] shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden text-center md:text-left">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="space-y-2 relative z-10">
-            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#164c3c] text-[#82e635] text-xs font-black uppercase">
+            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-white/20 text-[#d4dcff] text-xs font-black uppercase">
               <ShieldCheck className="w-3.5 h-3.5" />
               <span>{language === 'es' ? 'Diagnóstico Personalizado' : 'Personalized Diagnostic'}</span>
             </div>
@@ -339,7 +339,7 @@ export const SpanishSpeakersHub: React.FC<SpanishSpeakersHubProps> = ({
                 ? '¿Quieres identificar tus bloqueos de acento con Teacher Nick?'
                 : 'Want to identify your specific speaking bottlenecks with Teacher Nick?'}
             </h3>
-            <p className="text-xs sm:text-sm text-stone-300 max-w-xl">
+            <p className="text-xs sm:text-sm text-[#d4dcff] max-w-xl">
               {language === 'es'
                 ? 'En una sesión 1 a 1 evaluamos tu pronunciación exacta, velocidad y confianza, creando tu plan de práctica de 5 días por WhatsApp.'
                 : 'In a private 1-on-1 session, we diagnose your exact pronunciation patterns and design your 5-day WhatsApp practice routine.'}
@@ -348,7 +348,7 @@ export const SpanishSpeakersHub: React.FC<SpanishSpeakersHubProps> = ({
 
           <button
             onClick={onOpenBooking}
-            className="w-full md:w-auto px-7 py-4 rounded-full bg-[#62c110] hover:bg-[#82e635] text-[#07221a] font-black text-xs sm:text-sm shadow-xl transition-all hover:scale-105 shrink-0 flex items-center justify-center gap-2 cursor-pointer relative z-10 active:scale-95"
+            className="w-full md:w-auto px-7 py-4 rounded-full bg-[#f15555] hover:bg-[#e04444] text-white font-black text-xs sm:text-sm shadow-xl transition-all hover:scale-105 shrink-0 flex items-center justify-center gap-2 cursor-pointer relative z-10 active:scale-95"
           >
             <span>{language === 'es' ? 'Agendar Sesión 1 a 1 con Nick' : 'Book 1-on-1 Session with Nick'}</span>
             <ArrowRight className="w-4 h-4 stroke-[2.5]" />

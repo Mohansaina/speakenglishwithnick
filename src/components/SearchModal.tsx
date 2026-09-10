@@ -35,7 +35,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
         
         {/* Search Input Bar */}
         <div className="p-3.5 sm:p-5 border-b border-stone-100 flex items-center gap-3">
-          <Search className="w-5 h-5 text-[#62c110] shrink-0" />
+          <Search className="w-5 h-5 text-[#f15555] shrink-0" />
           <input
             type="text"
             autoFocus
@@ -61,14 +61,14 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
                 key={idx}
                 href={item.anchor}
                 onClick={onClose}
-                className="flex items-center justify-between p-3 rounded-2xl hover:bg-[#f6fcf3] border border-transparent hover:border-[#c4eeb0] transition-colors group"
+                className="flex items-center justify-between p-3 rounded-2xl hover:bg-[#f4f7fd] border border-transparent hover:border-[#c2d4f8] transition-colors group"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-xl bg-stone-100 group-hover:bg-[#62c110] text-stone-700 group-hover:text-[#07221a] flex items-center justify-center transition-colors">
+                  <div className="w-8 h-8 rounded-xl bg-stone-100 group-hover:bg-[#48529e] text-stone-700 group-hover:text-white flex items-center justify-center transition-colors">
                     {item.cat === 'Videos' ? <Video className="w-4 h-4" /> : <Headphones className="w-4 h-4" />}
                   </div>
                   <div>
-                    <h4 className="text-xs sm:text-sm font-bold text-stone-900 group-hover:text-[#07221a]">
+                    <h4 className="text-xs sm:text-sm font-bold text-stone-900 group-hover:text-[#48529e]">
                       {item.title}
                     </h4>
                     <span className="text-[10px] text-stone-500 font-medium">
@@ -76,7 +76,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
                     </span>
                   </div>
                 </div>
-                <ArrowRight className="w-4 h-4 text-stone-300 group-hover:text-[#07221a] group-hover:translate-x-1 transition-all" />
+                <ArrowRight className="w-4 h-4 text-stone-300 group-hover:text-[#48529e] group-hover:translate-x-1 transition-all" />
               </a>
             ))
           ) : (

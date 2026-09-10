@@ -113,11 +113,11 @@ Instagram: @speak.english.with.nick
         {!submitted ? (
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-1.5">
-              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#edfbe6] text-[#07221a] text-xs font-black uppercase tracking-wider border border-[#b2e896]">
-                <BookOpen className="w-3.5 h-3.5 text-[#62c110]" />
+              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#e4ebf9] text-[#48529e] text-xs font-black uppercase tracking-wider border border-[#c2d4f8]">
+                <BookOpen className="w-3.5 h-3.5 text-[#f15555]" />
                 <span>{language === 'es' ? 'Guía Rápida Gratuita' : 'Free Accent Cheat Sheet'}</span>
               </div>
-              <h3 className="text-xl sm:text-2xl font-black text-[#07221a]">
+              <h3 className="text-xl sm:text-2xl font-black text-[#48529e]">
                 {language === 'es' ? 'Guía de Sonidos y Frases en Inglés' : 'Sounds of American English Cheat Sheet'}
               </h3>
               <p className="text-xs sm:text-sm text-stone-600 font-normal">
@@ -138,7 +138,7 @@ Instagram: @speak.english.with.nick
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder={language === 'es' ? 'Ej. Sofia' : 'e.g. Sarah'}
-                  className="w-full px-3.5 py-2.5 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm focus:outline-none focus:border-[#07221a] focus:bg-white transition-colors"
+                  className="w-full px-3.5 py-2.5 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm focus:outline-none focus:border-[#48529e] focus:bg-white transition-colors"
                 />
               </div>
 
@@ -152,7 +152,7 @@ Instagram: @speak.english.with.nick
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="sofia@empresa.com"
-                  className="w-full px-3.5 py-2.5 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm focus:outline-none focus:border-[#07221a] focus:bg-white transition-colors"
+                  className="w-full px-3.5 py-2.5 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm focus:outline-none focus:border-[#48529e] focus:bg-white transition-colors"
                 />
               </div>
 
@@ -163,7 +163,7 @@ Instagram: @speak.english.with.nick
                 <select
                   value={goal}
                   onChange={(e) => setGoal(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-xs sm:text-sm focus:outline-none focus:border-[#07221a] focus:bg-white transition-colors"
+                  className="w-full px-3.5 py-2.5 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-xs sm:text-sm focus:outline-none focus:border-[#48529e] focus:bg-white transition-colors"
                 >
                   <option value="workplace">
                     {language === 'es' ? 'Hablar con seguridad en reuniones de trabajo' : 'Speaking in business & work meetings'}
@@ -184,7 +184,7 @@ Instagram: @speak.english.with.nick
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-4 rounded-full bg-[#62c110] hover:bg-[#52a60d] text-[#07221a] font-black text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.02]"
+              className="w-full py-4 rounded-full bg-[#f15555] hover:bg-[#d01f1f] text-white font-black text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.02]"
             >
               {loading ? (
                 <span>{language === 'es' ? 'Generando Guía...' : 'Preparing Cheat Sheet...'}</span>
@@ -197,17 +197,17 @@ Instagram: @speak.english.with.nick
             </button>
 
             <p className="text-[11px] text-center text-stone-500 flex items-center justify-center gap-1 font-normal">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#62c110]" />
+              <ShieldCheck className="w-3.5 h-3.5 text-[#f15555]" />
               <span>{language === 'es' ? '100% Gratis • Sin Spam • Acceso Inmediato' : '100% Free • No Spam • Instant Access'}</span>
             </p>
           </form>
         ) : (
           <div className="text-center space-y-4 py-2 animate-in zoom-in-95 duration-150">
-            <div className="w-14 h-14 rounded-full bg-[#edfbe6] text-[#07221a] border border-[#b2e896] flex items-center justify-center mx-auto">
-              <Check className="w-7 h-7 text-[#62c110]" />
+            <div className="w-14 h-14 rounded-full bg-[#e4ebf9] text-[#48529e] border border-[#c2d4f8] flex items-center justify-center mx-auto">
+              <Check className="w-7 h-7 text-[#f15555]" />
             </div>
             <div className="space-y-1">
-              <h3 className="text-2xl font-black text-[#07221a]">
+              <h3 className="text-2xl font-black text-[#48529e]">
                 {language === 'es' ? `¡Todo Listo, ${name}!` : `You're All Set, ${name}!`}
               </h3>
               <p className="text-xs sm:text-sm text-stone-600 font-normal">
@@ -219,9 +219,9 @@ Instagram: @speak.english.with.nick
 
             <button
               onClick={handleDownload}
-              className="w-full py-4 rounded-full bg-[#07221a] hover:bg-[#164c3c] text-white font-black text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.02] border border-[#164c3c]"
+              className="w-full py-4 rounded-full bg-[#48529e] hover:bg-[#373f7a] text-white font-black text-xs sm:text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.02] border border-[#373f7a]"
             >
-              <Download className="w-4 h-4 text-[#62c110]" />
+              <Download className="w-4 h-4 text-[#f15555]" />
               <span>{language === 'es' ? 'Descargar Guía Rápida Ahora' : 'Download Cheat Sheet Now'}</span>
             </button>
 

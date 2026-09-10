@@ -70,11 +70,11 @@ export const FAQ: React.FC<FAQProps> = ({ onOpenBooking }) => {
         
         {/* Header */}
         <div className="text-center space-y-3 mb-14 sm:mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#edfbe6] border border-[#b2e896] text-[#07221a] text-xs font-black uppercase tracking-wider">
-            <HelpCircle className="w-3.5 h-3.5 text-[#62c110]" />
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#e4ebf9] border border-[#c4d4f7] text-[#48529e] text-xs font-black uppercase tracking-wider">
+            <HelpCircle className="w-3.5 h-3.5 text-[#48529e]" />
             <span>{t.tag}</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#07221a] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#18181b] tracking-tight">
             {t.title}
           </h2>
           <p className="text-sm sm:text-base text-stone-600 font-normal">
@@ -89,15 +89,15 @@ export const FAQ: React.FC<FAQProps> = ({ onOpenBooking }) => {
             return (
               <div
                 key={idx}
-                className="rounded-2xl sm:rounded-3xl bg-white border border-stone-200/90 overflow-hidden smooth-hover-lift shadow-2xs hover:border-[#164c3c]/40"
+                className="rounded-2xl sm:rounded-3xl bg-white border border-stone-200/90 overflow-hidden smooth-hover-lift shadow-2xs hover:border-[#48529e]/40"
               >
                 <button
                   onClick={() => toggleFAQ(idx)}
-                  className="w-full text-left p-4 sm:p-6 md:p-7 flex items-center justify-between gap-3 font-black text-[#07221a] text-sm sm:text-base md:text-lg hover:text-[#164c3c] transition-colors cursor-pointer"
+                  className="w-full text-left p-4 sm:p-6 md:p-7 flex items-center justify-between gap-3 font-black text-[#18181b] text-sm sm:text-base md:text-lg hover:text-[#48529e] transition-colors cursor-pointer"
                 >
                   <span className="leading-snug">{item.q}</span>
                   <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ease-out ${
-                    isOpen ? 'rotate-180 bg-[#07221a] text-[#62c110] shadow-xs' : 'bg-[#fafafa] text-stone-600 border border-stone-200'
+                    isOpen ? 'rotate-180 bg-[#48529e] text-white shadow-xs' : 'bg-[#fafafa] text-stone-600 border border-stone-200'
                   }`}>
                     <ChevronDown className="w-4 h-4 stroke-[2.5]" />
                   </div>
@@ -116,9 +116,9 @@ export const FAQ: React.FC<FAQProps> = ({ onOpenBooking }) => {
         </div>
 
         {/* Still Have Questions CTA Banner */}
-        <div className="mt-10 sm:mt-14 p-5 sm:p-8 rounded-3xl bg-[#f6fcf3] border border-[#c4eeb0] flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-5 text-center sm:text-left">
+        <div className="mt-10 sm:mt-14 p-5 sm:p-8 rounded-3xl bg-[#e4ebf9]/60 border border-[#c4d4f7] flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-5 text-center sm:text-left">
           <div className="space-y-1">
-            <h4 className="font-black text-[#07221a] text-sm sm:text-base md:text-lg">
+            <h4 className="font-black text-[#18181b] text-sm sm:text-base md:text-lg">
               {language === 'es' ? '¿Tienes una pregunta específica para Coach Nick?' : 'Have a specific question for Coach Nick?'}
             </h4>
             <p className="text-xs sm:text-sm text-stone-600 font-normal">
@@ -129,10 +129,10 @@ export const FAQ: React.FC<FAQProps> = ({ onOpenBooking }) => {
           </div>
           <button
             onClick={onOpenBooking}
-            className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#07221a] hover:bg-[#164c3c] text-white font-bold text-xs sm:text-sm shadow-md shrink-0 flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-[1.02] border border-[#164c3c] active:scale-95"
+            className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#f15555] hover:bg-[#e04444] text-white font-bold text-xs sm:text-sm shadow-md shrink-0 flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
           >
             <span>{language === 'es' ? 'Agendar Llamada' : 'Book 1-on-1 Call'}</span>
-            <ArrowRight className="w-3.5 h-3.5 text-[#62c110]" />
+            <ArrowRight className="w-3.5 h-3.5 text-white" />
           </button>
         </div>
 

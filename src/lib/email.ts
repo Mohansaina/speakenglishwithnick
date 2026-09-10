@@ -173,24 +173,24 @@ export async function sendDiagnosticEmail(data: DiagnosticEmailData) {
         <style>
           body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f7f7f5; margin: 0; padding: 20px; color: #1c1917; }
           .container { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 16px; border: 1px solid #e7e5e4; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
-          .header { background: #07221a; padding: 24px 30px; text-align: left; }
+          .header { background: #1e244d; padding: 24px 30px; text-align: left; }
           .header h1 { color: #ffffff; margin: 0; font-size: 20px; font-weight: 800; letter-spacing: -0.5px; }
-          .header p { color: #a1d99b; margin: 4px 0 0 0; font-size: 13px; }
+          .header p { color: #c2d4f8; margin: 4px 0 0 0; font-size: 13px; }
           .content { padding: 30px; }
-          .badge { display: inline-block; padding: 4px 12px; background: #edfbe6; color: #07221a; border: 1px solid #b2e896; border-radius: 999px; font-size: 12px; font-weight: 700; margin-bottom: 20px; }
+          .badge { display: inline-block; padding: 4px 12px; background: #e4ebf9; color: #48529e; border: 1px solid #c2d4f8; border-radius: 999px; font-size: 12px; font-weight: 700; margin-bottom: 20px; }
           .table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
           .table td { padding: 12px 14px; border-bottom: 1px solid #f0eee9; font-size: 14px; }
           .table td.label { font-weight: 700; color: #57534e; width: 35%; background: #fafaf9; }
           .table td.val { font-weight: 600; color: #0c0a09; }
           .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 24px; text-align: center; }
           .stat-box { background: #fbfbf9; border: 1px solid #e7e5e4; border-radius: 12px; padding: 12px 8px; }
-          .stat-num { font-size: 22px; font-weight: 900; color: #07221a; }
+          .stat-num { font-size: 22px; font-weight: 900; color: #48529e; }
           .stat-lbl { font-size: 11px; font-weight: 700; color: #78716c; text-transform: uppercase; margin-top: 4px; }
-          .goal-box { background: #f0fdf4; border-left: 4px solid #16a34a; padding: 16px; border-radius: 8px; margin-bottom: 24px; }
-          .goal-title { font-size: 12px; font-weight: 800; text-transform: uppercase; color: #166534; margin-bottom: 4px; }
-          .goal-text { font-size: 14px; color: #14532d; font-style: italic; line-height: 1.4; margin: 0; }
+          .goal-box { background: #e4ebf9/50; border-left: 4px solid #48529e; padding: 16px; border-radius: 8px; margin-bottom: 24px; }
+          .goal-title { font-size: 12px; font-weight: 800; text-transform: uppercase; color: #48529e; margin-bottom: 4px; }
+          .goal-text { font-size: 14px; color: #1e244d; font-style: italic; line-height: 1.4; margin: 0; }
           .cta-row { text-align: center; margin: 30px 0 10px; }
-          .button { display: inline-block; background: #07221a; color: #ffffff !important; padding: 12px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 14px; }
+          .button { display: inline-block; background: #48529e; color: #ffffff !important; padding: 12px 24px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 14px; }
           .footer { background: #fafaf9; padding: 18px 30px; text-align: center; font-size: 12px; color: #a8a29e; border-top: 1px solid #f0eee9; }
         </style>
       </head>
@@ -210,7 +210,7 @@ export async function sendDiagnosticEmail(data: DiagnosticEmailData) {
               </tr>
               <tr>
                 <td class="label">Email</td>
-                <td class="val"><a href="mailto:${email}" style="color: #07221a; text-decoration: underline;">${email}</a></td>
+                <td class="val"><a href="mailto:${email}" style="color: #48529e; text-decoration: underline;">${email}</a></td>
               </tr>
               <tr>
                 <td class="label">WhatsApp / Phone</td>
@@ -273,13 +273,13 @@ export async function sendDiagnosticEmail(data: DiagnosticEmailData) {
       <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #fcfcfb; padding: 20px; color: #1c1917;">
         <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 16px; border: 1px solid #e7e5e4; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
           <div style="text-align: center; margin-bottom: 24px;">
-            <h1 style="color: #07221a; font-size: 24px; font-weight: 900; margin: 0 0 6px 0;">¡Hola ${name}! 🚀</h1>
+            <h1 style="color: #1e244d; font-size: 24px; font-weight: 900; margin: 0 0 6px 0;">¡Hola ${name}! 🚀</h1>
             <p style="color: #78716c; font-size: 14px; margin: 0;">Aquí tienes tu Diagnóstico y Plan de Acción de 5 Días con Coach Nick.</p>
           </div>
 
-          <div style="background: #edfbe6; border: 1px solid #b2e896; border-radius: 12px; padding: 16px; margin-bottom: 24px;">
-            <div style="font-weight: 800; color: #07221a; font-size: 14px; margin-bottom: 8px;">Tus Resultados:</div>
-            <ul style="margin: 0; padding-left: 20px; color: #07221a; font-size: 14px; line-height: 1.6;">
+          <div style="background: #e4ebf9; border: 1px solid #c2d4f8; border-radius: 12px; padding: 16px; margin-bottom: 24px;">
+            <div style="font-weight: 800; color: #48529e; font-size: 14px; margin-bottom: 8px;">Tus Resultados:</div>
+            <ul style="margin: 0; padding-left: 20px; color: #1e244d; font-size: 14px; line-height: 1.6;">
               <li><strong>Comprensión Auditiva:</strong> ${understandPercent}%</li>
               <li><strong>Producción al Hablar:</strong> ${speakPercent}%</li>
               <li><strong>Brecha de Traducción Mental:</strong> ${fluencyGap}%</li>
@@ -287,7 +287,7 @@ export async function sendDiagnosticEmail(data: DiagnosticEmailData) {
           </div>
 
           <div style="background: #fafaf9; border-radius: 12px; padding: 18px; margin-bottom: 24px;">
-            <h3 style="color: #07221a; font-size: 15px; font-weight: 800; margin: 0 0 10px 0;">Tu Plan de Práctica de 5 Días (20 min/día):</h3>
+            <h3 style="color: #48529e; font-size: 15px; font-weight: 800; margin: 0 0 10px 0;">Tu Plan de Práctica de 5 Días (20 min/día):</h3>
             <ol style="margin: 0; padding-left: 20px; color: #44403c; font-size: 13.5px; line-height: 1.6;">
               <li><strong>Día 1:</strong> Eliminación de la "E" inicial y posicionamiento de lengua/labios.</li>
               <li><strong>Día 2:</strong> V vs B y reducción de vocales al ritmo americano (Schwa /ə/).</li>
@@ -298,7 +298,7 @@ export async function sendDiagnosticEmail(data: DiagnosticEmailData) {
           </div>
 
           <div style="text-align: center; margin-top: 30px;">
-            <a href="https://wa.me/?text=Hola%20Coach%20Nick!%20Recib%C3%AD%20mi%20diagn%C3%B3stico%20de%20ingl%C3%A9s" style="background: #07221a; color: #ffffff; padding: 13px 26px; border-radius: 10px; font-weight: 800; text-decoration: none; display: inline-block; font-size: 14px;">
+            <a href="https://wa.me/?text=Hola%20Coach%20Nick!%20Recib%C3%AD%20mi%20diagn%C3%B3stico%20de%20ingl%C3%A9s" style="background: #48529e; color: #ffffff; padding: 13px 26px; border-radius: 10px; font-weight: 800; text-decoration: none; display: inline-block; font-size: 14px;">
               Escribir a Coach Nick por WhatsApp &rarr;
             </a>
           </div>
@@ -315,13 +315,13 @@ export async function sendDiagnosticEmail(data: DiagnosticEmailData) {
       <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #fcfcfb; padding: 20px; color: #1c1917;">
         <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 16px; border: 1px solid #e7e5e4; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
           <div style="text-align: center; margin-bottom: 24px;">
-            <h1 style="color: #07221a; font-size: 24px; font-weight: 900; margin: 0 0 6px 0;">Hi ${name}! 🚀</h1>
+            <h1 style="color: #1e244d; font-size: 24px; font-weight: 900; margin: 0 0 6px 0;">Hi ${name}! 🚀</h1>
             <p style="color: #78716c; font-size: 14px; margin: 0;">Here is your Personalized Fluency Diagnostic & 5-Day Action Plan with Coach Nick.</p>
           </div>
 
-          <div style="background: #edfbe6; border: 1px solid #b2e896; border-radius: 12px; padding: 16px; margin-bottom: 24px;">
-            <div style="font-weight: 800; color: #07221a; font-size: 14px; margin-bottom: 8px;">Your Diagnostic Results:</div>
-            <ul style="margin: 0; padding-left: 20px; color: #07221a; font-size: 14px; line-height: 1.6;">
+          <div style="background: #e4ebf9; border: 1px solid #c2d4f8; border-radius: 12px; padding: 16px; margin-bottom: 24px;">
+            <div style="font-weight: 800; color: #48529e; font-size: 14px; margin-bottom: 8px;">Your Diagnostic Results:</div>
+            <ul style="margin: 0; padding-left: 20px; color: #1e244d; font-size: 14px; line-height: 1.6;">
               <li><strong>Listening Comprehension:</strong> ${understandPercent}%</li>
               <li><strong>Speaking Output:</strong> ${speakPercent}%</li>
               <li><strong>Mental Translation Gap:</strong> ${fluencyGap}%</li>
@@ -329,7 +329,7 @@ export async function sendDiagnosticEmail(data: DiagnosticEmailData) {
           </div>
 
           <div style="background: #fafaf9; border-radius: 12px; padding: 18px; margin-bottom: 24px;">
-            <h3 style="color: #07221a; font-size: 15px; font-weight: 800; margin: 0 0 10px 0;">Your 5-Day Action Plan (20 min/day):</h3>
+            <h3 style="color: #48529e; font-size: 15px; font-weight: 800; margin: 0 0 10px 0;">Your 5-Day Action Plan (20 min/day):</h3>
             <ol style="margin: 0; padding-left: 20px; color: #44403c; font-size: 13.5px; line-height: 1.6;">
               <li><strong>Day 1:</strong> Eliminating initial "E" sound and muscle memory placement.</li>
               <li><strong>Day 2:</strong> V vs B distinction and vowel reductions with Schwa /ə/.</li>
@@ -340,7 +340,7 @@ export async function sendDiagnosticEmail(data: DiagnosticEmailData) {
           </div>
 
           <div style="text-align: center; margin-top: 30px;">
-            <a href="mailto:${COACH_EMAIL}?subject=Strategy%20Call%20with%20Nick" style="background: #07221a; color: #ffffff; padding: 13px 26px; border-radius: 10px; font-weight: 800; text-decoration: none; display: inline-block; font-size: 14px;">
+            <a href="mailto:${COACH_EMAIL}?subject=Strategy%20Call%20with%20Nick" style="background: #48529e; color: #ffffff; padding: 13px 26px; border-radius: 10px; font-weight: 800; text-decoration: none; display: inline-block; font-size: 14px;">
               Email Coach Nick Directly &rarr;
             </a>
           </div>
@@ -473,21 +473,21 @@ export async function sendBookingEmail(data: BookingEmailData) {
     <html>
       <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #f7f7f5; padding: 20px; color: #1c1917;">
         <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 16px; border: 1px solid #e7e5e4; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
-          <div style="background: #07221a; color: #fff; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+          <div style="background: #1e244d; color: #fff; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
             <h2 style="margin: 0 0 4px 0; color: #ffffff;">📅 New 1-on-1 Session Booked!</h2>
-            <p style="margin: 0; color: #a1d99b; font-size: 13px;">Speak English with Nick Booking System</p>
+            <p style="margin: 0; color: #c2d4f8; font-size: 13px;">Speak English with Nick Booking System</p>
           </div>
 
           <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 14px;">
             <tr><td style="padding: 8px 0; color: #78716c; width: 35%;">Student:</td><td style="font-weight: 700;">${name}</td></tr>
             <tr><td style="padding: 8px 0; color: #78716c;">Email:</td><td style="font-weight: 700;"><a href="mailto:${email}">${email}</a></td></tr>
             <tr><td style="padding: 8px 0; color: #78716c;">Phone:</td><td style="font-weight: 700;">${phone || 'N/A'}</td></tr>
-            <tr><td style="padding: 8px 0; color: #78716c;">Date & Time:</td><td style="font-weight: 700; color: #166534;">${date} at ${time} (${timezone || 'Student Local Time'})</td></tr>
+            <tr><td style="padding: 8px 0; color: #78716c;">Date & Time:</td><td style="font-weight: 700; color: #48529e;">${date} at ${time} (${timezone || 'Student Local Time'})</td></tr>
             <tr><td style="padding: 8px 0; color: #78716c;">Notes / Intake:</td><td style="font-style: italic;">${notes || 'None'}</td></tr>
           </table>
 
           <div style="text-align: center; margin-top: 25px;">
-            <a href="mailto:${email}?subject=Confirming%20our%20English%20Coaching%20Session" style="background: #07221a; color: #ffffff; padding: 12px 24px; border-radius: 8px; font-weight: 700; text-decoration: none; display: inline-block;">
+            <a href="mailto:${email}?subject=Confirming%20our%20English%20Coaching%20Session" style="background: #48529e; color: #ffffff; padding: 12px 24px; border-radius: 8px; font-weight: 700; text-decoration: none; display: inline-block;">
               Reply to ${name}
             </a>
           </div>

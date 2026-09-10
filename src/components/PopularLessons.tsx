@@ -52,12 +52,12 @@ export const PopularLessons: React.FC<PopularLessonsProps> = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-14 sm:mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#edfbe6] border border-[#b2e896] text-[#07221a] text-xs font-black uppercase tracking-wider shadow-2xs">
-            <Video className="w-3.5 h-3.5 text-[#62c110]" />
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#e4ebf9] border border-[#c4d4f7] text-[#48529e] text-xs font-black uppercase tracking-wider shadow-2xs">
+            <Video className="w-3.5 h-3.5 text-[#48529e]" />
             <span>{language === 'es' ? 'Clases Directas de Instagram' : 'Official Instagram Reels'}</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#07221a] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#18181b] tracking-tight">
             {language === 'es' ? 'Lecciones en Video y Reels de Nick' : 'Popular Video Lessons & Instagram Reels'}
           </h2>
 
@@ -91,7 +91,7 @@ export const PopularLessons: React.FC<PopularLessonsProps> = () => {
                   href={reel.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-1.5 text-xs font-black text-[#07221a] hover:text-[#62c110] transition-colors"
+                  className="inline-flex items-center justify-center gap-1.5 text-xs font-black text-[#18181b] hover:text-[#48529e] transition-colors"
                 >
                   <InstagramIcon className="w-3.5 h-3.5 text-pink-600" />
                   <span>{language === 'es' ? 'Abrir en Instagram' : 'Watch on Instagram'}</span>
@@ -108,11 +108,11 @@ export const PopularLessons: React.FC<PopularLessonsProps> = () => {
             href="https://www.instagram.com/speak.english.with.nick/?hl=en"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#07221a] hover:bg-[#164c3c] text-white text-xs sm:text-sm font-bold shadow-md transition-all hover:scale-102 border border-[#164c3c]"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#f15555] hover:bg-[#e04444] text-white text-xs sm:text-sm font-bold shadow-md transition-all hover:scale-102"
           >
-            <InstagramIcon className="w-4 h-4 text-pink-400" />
+            <InstagramIcon className="w-4 h-4 text-white" />
             <span>{language === 'es' ? 'Ver todos los reels en @speak.english.with.nick' : 'Follow & Watch All Reels @speak.english.with.nick'}</span>
-            <ExternalLink className="w-3.5 h-3.5 text-stone-400" />
+            <ExternalLink className="w-3.5 h-3.5 text-white/80" />
           </a>
         </div>
 

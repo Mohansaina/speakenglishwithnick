@@ -55,7 +55,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         
         {/* 1. Left: Official Brand Logo (Nick Avatar + Text) */}
         <Link href="/" className="flex items-center gap-2 shrink-0 group">
-          <div className="relative h-9 w-9 sm:h-11 sm:w-11 rounded-full overflow-hidden border-2 border-[#164c3c] shadow-xs shrink-0 ring-2 ring-[#62c110]/40">
+          <div className="relative h-9 w-9 sm:h-11 sm:w-11 rounded-full overflow-hidden border-2 border-[#48529e] shadow-xs shrink-0 ring-2 ring-[#48529e]/30">
             <Image
               src="/nick.png"
               alt="Coach Nick"
@@ -65,9 +65,9 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="h-full w-full object-cover object-top transition-transform group-hover:scale-105"
             />
           </div>
-          <div className="font-black text-[#07221a] tracking-tight text-xs sm:text-base leading-tight flex items-center gap-1">
+          <div className="font-black text-[#18181b] tracking-tight text-xs sm:text-base leading-tight flex items-center gap-1">
             <span>Speak English</span>
-            <span className="hidden min-[380px]:inline font-serif italic font-normal text-[#164c3c]">with Nick</span>
+            <span className="hidden min-[380px]:inline font-serif italic font-normal text-[#48529e]">with Nick</span>
           </div>
         </Link>
 
@@ -79,7 +79,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => setLanguage('en')}
               className={`px-4 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-2 ${
                 language === 'en'
-                  ? 'bg-[#07221a] text-white shadow-xs'
+                  ? 'bg-[#48529e] text-white shadow-xs'
                   : 'text-stone-600 hover:text-stone-900 hover:bg-white/60'
               }`}
             >
@@ -91,7 +91,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => setLanguage('es')}
               className={`px-4 py-1.5 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-2 ${
                 language === 'es'
-                  ? 'bg-[#07221a] text-[#82e635] shadow-xs'
+                  ? 'bg-[#48529e] text-white shadow-xs'
                   : 'text-stone-600 hover:text-stone-900 hover:bg-white/60'
               }`}
             >
@@ -131,6 +131,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       href="#programs"
                       onClick={() => setCoursesDropdown(false)}
                       className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-amber-50/60 text-stone-800 hover:text-amber-900 transition-colors"
+                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-[#e4ebf9]/60 text-stone-800 hover:text-[#48529e] transition-colors"
                     >
                       <Headphones className="w-4 h-4 text-amber-600 mt-0.5 shrink-0" />
                       <div>
@@ -143,9 +144,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                         setCoursesDropdown(false);
                         onOpenBooking();
                       }}
-                      className="w-full text-left flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-amber-50/60 text-stone-800 hover:text-amber-900 transition-colors cursor-pointer"
+                      className="w-full text-left flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-[#e4ebf9]/60 text-stone-800 hover:text-[#48529e] transition-colors cursor-pointer"
                     >
-                      <Shield className="w-4 h-4 text-[#07221a] mt-0.5 shrink-0" />
+                      <Shield className="w-4 h-4 text-[#48529e] mt-0.5 shrink-0" />
                       <div>
                         <div className="text-xs font-bold">{language === 'es' ? 'Mentoría VIP 1 a 1' : '1-on-1 VIP Mentorship'}</div>
                         <div className="text-[11px] text-stone-500 font-normal">{language === 'es' ? 'Sesiones privadas con Nick' : 'Live private coaching'}</div>
@@ -154,9 +155,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                     <a
                       href="#programs"
                       onClick={() => setCoursesDropdown(false)}
-                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-amber-50/60 text-stone-800 hover:text-amber-900 transition-colors"
+                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-[#e4ebf9]/60 text-stone-800 hover:text-[#48529e] transition-colors"
                     >
-                      <Video className="w-4 h-4 text-[#07221a] mt-0.5 shrink-0" />
+                      <Video className="w-4 h-4 text-[#48529e] mt-0.5 shrink-0" />
                       <div>
                         <div className="text-xs font-bold">{language === 'es' ? 'Masterclass de Conversación' : 'Conversation Vault'}</div>
                         <div className="text-[11px] text-stone-500 font-normal">{language === 'es' ? '60+ lecciones en video' : '60+ HD video lessons'}</div>
@@ -173,9 +174,9 @@ export const Navbar: React.FC<NavbarProps> = ({
               onMouseEnter={() => setLessonsDropdown(true)}
               onMouseLeave={() => setLessonsDropdown(false)}
             >
-              <button className="flex items-center gap-1 py-1 hover:text-amber-600 transition-colors cursor-pointer font-bold">
+              <button className="flex items-center gap-1 py-1 hover:text-[#48529e] transition-colors cursor-pointer font-bold">
                 <span>{language === 'es' ? 'Lecciones Gratis' : 'Free Lessons'}</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${lessonsDropdown ? 'rotate-180 text-amber-600' : 'text-stone-400'}`} />
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${lessonsDropdown ? 'rotate-180 text-[#48529e]' : 'text-stone-400'}`} />
               </button>
 
               {lessonsDropdown && (
@@ -184,9 +185,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                     <a
                       href="#drills"
                       onClick={() => setLessonsDropdown(false)}
-                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-stone-50 text-stone-800 hover:text-[#07221a] transition-colors"
+                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-stone-50 text-stone-800 hover:text-[#48529e] transition-colors"
                     >
-                      <Headphones className="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" />
+                      <Headphones className="w-4 h-4 text-[#f15555] mt-0.5 shrink-0" />
                       <div>
                         <div className="text-xs font-bold">{t.drills}</div>
                         <div className="text-[11px] text-stone-500 font-normal">Acoustic shadowing lab</div>
@@ -195,9 +196,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                     <a
                       href="#spanish-hub"
                       onClick={() => setLessonsDropdown(false)}
-                      className="flex items-start gap-2.5 p-2.5 rounded-xl bg-[#edfbe6] text-[#07221a] transition-colors"
+                      className="flex items-start gap-2.5 p-2.5 rounded-xl bg-[#e4ebf9] text-[#48529e] transition-colors font-semibold"
                     >
-                      <BookOpen className="w-4 h-4 text-[#62c110] mt-0.5 shrink-0" />
+                      <BookOpen className="w-4 h-4 text-[#48529e] mt-0.5 shrink-0" />
                       <div>
                         <div className="text-xs font-bold">{t.spanishGuide}</div>
                         <div className="text-[11px] text-stone-600 font-normal">Fix 4 Spanish accent traps</div>
@@ -208,9 +209,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                         setLessonsDropdown(false);
                         onOpenLeadMagnet();
                       }}
-                      className="w-full text-left flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-stone-50 text-stone-800 hover:text-[#07221a] transition-colors cursor-pointer"
+                      className="w-full text-left flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-stone-50 text-stone-800 hover:text-[#48529e] transition-colors cursor-pointer"
                     >
-                      <BookOpen className="w-4 h-4 text-[#07221a] mt-0.5 shrink-0" />
+                      <BookOpen className="w-4 h-4 text-[#48529e] mt-0.5 shrink-0" />
                       <div>
                         <div className="text-xs font-bold">Accent Cheat Sheet (PDF)</div>
                         <div className="text-[11px] text-stone-500 font-normal">Instant 50 phrase guide</div>
@@ -224,7 +225,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Contact */}
             <button
               onClick={onOpenBooking}
-              className="py-1 hover:text-amber-600 transition-colors cursor-pointer font-bold"
+              className="py-1 hover:text-[#48529e] transition-colors cursor-pointer font-bold"
             >
               {language === 'es' ? 'Contacto' : 'Contact'}
             </button>
@@ -299,7 +300,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => setLanguage('en')}
               className={`px-2 py-1 rounded-lg text-[11px] font-black transition-all cursor-pointer flex items-center gap-1.5 ${
                 language === 'en'
-                  ? 'bg-[#07221a] text-white shadow-xs'
+                  ? 'bg-[#48529e] text-white shadow-xs'
                   : 'text-stone-600 hover:text-stone-900'
               }`}
             >
@@ -311,7 +312,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => setLanguage('es')}
               className={`px-2 py-1 rounded-lg text-[11px] font-black transition-all cursor-pointer flex items-center gap-1.5 ${
                 language === 'es'
-                  ? 'bg-[#07221a] text-[#82e635] shadow-xs'
+                  ? 'bg-[#48529e] text-white shadow-xs'
                   : 'text-stone-600 hover:text-stone-900'
               }`}
             >
@@ -325,7 +326,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="p-1.5 rounded-xl bg-stone-100 hover:bg-stone-200/80 text-stone-900 transition-colors cursor-pointer active:scale-95 shrink-0"
             aria-label="Toggle mobile navigation menu"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5 text-[#07221a]" /> : <Menu className="w-5 h-5 text-[#07221a]" />}
+            {mobileMenuOpen ? <X className="w-5 h-5 text-[#48529e]" /> : <Menu className="w-5 h-5 text-[#48529e]" />}
           </button>
         </div>
 
@@ -345,7 +346,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 type="button"
                 onClick={() => setLanguage('en')}
                 className={`px-3 py-1 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
-                  language === 'en' ? 'bg-[#07221a] text-white shadow-xs' : 'text-stone-600'
+                  language === 'en' ? 'bg-[#48529e] text-white shadow-xs' : 'text-stone-600'
                 }`}
               >
                 <USAFlag className="w-4 h-3" />
@@ -355,7 +356,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 type="button"
                 onClick={() => setLanguage('es')}
                 className={`px-3 py-1 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
-                  language === 'es' ? 'bg-[#07221a] text-[#82e635] shadow-xs' : 'text-stone-600'
+                  language === 'es' ? 'bg-[#48529e] text-white shadow-xs' : 'text-stone-600'
                 }`}
               >
                 <SpainFlag className="w-4 h-3" />
@@ -380,7 +381,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <Link
               href="/"
               onClick={() => setMobileMenuOpen(false)}
-              className="p-3 rounded-xl hover:bg-stone-50 text-[#07221a] flex items-center justify-between"
+              className="p-3 rounded-xl hover:bg-stone-50 text-[#48529e] flex items-center justify-between"
             >
               <span>{language === 'es' ? 'Inicio' : 'Home'}</span>
             </Link>
@@ -391,7 +392,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="p-3 rounded-xl hover:bg-stone-50 text-stone-800 flex items-center justify-between"
             >
               <span>{language === 'es' ? 'Cursos y Programas 1 a 1' : '1-on-1 Coaching & Programs'}</span>
-              <span className="text-[10px] uppercase font-black text-[#164c3c] bg-[#edfbe6] px-2 py-0.5 rounded-md border border-[#c4eeb0]">
+              <span className="text-[10px] uppercase font-black text-[#48529e] bg-[#e4ebf9] px-2 py-0.5 rounded-md border border-[#c2d4f8]">
                 {language === 'es' ? 'Populares' : 'Popular'}
               </span>
             </a>
@@ -399,10 +400,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             <a
               href="#spanish-hub"
               onClick={() => setMobileMenuOpen(false)}
-              className="p-3 rounded-xl bg-[#edfbe6] text-[#07221a] font-black flex items-center justify-between"
+              className="p-3 rounded-xl bg-[#e4ebf9] text-[#48529e] font-black flex items-center justify-between"
             >
               <span>{t.spanishGuide}</span>
-              <span className="w-2 h-2 rounded-full bg-[#62c110]"></span>
+              <span className="w-2 h-2 rounded-full bg-[#f15555]"></span>
             </a>
 
             <a
@@ -438,7 +439,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 setMobileMenuOpen(false);
                 onOpenBooking();
               }}
-              className="w-full py-4 rounded-2xl bg-[#62c110] hover:bg-[#82e635] text-[#07221a] font-black text-sm shadow-md flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-[0.99]"
+              className="w-full py-4 rounded-2xl bg-[#f15555] hover:bg-[#d01f1f] text-white font-black text-sm shadow-md flex items-center justify-center gap-2 cursor-pointer transition-all active:scale-[0.99]"
             >
               <span>{language === 'es' ? 'Agendar Sesión 1 a 1 con Nick' : 'Book 1-on-1 Session with Nick'}</span>
               <ArrowRight className="w-4 h-4 stroke-[2.5]" />
