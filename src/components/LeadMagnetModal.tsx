@@ -98,8 +98,8 @@ Instagram: @speak.english.with.nick
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-md animate-in fade-in duration-150">
-      <div className="relative w-full max-w-md max-h-[92vh] overflow-y-auto touch-scroll rounded-3xl bg-white border border-stone-200 p-5 sm:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.15)] space-y-4 sm:space-y-5 text-stone-900 animate-in zoom-in-95 duration-150">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-md animate-modal-backdrop">
+      <div className="relative w-full max-w-md max-h-[92vh] overflow-y-auto touch-scroll rounded-3xl bg-white border border-stone-200 p-5 sm:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.15)] space-y-4 sm:space-y-5 text-stone-900 animate-modal-pop">
         
         {/* Close Button */}
         <button

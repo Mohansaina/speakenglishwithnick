@@ -11,17 +11,14 @@ export const ScrollObserver: React.FC<{ children: React.ReactNode }> = ({ childr
     if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return;
 
     const setupObservers = () => {
-      // Target all sections, main containers, grid items, and cards
+      // Target key section components and explicitly marked elements
       const targetSelectors = [
         'section',
-        'main > div',
         'main > header',
         'main > footer',
         '[data-reveal]',
         '.reveal-on-scroll',
-        'section .grid > *',
-        'section .flex > .card',
-        'section article',
+        '.card-reveal'
       ];
 
       const elements = Array.from(
@@ -35,48 +32,40 @@ export const ScrollObserver: React.FC<{ children: React.ReactNode }> = ({ childr
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               const target = entry.target as HTMLElement;
-              target.classList.add('is-revealed');
+              requestAnimationFrame(() => {
+                target.classList.add('is-revealed');
+              });
               observer.unobserve(target);
             }
           });
         },
         {
-          threshold: 0.08,
-          rootMargin: '0px 0px -30px 0px',
+          threshold: 0.02,
+          rootMargin: '60px 0px 0px 0px', // Trigger early so elements reveal before scrolling past
         }
       );
 
-      elements.forEach((el, index) => {
-        // Only apply reveal class if not explicitly excluded
+      elements.forEach((el) => {
         if (!el.classList.contains('no-reveal')) {
           el.classList.add('reveal-on-scroll');
-
-          // Check if element is already in the upper viewport on load
-          const rect = el.getBoundingClientRect();
-          if (rect.top < window.innerHeight * 0.85) {
-            el.classList.add('is-revealed');
-          } else {
-            // Apply lightweight stagger delay based on parent sibling index
-            const parent = el.parentElement;
-            if (parent && parent.children.length > 1) {
-              const siblingIndex = Array.from(parent.children).indexOf(el);
-              const delay = Math.min(siblingIndex * 70, 350); // cap max delay at 350ms for snappy feel
-              el.style.setProperty('--reveal-delay', `${delay}ms`);
-            }
-            observer.observe(el);
-          }
+          observer.observe(el);
         }
       });
 
       return observer;
     };
 
-    // Run setup after brief DOM tick for Next.js hydration
-    const timer = setTimeout(() => {
-      setupObservers();
-    }, 40);
+    const idleId = window.requestIdleCallback 
+      ? window.requestIdleCallback(() => setupObservers())
+      : setTimeout(setupObservers, 30);
 
-    return () => clearTimeout(timer);
+    return () => {
+      if (window.cancelIdleCallback && typeof idleId === 'number') {
+        window.cancelIdleCallback(idleId);
+      } else {
+        clearTimeout(idleId as any);
+      }
+    };
   }, []);
 
   return <>{children}</>;

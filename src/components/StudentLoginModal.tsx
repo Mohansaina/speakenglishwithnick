@@ -66,8 +66,8 @@ export const StudentLoginModal: React.FC<StudentLoginModalProps> = ({ isOpen, on
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-md animate-in fade-in duration-150">
-      <div className="w-[calc(100vw-1.5rem)] max-w-xl bg-white rounded-3xl border border-stone-200 shadow-[0_20px_60px_rgba(0,0,0,0.15)] p-5 sm:p-8 space-y-5 animate-in zoom-in-95 duration-150 relative max-h-[90vh] overflow-y-auto touch-scroll text-stone-900">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-md animate-modal-backdrop">
+      <div className="w-[calc(100vw-1.5rem)] max-w-xl bg-white rounded-3xl border border-stone-200 shadow-[0_20px_60px_rgba(0,0,0,0.15)] p-5 sm:p-8 space-y-5 animate-modal-pop relative max-h-[90vh] overflow-y-auto touch-scroll text-stone-900">
         
         {/* Close Button */}
         <button

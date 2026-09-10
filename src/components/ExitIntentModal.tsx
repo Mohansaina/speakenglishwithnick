@@ -45,8 +45,8 @@ export const ExitIntentModal: React.FC<{
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-stone-950/80 backdrop-blur-md animate-fade-in">
-      <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-white rounded-2xl sm:rounded-3xl shadow-2xl border border-stone-200 text-stone-900 animate-scale-up">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-stone-950/80 backdrop-blur-md animate-modal-backdrop">
+      <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-white rounded-2xl sm:rounded-3xl shadow-2xl border border-stone-200 text-stone-900 animate-modal-pop">
         
         {/* Header Ribbon */}
         <div className="bg-[#07221a] text-white p-5 sm:p-8 text-center relative overflow-hidden">

@@ -110,8 +110,8 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-150">
-      <div className="relative w-full max-w-3xl max-h-[92vh] overflow-y-auto rounded-3xl bg-[#07221a] border border-[#164c3c] text-white shadow-[0_20px_60px_rgba(0,0,0,0.4)] animate-in zoom-in-95 duration-150 flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md animate-modal-backdrop">
+      <div className="relative w-full max-w-3xl max-h-[92vh] overflow-y-auto rounded-3xl bg-[#07221a] border border-[#164c3c] text-white shadow-[0_20px_60px_rgba(0,0,0,0.4)] animate-modal-pop flex flex-col">
         
         {/* Modal Top Bar */}
         <div className="flex items-center justify-between p-4 sm:p-5 border-b border-[#164c3c] bg-[#051913]/90 backdrop-blur-sm sticky top-0 z-20">

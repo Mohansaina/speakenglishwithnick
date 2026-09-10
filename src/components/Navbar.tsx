@@ -31,17 +31,24 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [lessonsDropdown, setLessonsDropdown] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 15);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 15);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <header
-      className={`sticky top-0 left-0 right-0 z-40 bg-white transition-all duration-200 border-b border-stone-200 ${
-        isScrolled ? 'shadow-[0_4px_20px_rgba(0,0,0,0.06)] py-2 sm:py-2.5' : 'py-2.5 sm:py-3.5'
+      className={`sticky top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md transition-all duration-300 ease-out border-b border-stone-200/80 ${
+        isScrolled ? 'shadow-[0_4px_20px_rgba(0,0,0,0.06)] py-2 sm:py-2.5 bg-white/98' : 'py-2.5 sm:py-3.5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-2.5 sm:px-6 lg:px-8 flex items-center justify-between gap-1.5 sm:gap-4">

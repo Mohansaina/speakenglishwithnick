@@ -18,6 +18,8 @@ import { StudentLoginModal } from '@/components/StudentLoginModal';
 import { SearchModal } from '@/components/SearchModal';
 import { StickyConversionBar } from '@/components/StickyConversionBar';
 import { ExitIntentModal } from '@/components/ExitIntentModal';
+import { ScrollObserver } from '@/components/ScrollObserver';
+import { SmoothScroll } from '@/components/SmoothScroll';
 import { Calendar, BookOpen, ArrowRight } from 'lucide-react';
 import { translations } from '@/data/translations';
 
@@ -190,7 +192,11 @@ function MainContent() {
 export default function Home() {
   return (
     <LanguageProvider>
-      <MainContent />
+      <SmoothScroll>
+        <ScrollObserver>
+          <MainContent />
+        </ScrollObserver>
+      </SmoothScroll>
     </LanguageProvider>
   );
 }

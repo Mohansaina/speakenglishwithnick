@@ -89,25 +89,27 @@ export const FAQ: React.FC<FAQProps> = ({ onOpenBooking }) => {
             return (
               <div
                 key={idx}
-                className="rounded-2xl sm:rounded-3xl bg-white border border-stone-200/90 overflow-hidden transition-all shadow-2xs hover:border-stone-300"
+                className="rounded-2xl sm:rounded-3xl bg-white border border-stone-200/90 overflow-hidden smooth-hover-lift shadow-2xs hover:border-[#164c3c]/40"
               >
                 <button
                   onClick={() => toggleFAQ(idx)}
                   className="w-full text-left p-4 sm:p-6 md:p-7 flex items-center justify-between gap-3 font-black text-[#07221a] text-sm sm:text-base md:text-lg hover:text-[#164c3c] transition-colors cursor-pointer"
                 >
                   <span className="leading-snug">{item.q}</span>
-                  <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-200 ${
-                    isOpen ? 'rotate-180 bg-[#07221a] text-[#62c110]' : 'bg-[#fafafa] text-stone-600 border border-stone-200'
+                  <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ease-out ${
+                    isOpen ? 'rotate-180 bg-[#07221a] text-[#62c110] shadow-xs' : 'bg-[#fafafa] text-stone-600 border border-stone-200'
                   }`}>
                     <ChevronDown className="w-4 h-4 stroke-[2.5]" />
                   </div>
                 </button>
 
-                {isOpen && (
-                  <div className="px-4 sm:px-6 md:px-7 pb-5 sm:pb-7 text-xs sm:text-sm md:text-[15px] text-stone-600 leading-relaxed border-t border-stone-100 pt-4 sm:pt-5 animate-in fade-in duration-150 font-normal">
-                    {item.a}
+                <div className={`accordion-grid-wrapper ${isOpen ? 'is-open' : ''}`}>
+                  <div className="accordion-grid-inner">
+                    <div className="px-4 sm:px-6 md:px-7 pb-5 sm:pb-7 text-xs sm:text-sm md:text-[15px] text-stone-600 leading-relaxed border-t border-stone-100/80 pt-4 sm:pt-5 font-normal">
+                      {item.a}
+                    </div>
                   </div>
-                )}
+                </div>
               </div>
             );
           })}

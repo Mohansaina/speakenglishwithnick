@@ -18,11 +18,14 @@ export const StickyConversionBar: React.FC<StickyConversionBarProps> = ({
   const [isDismissed, setIsDismissed] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      if (window.scrollY > 300 && !isDismissed) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsVisible(window.scrollY > 300 && !isDismissed);
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
