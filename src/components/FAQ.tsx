@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ChevronDown, HelpCircle, ArrowRight } from 'lucide-react';
+import { ChevronDown, HelpCircle, ArrowRight, Mail } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { translations } from '@/data/translations';
 
@@ -116,24 +116,39 @@ export const FAQ: React.FC<FAQProps> = ({ onOpenBooking }) => {
         </div>
 
         {/* Still Have Questions CTA Banner */}
-        <div className="mt-10 sm:mt-14 p-5 sm:p-8 rounded-3xl bg-[#e4ebf9]/60 border border-[#c4d4f7] flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-5 text-center sm:text-left">
-          <div className="space-y-1">
-            <h4 className="font-black text-[#18181b] text-sm sm:text-base md:text-lg">
-              {language === 'es' ? '¿Tienes una pregunta específica para Coach Nick?' : 'Have a specific question for Coach Nick?'}
+        <div className="mt-10 sm:mt-14 p-6 sm:p-8 rounded-3xl bg-[#e4ebf9]/70 border border-[#c4d4f7] flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
+          <div className="space-y-1.5">
+            <h4 className="font-black text-[#18181b] text-base sm:text-lg">
+              {language === 'es' ? '¿Tienes alguna pregunta para Teacher Nick?' : 'Have any questions for Teacher Nick?'}
             </h4>
-            <p className="text-xs sm:text-sm text-stone-600 font-normal">
-              {language === 'es'
-                ? 'Agenda una sesión diagnóstica rápida para evaluar tu nivel y metas.'
-                : 'Book a quick 1-on-1 diagnostic call to discuss your fluency roadmap.'}
+            <p className="text-xs sm:text-sm text-stone-700 font-medium flex flex-wrap items-center justify-center sm:justify-start gap-1">
+              <span>{language === 'es' ? 'Envía un correo directamente a:' : 'Send an email directly to:'}</span>
+              <a
+                href="mailto:speakenglishwithnick@gmail.com"
+                className="font-black text-[#48529e] hover:underline hover:text-[#f15555] transition-colors"
+              >
+                speakenglishwithnick@gmail.com
+              </a>
             </p>
           </div>
-          <button
-            onClick={onOpenBooking}
-            className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#f15555] hover:bg-[#e04444] text-white font-bold text-xs sm:text-sm shadow-md shrink-0 flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
-          >
-            <span>{language === 'es' ? 'Agendar Llamada' : 'Book 1-on-1 Call'}</span>
-            <ArrowRight className="w-3.5 h-3.5 text-white" />
-          </button>
+          
+          <div className="flex flex-col sm:flex-row gap-2.5 w-full sm:w-auto shrink-0">
+            <a
+              href="mailto:speakenglishwithnick@gmail.com"
+              className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white hover:bg-stone-50 text-[#48529e] border border-[#c2d4f8] font-extrabold text-xs sm:text-sm shadow-xs flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
+            >
+              <Mail className="w-4 h-4 text-[#f15555]" />
+              <span>{language === 'es' ? 'Enviar Email' : 'Send Email'}</span>
+            </a>
+
+            <button
+              onClick={onOpenBooking}
+              className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-[#f15555] hover:bg-[#e04444] text-white font-extrabold text-xs sm:text-sm shadow-md flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
+            >
+              <span>{language === 'es' ? 'Agendar Sesión' : 'Book Session'}</span>
+              <ArrowRight className="w-3.5 h-3.5 text-white" />
+            </button>
+          </div>
         </div>
 
       </div>

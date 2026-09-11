@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { CheckCircle2, ArrowRight } from 'lucide-react';
+import { CheckCircle2, ArrowRight, Mail } from 'lucide-react';
 import { 
   InstagramIcon, 
   YoutubeIcon, 
@@ -115,7 +115,7 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Main Content Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-14 pb-16 items-start">
             
-            {/* Left Column: Big Brand Logo, Tagline, & Social Icons */}
+            {/* Left Column: Big Brand Logo, Tagline, Email & Social Icons */}
             <div className="lg:col-span-7 space-y-6 sm:space-y-8">
               
               {/* English with Lucy Style Exact Logo Layout */}
@@ -129,11 +129,24 @@ export const Footer: React.FC<FooterProps> = ({
               </Link>
 
               {/* Tagline */}
-              <p className="text-sm sm:text-base text-white/90 font-medium max-w-md leading-relaxed">
-                {language === 'es'
-                  ? 'Inglés Americano Natural, estés donde estés.'
-                  : 'Natural American English, wherever you are.'}
-              </p>
+              <div className="space-y-2">
+                <p className="text-sm sm:text-base text-white/90 font-medium max-w-md leading-relaxed">
+                  {language === 'es'
+                    ? 'Inglés Americano Natural, estés donde estés.'
+                    : 'Natural American English, wherever you are.'}
+                </p>
+
+                {/* Email Support Badge */}
+                <div className="pt-1">
+                  <a
+                    href="mailto:speakenglishwithnick@gmail.com"
+                    className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-white bg-white/10 hover:bg-white/20 px-3.5 py-1.5 rounded-full border border-white/20 transition-all hover:border-white cursor-pointer"
+                  >
+                    <Mail className="w-3.5 h-3.5 text-[#f15555]" />
+                    <span>speakenglishwithnick@gmail.com</span>
+                  </a>
+                </div>
+              </div>
 
               {/* Minimalist Line Art Social Icons (Matching screenshot line style) */}
               <div className="flex items-center gap-4 pt-2 text-white">
