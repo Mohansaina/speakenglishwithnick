@@ -190,7 +190,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       <Headphones className="w-4 h-4 text-[#f15555] mt-0.5 shrink-0" />
                       <div>
                         <div className="text-xs font-bold">{t.drills}</div>
-                        <div className="text-[11px] text-stone-500 font-normal">Acoustic shadowing lab</div>
+                        <div className="text-[11px] text-stone-500 font-normal">{language === 'es' ? 'Estudio de audio interactivo' : 'Interactive audio studio'}</div>
                       </div>
                     </a>
                     <a

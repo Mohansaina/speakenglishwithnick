@@ -86,20 +86,20 @@ export const Footer: React.FC<FooterProps> = ({
             <div className="relative w-full aspect-[16/10] bg-[#1e244d] rounded-2xl overflow-hidden shadow-2xl border-4 border-stone-800 flex items-center justify-center group">
               <Image
                 src="/nick-hero.jpg"
-                alt="5-Day Shadowing Challenge with Coach Nick"
+                alt="1-on-1 English Coaching with Coach Nick"
                 width={600}
                 height={380}
                 className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1e244d]/90 via-[#1e244d]/40 to-transparent flex flex-col justify-end p-6 text-white text-left">
                 <span className="px-3 py-1 rounded-md bg-[#f15555] text-white text-xs font-black uppercase tracking-wider self-start mb-2">
-                  5-Day Challenge
+                  {language === 'es' ? 'Clases 1 a 1' : '1-on-1 Coaching'}
                 </span>
                 <h3 className="text-xl sm:text-2xl font-black text-white leading-tight">
-                  5-DAY SHADOWING CHALLENGE
+                  {language === 'es' ? 'APRENDE CON TEACHER NICK' : 'LEARN WITH TEACHER NICK'}
                 </h3>
                 <p className="text-xs text-stone-300 font-medium mt-1">
-                  Master Natural American English Rhythm with Coach Nick
+                  {language === 'es' ? 'Inglés Americano Natural y Fluidez Real' : 'Master Natural American English & Real Fluency'}
                 </p>
               </div>
             </div>
