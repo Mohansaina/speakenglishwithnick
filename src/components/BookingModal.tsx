@@ -411,15 +411,15 @@ END:VCALENDAR`;
             <div className="space-y-1.5">
               <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#e4ebf9] text-[#48529e] text-xs font-black uppercase tracking-wider border border-[#c2d4f8]">
                 <Video className="w-3.5 h-3.5 text-[#f15555]" />
-                <span>{language === 'es' ? 'Paso 2: Elige Fecha y Hora' : 'Step 2: Choose Date & Time'}</span>
+                <span>{language === 'es' ? 'Paso 2: Solicitar Fecha y Hora Preferida' : 'Step 2: Request Preferred Date & Time'}</span>
               </div>
               <h3 className="text-xl sm:text-2xl font-black text-[#48529e]">
-                {language === 'es' ? 'Agenda tu Sesión con Nick' : 'Schedule Strategy Session with Nick'}
+                {language === 'es' ? 'Elige tu Horario Preferido' : 'Select Your Preferred Time Slot'}
               </h3>
               <p className="text-xs sm:text-sm text-stone-600 font-normal">
                 {language === 'es'
-                  ? 'Sesión de 30 min por Zoom para evaluar tu nivel actual y estructurar tu plan de aprendizaje.'
-                  : 'A 30-minute private video call to diagnose your speaking bottlenecks and build your custom accent plan.'}
+                  ? 'Elige la fecha y hora que mejor te acomode. Coach Nick revisará la disponibilidad y te confirmará por WhatsApp o email.'
+                  : 'Select the time slot that works best for you. Coach Nick will review and confirm availability with you via WhatsApp/Email.'}
               </p>
             </div>
 
@@ -444,7 +444,7 @@ END:VCALENDAR`;
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-stone-700 flex items-center gap-1">
                 <CalendarIcon className="w-3.5 h-3.5 text-[#f15555]" />
-                <span>{language === 'es' ? 'Selecciona un Día Disponible:' : 'Select Available Date:'}</span>
+                <span>{language === 'es' ? 'Día Preferido:' : 'Preferred Date:'}</span>
               </label>
               <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none">
                 {availableDays.map((d, idx) => (
@@ -470,7 +470,7 @@ END:VCALENDAR`;
             <div className="space-y-2">
               <label className="text-xs font-bold text-stone-700 flex items-center gap-1">
                 <Clock className="w-3.5 h-3.5 text-[#f15555]" />
-                <span>{language === 'es' ? 'Horarios Disponibles:' : 'Available Time Slots:'}</span>
+                <span>{language === 'es' ? 'Horario Preferido:' : 'Preferred Time:'}</span>
               </label>
 
               <div className="space-y-2">
@@ -497,7 +497,7 @@ END:VCALENDAR`;
             {/* Selected Summary Pill */}
             <div className="p-3 rounded-2xl bg-[#f4f7fd] border border-[#c2d4f8] flex items-center justify-between text-xs text-[#48529e] font-bold">
               <span>{currentSelectedDay.fullString} @ {selectedTimeSlot}</span>
-              <span className="text-[10px] uppercase bg-white px-2 py-0.5 rounded-md border border-[#c2d4f8]">Confirmed Slot</span>
+              <span className="text-[10px] uppercase bg-white px-2 py-0.5 rounded-md border border-[#c2d4f8]">Preferred Time</span>
             </div>
 
             <div className="flex gap-2 pt-1">
@@ -684,15 +684,15 @@ END:VCALENDAR`;
             </div>
             <div className="space-y-1">
               <h3 className="text-2xl font-black text-[#48529e]">
-                {language === 'es' ? '¡Sesión Confirmada con Éxito!' : 'Session Confirmed!'}
+                {language === 'es' ? '¡Solicitud de Reserva Recibida!' : 'Booking Request Received!'}
               </h3>
               <p className="text-xs sm:text-sm text-stone-700 font-bold">
                 {currentSelectedDay.fullString} @ {selectedTimeSlot} ({selectedTimezone})
               </p>
-              <p className="text-xs text-stone-500 pt-1 font-normal">
+              <p className="text-xs text-stone-600 pt-1 font-normal max-w-sm mx-auto">
                 {language === 'es'
-                  ? `La invitación de calendario y el enlace privado de Zoom fueron enviados a ${email}.`
-                  : `Calendar invite and private Zoom meeting details sent to ${email}.`}
+                  ? `Tu solicitud de horario ha sido enviada a Coach Nick (${email}). Te confirmará por WhatsApp o email a la brevedad.`
+                  : `Your preferred time has been sent to Coach Nick (${email}). He will confirm availability with you via WhatsApp/Email shortly.`}
               </p>
             </div>
 
