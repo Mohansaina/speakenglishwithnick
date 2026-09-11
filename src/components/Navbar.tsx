@@ -3,11 +3,12 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X, ChevronDown, Search, ArrowRight, BookOpen, Headphones, Shield, Video } from 'lucide-react';
-import { InstagramIcon, YoutubeIcon, FacebookIcon, TwitterIcon } from '@/components/icons/BrandIcons';
+import { Menu, X, ChevronDown, Search, ArrowRight, BookOpen, Headphones, Shield, Video, Mail } from 'lucide-react';
+import { InstagramIcon } from '@/components/icons/BrandIcons';
 import { USAFlag, SpainFlag } from '@/components/icons/FlagIcons';
 import { useLanguage } from '@/context/LanguageContext';
 import { translations } from '@/data/translations';
+import { handleSmartEmailClick, getSmartEmailUrls } from '@/utils/emailClient';
 
 interface NavbarProps {
   onOpenQuiz: () => void;
@@ -24,6 +25,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const { language, setLanguage } = useLanguage();
   const t = translations[language].nav;
+  const emailUrls = getSmartEmailUrls();
   
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -232,42 +234,26 @@ export const Navbar: React.FC<NavbarProps> = ({
           </nav>
 
           {/* Social Icons row (YouTube, Instagram, Facebook, Twitter) - exactly like reference */}
-          <div className="flex items-center gap-3 text-stone-900">
-            <a
-              href="https://www.youtube.com/@speakenglishwithnick"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-stone-900 hover:text-red-600 transition-colors"
-              title="YouTube"
-            >
-              <YoutubeIcon className="w-4 h-4" />
-            </a>
+          {/* Social / Email Links (Only Instagram & Email) */}
+          <div className="flex items-center gap-2.5 text-stone-900">
             <a
               href="https://www.instagram.com/speak.english.with.nick/?hl=en"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-stone-900 hover:text-pink-600 transition-colors"
+              className="p-1.5 rounded-lg text-stone-700 hover:text-[#48529e] hover:bg-[#e4ebf9]/60 transition-colors"
               title="Instagram"
             >
               <InstagramIcon className="w-4 h-4" />
             </a>
             <a
-              href="https://www.facebook.com"
+              href={emailUrls.gmailWebUrl}
+              onClick={(e) => handleSmartEmailClick(e)}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-stone-900 hover:text-blue-600 transition-colors"
-              title="Facebook"
+              className="p-1.5 rounded-lg text-stone-700 hover:text-[#f15555] hover:bg-stone-100 transition-colors"
+              title="Email Teacher Nick"
             >
-              <FacebookIcon className="w-4 h-4" />
-            </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-stone-900 hover:text-sky-500 transition-colors"
-              title="Twitter / X"
-            >
-              <TwitterIcon className="w-4 h-4" />
+              <Mail className="w-4 h-4 text-[#f15555]" />
             </a>
           </div>
 

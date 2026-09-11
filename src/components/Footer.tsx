@@ -4,13 +4,9 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { CheckCircle2, ArrowRight, Mail } from 'lucide-react';
-import { 
-  InstagramIcon, 
-  YoutubeIcon, 
-  FacebookIcon, 
-  TikTokIcon 
-} from '@/components/icons/BrandIcons';
+import { InstagramIcon } from '@/components/icons/BrandIcons';
 import { useLanguage } from '@/context/LanguageContext';
+import { handleSmartEmailClick, getSmartEmailUrls } from '@/utils/emailClient';
 
 interface FooterProps {
   onOpenQuiz: () => void;
@@ -26,6 +22,7 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenLogin,
 }) => {
   const { language } = useLanguage();
+  const emailUrls = getSmartEmailUrls();
 
   return (
     <div className="w-full font-sans text-left">
@@ -136,56 +133,30 @@ export const Footer: React.FC<FooterProps> = ({
                     : 'Natural American English, wherever you are.'}
                 </p>
 
-                {/* Email Support Badge */}
-                <div className="pt-1">
+                {/* Contact & Social Badges: Only Email & Instagram */}
+                <div className="pt-2 flex flex-wrap items-center gap-3">
                   <a
-                    href="mailto:speakenglishwithnick@gmail.com"
-                    className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-white bg-white/10 hover:bg-white/20 px-3.5 py-1.5 rounded-full border border-white/20 transition-all hover:border-white cursor-pointer"
+                    href={emailUrls.gmailWebUrl}
+                    onClick={(e) => handleSmartEmailClick(e)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2.5 text-xs sm:text-sm font-bold text-white bg-white/10 hover:bg-white/20 px-4 py-2.5 rounded-2xl border border-white/20 transition-all hover:border-white shadow-xs cursor-pointer group active:scale-95"
                   >
-                    <Mail className="w-3.5 h-3.5 text-[#f15555]" />
+                    <Mail className="w-4 h-4 text-[#f15555] group-hover:scale-110 transition-transform" />
                     <span>speakenglishwithnick@gmail.com</span>
                   </a>
-                </div>
-              </div>
 
-              {/* Minimalist Line Art Social Icons (Matching screenshot line style) */}
-              <div className="flex items-center gap-4 pt-2 text-white">
-                <a
-                  href="https://www.youtube.com/@speakenglishwithnick"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-lg border border-white/40 hover:border-white hover:bg-white/10 transition-all cursor-pointer"
-                  aria-label="YouTube"
-                >
-                  <YoutubeIcon className="w-4 h-4 fill-current" />
-                </a>
-                <a
-                  href="https://www.instagram.com/speak.english.with.nick/?hl=en"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-lg border border-white/40 hover:border-white hover:bg-white/10 transition-all cursor-pointer"
-                  aria-label="Instagram"
-                >
-                  <InstagramIcon className="w-4 h-4 fill-current" />
-                </a>
-                <a
-                  href="https://www.tiktok.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-lg border border-white/40 hover:border-white hover:bg-white/10 transition-all cursor-pointer"
-                  aria-label="TikTok"
-                >
-                  <TikTokIcon className="w-4 h-4 fill-current" />
-                </a>
-                <a
-                  href="https://www.facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-lg border border-white/40 hover:border-white hover:bg-white/10 transition-all cursor-pointer"
-                  aria-label="Facebook"
-                >
-                  <FacebookIcon className="w-4 h-4 fill-current" />
-                </a>
+                  <a
+                    href="https://www.instagram.com/speak.english.with.nick/?hl=en"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-white bg-white/10 hover:bg-white/20 px-4 py-2.5 rounded-2xl border border-white/20 transition-all hover:border-white shadow-xs cursor-pointer group active:scale-95"
+                    aria-label="Instagram"
+                  >
+                    <InstagramIcon className="w-4 h-4 text-white fill-current group-hover:scale-110 transition-transform" />
+                    <span>Instagram</span>
+                  </a>
+                </div>
               </div>
 
             </div>
