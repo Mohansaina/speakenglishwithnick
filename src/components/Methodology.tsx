@@ -46,7 +46,7 @@ export const Methodology: React.FC = () => {
             <span className="font-serif italic font-normal text-[#48529e]">beats 2-hour weekend classes</span>
           </h2>
           <p className="text-xs sm:text-sm md:text-base text-stone-600">
-            Language is a daily acoustic habit, not an academic subject. Here is how Coach Nick&apos;s system builds automatic speaking confidence.
+            Language is a daily acoustic habit, not an academic subject. Here is how Teacher Nick&apos;s system builds automatic speaking confidence.
           </p>
         </div>
 

@@ -89,7 +89,7 @@ export const Programs: React.FC<ProgramsProps> = ({ onOpenBooking }) => {
         <div className="text-center max-w-3xl mx-auto space-y-3 mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#e4ebf9] border border-[#c4d4f7] text-[#48529e] text-xs font-black uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5 text-[#48529e]" />
-            <span>{language === 'es' ? 'PLANES DE APRENDIZAJE 1 A 1' : '1-ON-1 COACHING PROGRAMS'}</span>
+            <span>{language === 'es' ? 'PLANES DE APRENDIZAJE 1 A 1' : '1-ON-1 LEARNING PROGRAMS'}</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#18181b] tracking-tight leading-tight">
@@ -125,21 +125,10 @@ export const Programs: React.FC<ProgramsProps> = ({ onOpenBooking }) => {
                     : 'border border-stone-200 shadow-sm hover:border-[#48529e] hover:shadow-md'
                 }`}
               >
-                {/* Popular Pill */}
-                {program.isPopular && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-[11px] font-black tracking-wider uppercase bg-[#f15555] text-white shadow-md flex items-center gap-1.5 whitespace-nowrap">
-                    <Zap className="w-3 h-3 text-white fill-white" />
-                    <span>{language === 'es' ? 'Opción Recomendada' : 'Most Popular'}</span>
-                  </div>
-                )}
-
                 <div className="space-y-5">
                   
-                  {/* Top Badge & Title */}
+                  {/* Title */}
                   <div className="space-y-2">
-                    <span className="inline-block text-[10px] sm:text-[11px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[#e4ebf9] text-[#48529e]">
-                      {program.levelBadge}
-                    </span>
                     <h3 className="text-xl sm:text-2xl font-black text-[#18181b] tracking-tight">
                       {program.title}
                     </h3>

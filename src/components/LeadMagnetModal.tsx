@@ -40,7 +40,7 @@ export const LeadMagnetModal: React.FC<LeadMagnetModalProps> = ({ isOpen, onClos
     if (typeof window === 'undefined') return;
 
     const guideContent = language === 'es' ? `GUÍA RÁPIDA DE ACENTO Y MODISMOS EN INGLÉS AMERICANO
-Por Coach Nick (@speak.english.with.nick)
+Por Teacher Nick (@speak.english.with.nick)
 
 ==================================================
 PRINCIPIO CLAVE: DEJA DE TRADUCIR PALABRA POR PALABRA
@@ -63,7 +63,7 @@ PRINCIPIO CLAVE: DEJA DE TRADUCIR PALABRA POR PALABRA
 ¡Sigue practicando todos los días!
 Síguenos en Instagram: @speak.english.with.nick
 ` : `THE 20-MINUTE AMERICAN ACCENT & FLUENCY PLAYBOOK
-By Coach Nick (@speak.english.with.nick)
+By Teacher Nick (@speak.english.with.nick)
 
 ==================================================
 CORE PRINCIPLE: STOP MENTAL TRANSLATION
@@ -90,7 +90,7 @@ Instagram: @speak.english.with.nick
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = language === 'es' ? 'Guia_Acento_Ingles_Coach_Nick.txt' : 'Coach_Nick_American_Accent_Playbook.txt';
+    link.download = language === 'es' ? 'Guia_Acento_Ingles_Teacher_Nick.txt' : 'Teacher_Nick_American_Accent_Playbook.txt';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -122,8 +122,8 @@ Instagram: @speak.english.with.nick
               </h3>
               <p className="text-xs sm:text-sm text-stone-600 font-normal">
                 {language === 'es'
-                  ? 'Descarga las 50 frases conversacionales indispensables y la guía de corrección de acento de Coach Nick.'
-                  : 'Download Coach Nick’s 50 essential conversational phrases and acoustic cheat sheet for your daily practice.'}
+                  ? 'Descarga las 50 frases conversacionales indispensables y la guía de corrección de acento de Teacher Nick.'
+                  : 'Download Teacher Nick’s 50 essential conversational phrases and acoustic cheat sheet for your daily practice.'}
               </p>
             </div>
 

@@ -46,7 +46,7 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
   const subtitles = video?.transcript && video.transcript.length > 0
     ? video.transcript
     : [
-        "Welcome! In this quick lesson, Coach Nick breaks down natural American phrasing.",
+        "Welcome! In this quick lesson, Teacher Nick breaks down natural American phrasing.",
         "Notice how native speakers connect the end of one word to the beginning of the next.",
         "Instead of pausing between words, let the airflow continue smoothly without hesitation.",
         "Repeat this phrase with me: 'Let me put it this way: our main goal is clarity.'",
@@ -120,7 +120,7 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
               {video.category}
             </span>
             <span className="text-xs text-stone-300 font-medium hidden sm:inline">
-              Coach Nick Masterclass
+              Teacher Nick Masterclass
             </span>
           </div>
 
@@ -237,7 +237,7 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
               {video.title}
             </h2>
             <p className="text-xs sm:text-sm text-stone-300 leading-relaxed font-normal">
-              {video.desc || video.keyTakeaway || "In this masterclass, discover Coach Nick's proven method to eliminate hesitation and speak English with crisp American cadence."}
+              {video.desc || video.keyTakeaway || "In this masterclass, discover Teacher Nick's proven method to eliminate hesitation and speak English with crisp American cadence."}
             </p>
           </div>
 

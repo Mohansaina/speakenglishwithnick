@@ -137,14 +137,14 @@ export const SpanishSpeakersHub: React.FC<SpanishSpeakersHubProps> = ({
               <>
                 Por qué los hispanohablantes se bloquean al hablar <br className="hidden sm:inline" />
                 <span className="font-serif italic font-normal text-[#48529e]">
-                  (Y cómo solucionarlo con Coach Nick)
+                  (Y cómo solucionarlo con Teacher Nick)
                 </span>
               </>
             ) : (
               <>
                 Why Spanish Speakers Get Stuck in English <br className="hidden sm:inline" />
                 <span className="font-serif italic font-normal text-[#48529e]">
-                  (And How to Fix It With Coach Nick)
+                  (And How to Fix It With Teacher Nick)
                 </span>
               </>
             )}

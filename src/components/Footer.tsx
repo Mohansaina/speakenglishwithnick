@@ -86,7 +86,7 @@ export const Footer: React.FC<FooterProps> = ({
             <div className="relative w-full aspect-[16/10] bg-[#1e244d] rounded-2xl overflow-hidden shadow-2xl border-4 border-stone-800 flex items-center justify-center group">
               <Image
                 src="/nick-hero.jpg"
-                alt="1-on-1 English Coaching with Coach Nick"
+                alt="1-on-1 English Lessons with Teacher Nick"
                 width={600}
                 height={380}
                 className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-500"

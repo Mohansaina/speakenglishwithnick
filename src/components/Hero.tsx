@@ -28,7 +28,7 @@ export const Hero: React.FC<HeroProps> = ({
             <div className="relative w-full max-w-[260px] xs:max-w-[300px] sm:max-w-[420px] rounded-3xl overflow-hidden shadow-xl border border-stone-200 bg-white group">
               <img
                 src="/nick-hero.jpg"
-                alt="Teacher Nick - Native American English Coach"
+                alt="Teacher Nick - Native American English Teacher"
                 className="w-full h-auto object-cover object-center group-hover:scale-102 transition-transform duration-500"
               />
               
@@ -123,12 +123,6 @@ export const Hero: React.FC<HeroProps> = ({
               <div className="absolute top-0 right-0 w-36 h-36 bg-[#f15555]/15 rounded-full blur-2xl pointer-events-none group-hover:scale-125 transition-transform duration-500" />
 
               <div className="space-y-3 relative z-10">
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white/15 text-[#d4dcff] border border-white/20">
-                    {language === 'es' ? 'Nivel 1' : 'Level 1'}
-                  </span>
-                </div>
-
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white group-hover:text-[#e4ebf9] leading-tight tracking-tight transition-colors">
                   {language === 'es' ? 'Inglés desde 0' : 'English from 0'}
                 </h3>
@@ -173,12 +167,6 @@ export const Hero: React.FC<HeroProps> = ({
               <div className="absolute top-0 right-0 w-36 h-36 bg-[#f15555]/25 rounded-full blur-2xl pointer-events-none group-hover:scale-125 transition-transform duration-500" />
 
               <div className="space-y-3 relative z-10">
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[#f15555] text-white shadow-xs">
-                    {language === 'es' ? '★ Más Popular' : '★ Most Popular'}
-                  </span>
-                </div>
-
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white group-hover:text-[#e4ebf9] leading-tight tracking-tight transition-colors">
                   {language === 'es' ? 'Inglés Específico' : 'Specific English'}
                 </h3>
@@ -223,12 +211,6 @@ export const Hero: React.FC<HeroProps> = ({
               <div className="absolute top-0 right-0 w-36 h-36 bg-[#f15555]/15 rounded-full blur-2xl pointer-events-none group-hover:scale-125 transition-transform duration-500" />
 
               <div className="space-y-3 relative z-10">
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white/15 text-[#d4dcff] border border-white/20">
-                    {language === 'es' ? 'Nivel 3' : 'Level 3'}
-                  </span>
-                </div>
-
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white group-hover:text-[#e4ebf9] leading-tight tracking-tight transition-colors">
                   {language === 'es' ? 'Práctica de Conversación' : 'Conversation Practice'}
                 </h3>

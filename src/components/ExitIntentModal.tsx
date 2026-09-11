@@ -71,7 +71,7 @@ export const ExitIntentModal: React.FC<{
           <p className="text-xs sm:text-sm text-stone-200 font-normal max-w-sm mx-auto leading-relaxed">
             {language === 'es'
               ? 'Descarga el Plan de Acción de 5 Días para Eliminar el Acento y Hablar con Soltura (PDF Gratis).'
-              : 'Get Coach Nick’s 5-Day Accent Elimination & Speaking Confidence Blueprint (Free PDF).'}
+              : 'Get Teacher Nick’s 5-Day Accent Elimination & Speaking Confidence Blueprint (Free PDF).'}
           </p>
         </div>
 

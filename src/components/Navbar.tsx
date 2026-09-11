@@ -58,7 +58,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="relative h-9 w-9 sm:h-11 sm:w-11 rounded-full overflow-hidden border-2 border-[#48529e] shadow-xs shrink-0 ring-2 ring-[#48529e]/30">
             <Image
               src="/nick.png"
-              alt="Coach Nick"
+              alt="Teacher Nick"
               width={48}
               height={48}
               priority
@@ -149,7 +149,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       <Shield className="w-4 h-4 text-[#48529e] mt-0.5 shrink-0" />
                       <div>
                         <div className="text-xs font-bold">{language === 'es' ? 'Mentoría VIP 1 a 1' : '1-on-1 VIP Mentorship'}</div>
-                        <div className="text-[11px] text-stone-500 font-normal">{language === 'es' ? 'Sesiones privadas con Nick' : 'Live private coaching'}</div>
+                        <div className="text-[11px] text-stone-500 font-normal">{language === 'es' ? 'Sesiones privadas con Nick' : 'Live private sessions'}</div>
                       </div>
                     </button>
                     <a
@@ -391,7 +391,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => setMobileMenuOpen(false)}
               className="p-3 rounded-xl hover:bg-stone-50 text-stone-800 flex items-center justify-between"
             >
-              <span>{language === 'es' ? 'Cursos y Programas 1 a 1' : '1-on-1 Coaching & Programs'}</span>
+              <span>{language === 'es' ? 'Cursos y Programas 1 a 1' : '1-on-1 Programs & Classes'}</span>
               <span className="text-[10px] uppercase font-black text-[#48529e] bg-[#e4ebf9] px-2 py-0.5 rounded-md border border-[#c2d4f8]">
                 {language === 'es' ? 'Populares' : 'Popular'}
               </span>

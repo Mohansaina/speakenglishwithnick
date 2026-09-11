@@ -71,7 +71,7 @@ export const translations = {
     spanishSection: {
       badge: "Tailored For Hispanohablantes",
       title: "Why Spanish Speakers Get Stuck in English (And How to Fix It)",
-      subtitle: "Spanish is syllable-timed (flat rhythm); English is stress-timed (musical waves). Coach Nick helps you rewire your acoustic habits.",
+      subtitle: "Spanish is syllable-timed (flat rhythm); English is stress-timed (musical waves). Teacher Nick helps you rewire your acoustic habits.",
       trap1Title: "1. The 'E-School' Trap",
       trap1Desc: "In Spanish, no word starts with 's + consonant'. We naturally say 'espeak', 'eschool', 'estudent'. Nick trains tongue placement to start with pure breath.",
       trap2Title: "2. The V / B & J Confusion",
@@ -123,11 +123,11 @@ export const translations = {
     },
     drills: {
       tag: "Interactive Audio Studio",
-      title: "Coach Nick's Acoustic Shadowing Deck",
+      title: "Teacher Nick's Acoustic Shadowing Deck",
       subtitle: "Listen to natural pronunciation, repeat with guided rhythm, and build instant muscle memory.",
       scenarioLabel: "Real-Life Situation",
       phraseLabel: "American English Phrase",
-      tipLabel: "Coach Nick's Pro Tip",
+      tipLabel: "Teacher Nick's Pro Tip",
       playNative: "Play Native Audio",
       pauseAudio: "Pause Audio",
       speed: "Speed",
@@ -292,7 +292,7 @@ export const translations = {
     },
     drills: {
       tag: "Estudio de Audio Interactivo",
-      title: "Entrenamiento Acústico con Coach Nick",
+      title: "Entrenamiento Acústico con Teacher Nick",
       subtitle: "Escucha la pronunciación nativa, sombrea el ritmo y genera memoria muscular inmediata.",
       scenarioLabel: "Situación en la Vida Real",
       phraseLabel: "Frase en Inglés Americano",

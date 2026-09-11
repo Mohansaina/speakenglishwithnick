@@ -58,7 +58,7 @@ export const DiagnosticIntake: React.FC<DiagnosticIntakeProps> = ({ onOpenBookin
   const handleDownloadCopy = () => {
     const fluencyGap = Math.max(0, understandPercent - speakPercent);
     const content = language === 'es' ? `=====================================================
-DIAGNÓSTICO PERSONALIZADO DE INGLÉS • COACH NICK
+DIAGNÓSTICO PERSONALIZADO DE INGLÉS • TEACHER NICK
 =====================================================
 Estudiante: ${name}
 Correo: ${email}
@@ -79,9 +79,9 @@ TU PLAN DE PRÁCTICA DE 5 DÍAS (20 MIN/DÍA POR WHATSAPP):
 4. Día 4: Conexión de palabras y ritmo acentual ('stress-timing').
 5. Día 5: Simulacro de conversación real sin traducir mentalmente.
 
-Coach Nick (@speak.english.with.nick)
+Teacher Nick (@speak.english.with.nick)
 ` : `=====================================================
-PERSONALIZED FLUENCY DIAGNOSTIC • COACH NICK
+PERSONALIZED FLUENCY DIAGNOSTIC • TEACHER NICK
 =====================================================
 Student: ${name}
 Email: ${email}
@@ -102,14 +102,14 @@ YOUR 5-DAY ACTION PLAN (20 MIN/DAY VIA WHATSAPP):
 4. Day 4: Connected speech and American stress-timed cadence.
 5. Day 5: Real-world conversation practice without mental translation.
 
-Coach Nick (@speak.english.with.nick)
+Teacher Nick (@speak.english.with.nick)
 `;
 
     const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = language === 'es' ? `Plan_Ingles_${name.replace(/\s+/g, '_')}_Coach_Nick.txt` : `Fluency_Plan_${name.replace(/\s+/g, '_')}_Coach_Nick.txt`;
+    link.download = language === 'es' ? `Plan_Ingles_${name.replace(/\s+/g, '_')}_Teacher_Nick.txt` : `Fluency_Plan_${name.replace(/\s+/g, '_')}_Teacher_Nick.txt`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -122,8 +122,8 @@ Coach Nick (@speak.english.with.nick)
     );
     const body = encodeURIComponent(
       language === 'es'
-        ? `Hola Coach Nick! 👋\n\nAcabo de realizar mi diagnóstico en la web:\n\n• Nombre: ${name}\n• Email: ${email}\n• WhatsApp/Teléfono: ${phone || 'N/A'}\n• Entiendo de Inglés: ${understandPercent}%\n• Hablo de Inglés: ${speakPercent}%\n• Lo que quiero aprender: ${wantToLearn || 'Mejorar mi fluidez y soltura'}\n\n¿Cómo podemos empezar mi plan?`
-        : `Hi Coach Nick! 👋\n\nI just completed my diagnostic intake:\n\n• Name: ${name}\n• Email: ${email}\n• Phone/WhatsApp: ${phone || 'N/A'}\n• Understand English: ${understandPercent}%\n• Speak English: ${speakPercent}%\n• What I want to learn: ${wantToLearn || 'Improve speaking confidence'}\n\nHow can we get started?`
+        ? `Hola Teacher Nick! 👋\n\nAcabo de realizar mi diagnóstico en la web:\n\n• Nombre: ${name}\n• Email: ${email}\n• WhatsApp/Teléfono: ${phone || 'N/A'}\n• Entiendo de Inglés: ${understandPercent}%\n• Hablo de Inglés: ${speakPercent}%\n• Lo que quiero aprender: ${wantToLearn || 'Mejorar mi fluidez y soltura'}\n\n¿Cómo podemos empezar mi plan?`
+        : `Hi Teacher Nick! 👋\n\nI just completed my diagnostic intake:\n\n• Name: ${name}\n• Email: ${email}\n• Phone/WhatsApp: ${phone || 'N/A'}\n• Understand English: ${understandPercent}%\n• Speak English: ${speakPercent}%\n• What I want to learn: ${wantToLearn || 'Improve speaking confidence'}\n\nHow can we get started?`
     );
     window.location.href = `mailto:speakenglishwithnick@gmail.com?subject=${subject}&body=${body}`;
   };
@@ -224,7 +224,7 @@ ${phone ? `• Open WhatsApp Chat: https://wa.me/${phone.replace(/[^0-9]/g, '')}
 
   const handleSendWhatsApp = () => {
     const text = language === 'es'
-      ? `Hola Coach Nick! 👋
+      ? `Hola Teacher Nick! 👋
 Nombre: ${name || 'Estudiante'}
 Email: ${email || 'N/A'}
 Teléfono: ${phone || 'N/A'}
@@ -233,7 +233,7 @@ Hablo de inglés: ${speakPercent}%
 Lo que quiero aprender es: ${wantToLearn || 'Mejorar mi fluidez y soltura'}
 
 ¿Cómo podemos empezar?`
-      : `Hi Coach Nick! 👋
+      : `Hi Teacher Nick! 👋
 Name: ${name || 'Student'}
 Email: ${email || 'N/A'}
 Phone: ${phone || 'N/A'}
@@ -480,8 +480,8 @@ How can we get started?`;
                 </h3>
                 <p className="text-xs sm:text-sm text-stone-600 font-normal">
                   {language === 'es'
-                    ? `Hemos remitido tus datos a Coach Nick (speakenglishwithnick@gmail.com) y enviado una copia a ${email}.`
-                    : `Your diagnostic was forwarded to Coach Nick (speakenglishwithnick@gmail.com) and a copy sent to ${email}.`}
+                    ? `Hemos remitido tus datos a Teacher Nick (speakenglishwithnick@gmail.com) y enviado una copia a ${email}.`
+                    : `Your diagnostic was forwarded to Teacher Nick (speakenglishwithnick@gmail.com) and a copy sent to ${email}.`}
                 </p>
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#e4ebf9] text-[#48529e] text-[11px] font-black border border-[#c2d4f8] mt-2">
                   <Mail className="w-3.5 h-3.5 text-[#48529e]" />

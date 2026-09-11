@@ -248,11 +248,11 @@ export async function sendDiagnosticEmail(data: DiagnosticEmailData) {
             </div>
 
             <div class="cta-row">
-              <a href="mailto:${email}?subject=${encodeURIComponent('Hi ' + name + ' - Your English Fluency Plan with Coach Nick')}" class="button">
+              <a href="mailto:${email}?subject=${encodeURIComponent('Hi ' + name + ' - Your English Fluency Plan with Teacher Nick')}" class="button">
                 ✉️ Reply to ${name}
               </a>
               ${phone ? `
-                <a href="https://wa.me/${phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hi ' + name + '! Coach Nick here from Speak English with Nick. I received your diagnostic!')}" style="margin-left: 10px; display: inline-block; background: #16a34a; color: #fff; padding: 12px 20px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 14px;">
+                <a href="https://wa.me/${phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hi ' + name + '! Teacher Nick here from Speak English with Nick. I received your diagnostic!')}" style="margin-left: 10px; display: inline-block; background: #16a34a; color: #fff; padding: 12px 20px; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 14px;">
                   💬 Open WhatsApp
                 </a>
               ` : ''}
@@ -274,7 +274,7 @@ export async function sendDiagnosticEmail(data: DiagnosticEmailData) {
         <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 16px; border: 1px solid #e7e5e4; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
           <div style="text-align: center; margin-bottom: 24px;">
             <h1 style="color: #1e244d; font-size: 24px; font-weight: 900; margin: 0 0 6px 0;">¡Hola ${name}! 🚀</h1>
-            <p style="color: #78716c; font-size: 14px; margin: 0;">Aquí tienes tu Diagnóstico y Plan de Acción de 5 Días con Coach Nick.</p>
+            <p style="color: #78716c; font-size: 14px; margin: 0;">Aquí tienes tu Diagnóstico y Plan de Acción de 5 Días con Teacher Nick.</p>
           </div>
 
           <div style="background: #e4ebf9; border: 1px solid #c2d4f8; border-radius: 12px; padding: 16px; margin-bottom: 24px;">
@@ -298,8 +298,8 @@ export async function sendDiagnosticEmail(data: DiagnosticEmailData) {
           </div>
 
           <div style="text-align: center; margin-top: 30px;">
-            <a href="https://wa.me/?text=Hola%20Coach%20Nick!%20Recib%C3%AD%20mi%20diagn%C3%B3stico%20de%20ingl%C3%A9s" style="background: #48529e; color: #ffffff; padding: 13px 26px; border-radius: 10px; font-weight: 800; text-decoration: none; display: inline-block; font-size: 14px;">
-              Escribir a Coach Nick por WhatsApp &rarr;
+            <a href="https://wa.me/?text=Hola%20Teacher%20Nick!%20Recib%C3%AD%20mi%20diagn%C3%B3stico%20de%20ingl%C3%A9s" style="background: #48529e; color: #ffffff; padding: 13px 26px; border-radius: 10px; font-weight: 800; text-decoration: none; display: inline-block; font-size: 14px;">
+              Escribir a Teacher Nick por WhatsApp &rarr;
             </a>
           </div>
 
@@ -316,7 +316,7 @@ export async function sendDiagnosticEmail(data: DiagnosticEmailData) {
         <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 16px; border: 1px solid #e7e5e4; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
           <div style="text-align: center; margin-bottom: 24px;">
             <h1 style="color: #1e244d; font-size: 24px; font-weight: 900; margin: 0 0 6px 0;">Hi ${name}! 🚀</h1>
-            <p style="color: #78716c; font-size: 14px; margin: 0;">Here is your Personalized Fluency Diagnostic & 5-Day Action Plan with Coach Nick.</p>
+            <p style="color: #78716c; font-size: 14px; margin: 0;">Here is your Personalized Fluency Diagnostic & 5-Day Action Plan with Teacher Nick.</p>
           </div>
 
           <div style="background: #e4ebf9; border: 1px solid #c2d4f8; border-radius: 12px; padding: 16px; margin-bottom: 24px;">
@@ -341,7 +341,7 @@ export async function sendDiagnosticEmail(data: DiagnosticEmailData) {
 
           <div style="text-align: center; margin-top: 30px;">
             <a href="mailto:${COACH_EMAIL}?subject=Strategy%20Call%20with%20Nick" style="background: #48529e; color: #ffffff; padding: 13px 26px; border-radius: 10px; font-weight: 800; text-decoration: none; display: inline-block; font-size: 14px;">
-              Email Coach Nick Directly &rarr;
+              Email Teacher Nick Directly &rarr;
             </a>
           </div>
 
@@ -421,10 +421,10 @@ ${phone ? `• Open WhatsApp Chat: https://wa.me/${phone.replace(/[^0-9]/g, '')}
 
       // Send confirmation to Student
       await transporter.sendMail({
-        from: `"Coach Nick" <${process.env.SMTP_FROM || process.env.SMTP_USER || COACH_EMAIL}>`,
+        from: `"Teacher Nick" <${process.env.SMTP_FROM || process.env.SMTP_USER || COACH_EMAIL}>`,
         to: email,
         replyTo: COACH_EMAIL,
-        subject: isEs ? `Tu Plan de Inglés de 5 Días • Coach Nick 🎯` : `Your 5-Day English Fluency Plan • Coach Nick 🎯`,
+        subject: isEs ? `Tu Plan de Inglés de 5 Días • Teacher Nick 🎯` : `Your 5-Day English Fluency Plan • Teacher Nick 🎯`,
         html: studentHtml,
       });
 
@@ -448,7 +448,7 @@ ${phone ? `• Open WhatsApp Chat: https://wa.me/${phone.replace(/[^0-9]/g, '')}
       console.log(`[Diagnostic Email Sent via Resend] Lead: ${name} -> Destination: ${COACH_EMAIL}`);
       await sendViaResend({
         to: email,
-        subject: isEs ? `Tu Plan de Inglés de 5 Días • Coach Nick 🎯` : `Your 5-Day English Fluency Plan • Coach Nick 🎯`,
+        subject: isEs ? `Tu Plan de Inglés de 5 Días • Teacher Nick 🎯` : `Your 5-Day English Fluency Plan • Teacher Nick 🎯`,
         html: studentHtml,
         replyTo: COACH_EMAIL,
       });

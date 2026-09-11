@@ -110,15 +110,15 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, pre
   );
   const mailtoBody = encodeURIComponent(
     language === 'es'
-      ? `Hola Coach Nick,\n\nQuiero confirmar mi reserva de clase de inglés:\n\n• Nombre: ${name}\n• Email: ${email}\n• WhatsApp/Teléfono: ${phone || 'No indicado'}\n• Fecha y Hora: ${currentSelectedDay.fullString} @ ${selectedTimeSlot} (${selectedTimezone})\n• Formato y Notas: ${notes || 'Sin notas'}\n\n¡Gracias!`
-      : `Hi Coach Nick,\n\nI want to confirm my English session booking:\n\n• Name: ${name}\n• Email: ${email}\n• Phone/WhatsApp: ${phone || 'Not provided'}\n• Date & Time: ${currentSelectedDay.fullString} @ ${selectedTimeSlot} (${selectedTimezone})\n• Format & Notes: ${notes || 'No notes'}\n\nThank you!`
+      ? `Hola Teacher Nick,\n\nQuiero confirmar mi reserva de clase de inglés:\n\n• Nombre: ${name}\n• Email: ${email}\n• WhatsApp/Teléfono: ${phone || 'No indicado'}\n• Fecha y Hora: ${currentSelectedDay.fullString} @ ${selectedTimeSlot} (${selectedTimezone})\n• Formato y Notas: ${notes || 'Sin notas'}\n\n¡Gracias!`
+      : `Hi Teacher Nick,\n\nI want to confirm my English session booking:\n\n• Name: ${name}\n• Email: ${email}\n• Phone/WhatsApp: ${phone || 'Not provided'}\n• Date & Time: ${currentSelectedDay.fullString} @ ${selectedTimeSlot} (${selectedTimezone})\n• Format & Notes: ${notes || 'No notes'}\n\nThank you!`
   );
   const mailtoUrl = `mailto:speakenglishwithnick@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
 
   const whatsappText = encodeURIComponent(
     language === 'es'
-      ? `Hola Coach Nick! Mi nombre es ${name}. Acabo de reservar mi clase de inglés para ${currentSelectedDay.fullString} a las ${selectedTimeSlot}. Mi correo es ${email}.`
-      : `Hi Coach Nick! My name is ${name}. I just booked my English session for ${currentSelectedDay.fullString} at ${selectedTimeSlot}. My email is ${email}.`
+      ? `Hola Teacher Nick! Mi nombre es ${name}. Acabo de reservar mi clase de inglés para ${currentSelectedDay.fullString} a las ${selectedTimeSlot}. Mi correo es ${email}.`
+      : `Hi Teacher Nick! My name is ${name}. I just booked my English session for ${currentSelectedDay.fullString} at ${selectedTimeSlot}. My email is ${email}.`
   );
   const whatsappUrl = `https://wa.me/?text=${whatsappText}`;
 
@@ -210,8 +210,8 @@ ${phone ? `• Open WhatsApp Chat: https://wa.me/${phone.replace(/[^0-9]/g, '')}
 VERSION:2.0
 PRODID:-//Speak English with Nick//Coaching Session//EN
 BEGIN:VEVENT
-SUMMARY:English Session with Coach Nick (${selectedFormat || 'Coaching'})
-DESCRIPTION:Your private 30-minute speaking diagnostic call with Coach Nick. Zoom Link: ${zoomLink}
+SUMMARY:English Session with Teacher Nick (${selectedFormat || 'Lesson'})
+DESCRIPTION:Your private 30-minute speaking diagnostic call with Teacher Nick. Zoom Link: ${zoomLink}
 LOCATION:Online Zoom Meeting
 STATUS:CONFIRMED
 END:VEVENT
@@ -221,7 +221,7 @@ END:VCALENDAR`;
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'Coach_Nick_English_Session.ics';
+    a.download = 'Teacher_Nick_English_Session.ics';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -418,8 +418,8 @@ END:VCALENDAR`;
               </h3>
               <p className="text-xs sm:text-sm text-stone-600 font-normal">
                 {language === 'es'
-                  ? 'Elige la fecha y hora que mejor te acomode. Coach Nick revisará la disponibilidad y te confirmará por WhatsApp o email.'
-                  : 'Select the time slot that works best for you. Coach Nick will review and confirm availability with you via WhatsApp/Email.'}
+                  ? 'Elige la fecha y hora que mejor te acomode. Teacher Nick revisará la disponibilidad y te confirmará por WhatsApp o email.'
+                  : 'Select the time slot that works best for you. Teacher Nick will review and confirm availability with you via WhatsApp/Email.'}
               </p>
             </div>
 
@@ -691,8 +691,8 @@ END:VCALENDAR`;
               </p>
               <p className="text-xs text-stone-600 pt-1 font-normal max-w-sm mx-auto">
                 {language === 'es'
-                  ? `Tu solicitud de horario ha sido enviada a Coach Nick (${email}). Te confirmará por WhatsApp o email a la brevedad.`
-                  : `Your preferred time has been sent to Coach Nick (${email}). He will confirm availability with you via WhatsApp/Email shortly.`}
+                  ? `Tu solicitud de horario ha sido enviada a Teacher Nick (${email}). Te confirmará por WhatsApp o email a la brevedad.`
+                  : `Your preferred time has been sent to Teacher Nick (${email}). He will confirm availability with you via WhatsApp/Email shortly.`}
               </p>
             </div>
 

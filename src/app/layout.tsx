@@ -42,9 +42,9 @@ export const metadata: Metadata = {
     'Acento en Ingles Americano',
     '20 Min Daily Fluency'
   ],
-  authors: [{ name: 'Coach Nick' }],
+  authors: [{ name: 'Teacher Nick' }],
   openGraph: {
-    title: 'Speak English with Nick | American English Accent & Fluency Coach',
+    title: 'Speak English with Nick | American English Accent & Fluency Teacher',
     description: 'Master natural American English rhythm, eliminate mental translation, and speak with confidence.',
     url: 'https://speakenglishwithnick.com',
     siteName: 'Speak English with Nick',
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
         url: '/nick.jpg',
         width: 800,
         height: 800,
-        alt: 'Coach Nick',
+        alt: 'Teacher Nick',
       }
     ],
     type: 'website',

@@ -232,7 +232,7 @@ export const FluencyQuiz: React.FC<FluencyQuizProps> = ({
 
   const handleDownloadRoadmap = (archetypeTitle: string, planList: string[]) => {
     const content = `=====================================================
-PLAN PERSONALIZADO DE 90 DÍAS - COACH NICK
+PLAN PERSONALIZADO DE 90 DÍAS - TEACHER NICK
 SPEAK ENGLISH WITH NICK (@speak.english.with.nick)
 =====================================================
 
@@ -252,7 +252,7 @@ LAS 3 FRASES DE RESCATE CLAVE PARA TU PERFIL:
 2. "Let me put it this way: our main goal is to keep things clear and efficient."
 3. "That's a great question. Let me think about that for a second..."
 
-¿Listo para feedback 1 a 1 en vivo con Coach Nick?
+¿Listo para feedback 1 a 1 en vivo con Teacher Nick?
 Agenda tu sesión diagnóstica en: https://speakenglishwithnick.com
 
 ¡Mucho éxito en tu camino hacia la fluidez natural!
@@ -466,7 +466,7 @@ Agenda tu sesión diagnóstica en: https://speakenglishwithnick.com
                   <div className="flex items-center justify-between">
                     <h4 className="text-xs font-black text-[#48529e] uppercase tracking-wider flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#f15555]" />
-                      <span>{language === 'es' ? 'Plan de Acción Sugerido por Coach Nick' : "Coach Nick's 3-Step Action Plan"}</span>
+                      <span>{language === 'es' ? 'Plan de Acción Sugerido por Teacher Nick' : "Teacher Nick's 3-Step Action Plan"}</span>
                     </h4>
 
                     <button
