@@ -71,12 +71,13 @@ export const Footer: React.FC<FooterProps> = ({
 
             {/* Coral-Red Pill Button (Exact match to screenshot) */}
             <button
-              onClick={onOpenLeadMagnet}
+              onClick={onOpenBooking}
               className="px-8 py-3.5 sm:py-4 rounded-full bg-[#f15555] hover:bg-[#e04444] text-white font-extrabold text-sm sm:text-base shadow-md hover:shadow-lg transition-all transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer inline-flex items-center gap-2"
             >
               <span>
-                {language === 'es' ? '¡Únete al curso GRATIS!' : 'Join the FREE course!'}
+                {language === 'es' ? '¡Agendar Sesión 1 a 1!' : 'Book 1-on-1 Session!'}
               </span>
+              <ArrowRight className="w-4 h-4 stroke-[2.5]" />
             </button>
           </div>
 

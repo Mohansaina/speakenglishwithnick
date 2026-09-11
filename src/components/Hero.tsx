@@ -129,6 +129,34 @@ export const Hero: React.FC<HeroProps> = ({
                 <p className="text-xs sm:text-sm text-stone-200 font-medium leading-relaxed">
                   {language === 'es'
                     ? 'Lee, escribe y habla oraciones básicas en inglés.'
+                    : 'Read, write, and speak basic English sentences.'}
+                </p>
+              </div>
+
+              <div className="pt-4 sm:pt-5 border-t border-[#606cb7] flex items-center justify-between relative z-10 mt-3">
+                <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#e4ebf9]">
+                  {language === 'es' ? 'Bases sólidas' : 'Core foundation'}
+                </span>
+                <div className="w-8 h-8 rounded-full bg-[#373f7a] group-hover:bg-[#f15555] flex items-center justify-center transition-colors shadow-sm">
+                  <ArrowRight className="w-4 h-4 text-[#e4ebf9] group-hover:text-white group-hover:translate-x-0.5 transition-all" />
+                </div>
+              </div>
+            </button>
+
+            {/* Box 2: Specific English */}
+            <button
+              onClick={() => onOpenBooking(language === 'es' ? 'Inglés Específico' : 'Specific English')}
+              className="group p-5 sm:p-7 lg:p-9 rounded-3xl bg-[#48529e] hover:bg-[#373f7a] text-white border-2 border-[#373f7a] hover:border-[#f15555] text-left transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between min-h-[190px] sm:min-h-[250px] cursor-pointer relative overflow-hidden active:scale-[0.99]"
+            >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#f15555]/10 rounded-full blur-2xl pointer-events-none" />
+
+              <div className="space-y-2.5 sm:space-y-3 relative z-10">
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white group-hover:text-[#e4ebf9] leading-tight tracking-tight transition-colors">
+                  {language === 'es' ? 'Inglés Específico' : 'Specific English'}
+                </h3>
+                <p className="text-xs sm:text-sm text-stone-200 font-medium leading-relaxed">
+                  {language === 'es'
+                    ? 'Aprende inglés para el trabajo, negocios, tareas cotidianas y otras situaciones de la vida real.'
                     : 'Learn English for work, business, everyday tasks, and other real-life scenarios.'}
                 </p>
               </div>

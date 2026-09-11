@@ -207,14 +207,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                     <button
                       onClick={() => {
                         setLessonsDropdown(false);
-                        onOpenLeadMagnet();
+                        onOpenQuiz();
                       }}
                       className="w-full text-left flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-stone-50 text-stone-800 hover:text-[#48529e] transition-colors cursor-pointer"
                     >
                       <BookOpen className="w-4 h-4 text-[#48529e] mt-0.5 shrink-0" />
                       <div>
-                        <div className="text-xs font-bold">Accent Cheat Sheet (PDF)</div>
-                        <div className="text-[11px] text-stone-500 font-normal">Instant 50 phrase guide</div>
+                        <div className="text-xs font-bold">{language === 'es' ? 'Test de Diagnóstico' : 'Fluency Diagnostic'}</div>
+                        <div className="text-[11px] text-stone-500 font-normal">{language === 'es' ? 'Prueba tu nivel en 2 min' : 'Test your level in 2 mins'}</div>
                       </div>
                     </button>
                   </div>

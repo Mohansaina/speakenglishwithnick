@@ -12,39 +12,19 @@ import { FluencyQuiz } from '@/components/FluencyQuiz';
 import { Programs } from '@/components/Programs';
 import { FAQ } from '@/components/FAQ';
 import { Footer } from '@/components/Footer';
-import { LeadMagnetModal } from '@/components/LeadMagnetModal';
 import { BookingModal } from '@/components/BookingModal';
 import { StudentLoginModal } from '@/components/StudentLoginModal';
 import { SearchModal } from '@/components/SearchModal';
-import { StickyConversionBar } from '@/components/StickyConversionBar';
-import { ExitIntentModal } from '@/components/ExitIntentModal';
 import { ScrollObserver } from '@/components/ScrollObserver';
 import { SmoothScroll } from '@/components/SmoothScroll';
-import { Calendar, BookOpen, ArrowRight } from 'lucide-react';
 import { translations } from '@/data/translations';
 
 function MainContent() {
   const { language } = useLanguage();
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
   const [bookingNotes, setBookingNotes] = useState('');
-  const [leadMagnetOpen, setLeadMagnetOpen] = useState(false);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [searchModalOpen, setSearchModalOpen] = useState(false);
-  const [exitIntentOpen, setExitIntentOpen] = useState(false);
-  const [exitTriggered, setExitTriggered] = useState(false);
-
-  // Exit intent listener for desktop
-  React.useEffect(() => {
-    const handleMouseLeave = (e: MouseEvent) => {
-      if (e.clientY <= 10 && !exitTriggered) {
-        setExitTriggered(true);
-        setExitIntentOpen(true);
-      }
-    };
-
-    document.documentElement.addEventListener('mouseleave', handleMouseLeave);
-    return () => document.documentElement.removeEventListener('mouseleave', handleMouseLeave);
-  }, [exitTriggered]);
 
   const handleScrollToQuiz = () => {
     const el = document.getElementById('fluency-quiz-section');
@@ -74,7 +54,7 @@ function MainContent() {
       <Navbar
         onOpenQuiz={handleScrollToQuiz}
         onOpenBooking={() => handleOpenBooking()}
-        onOpenLeadMagnet={() => setLeadMagnetOpen(true)}
+        onOpenLeadMagnet={() => handleOpenBooking()}
         onOpenSearch={() => setSearchModalOpen(true)}
       />
 
@@ -82,7 +62,7 @@ function MainContent() {
       <Hero
         onOpenQuiz={handleScrollToQuiz}
         onOpenBooking={(focusTopic) => handleOpenBooking(focusTopic)}
-        onOpenLeadMagnet={() => setLeadMagnetOpen(true)}
+        onOpenLeadMagnet={() => handleOpenBooking()}
       />
 
       {/* 4. Transformation Showcase */}
@@ -97,7 +77,7 @@ function MainContent() {
           setBookingNotes('');
           setBookingModalOpen(true);
         }}
-        onOpenLeadMagnet={() => setLeadMagnetOpen(true)}
+        onOpenLeadMagnet={() => handleOpenBooking()}
       />
 
       {/* 6. Interactive Audio Practice Studio */}
@@ -132,7 +112,7 @@ function MainContent() {
           setBookingNotes('');
           setBookingModalOpen(true);
         }}
-        onOpenLeadMagnet={() => setLeadMagnetOpen(true)}
+        onOpenLeadMagnet={() => handleOpenBooking()}
       />
 
       {/* 10. Frequently Asked Questions */}
@@ -145,16 +125,11 @@ function MainContent() {
           setBookingNotes('');
           setBookingModalOpen(true);
         }}
-        onOpenLeadMagnet={() => setLeadMagnetOpen(true)}
+        onOpenLeadMagnet={() => handleOpenBooking()}
         onOpenLogin={() => setLoginModalOpen(true)}
       />
 
       {/* Interactive Modals */}
-      <LeadMagnetModal
-        isOpen={leadMagnetOpen}
-        onClose={() => setLeadMagnetOpen(false)}
-      />
-
       <BookingModal
         isOpen={bookingModalOpen}
         prefilledNotes={bookingNotes}
@@ -172,17 +147,6 @@ function MainContent() {
       <SearchModal
         isOpen={searchModalOpen}
         onClose={() => setSearchModalOpen(false)}
-      />
-
-      <StickyConversionBar
-        onOpenBooking={() => handleOpenBooking()}
-        onOpenQuiz={handleScrollToQuiz}
-      />
-
-      <ExitIntentModal
-        isOpen={exitIntentOpen}
-        onClose={() => setExitIntentOpen(false)}
-        onOpenBooking={() => handleOpenBooking()}
       />
 
     </main>
