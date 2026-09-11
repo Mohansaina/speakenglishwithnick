@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { ChevronDown, HelpCircle, ArrowRight, Mail } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import { translations } from '@/data/translations';
 import { handleSmartEmailClick, getSmartEmailUrls } from '@/utils/emailClient';
 
 interface FAQProps {
