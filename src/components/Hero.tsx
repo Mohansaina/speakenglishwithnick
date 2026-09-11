@@ -18,14 +18,14 @@ export const Hero: React.FC<HeroProps> = ({
   const { language } = useLanguage();
 
   return (
-    <section className="relative bg-white border-b border-stone-200 overflow-hidden py-7 sm:py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative bg-white border-b border-stone-200 overflow-hidden py-6 sm:py-12 lg:py-16">
+      <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
           
           {/* Left Column: Teacher Nick Photo */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-[280px] xs:max-w-[320px] sm:max-w-[420px] rounded-3xl overflow-hidden shadow-xl border border-stone-200 bg-white group">
+            <div className="relative w-full max-w-[260px] xs:max-w-[300px] sm:max-w-[420px] rounded-3xl overflow-hidden shadow-xl border border-stone-200 bg-white group">
               <img
                 src="/nick-hero.jpg"
                 alt="Teacher Nick - Native American English Coach"
@@ -60,7 +60,7 @@ export const Hero: React.FC<HeroProps> = ({
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-[24px] xs:text-[28px] sm:text-4xl lg:text-5xl xl:text-[54px] font-black text-stone-900 tracking-tight leading-[1.12] break-words">
+            <h1 className="text-[22px] xs:text-[26px] sm:text-4xl lg:text-5xl xl:text-[54px] font-black text-stone-900 tracking-tight leading-[1.12] break-words">
               {language === 'es' ? (
                 <>
                   Donde hablar inglés <br />
@@ -82,8 +82,8 @@ export const Hero: React.FC<HeroProps> = ({
             </p>
 
             {/* Class Layout Schedule Box */}
-            <div className="p-4 sm:p-5 rounded-2xl bg-[#1e244d] text-white border border-[#373f7a] shadow-md">
-              <div className="space-y-2.5 sm:space-y-3 text-xs sm:text-sm text-stone-200 font-medium">
+            <div className="p-3.5 sm:p-5 rounded-2xl bg-[#1e244d] text-white border border-[#373f7a] shadow-md">
+              <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-stone-200 font-medium">
                 <div className="flex items-start sm:items-center gap-2.5 sm:gap-3">
                   <Calendar className="w-4 h-4 text-[#f15555] shrink-0 mt-0.5 sm:mt-0" />
                   <span className="text-stone-100 font-semibold text-xs sm:text-sm md:text-base leading-snug">
@@ -106,28 +106,28 @@ export const Hero: React.FC<HeroProps> = ({
         </div>
 
         {/* 3 Prominent Large Option Boxes Positioned Underneath */}
-        <div className="mt-10 sm:mt-16 pt-7 sm:pt-10 border-t border-stone-200/80">
-          <div className="text-center mb-5 sm:mb-6">
+        <div className="mt-8 sm:mt-16 pt-6 sm:pt-10 border-t border-stone-200/80">
+          <div className="text-center mb-4 sm:mb-6">
             <span className="text-[11px] sm:text-xs font-black uppercase tracking-widest text-stone-500">
               {language === 'es' ? '• SELECCIONA TU PROGRAMA •' : '• SELECT YOUR LEARNING FOCUS •'}
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-6">
             
             {/* Box 1: English from 0 */}
             <button
               onClick={() => onOpenBooking(language === 'es' ? 'Inglés desde 0' : 'English from 0')}
-              className="group p-5 sm:p-7 lg:p-8 rounded-3xl bg-[#48529e] hover:bg-[#373f7a] text-white border-2 border-[#373f7a] hover:border-[#f15555] text-left transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between min-h-[220px] sm:min-h-[270px] cursor-pointer relative overflow-hidden active:scale-[0.99]"
+              className="group p-4.5 xs:p-6 sm:p-7 lg:p-8 rounded-3xl bg-[#48529e] hover:bg-[#373f7a] text-white border-2 border-[#373f7a] hover:border-[#f15555] text-left transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between min-h-[auto] md:min-h-[270px] cursor-pointer relative overflow-hidden active:scale-[0.98]"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#f15555]/10 rounded-full blur-2xl pointer-events-none" />
 
-              <div className="space-y-3 relative z-10">
+              <div className="space-y-2.5 sm:space-y-3 relative z-10">
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white group-hover:text-[#e4ebf9] leading-tight tracking-tight transition-colors">
                   {language === 'es' ? 'Inglés desde 0' : 'English from 0'}
                 </h3>
                 
-                <ul className="space-y-2 text-xs sm:text-sm text-stone-100 font-medium">
+                <ul className="space-y-1.5 xs:space-y-2 text-xs sm:text-sm text-stone-100 font-medium">
                   <li className="flex items-start gap-2">
                     <Check className="w-4 h-4 text-[#f15555] shrink-0 mt-0.5 stroke-[3]" />
                     <span>{language === 'es' ? 'Lee, escribe y habla oraciones básicas' : 'Read, write, and speak basic English sentences'}</span>
@@ -143,7 +143,7 @@ export const Hero: React.FC<HeroProps> = ({
                 </ul>
               </div>
 
-              <div className="pt-4 sm:pt-5 border-t border-[#606cb7] flex items-center justify-between relative z-10 mt-4">
+              <div className="pt-3.5 sm:pt-5 border-t border-[#606cb7] flex items-center justify-between relative z-10 mt-3 sm:mt-4">
                 <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#e4ebf9]">
                   {language === 'es' ? 'Bases sólidas' : 'Core foundation'}
                 </span>
@@ -156,16 +156,16 @@ export const Hero: React.FC<HeroProps> = ({
             {/* Box 2: Specific English */}
             <button
               onClick={() => onOpenBooking(language === 'es' ? 'Inglés Específico' : 'Specific English')}
-              className="group p-5 sm:p-7 lg:p-8 rounded-3xl bg-[#48529e] hover:bg-[#373f7a] text-white border-2 border-[#373f7a] hover:border-[#f15555] text-left transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between min-h-[220px] sm:min-h-[270px] cursor-pointer relative overflow-hidden active:scale-[0.99]"
+              className="group p-4.5 xs:p-6 sm:p-7 lg:p-8 rounded-3xl bg-[#48529e] hover:bg-[#373f7a] text-white border-2 border-[#373f7a] hover:border-[#f15555] text-left transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between min-h-[auto] md:min-h-[270px] cursor-pointer relative overflow-hidden active:scale-[0.98]"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#f15555]/10 rounded-full blur-2xl pointer-events-none" />
 
-              <div className="space-y-3 relative z-10">
+              <div className="space-y-2.5 sm:space-y-3 relative z-10">
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white group-hover:text-[#e4ebf9] leading-tight tracking-tight transition-colors">
                   {language === 'es' ? 'Inglés Específico' : 'Specific English'}
                 </h3>
                 
-                <ul className="space-y-2 text-xs sm:text-sm text-stone-100 font-medium">
+                <ul className="space-y-1.5 xs:space-y-2 text-xs sm:text-sm text-stone-100 font-medium">
                   <li className="flex items-start gap-2">
                     <Check className="w-4 h-4 text-[#f15555] shrink-0 mt-0.5 stroke-[3]" />
                     <span>{language === 'es' ? 'Inglés para trabajo, reuniones y entrevistas' : 'Workplace meetings & job interview prep'}</span>
@@ -181,7 +181,7 @@ export const Hero: React.FC<HeroProps> = ({
                 </ul>
               </div>
 
-              <div className="pt-4 sm:pt-5 border-t border-[#606cb7] flex items-center justify-between relative z-10 mt-4">
+              <div className="pt-3.5 sm:pt-5 border-t border-[#606cb7] flex items-center justify-between relative z-10 mt-3 sm:mt-4">
                 <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#e4ebf9]">
                   {language === 'es' ? 'Personalizar tema' : 'Custom situations'}
                 </span>
@@ -194,16 +194,16 @@ export const Hero: React.FC<HeroProps> = ({
             {/* Box 3: Conversation Practice */}
             <button
               onClick={() => onOpenBooking(language === 'es' ? 'Práctica de Conversación' : 'Conversation Practice')}
-              className="group p-5 sm:p-7 lg:p-8 rounded-3xl bg-[#48529e] hover:bg-[#373f7a] text-white border-2 border-[#373f7a] hover:border-[#f15555] text-left transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between min-h-[220px] sm:min-h-[270px] cursor-pointer relative overflow-hidden active:scale-[0.99]"
+              className="group p-4.5 xs:p-6 sm:p-7 lg:p-8 rounded-3xl bg-[#48529e] hover:bg-[#373f7a] text-white border-2 border-[#373f7a] hover:border-[#f15555] text-left transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between min-h-[auto] md:min-h-[270px] cursor-pointer relative overflow-hidden active:scale-[0.98]"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#f15555]/10 rounded-full blur-2xl pointer-events-none" />
 
-              <div className="space-y-3 relative z-10">
+              <div className="space-y-2.5 sm:space-y-3 relative z-10">
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white group-hover:text-[#e4ebf9] leading-tight tracking-tight transition-colors">
                   {language === 'es' ? 'Práctica de Conversación' : 'Conversation Practice'}
                 </h3>
                 
-                <ul className="space-y-2 text-xs sm:text-sm text-stone-100 font-medium">
+                <ul className="space-y-1.5 xs:space-y-2 text-xs sm:text-sm text-stone-100 font-medium">
                   <li className="flex items-start gap-2">
                     <Check className="w-4 h-4 text-[#f15555] shrink-0 mt-0.5 stroke-[3]" />
                     <span>{language === 'es' ? 'Gana confianza total al hablar' : 'Gain real speaking confidence'}</span>
@@ -219,7 +219,7 @@ export const Hero: React.FC<HeroProps> = ({
                 </ul>
               </div>
 
-              <div className="pt-4 sm:pt-5 border-t border-[#606cb7] flex items-center justify-between relative z-10 mt-4">
+              <div className="pt-3.5 sm:pt-5 border-t border-[#606cb7] flex items-center justify-between relative z-10 mt-3 sm:mt-4">
                 <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#e4ebf9]">
                   {language === 'es' ? 'Hablar con confianza' : 'Confidence speaking'}
                 </span>
