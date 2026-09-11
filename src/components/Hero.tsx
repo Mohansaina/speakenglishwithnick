@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Calendar, MessageCircle, ArrowRight } from 'lucide-react';
+import { Calendar, MessageCircle, ArrowRight, Check } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
 interface HeroProps {
@@ -118,22 +118,32 @@ export const Hero: React.FC<HeroProps> = ({
             {/* Box 1: English from 0 */}
             <button
               onClick={() => onOpenBooking(language === 'es' ? 'Inglés desde 0' : 'English from 0')}
-              className="group p-5 sm:p-7 lg:p-9 rounded-3xl bg-[#48529e] hover:bg-[#373f7a] text-white border-2 border-[#373f7a] hover:border-[#f15555] text-left transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between min-h-[190px] sm:min-h-[250px] cursor-pointer relative overflow-hidden active:scale-[0.99]"
+              className="group p-5 sm:p-7 lg:p-8 rounded-3xl bg-[#48529e] hover:bg-[#373f7a] text-white border-2 border-[#373f7a] hover:border-[#f15555] text-left transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between min-h-[220px] sm:min-h-[270px] cursor-pointer relative overflow-hidden active:scale-[0.99]"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#f15555]/10 rounded-full blur-2xl pointer-events-none" />
 
-              <div className="space-y-2.5 sm:space-y-3 relative z-10">
+              <div className="space-y-3 relative z-10">
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white group-hover:text-[#e4ebf9] leading-tight tracking-tight transition-colors">
                   {language === 'es' ? 'Inglés desde 0' : 'English from 0'}
                 </h3>
-                <p className="text-xs sm:text-sm text-stone-200 font-medium leading-relaxed">
-                  {language === 'es'
-                    ? 'Lee, escribe y habla oraciones básicas en inglés.'
-                    : 'Read, write, and speak basic English sentences.'}
-                </p>
+                
+                <ul className="space-y-2 text-xs sm:text-sm text-stone-100 font-medium">
+                  <li className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-[#f15555] shrink-0 mt-0.5 stroke-[3]" />
+                    <span>{language === 'es' ? 'Lee, escribe y habla oraciones básicas' : 'Read, write, and speak basic English sentences'}</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-[#f15555] shrink-0 mt-0.5 stroke-[3]" />
+                    <span>{language === 'es' ? 'Construye vocabulario clave paso a paso' : 'Build core vocabulary step-by-step'}</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-[#f15555] shrink-0 mt-0.5 stroke-[3]" />
+                    <span>{language === 'es' ? 'Ambiente paciente y libre de juicio' : 'Patient, zero-judgment learning environment'}</span>
+                  </li>
+                </ul>
               </div>
 
-              <div className="pt-4 sm:pt-5 border-t border-[#606cb7] flex items-center justify-between relative z-10 mt-3">
+              <div className="pt-4 sm:pt-5 border-t border-[#606cb7] flex items-center justify-between relative z-10 mt-4">
                 <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#e4ebf9]">
                   {language === 'es' ? 'Bases sólidas' : 'Core foundation'}
                 </span>
@@ -146,22 +156,32 @@ export const Hero: React.FC<HeroProps> = ({
             {/* Box 2: Specific English */}
             <button
               onClick={() => onOpenBooking(language === 'es' ? 'Inglés Específico' : 'Specific English')}
-              className="group p-5 sm:p-7 lg:p-9 rounded-3xl bg-[#48529e] hover:bg-[#373f7a] text-white border-2 border-[#373f7a] hover:border-[#f15555] text-left transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between min-h-[190px] sm:min-h-[250px] cursor-pointer relative overflow-hidden active:scale-[0.99]"
+              className="group p-5 sm:p-7 lg:p-8 rounded-3xl bg-[#48529e] hover:bg-[#373f7a] text-white border-2 border-[#373f7a] hover:border-[#f15555] text-left transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between min-h-[220px] sm:min-h-[270px] cursor-pointer relative overflow-hidden active:scale-[0.99]"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#f15555]/10 rounded-full blur-2xl pointer-events-none" />
 
-              <div className="space-y-2.5 sm:space-y-3 relative z-10">
+              <div className="space-y-3 relative z-10">
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white group-hover:text-[#e4ebf9] leading-tight tracking-tight transition-colors">
                   {language === 'es' ? 'Inglés Específico' : 'Specific English'}
                 </h3>
-                <p className="text-xs sm:text-sm text-stone-200 font-medium leading-relaxed">
-                  {language === 'es'
-                    ? 'Aprende inglés para el trabajo, negocios, tareas cotidianas y otras situaciones de la vida real.'
-                    : 'Learn English for work, business, everyday tasks, and other real-life scenarios.'}
-                </p>
+                
+                <ul className="space-y-2 text-xs sm:text-sm text-stone-100 font-medium">
+                  <li className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-[#f15555] shrink-0 mt-0.5 stroke-[3]" />
+                    <span>{language === 'es' ? 'Inglés para trabajo, reuniones y entrevistas' : 'Workplace meetings & job interview prep'}</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-[#f15555] shrink-0 mt-0.5 stroke-[3]" />
+                    <span>{language === 'es' ? 'Viajes y situaciones de la vida real' : 'Travel & everyday real-life scenarios'}</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-[#f15555] shrink-0 mt-0.5 stroke-[3]" />
+                    <span>{language === 'es' ? 'Práctica adaptada a tu meta personal' : 'Customized roleplays tailored to your goals'}</span>
+                  </li>
+                </ul>
               </div>
 
-              <div className="pt-4 sm:pt-5 border-t border-[#606cb7] flex items-center justify-between relative z-10 mt-3">
+              <div className="pt-4 sm:pt-5 border-t border-[#606cb7] flex items-center justify-between relative z-10 mt-4">
                 <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#e4ebf9]">
                   {language === 'es' ? 'Personalizar tema' : 'Custom situations'}
                 </span>
@@ -174,22 +194,32 @@ export const Hero: React.FC<HeroProps> = ({
             {/* Box 3: Conversation Practice */}
             <button
               onClick={() => onOpenBooking(language === 'es' ? 'Práctica de Conversación' : 'Conversation Practice')}
-              className="group p-5 sm:p-7 lg:p-9 rounded-3xl bg-[#48529e] hover:bg-[#373f7a] text-white border-2 border-[#373f7a] hover:border-[#f15555] text-left transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between min-h-[190px] sm:min-h-[250px] cursor-pointer relative overflow-hidden active:scale-[0.99]"
+              className="group p-5 sm:p-7 lg:p-8 rounded-3xl bg-[#48529e] hover:bg-[#373f7a] text-white border-2 border-[#373f7a] hover:border-[#f15555] text-left transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex flex-col justify-between min-h-[220px] sm:min-h-[270px] cursor-pointer relative overflow-hidden active:scale-[0.99]"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#f15555]/10 rounded-full blur-2xl pointer-events-none" />
 
-              <div className="space-y-2.5 sm:space-y-3 relative z-10">
+              <div className="space-y-3 relative z-10">
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white group-hover:text-[#e4ebf9] leading-tight tracking-tight transition-colors">
                   {language === 'es' ? 'Práctica de Conversación' : 'Conversation Practice'}
                 </h3>
-                <p className="text-xs sm:text-sm text-stone-200 font-medium leading-relaxed">
-                  {language === 'es'
-                    ? 'Gana confianza al hablar, aprende más vocabulario y corrige tus errores.'
-                    : 'Gain confidence as a speaker, learn more vocabulary, and correct your mistakes.'}
-                </p>
+                
+                <ul className="space-y-2 text-xs sm:text-sm text-stone-100 font-medium">
+                  <li className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-[#f15555] shrink-0 mt-0.5 stroke-[3]" />
+                    <span>{language === 'es' ? 'Gana confianza total al hablar' : 'Gain real speaking confidence'}</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-[#f15555] shrink-0 mt-0.5 stroke-[3]" />
+                    <span>{language === 'es' ? 'Domina el ritmo del acento americano' : 'Master natural American cadence'}</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-[#f15555] shrink-0 mt-0.5 stroke-[3]" />
+                    <span>{language === 'es' ? 'Aprende vocabulario y corrige tus errores' : 'Instant feedback & error correction'}</span>
+                  </li>
+                </ul>
               </div>
 
-              <div className="pt-4 sm:pt-5 border-t border-[#606cb7] flex items-center justify-between relative z-10 mt-3">
+              <div className="pt-4 sm:pt-5 border-t border-[#606cb7] flex items-center justify-between relative z-10 mt-4">
                 <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#e4ebf9]">
                   {language === 'es' ? 'Hablar con confianza' : 'Confidence speaking'}
                 </span>
