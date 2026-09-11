@@ -576,7 +576,7 @@ END:VCALENDAR`;
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="mateo@empresa.com"
+                  placeholder={language === 'es' ? 'mateo@empresa.com' : 'maria@example.com'}
                   className="w-full px-3.5 py-2.5 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm focus:outline-none focus:border-[#48529e] focus:bg-white transition-colors"
                 />
               </div>

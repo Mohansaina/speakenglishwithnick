@@ -319,7 +319,7 @@ How can we get started?`;
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="tu.correo@ejemplo.com"
+                      placeholder={language === 'es' ? 'tu.correo@ejemplo.com' : 'your.email@example.com'}
                       className="w-full pl-10 pr-3.5 py-3 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm font-medium focus:bg-white focus:outline-none focus:border-[#48529e] transition-all"
                     />
                   </div>
@@ -372,9 +372,9 @@ How can we get started?`;
                   />
                   
                   <div className="flex justify-between text-[10px] text-stone-600 font-bold uppercase tracking-wider">
-                    <span>0% (Básico)</span>
-                    <span>50% (Intermedio)</span>
-                    <span>100% (Avanzado)</span>
+                    <span>{language === 'es' ? '0% (Básico)' : '0% (Basic)'}</span>
+                    <span>{language === 'es' ? '50% (Intermedio)' : '50% (Intermediate)'}</span>
+                    <span>{language === 'es' ? '100% (Avanzado)' : '100% (Advanced)'}</span>
                   </div>
                 </div>
 
@@ -402,9 +402,9 @@ How can we get started?`;
                   />
 
                   <div className="flex justify-between text-[10px] text-stone-600 font-bold uppercase tracking-wider">
-                    <span>0% (Me bloqueo)</span>
-                    <span>50% (Frases cortas)</span>
-                    <span>100% (Fluidez total)</span>
+                    <span>{language === 'es' ? '0% (Me bloqueo)' : '0% (Hesitant)'}</span>
+                    <span>{language === 'es' ? '50% (Frases cortas)' : '50% (Short Sentences)'}</span>
+                    <span>{language === 'es' ? '100% (Fluidez total)' : '100% (Full Fluency)'}</span>
                   </div>
                 </div>
 

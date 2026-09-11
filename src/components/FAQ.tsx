@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { ChevronDown, HelpCircle, ArrowRight, Mail } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
-import { translations } from '@/data/translations';
+import { handleSmartEmailClick, getSmartEmailUrls } from '@/utils/emailClient';
 
 interface FAQProps {
   onOpenBooking: () => void;
@@ -13,6 +13,7 @@ export const FAQ: React.FC<FAQProps> = ({ onOpenBooking }) => {
   const { language } = useLanguage();
   const t = translations[language].faq;
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const emailUrls = getSmartEmailUrls();
 
   const faqData = language === 'es'
     ? [
@@ -124,7 +125,10 @@ export const FAQ: React.FC<FAQProps> = ({ onOpenBooking }) => {
             <p className="text-xs sm:text-sm text-stone-700 font-medium flex flex-wrap items-center justify-center sm:justify-start gap-1">
               <span>{language === 'es' ? 'Envía un correo directamente a:' : 'Send an email directly to:'}</span>
               <a
-                href="mailto:speakenglishwithnick@gmail.com"
+                href={emailUrls.gmailWebUrl}
+                onClick={(e) => handleSmartEmailClick(e)}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="font-black text-[#48529e] hover:underline hover:text-[#f15555] transition-colors"
               >
                 speakenglishwithnick@gmail.com
@@ -134,7 +138,10 @@ export const FAQ: React.FC<FAQProps> = ({ onOpenBooking }) => {
           
           <div className="flex flex-col sm:flex-row gap-2.5 w-full sm:w-auto shrink-0">
             <a
-              href="mailto:speakenglishwithnick@gmail.com"
+              href={emailUrls.gmailWebUrl}
+              onClick={(e) => handleSmartEmailClick(e)}
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white hover:bg-stone-50 text-[#48529e] border border-[#c2d4f8] font-extrabold text-xs sm:text-sm shadow-xs flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
             >
               <Mail className="w-4 h-4 text-[#f15555]" />
