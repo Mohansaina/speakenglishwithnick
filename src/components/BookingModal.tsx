@@ -1,9 +1,8 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { X, Clock, Video, Check, ShieldCheck, ArrowRight, Calendar as CalendarIcon, Globe, Download, Copy, User, Users, Sparkles, MessageCircle } from 'lucide-react';
+import React from 'react';
+import { X, Sparkles, ExternalLink } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
-import confetti from 'canvas-confetti';
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -11,743 +10,109 @@ interface BookingModalProps {
   prefilledNotes?: string;
 }
 
-export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, prefilledNotes }) => {
+export const BookingModal: React.FC<BookingModalProps> = ({
+  isOpen,
+  onClose,
+  prefilledNotes,
+}) => {
   const { language } = useLanguage();
-  const [step, setStep] = useState<'format' | 'schedule' | 'details' | 'confirmed'>('format');
-  const [selectedFormat, setSelectedFormat] = useState<string | null>(null);
-  
-  // Interactive Date / Time State
-  const [selectedDayIndex, setSelectedDayIndex] = useState<number>(1);
-  const [selectedTimeSlot, setSelectedTimeSlot] = useState<string>('3:00 PM');
-  const [selectedTimezone, setSelectedTimezone] = useState<string>('EST (New York)');
-  
-  // Form fields
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [understandPercent, setUnderstandPercent] = useState(65);
-  const [speakPercent, setSpeakPercent] = useState(30);
-  const [notes, setNotes] = useState(prefilledNotes || '');
-  const [loading, setLoading] = useState(false);
-  const [copiedLink, setCopiedLink] = useState(false);
-
-  useEffect(() => {
-    if (isOpen) {
-      setStep('format');
-      if (prefilledNotes) {
-        setNotes(prefilledNotes);
-      }
-    }
-  }, [isOpen, prefilledNotes]);
-
-  const handleSelectFormat = (formatChoice: string) => {
-    setSelectedFormat(formatChoice);
-    const updatedNotes = prefilledNotes 
-      ? `Focus: ${prefilledNotes} | Format: ${formatChoice}`
-      : `Format: ${formatChoice}`;
-    setNotes(updatedNotes);
-    setStep('schedule');
-  };
-
-  const goalChips = language === 'es' ? [
-    'Reuniones de Trabajo',
-    'Entrevistas en Inglés',
-    'Dejar de Traducir',
-    'Acento y Pronunciación',
-    'Hablar en Restaurantes/Viajes',
-  ] : [
-    'Work Meetings',
-    'Job Interviews',
-    'Stop Mental Translation',
-    'Accent & Pronunciation',
-    'Restaurants & Travel',
-  ];
-
-  const handleAddGoalChip = (chip: string) => {
-    if (!notes.includes(chip)) {
-      setNotes((prev) => (prev ? `${prev}, ${chip}` : chip));
-    }
-  };
 
   if (!isOpen) return null;
 
-  // Generate next 10 available days
-  const today = new Date();
-  const availableDays = Array.from({ length: 10 }).map((_, i) => {
-    const d = new Date();
-    d.setDate(today.getDate() + i + 1);
-    return {
-      date: d,
-      dayName: d.toLocaleDateString(language === 'es' ? 'es-ES' : 'en-US', { weekday: 'short' }),
-      dayNumber: d.getDate(),
-      monthName: d.toLocaleDateString(language === 'es' ? 'es-ES' : 'en-US', { month: 'short' }),
-      fullString: d.toLocaleDateString(language === 'es' ? 'es-ES' : 'en-US', { weekday: 'long', month: 'short', day: 'numeric' })
-    };
-  });
+  const embedDomain =
+    typeof window !== 'undefined'
+      ? window.location.hostname
+      : 'speakenglishwithnick.com';
 
-  const afternoonSlots = ['02:00 PM', '03:00 PM', '04:15 PM', '05:30 PM'];
-  const eveningSlots = ['06:30 PM', '07:15 PM'];
-
-  const timezones = [
-    'EST (New York, Miami, Bogota)',
-    'PST (Los Angeles, San Francisco)',
-    'CST (Mexico City, Chicago)',
-    'CET (Madrid, Barcelona, Paris)',
-    'GMT (London, Lisbon)',
-    'BRT (Sao Paulo, Buenos Aires)',
-  ];
-
-  const handleNextToDetails = (e: React.FormEvent) => {
-    e.preventDefault();
-    setStep('details');
-  };
-
-  const currentSelectedDay = availableDays[selectedDayIndex] || availableDays[0];
-  const zoomLink = "https://zoom.us/j/9482746194?pwd=speakenglishwithnick";
-
-  const mailtoSubject = encodeURIComponent(
-    language === 'es' ? `Reserva de Clase de Inglés - ${name}` : `English Session Booking - ${name}`
-  );
-  const mailtoBody = encodeURIComponent(
-    language === 'es'
-      ? `Hola Teacher Nick,\n\nQuiero confirmar mi reserva de clase de inglés:\n\n• Nombre: ${name}\n• Email: ${email}\n• WhatsApp/Teléfono: ${phone || 'No indicado'}\n• Fecha y Hora: ${currentSelectedDay.fullString} @ ${selectedTimeSlot} (${selectedTimezone})\n• Formato y Notas: ${notes || 'Sin notas'}\n\n¡Gracias!`
-      : `Hi Teacher Nick,\n\nI want to confirm my English session booking:\n\n• Name: ${name}\n• Email: ${email}\n• Phone/WhatsApp: ${phone || 'Not provided'}\n• Date & Time: ${currentSelectedDay.fullString} @ ${selectedTimeSlot} (${selectedTimezone})\n• Format & Notes: ${notes || 'No notes'}\n\nThank you!`
-  );
-  const mailtoUrl = `mailto:speakenglishwithnick@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
-
-  const whatsappText = encodeURIComponent(
-    language === 'es'
-      ? `Hola Teacher Nick! Mi nombre es ${name}. Acabo de reservar mi clase de inglés para ${currentSelectedDay.fullString} a las ${selectedTimeSlot}. Mi correo es ${email}.`
-      : `Hi Teacher Nick! My name is ${name}. I just booked my English session for ${currentSelectedDay.fullString} at ${selectedTimeSlot}. My email is ${email}.`
-  );
-  const whatsappUrl = `https://wa.me/?text=${whatsappText}`;
-
-  const handleFinalBook = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!name || !email) return;
-
-    setLoading(true);
-
-    try {
-      // 1. Send directly to Web3Forms API from client browser
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({
-          access_key: '95e2795a-6c55-4b7a-bda3-26b98c09baaa',
-          subject: `📅 New Booking: ${name} (${currentSelectedDay.fullString} @ ${selectedTimeSlot})`,
-          from_name: 'Speak English with Nick Bookings',
-          name: name,
-          email: email,
-          replyto: email,
-          message: `
-📅 NEW 1-ON-1 SESSION BOOKED!
-
-BOOKING DETAILS:
-----------------------------------------
-• Student Name: ${name}
-• Email: ${email}
-• WhatsApp / Phone: ${phone || 'Not provided'}
-• Date & Time: ${currentSelectedDay.fullString} at ${selectedTimeSlot}
-• Timezone: ${selectedTimezone}
-• Notes / Goals: ${notes || 'None'}
-
-DIRECT ACTIONS:
-----------------------------------------
-• Reply to Student: ${email}
-${phone ? `• Open WhatsApp Chat: https://wa.me/${phone.replace(/[^0-9]/g, '')}` : ''}
-`,
-          "Student Name": name,
-          "Student Email": email,
-          "WhatsApp Phone": phone || 'Not provided',
-          "Session Date": currentSelectedDay.fullString,
-          "Session Time": selectedTimeSlot,
-          "Timezone": selectedTimezone,
-          "Intake Notes & Goals": notes || 'None',
-        }),
-      });
-
-      const resData = await res.json();
-      console.log('[Web3Forms Booking Dispatch Result]:', resData);
-    } catch (err) {
-      console.error('[Web3Forms Booking Error]:', err);
-    }
-
-    // Backup call to internal API route
-    try {
-      fetch('/api/booking', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name,
-          email,
-          phone,
-          date: currentSelectedDay.fullString,
-          time: selectedTimeSlot,
-          timezone: selectedTimezone,
-          notes,
-        }),
-      }).catch(() => {});
-    } catch {
-      // ignore
-    }
-
-    setLoading(false);
-    setStep('confirmed');
-
-    try {
-      confetti({ particleCount: 60, spread: 70, origin: { y: 0.6 } });
-    } catch {
-      // ignore
-    }
-  };
-
-  const handleDownloadIcs = () => {
-    const icsContent = `BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//Speak English with Nick//Coaching Session//EN
-BEGIN:VEVENT
-SUMMARY:English Session with Teacher Nick (${selectedFormat || 'Lesson'})
-DESCRIPTION:Your private 30-minute speaking diagnostic call with Teacher Nick. Zoom Link: ${zoomLink}
-LOCATION:Online Zoom Meeting
-STATUS:CONFIRMED
-END:VEVENT
-END:VCALENDAR`;
-
-    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'Teacher_Nick_English_Session.ics';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  };
-
-  const handleCopyZoom = () => {
-    navigator.clipboard.writeText(zoomLink);
-    setCopiedLink(true);
-    setTimeout(() => setCopiedLink(false), 2000);
-  };
+  const calendlyUrl = `https://calendly.com/speakenglishwithnick/30min?embed_domain=${encodeURIComponent(
+    embedDomain
+  )}&embed_type=Inline&hide_gdpr_banner=1&primary_color=48529e`;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-md animate-modal-backdrop">
-      <div className={`relative w-full ${step === 'format' ? 'max-w-2xl' : 'max-w-lg'} max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-stone-200 p-5 sm:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.15)] space-y-5 text-stone-900 animate-modal-pop transition-all`}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/75 backdrop-blur-md animate-modal-backdrop">
+      <div className="relative w-full max-w-4xl max-h-[94vh] overflow-y-auto touch-scroll rounded-3xl bg-white border border-stone-200 p-4 sm:p-6 shadow-[0_20px_60px_rgba(0,0,0,0.15)] space-y-4 text-stone-900 animate-modal-pop transition-all">
         
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 sm:top-5 sm:right-5 p-1.5 rounded-full hover:bg-stone-100 text-stone-400 hover:text-stone-700 transition-colors cursor-pointer z-20"
+          className="absolute top-3.5 right-3.5 sm:top-5 sm:right-5 p-1.5 rounded-full hover:bg-stone-100 text-stone-400 hover:text-stone-700 transition-colors cursor-pointer z-20"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
         </button>
 
-        {/* STEP 1: Format Selection (2 Boxes: Individual vs Group) */}
-        {step === 'format' && (
-          <div className="space-y-6">
-            <div className="space-y-2 text-center sm:text-left">
-              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#e4ebf9] text-[#48529e] text-xs font-black uppercase tracking-wider border border-[#c2d4f8]">
-                <Sparkles className="w-3.5 h-3.5 text-[#f15555]" />
-                <span>{language === 'es' ? 'Paso 1: Selecciona el Formato' : 'Step 1: Choose Class Format'}</span>
-              </div>
-              <h3 className="text-2xl sm:text-3xl font-black text-[#48529e] tracking-tight">
-                {language === 'es' ? '¿Cómo te gustaría aprender?' : 'How would you like to learn?'}
-              </h3>
-              <p className="text-xs sm:text-sm text-stone-600 font-normal leading-relaxed">
-                {prefilledNotes ? (
-                  <span>
-                    {language === 'es' ? 'Programa seleccionado: ' : 'Selected Focus: '}
-                    <strong className="text-[#48529e] font-bold">{prefilledNotes}</strong>. {language === 'es' ? 'Elige tu modalidad preferida a continuación:' : 'Choose your preferred class format below:'}
-                  </span>
-                ) : (
-                  <span>
-                    {language === 'es'
-                      ? 'Selecciona entre clases privadas 1 a 1 o dinámicas interactivas en grupo.'
-                      : 'Choose between 1-on-1 private coaching or small interactive group classes.'}
-                  </span>
-                )}
-              </p>
-            </div>
-
-            {/* 2 Interactive Format Selection Boxes */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-              
-              {/* Box 1: Individual (1-on-1) */}
-              <button
-                type="button"
-                onClick={() => handleSelectFormat(language === 'es' ? 'Individual (1 a 1)' : 'Individual (1-on-1)')}
-                className="group p-5 sm:p-6 rounded-3xl bg-[#48529e] hover:bg-[#373f7a] text-white border-2 border-[#373f7a] hover:border-[#f15555] text-left transition-all duration-300 shadow-xl hover:shadow-2xl flex flex-col justify-between cursor-pointer relative overflow-hidden active:scale-[0.98] min-h-[260px]"
-              >
-                <div className="absolute top-0 right-0 w-28 h-28 bg-[#f15555]/10 rounded-full blur-xl pointer-events-none" />
-
-                <div className="space-y-3 relative z-10">
-                  <div className="flex items-center justify-between">
-                    <div className="w-10 h-10 rounded-2xl bg-[#373f7a] text-[#f15555] flex items-center justify-center font-black shadow-inner">
-                      <User className="w-5 h-5" />
-                    </div>
-                    <span className="text-[10px] font-black uppercase px-2.5 py-1 rounded-full bg-[#f15555] text-white">
-                      {language === 'es' ? '100% Personalizado' : '100% Private'}
-                    </span>
-                  </div>
-
-                  <div>
-                    <h4 className="text-xl sm:text-2xl font-black text-white group-hover:text-[#e4ebf9] transition-colors leading-tight">
-                      {language === 'es' ? 'Individual (1 a 1)' : 'Individual (1-on-1)'}
-                    </h4>
-                    <p className="text-xs text-stone-200 font-medium mt-1 leading-relaxed">
-                      {language === 'es'
-                        ? 'Atención privada enfocada al 100% en tu ritmo, pronunciación y objetivos profesionales.'
-                        : '100% dedicated private coaching tailored to your exact pace, accent, and career goals.'}
-                    </p>
-                  </div>
-
-                  <ul className="space-y-1.5 text-xs text-stone-100 font-medium pt-2 border-t border-[#606cb7]">
-                    <li className="flex items-center gap-2">
-                      <Check className="w-3.5 h-3.5 text-[#f15555] shrink-0" />
-                      <span>{language === 'es' ? 'Clases en vivo 1 a 1 con Nick' : '1-on-1 live session with Nick'}</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Check className="w-3.5 h-3.5 text-[#f15555] shrink-0" />
-                      <span>{language === 'es' ? '5 días de práctica por WhatsApp' : '5 days WhatsApp practice'}</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Check className="w-3.5 h-3.5 text-[#f15555] shrink-0" />
-                      <span>{language === 'es' ? 'Plan y horarios flexibles' : 'Custom schedule & feedback'}</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="mt-4 pt-3 border-t border-[#606cb7] flex items-center justify-between text-xs font-black text-[#e4ebf9] uppercase tracking-wider relative z-10">
-                  <span>{language === 'es' ? 'Elegir Individual →' : 'Select Individual →'}</span>
-                  <div className="w-7 h-7 rounded-full bg-[#373f7a] group-hover:bg-[#f15555] flex items-center justify-center transition-colors">
-                    <ArrowRight className="w-3.5 h-3.5 text-[#e4ebf9] group-hover:text-white" />
-                  </div>
-                </div>
-              </button>
-
-              {/* Box 2: Group (Group Class) */}
-              <button
-                type="button"
-                onClick={() => handleSelectFormat(language === 'es' ? 'Clases en Grupo' : 'Group Class')}
-                className="group p-5 sm:p-6 rounded-3xl bg-[#48529e] hover:bg-[#373f7a] text-white border-2 border-[#373f7a] hover:border-[#f15555] text-left transition-all duration-300 shadow-xl hover:shadow-2xl flex flex-col justify-between cursor-pointer relative overflow-hidden active:scale-[0.98] min-h-[260px]"
-              >
-                <div className="absolute top-0 right-0 w-28 h-28 bg-[#f15555]/10 rounded-full blur-xl pointer-events-none" />
-
-                <div className="space-y-3 relative z-10">
-                  <div className="flex items-center justify-between">
-                    <div className="w-10 h-10 rounded-2xl bg-[#373f7a] text-[#f15555] flex items-center justify-center font-black shadow-inner">
-                      <Users className="w-5 h-5" />
-                    </div>
-                    <span className="text-[10px] font-black uppercase px-2.5 py-1 rounded-full bg-[#e4ebf9] text-[#48529e]">
-                      {language === 'es' ? 'Práctica Grupal' : 'Group Practice'}
-                    </span>
-                  </div>
-
-                  <div>
-                    <h4 className="text-xl sm:text-2xl font-black text-white group-hover:text-[#e4ebf9] transition-colors leading-tight">
-                      {language === 'es' ? 'Clases en Grupo' : 'Group (Group Class)'}
-                    </h4>
-                    <p className="text-xs text-stone-200 font-medium mt-1 leading-relaxed">
-                      {language === 'es'
-                        ? 'Grupos reducidos e interactivos (máx. 4-6 alumnos) para practicar conversación en vivo.'
-                        : 'Small interactive cohorts (max 4-6 students) designed for dynamic roleplay & practice.'}
-                    </p>
-                  </div>
-
-                  <ul className="space-y-1.5 text-xs text-stone-100 font-medium pt-2 border-t border-[#606cb7]">
-                    <li className="flex items-center gap-2">
-                      <Check className="w-3.5 h-3.5 text-[#f15555] shrink-0" />
-                      <span>{language === 'es' ? 'Grupos reducidos (máx. 4-6 alumnos)' : 'Small cohorts (max 4-6)'}</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Check className="w-3.5 h-3.5 text-[#f15555] shrink-0" />
-                      <span>{language === 'es' ? 'Dinámicas de conversación guiada' : 'Active roleplay & drills'}</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <Check className="w-3.5 h-3.5 text-[#f15555] shrink-0" />
-                      <span>{language === 'es' ? 'Ambiente cercano y motivador' : 'Supportive & interactive'}</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="mt-4 pt-3 border-t border-[#606cb7] flex items-center justify-between text-xs font-black text-[#e4ebf9] uppercase tracking-wider relative z-10">
-                  <span>{language === 'es' ? 'Elegir Grupo →' : 'Select Group →'}</span>
-                  <div className="w-7 h-7 rounded-full bg-[#373f7a] group-hover:bg-[#f15555] flex items-center justify-center transition-colors">
-                    <ArrowRight className="w-3.5 h-3.5 text-[#e4ebf9] group-hover:text-white" />
-                  </div>
-                </div>
-              </button>
-
-            </div>
+        {/* Modal Header */}
+        <div className="space-y-1.5 text-left pr-8">
+          <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#e4ebf9] text-[#48529e] text-xs font-black uppercase tracking-wider border border-[#c2d4f8]">
+            <Sparkles className="w-3.5 h-3.5 text-[#f15555]" />
+            <span>
+              {language === 'es'
+                ? 'RESERVA EN VIVO CON TEACHER NICK'
+                : 'LIVE BOOKING WITH TEACHER NICK'}
+            </span>
           </div>
-        )}
 
-        {/* STEP 2: Date & Time Picker */}
-        {step === 'schedule' && (
-          <form onSubmit={handleNextToDetails} className="space-y-4">
-            
-            {/* Format pill header */}
-            {selectedFormat && (
-              <div className="p-3 rounded-2xl bg-[#e4ebf9] border border-[#c2d4f8] flex items-center justify-between text-xs text-[#48529e] font-bold">
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#f15555]" />
-                  <span>{language === 'es' ? `Modalidad: ${selectedFormat}` : `Format: ${selectedFormat}`}</span>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setStep('format')}
-                  className="text-[11px] underline text-[#373f7a] font-extrabold hover:text-[#48529e] cursor-pointer"
-                >
-                  {language === 'es' ? 'Cambiar' : 'Change'}
-                </button>
-              </div>
+          <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-[#1e244d] tracking-tight">
+            {language === 'es'
+              ? 'Elige tu Fecha y Hora Preferida'
+              : 'Schedule Your 30-Min Session'}
+          </h3>
+
+          <p className="text-xs sm:text-sm text-stone-600 font-normal leading-relaxed">
+            {prefilledNotes ? (
+              <span>
+                {language === 'es' ? 'Enfoque seleccionado: ' : 'Selected Focus: '}
+                <strong className="text-[#48529e] font-bold">
+                  {prefilledNotes}
+                </strong>
+                .{' '}
+                {language === 'es'
+                  ? 'Selecciona tu horario en Calendly a continuación:'
+                  : 'Select your preferred time on Calendly below:'}
+              </span>
+            ) : (
+              <span>
+                {language === 'es'
+                  ? 'Selecciona tu horario en el calendario de Calendly de Teacher Nick. Recibirás tu confirmación y enlace de Zoom al instante.'
+                  : 'Select your preferred time slot on Teacher Nick’s Calendly. Receive instant confirmation & Zoom meeting details.'}
+              </span>
             )}
+          </p>
+        </div>
 
-            <div className="space-y-1.5">
-              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#e4ebf9] text-[#48529e] text-xs font-black uppercase tracking-wider border border-[#c2d4f8]">
-                <Video className="w-3.5 h-3.5 text-[#f15555]" />
-                <span>{language === 'es' ? 'Paso 2: Solicitar Fecha y Hora Preferida' : 'Step 2: Request Preferred Date & Time'}</span>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-black text-[#48529e]">
-                {language === 'es' ? 'Elige tu Horario Preferido' : 'Select Your Preferred Time Slot'}
-              </h3>
-              <p className="text-xs sm:text-sm text-stone-600 font-normal">
-                {language === 'es'
-                  ? 'Elige la fecha y hora que mejor te acomode. Teacher Nick revisará la disponibilidad y te confirmará por WhatsApp o email.'
-                  : 'Select the time slot that works best for you. Teacher Nick will review and confirm availability with you via WhatsApp/Email.'}
-              </p>
-            </div>
+        {/* Embedded Live Calendly Widget Container */}
+        <div className="w-full rounded-2xl border border-stone-200 overflow-hidden bg-[#fafafa] shadow-inner min-h-[640px] relative">
+          <iframe
+            src={calendlyUrl}
+            width="100%"
+            height="670"
+            frameBorder="0"
+            title="Calendly Booking - Teacher Nick"
+            className="w-full h-[670px] border-0"
+          ></iframe>
+        </div>
 
-            {/* Timezone Selector */}
-            <div className="space-y-1">
-              <label className="text-xs font-bold text-stone-700 flex items-center gap-1">
-                <Globe className="w-3.5 h-3.5 text-[#f15555]" />
-                <span>{language === 'es' ? 'Tu Zona Horaria:' : 'Your Timezone:'}</span>
-              </label>
-              <select
-                value={selectedTimezone}
-                onChange={(e) => setSelectedTimezone(e.target.value)}
-                className="w-full p-2.5 rounded-xl bg-stone-50 border border-stone-200 text-xs font-bold text-stone-800 focus:bg-white focus:border-[#48529e]"
-              >
-                {timezones.map((tz) => (
-                  <option key={tz} value={tz}>{tz}</option>
-                ))}
-              </select>
-            </div>
-
-            {/* Interactive Day Carousel Picker */}
-            <div className="space-y-1.5">
-              <label className="text-xs font-bold text-stone-700 flex items-center gap-1">
-                <CalendarIcon className="w-3.5 h-3.5 text-[#f15555]" />
-                <span>{language === 'es' ? 'Día Preferido:' : 'Preferred Date:'}</span>
-              </label>
-              <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none">
-                {availableDays.map((d, idx) => (
-                  <button
-                    type="button"
-                    key={idx}
-                    onClick={() => setSelectedDayIndex(idx)}
-                    className={`p-3 rounded-2xl flex flex-col items-center shrink-0 w-16 border transition-all cursor-pointer ${
-                      selectedDayIndex === idx
-                        ? 'bg-[#48529e] text-white border-[#48529e] shadow-md scale-105'
-                        : 'bg-stone-50 text-stone-700 border-stone-200 hover:bg-stone-100'
-                    }`}
-                  >
-                    <span className="text-[10px] font-bold uppercase">{d.dayName}</span>
-                    <span className="text-lg font-black">{d.dayNumber}</span>
-                    <span className="text-[10px] font-medium opacity-80">{d.monthName}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Available Time Slots */}
-            <div className="space-y-2">
-              <label className="text-xs font-bold text-stone-700 flex items-center gap-1">
-                <Clock className="w-3.5 h-3.5 text-[#f15555]" />
-                <span>{language === 'es' ? 'Horario Preferido:' : 'Preferred Time:'}</span>
-              </label>
-
-              <div className="space-y-2">
-                <div className="text-[11px] font-bold text-stone-400 uppercase">Afternoon & Evening</div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                  {[...afternoonSlots, ...eveningSlots.slice(0, 2)].map((slot) => (
-                    <button
-                      type="button"
-                      key={slot}
-                      onClick={() => setSelectedTimeSlot(slot)}
-                      className={`py-2 px-2.5 rounded-xl text-xs font-bold border transition-all cursor-pointer text-center ${
-                        selectedTimeSlot === slot
-                          ? 'bg-[#f15555] text-white border-[#f15555] shadow-xs'
-                          : 'bg-stone-50 border-stone-200 text-stone-700 hover:bg-stone-100'
-                      }`}
-                    >
-                      {slot}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Selected Summary Pill */}
-            <div className="p-3 rounded-2xl bg-[#f4f7fd] border border-[#c2d4f8] flex items-center justify-between text-xs text-[#48529e] font-bold">
-              <span>{currentSelectedDay.fullString} @ {selectedTimeSlot}</span>
-              <span className="text-[10px] uppercase bg-white px-2 py-0.5 rounded-md border border-[#c2d4f8]">Preferred Time</span>
-            </div>
-
-            <div className="flex gap-2 pt-1">
-              <button
-                type="button"
-                onClick={() => setStep('format')}
-                className="px-4 py-3.5 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-700 font-bold text-xs cursor-pointer"
-              >
-                {language === 'es' ? 'Atrás' : 'Back'}
-              </button>
-
-              <button
-                type="submit"
-                className="flex-1 py-4 rounded-full bg-[#f15555] hover:bg-[#d01f1f] text-white font-black text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.02]"
-              >
-                <span>{language === 'es' ? 'Continuar con Mis Datos' : 'Continue to Personal Details'}</span>
-                <ArrowRight className="w-4 h-4 text-white" />
-              </button>
-            </div>
-          </form>
-        )}
-
-        {/* STEP 3: Contact Info */}
-        {step === 'details' && (
-          <form onSubmit={handleFinalBook} className="space-y-4">
-            <div className="space-y-1">
-              <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#e4ebf9] text-[#48529e] text-xs font-black uppercase tracking-wider border border-[#c2d4f8]">
-                <span>{language === 'es' ? 'Paso 3: Datos de Contacto' : 'Step 3: Contact Info'}</span>
-              </div>
-              <h3 className="text-xl sm:text-2xl font-black text-[#48529e]">
-                {language === 'es' ? 'Detalles de tu Reserva' : 'Complete Your Booking'}
-              </h3>
-              <p className="text-xs text-stone-600 font-normal">
-                {currentSelectedDay.fullString} @ {selectedTimeSlot} ({selectedTimezone})
-              </p>
-            </div>
-
-            <div className="space-y-3 pt-1">
-              {/* Row: Name & Phone */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-xs font-bold text-stone-700 mb-1">
-                    {language === 'es' ? 'Nombre Completo' : 'Full Name'}
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder={language === 'es' ? 'Ej. Mateo Silva' : 'e.g. Maria Silva'}
-                    className="w-full px-3.5 py-2.5 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm focus:outline-none focus:border-[#48529e] focus:bg-white transition-colors"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-bold text-stone-700 mb-1">
-                    {language === 'es' ? 'Teléfono / WhatsApp' : 'Phone / WhatsApp'}
-                  </label>
-                  <input
-                    type="tel"
-                    required
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    placeholder="+1 (555) 000-0000"
-                    className="w-full px-3.5 py-2.5 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm focus:outline-none focus:border-[#48529e] focus:bg-white transition-colors"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-xs font-bold text-stone-700 mb-1">
-                  {language === 'es' ? 'Correo Electrónico' : 'Email Address'}
-                </label>
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder={language === 'es' ? 'mateo@empresa.com' : 'maria@example.com'}
-                  className="w-full px-3.5 py-2.5 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm focus:outline-none focus:border-[#48529e] focus:bg-white transition-colors"
-                />
-              </div>
-
-              {/* Understand % vs Speak % Interactive Box */}
-              <div className="p-3.5 rounded-2xl bg-[#f4f7fd] border border-[#c2d4f8] space-y-3">
-                <div className="text-[11px] font-black uppercase text-[#48529e] tracking-wider flex items-center justify-between">
-                  <span>{language === 'es' ? 'Diagnóstico de tu Nivel Actual:' : 'Your English Fluency Ratio:'}</span>
-                </div>
-
-                {/* Understand % */}
-                <div className="space-y-1">
-                  <div className="flex justify-between text-xs font-bold text-stone-800">
-                    <span>{language === 'es' ? 'Entiendo de inglés:' : 'I understand of English:'}</span>
-                    <span className="text-[#373f7a] font-black">{understandPercent}%</span>
-                  </div>
-                  <input
-                    type="range"
-                    min="0"
-                    max="100"
-                    step="5"
-                    value={understandPercent}
-                    onChange={(e) => setUnderstandPercent(Number(e.target.value))}
-                    className="w-full h-2 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-[#48529e]"
-                  />
-                </div>
-
-                {/* Speak % */}
-                <div className="space-y-1">
-                  <div className="flex justify-between text-xs font-bold text-stone-800">
-                    <span>{language === 'es' ? 'Hablo de inglés:' : 'I speak of English:'}</span>
-                    <span className="text-[#f15555] font-black">{speakPercent}%</span>
-                  </div>
-                  <input
-                    type="range"
-                    min="0"
-                    max="100"
-                    step="5"
-                    value={speakPercent}
-                    onChange={(e) => setSpeakPercent(Number(e.target.value))}
-                    className="w-full h-2 bg-stone-200 rounded-lg appearance-none cursor-pointer accent-[#f15555]"
-                  />
-                </div>
-              </div>
-
-              {/* What I want to learn is */}
-              <div className="space-y-1.5">
-                <div className="flex items-center justify-between">
-                  <label className="block text-xs font-bold text-stone-700">
-                    {language === 'es' ? 'Lo que quiero aprender es:' : 'What I want to learn is:'}
-                  </label>
-                  <span className="text-[10px] text-stone-500 font-medium">{language === 'es' ? 'Toca sugerencias' : 'Tap to add'}</span>
-                </div>
-
-                {/* Goal suggestion chips */}
-                <div className="flex flex-wrap gap-1.5 pb-1">
-                  {goalChips.map((chip, idx) => (
-                    <button
-                      key={idx}
-                      type="button"
-                      onClick={() => handleAddGoalChip(chip)}
-                      className="px-2.5 py-1 rounded-full bg-stone-100 hover:bg-[#e4ebf9] text-stone-700 hover:text-[#48529e] border border-stone-200 text-[11px] font-bold transition-all cursor-pointer"
-                    >
-                      +{chip}
-                    </button>
-                  ))}
-                </div>
-
-                <textarea
-                  rows={2}
-                  value={notes}
-                  onChange={(e) => setNotes(e.target.value)}
-                  placeholder={language === 'es' ? 'Ej. Hablar sin traducir en mi cabeza, sentir seguridad en reuniones de trabajo y restaurantes...' : 'e.g. Speak without translating mentally, sound natural in work meetings & travel...'}
-                  className="w-full px-3.5 py-2.5 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-xs sm:text-sm focus:outline-none focus:border-[#48529e] focus:bg-white transition-colors resize-none"
-                />
-              </div>
-            </div>
-
-            <div className="flex gap-2 pt-1">
-              <button
-                type="button"
-                onClick={() => setStep('schedule')}
-                className="px-4 py-3.5 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-700 font-bold text-xs cursor-pointer"
-              >
-                {language === 'es' ? 'Atrás' : 'Back'}
-              </button>
-              
-              <button
-                type="submit"
-                disabled={loading}
-                className="flex-1 py-3.5 rounded-full bg-[#f15555] hover:bg-[#d01f1f] text-white font-black text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <span>{loading ? (language === 'es' ? 'Confirmando...' : 'Confirming Slot...') : (language === 'es' ? 'Confirmar Sesión' : 'Confirm Session')}</span>
-                <ArrowRight className="w-4 h-4 text-white" />
-              </button>
-            </div>
-          </form>
-        )}
-
-        {/* STEP 4: Confirmed Screen */}
-        {step === 'confirmed' && (
-          <div className="text-center space-y-4 py-2 animate-in zoom-in-95 duration-150">
-            <div className="w-14 h-14 rounded-full bg-[#e4ebf9] text-[#48529e] border border-[#c2d4f8] flex items-center justify-center mx-auto">
-              <Check className="w-7 h-7 text-[#f15555]" />
-            </div>
-            <div className="space-y-1">
-              <h3 className="text-2xl font-black text-[#48529e]">
-                {language === 'es' ? '¡Solicitud de Reserva Recibida!' : 'Booking Request Received!'}
-              </h3>
-              <p className="text-xs sm:text-sm text-stone-700 font-bold">
-                {currentSelectedDay.fullString} @ {selectedTimeSlot} ({selectedTimezone})
-              </p>
-              <p className="text-xs text-stone-600 pt-1 font-normal max-w-sm mx-auto">
-                {language === 'es'
-                  ? `Tu solicitud de horario ha sido enviada a Teacher Nick (${email}). Te confirmará por WhatsApp o email a la brevedad.`
-                  : `Your preferred time has been sent to Teacher Nick (${email}). He will confirm availability with you via WhatsApp/Email shortly.`}
-              </p>
-            </div>
-
-            {/* Zoom Link Box */}
-            <div className="p-3.5 rounded-2xl bg-stone-50 border border-stone-200 flex items-center justify-between gap-2 text-left">
-              <div className="truncate">
-                <span className="text-[10px] uppercase font-bold text-stone-400 block">Zoom Meeting Room</span>
-                <span className="text-xs font-mono font-bold text-[#48529e] truncate">{zoomLink}</span>
-              </div>
-              <button
-                type="button"
-                onClick={handleCopyZoom}
-                className="px-3 py-1.5 rounded-xl bg-[#48529e] text-white text-xs font-bold flex items-center gap-1 shrink-0 cursor-pointer"
-              >
-                <Copy className="w-3 h-3 text-[#f15555]" />
-                <span>{copiedLink ? 'Copied!' : 'Copy'}</span>
-              </button>
-            </div>
-
-            {/* Direct WhatsApp Confirmation */}
-            <div className="space-y-2 pt-1">
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-3 rounded-2xl bg-[#25D366] hover:bg-[#20bd5a] text-black font-black text-xs flex items-center justify-center gap-2 transition-all shadow-md hover:scale-[1.01]"
-              >
-                <MessageCircle className="w-4 h-4 fill-black" />
-                <span>{language === 'es' ? '💬 Confirmar por WhatsApp con Nick' : '💬 Send Confirmation via WhatsApp'}</span>
-              </a>
-            </div>
-
-            {/* Add to Calendar Action */}
-            <div className="flex gap-2">
-              <button
-                type="button"
-                onClick={handleDownloadIcs}
-                className="flex-1 py-3 rounded-2xl bg-[#e4ebf9] hover:bg-[#c2d4f8] text-[#48529e] font-black text-xs border border-[#c2d4f8] flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
-              >
-                <Download className="w-3.5 h-3.5 text-[#f15555]" />
-                <span>{language === 'es' ? 'Guardar en mi Calendario (.ICS)' : 'Add to Calendar (.ICS)'}</span>
-              </button>
-            </div>
-
-            <button
-              onClick={() => {
-                setStep('format');
-                onClose();
-              }}
-              className="w-full py-3.5 rounded-full bg-[#48529e] hover:bg-[#373f7a] text-white font-black text-sm shadow-md transition-all cursor-pointer border border-[#373f7a]"
-            >
-              {language === 'es' ? 'Listo, Volver a la Web' : 'Done, Return to Portal'}
-            </button>
-          </div>
-        )}
+        {/* Fallback Direct Link Footer */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 pt-2 border-t border-stone-100 text-xs text-stone-500">
+          <span>
+            {language === 'es'
+              ? '¿Tienes problemas para ver el calendario?'
+              : 'Having trouble viewing the calendar?'}
+          </span>
+          <a
+            href="https://calendly.com/speakenglishwithnick/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-bold text-[#48529e] hover:text-[#f15555] underline flex items-center gap-1 transition-colors"
+          >
+            <span>
+              {language === 'es'
+                ? 'Abrir Calendly en una pestaña nueva'
+                : 'Open Calendly in a new tab'}
+            </span>
+            <ExternalLink className="w-3.5 h-3.5" />
+          </a>
+        </div>
 
       </div>
     </div>
