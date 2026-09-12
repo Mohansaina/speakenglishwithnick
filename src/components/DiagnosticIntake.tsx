@@ -17,7 +17,7 @@ import {
   ChevronDown
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { ALL_COUNTRY_CODES } from '@/data/countryCodes';
+import { POPULAR_COUNTRY_CODES, ALL_COUNTRY_CODES } from '@/data/countryCodes';
 
 interface DiagnosticIntakeProps {
   onOpenBookingWithNotes?: (notes: string) => void;
@@ -344,11 +344,20 @@ How can we get started?`;
                         className="w-full sm:w-auto appearance-none pl-3.5 pr-8 py-3 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-xs sm:text-sm font-bold focus:bg-white focus:outline-none focus:border-[#48529e] transition-all cursor-pointer shadow-2xs truncate"
                         aria-label="Select Country Code"
                       >
-                        {ALL_COUNTRY_CODES.map((c, i) => (
-                          <option key={`${c.code}-${i}`} value={c.code}>
-                            {c.label}
-                          </option>
-                        ))}
+                        <optgroup label="🌟 Frequently Selected">
+                          {POPULAR_COUNTRY_CODES.map((c, i) => (
+                            <option key={`pop-${c.code}-${i}`} value={c.code}>
+                              {c.label}
+                            </option>
+                          ))}
+                        </optgroup>
+                        <optgroup label="🌐 All Countries (A to Z)">
+                          {ALL_COUNTRY_CODES.map((c, i) => (
+                            <option key={`all-${c.code}-${i}`} value={c.code}>
+                              {c.label}
+                            </option>
+                          ))}
+                        </optgroup>
                       </select>
                       <ChevronDown className="w-3.5 h-3.5 text-stone-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none stroke-[2.5]" />
                     </div>
