@@ -88,8 +88,8 @@ export const Hero: React.FC<HeroProps> = ({
                   <Calendar className="w-4 h-4 text-[#f15555] shrink-0 mt-0.5 sm:mt-0" />
                   <span className="text-stone-100 font-semibold text-xs sm:text-sm md:text-base leading-snug">
                     {language === 'es'
-                      ? '1 sesión por semana en un horario cómodo (Presencial u online)'
-                      : '1 session per week at a comfortable time (In person or online)'}
+                      ? '1 sesión por semana (Presencial u online)'
+                      : '1 session per week (In person or online)'}
                   </span>
                 </div>
                 <div className="flex items-start sm:items-center gap-2.5 sm:gap-3">
@@ -115,16 +115,16 @@ export const Hero: React.FC<HeroProps> = ({
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-7 items-stretch">
             
-            {/* Box 1: English from 0 */}
+            {/* Box 1: Work (Uber, Doordash, Restaurant) */}
             <button
-              onClick={() => onOpenBooking(language === 'es' ? 'Inglés desde 0' : 'English from 0')}
+              onClick={() => onOpenBooking(language === 'es' ? 'Trabajo (Uber, Doordash, Restaurante)' : 'Work (Uber, Doordash, Restaurant)')}
               className="group p-5 xs:p-6 sm:p-7 lg:p-8 rounded-3xl bg-gradient-to-b from-[#48529e] to-[#3a4387] hover:from-[#3a4387] hover:to-[#2e356e] text-white border-2 border-[#373f7a]/80 hover:border-[#f15555] text-left transition-all duration-300 shadow-[0_12px_35px_rgba(72,82,158,0.18)] hover:shadow-[0_20px_45px_rgba(72,82,158,0.32)] hover:-translate-y-1.5 flex flex-col justify-between min-h-[auto] md:min-h-[280px] cursor-pointer relative overflow-hidden active:scale-[0.98]"
             >
               <div className="absolute top-0 right-0 w-36 h-36 bg-[#f15555]/15 rounded-full blur-2xl pointer-events-none group-hover:scale-125 transition-transform duration-500" />
 
               <div className="space-y-3 relative z-10">
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white group-hover:text-[#e4ebf9] leading-tight tracking-tight transition-colors">
-                  {language === 'es' ? 'Inglés desde 0' : 'English from 0'}
+                  {language === 'es' ? 'Trabajo' : 'Work'}
                 </h3>
                 
                 <ul className="space-y-2 text-xs sm:text-sm text-stone-100 font-medium">
@@ -132,13 +132,13 @@ export const Hero: React.FC<HeroProps> = ({
                     <div className="w-4 h-4 rounded-full bg-[#f15555]/20 flex items-center justify-center shrink-0 mt-0.5 border border-[#f15555]/40">
                       <Check className="w-3 h-3 text-[#f15555] stroke-[3]" />
                     </div>
-                    <span>{language === 'es' ? 'Lee, escribe y habla oraciones básicas' : 'Read, write, and speak basic English sentences'}</span>
+                    <span>{language === 'es' ? 'Uber, Doordash, Restaurantes y atención al cliente' : 'Uber, Doordash, Restaurant & delivery'}</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <div className="w-4 h-4 rounded-full bg-[#f15555]/20 flex items-center justify-center shrink-0 mt-0.5 border border-[#f15555]/40">
                       <Check className="w-3 h-3 text-[#f15555] stroke-[3]" />
                     </div>
-                    <span>{language === 'es' ? 'Construye vocabulario clave paso a paso' : 'Build core vocabulary step-by-step'}</span>
+                    <span>{language === 'es' ? 'Comunicación diaria y situaciones laborales reales' : 'Daily communication & real work scenarios'}</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <div className="w-4 h-4 rounded-full bg-[#f15555]/20 flex items-center justify-center shrink-0 mt-0.5 border border-[#f15555]/40">
@@ -151,7 +151,7 @@ export const Hero: React.FC<HeroProps> = ({
 
               <div className="pt-4 sm:pt-5 border-t border-white/20 flex items-center justify-between relative z-10 mt-4">
                 <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#e4ebf9] group-hover:text-white transition-colors">
-                  {language === 'es' ? 'Bases sólidas' : 'Core foundation'}
+                  {language === 'es' ? 'Inglés de trabajo' : 'Workplace English'}
                 </span>
                 <div className="w-8 h-8 rounded-full bg-white/10 border border-white/20 group-hover:bg-[#f15555] group-hover:border-[#f15555] flex items-center justify-center transition-all duration-300 shadow-sm">
                   <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform" />
@@ -159,16 +159,16 @@ export const Hero: React.FC<HeroProps> = ({
               </div>
             </button>
 
-            {/* Box 2: Specific English (Featured Recommended) */}
+            {/* Box 2: Business (Painting, Flooring, Cars) */}
             <button
-              onClick={() => onOpenBooking(language === 'es' ? 'Inglés Específico' : 'Specific English')}
+              onClick={() => onOpenBooking(language === 'es' ? 'Negocios (Pintura, Pisos, Vehículos)' : 'Business (Painting, Flooring, Cars)')}
               className="group p-5 xs:p-6 sm:p-7 lg:p-8 rounded-3xl bg-gradient-to-b from-[#48529e] to-[#3a4387] hover:from-[#3a4387] hover:to-[#2e356e] text-white border-2 border-[#f15555]/90 hover:border-[#f15555] text-left transition-all duration-300 shadow-[0_15px_40px_rgba(241,85,85,0.22)] hover:shadow-[0_22px_50px_rgba(241,85,85,0.35)] hover:-translate-y-1.5 flex flex-col justify-between min-h-[auto] md:min-h-[280px] cursor-pointer relative overflow-hidden active:scale-[0.98] ring-4 ring-[#f15555]/15"
             >
               <div className="absolute top-0 right-0 w-36 h-36 bg-[#f15555]/25 rounded-full blur-2xl pointer-events-none group-hover:scale-125 transition-transform duration-500" />
 
               <div className="space-y-3 relative z-10">
                 <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-white group-hover:text-[#e4ebf9] leading-tight tracking-tight transition-colors">
-                  {language === 'es' ? 'Inglés Específico' : 'Specific English'}
+                  {language === 'es' ? 'Negocios' : 'Business'}
                 </h3>
                 
                 <ul className="space-y-2 text-xs sm:text-sm text-stone-100 font-medium">
@@ -176,26 +176,26 @@ export const Hero: React.FC<HeroProps> = ({
                     <div className="w-4 h-4 rounded-full bg-[#f15555]/30 flex items-center justify-center shrink-0 mt-0.5 border border-[#f15555]">
                       <Check className="w-3 h-3 text-white stroke-[3]" />
                     </div>
-                    <span>{language === 'es' ? 'Inglés para trabajo, reuniones y entrevistas' : 'Workplace meetings & job interview prep'}</span>
+                    <span>{language === 'es' ? 'Pintura, Pisos, Vehículos y contratistas' : 'Painting, Flooring, Cars & contracting'}</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <div className="w-4 h-4 rounded-full bg-[#f15555]/30 flex items-center justify-center shrink-0 mt-0.5 border border-[#f15555]">
                       <Check className="w-3 h-3 text-white stroke-[3]" />
                     </div>
-                    <span>{language === 'es' ? 'Viajes y situaciones de la vida real' : 'Travel & everyday real-life scenarios'}</span>
+                    <span>{language === 'es' ? 'Presupuestos, clientes y proyectos de trabajo' : 'Client quotes, negotiations & job sites'}</span>
                   </li>
                   <li className="flex items-start gap-2.5">
                     <div className="w-4 h-4 rounded-full bg-[#f15555]/30 flex items-center justify-center shrink-0 mt-0.5 border border-[#f15555]">
                       <Check className="w-3 h-3 text-white stroke-[3]" />
                     </div>
-                    <span>{language === 'es' ? 'Práctica adaptada a tu meta personal' : 'Customized roleplays tailored to your goals'}</span>
+                    <span>{language === 'es' ? 'Práctica adaptada a tu negocio personal' : 'Customized roleplays tailored to your business'}</span>
                   </li>
                 </ul>
               </div>
 
               <div className="pt-4 sm:pt-5 border-t border-white/20 flex items-center justify-between relative z-10 mt-4">
                 <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-white group-hover:text-[#e4ebf9] transition-colors">
-                  {language === 'es' ? 'Personalizar tema' : 'Custom situations'}
+                  {language === 'es' ? 'Inglés de negocios' : 'Business English'}
                 </span>
                 <div className="w-8 h-8 rounded-full bg-[#f15555] border border-white/30 group-hover:bg-[#e04444] flex items-center justify-center transition-all duration-300 shadow-sm">
                   <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform" />

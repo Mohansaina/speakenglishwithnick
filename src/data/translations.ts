@@ -25,17 +25,17 @@ export const translations = {
       subtitle: "Hi, I'm Nick. I have learned to speak 5 languages fluently, and I'm learning the basics of many other languages. I would be happy to patiently guide you through the process of learning how to speak English or get more confident with your English speaking.",
       classLayout: {
         title: "Class layout:",
-        item1: "1 session per week at a comfortable time (In person or online)",
+        item1: "1 session per week (In person or online)",
         item2: "3-5 days of practice through WhatsApp",
       },
       learningOptions: [
         {
-          title: "English from 0",
-          subtitle: "Start with basics",
+          title: "Work",
+          subtitle: "Uber, Doordash, Restaurant, etc.",
         },
         {
-          title: "Specific English",
-          subtitle: "Work, drinks, restaurant...",
+          title: "Business",
+          subtitle: "Painting, Flooring, Cars, etc.",
         },
         {
           title: "English Conversation Practice",
@@ -51,7 +51,7 @@ export const translations = {
       subscribers: "5",
       subscribersLabel: "Languages spoken fluently by Teacher Nick",
       students: "1-on-1",
-      studentsLabel: "Personalized sessions at your comfortable time",
+      studentsLabel: "Personalized 1-on-1 weekly sessions",
       lessons: "3-5 Days",
       lessonsLabel: "Of guided WhatsApp voice practice every week",
     },
@@ -194,17 +194,17 @@ export const translations = {
       subtitle: "Hola, soy Nick. He aprendido a hablar 5 idiomas con fluidez y estoy aprendiendo los conceptos básicos de muchos otros. Estaré encantado de guiarte pacientemente en el proceso de aprender a hablar inglés o ganar más confianza al hablar.",
       classLayout: {
         title: "Estructura de las clases:",
-        item1: "1 sesión por semana en un horario cómodo (Presencial u online)",
+        item1: "1 sesión por semana (Presencial u online)",
         item2: "3-5 días de práctica a través de WhatsApp",
       },
       learningOptions: [
         {
-          title: "Inglés desde 0",
-          subtitle: "Empieza desde las bases",
+          title: "Trabajo",
+          subtitle: "Uber, Doordash, Restaurantes, etc.",
         },
         {
-          title: "Inglés Específico",
-          subtitle: "Trabajo, salidas, restaurantes...",
+          title: "Negocios",
+          subtitle: "Pintura, Pisos, Vehículos, etc.",
         },
         {
           title: "Práctica de Conversación",
@@ -220,7 +220,7 @@ export const translations = {
       subscribers: "5",
       subscribersLabel: "Idiomas hablados con fluidez por Teacher Nick",
       students: "1 a 1",
-      studentsLabel: "Sesiones personalizadas en un horario cómodo para ti",
+      studentsLabel: "Sesiones personalizadas 1 a 1 cada semana",
       lessons: "3-5 Días",
       lessonsLabel: "De práctica guiada por WhatsApp cada semana",
     },
