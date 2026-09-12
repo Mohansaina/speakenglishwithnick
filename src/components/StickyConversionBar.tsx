@@ -1,28 +1,28 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { X } from 'lucide-react';
+import { X, Mail, ArrowRight } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import { handleSmartEmailClick, getSmartEmailUrls } from '@/utils/emailClient';
 
 interface StickyConversionBarProps {
   onOpenBooking: () => void;
-  onOpenQuiz: () => void;
 }
 
 export const StickyConversionBar: React.FC<StickyConversionBarProps> = ({
   onOpenBooking,
-  onOpenQuiz,
 }) => {
   const { language } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
+  const emailUrls = getSmartEmailUrls();
 
   useEffect(() => {
     let ticking = false;
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          setIsVisible(window.scrollY > 300 && !isDismissed);
+          setIsVisible(window.scrollY > 250 && !isDismissed);
           ticking = false;
         });
         ticking = true;
@@ -36,43 +36,57 @@ export const StickyConversionBar: React.FC<StickyConversionBarProps> = ({
   if (!isVisible || isDismissed) return null;
 
   return (
-    <div className="fixed bottom-3 left-3 right-3 sm:left-auto sm:right-6 sm:bottom-6 z-50 max-w-lg w-full transition-all">
-      <div className="relative bg-[#48529e]/98 backdrop-blur-md text-white p-3 sm:p-4 rounded-2xl sm:rounded-3xl border border-white/20 shadow-2xl shadow-[#48529e]/40 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-3.5">
+    <div className="fixed bottom-3 left-3 right-3 sm:left-auto sm:right-6 sm:bottom-6 z-50 max-w-2xl w-full transition-all animate-bounce-subtle">
+      <div className="relative bg-[#e9f0fc] backdrop-blur-xl text-stone-900 p-4 sm:p-5 rounded-3xl border-2 border-[#c4d4f7] shadow-[0_15px_40px_rgba(0,0,0,0.18)] flex flex-col sm:flex-row items-center justify-between gap-4">
         
         {/* Dismiss Button */}
         <button
           onClick={() => setIsDismissed(true)}
-          className="absolute -top-2 -right-2 w-6 h-6 sm:w-7 sm:h-7 bg-stone-900 border border-stone-700 text-stone-300 hover:text-white rounded-full flex items-center justify-center text-xs transition-colors shadow-md cursor-pointer"
+          className="absolute -top-2.5 -right-2.5 w-7 h-7 bg-stone-900 text-white hover:bg-black rounded-full flex items-center justify-center text-xs transition-transform hover:scale-110 shadow-md cursor-pointer border border-stone-700"
           title="Dismiss"
-          aria-label="Close conversion bar"
+          aria-label="Close sticky questions bar"
         >
-          <X className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+          <X className="w-3.5 h-3.5 stroke-[2.5]" />
         </button>
 
-        {/* Pure Typography Content */}
-        <div className="space-y-0.5 text-left w-full sm:w-auto">
-          <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-white/20 text-[#d4dcff] text-[9.5px] sm:text-[10.5px] font-black uppercase tracking-wider border border-white/30">
-            <span>{language === 'es' ? 'SOLO 3 CUPOS ESTA SEMANA' : 'LIMITED: 3 SPOTS LEFT THIS WEEK'}</span>
-          </div>
-          <p className="text-[11.5px] sm:text-sm font-extrabold text-white tracking-tight line-clamp-1">
-            {language === 'es' ? 'Plan de Fluidez de Inglés de 5 Días' : 'Personalized 5-Day English Fluency Plan'}
+        {/* Text Content matching screenshot */}
+        <div className="space-y-1 text-center sm:text-left">
+          <h4 className="font-black text-[#18181b] text-sm sm:text-base tracking-tight">
+            {language === 'es' ? '¿Tienes alguna pregunta para Teacher Nick?' : 'Have any questions for Teacher Nick?'}
+          </h4>
+          <p className="text-xs text-stone-700 font-medium flex flex-wrap items-center justify-center sm:justify-start gap-1">
+            <span>{language === 'es' ? 'Envía un correo directamente a:' : 'Send an email directly to:'}</span>
+            <a
+              href={emailUrls.gmailWebUrl}
+              onClick={(e) => handleSmartEmailClick(e)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-black text-[#48529e] hover:underline hover:text-[#f15555] transition-colors"
+            >
+              speakenglishwithnick@gmail.com
+            </a>
           </p>
         </div>
 
-        {/* Action Buttons */}
-        <div className="flex items-center gap-2 w-full sm:w-auto justify-end shrink-0">
-          <button
-            onClick={onOpenQuiz}
-            className="hidden sm:inline-flex px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-extrabold tracking-tight transition-all border border-white/20 cursor-pointer"
+        {/* Action Buttons matching screenshot */}
+        <div className="flex items-center gap-2.5 w-full sm:w-auto shrink-0 justify-center">
+          <a
+            href={emailUrls.gmailWebUrl}
+            onClick={(e) => handleSmartEmailClick(e)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2.5 rounded-full bg-white hover:bg-stone-50 text-[#48529e] border border-[#c2d4f8] font-extrabold text-xs shadow-xs flex items-center justify-center gap-1.5 transition-all hover:scale-[1.02] active:scale-95 cursor-pointer"
           >
-            {language === 'es' ? 'Diagnóstico 2m' : '2-Min Diagnostic'}
-          </button>
-          
+            <Mail className="w-3.5 h-3.5 text-[#f15555]" />
+            <span>{language === 'es' ? 'Enviar Email' : 'Send Email'}</span>
+          </a>
+
           <button
             onClick={onOpenBooking}
-            className="w-full sm:w-auto px-4 py-2 sm:py-2.5 rounded-xl bg-[#f15555] hover:bg-[#e04444] text-white font-black text-xs tracking-tight flex items-center justify-center gap-1 transition-all shadow-lg hover:scale-[1.01] active:scale-[0.98] cursor-pointer"
+            className="px-4 py-2.5 rounded-full bg-[#f15555] hover:bg-[#e04444] text-white font-extrabold text-xs shadow-md flex items-center justify-center gap-1.5 transition-all hover:scale-[1.02] active:scale-95 cursor-pointer"
           >
-            <span>{language === 'es' ? 'Reservar Clase Gratis →' : 'Book Free Session →'}</span>
+            <span>{language === 'es' ? 'Agendar Sesión' : 'Book Session'}</span>
+            <ArrowRight className="w-3.5 h-3.5 text-white" />
           </button>
         </div>
 

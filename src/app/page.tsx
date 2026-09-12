@@ -15,6 +15,7 @@ import { Footer } from '@/components/Footer';
 import { BookingModal } from '@/components/BookingModal';
 import { StudentLoginModal } from '@/components/StudentLoginModal';
 import { SearchModal } from '@/components/SearchModal';
+import { StickyConversionBar } from '@/components/StickyConversionBar';
 import { ScrollObserver } from '@/components/ScrollObserver';
 import { SmoothScroll } from '@/components/SmoothScroll';
 import { translations } from '@/data/translations';
@@ -147,6 +148,13 @@ function MainContent() {
       <SearchModal
         isOpen={searchModalOpen}
         onClose={() => setSearchModalOpen(false)}
+      />
+
+      <StickyConversionBar
+        onOpenBooking={() => {
+          setBookingNotes('');
+          setBookingModalOpen(true);
+        }}
       />
 
     </main>
