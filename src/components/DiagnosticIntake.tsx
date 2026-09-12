@@ -17,33 +17,11 @@ import {
   ChevronDown
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { ALL_COUNTRY_CODES } from '@/data/countryCodes';
 
 interface DiagnosticIntakeProps {
   onOpenBookingWithNotes?: (notes: string) => void;
 }
-
-const COUNTRY_CODES = [
-  { code: '+1', flag: '🇺🇸', label: '🇺🇸 +1 (US/CA)' },
-  { code: '+52', flag: '🇲🇽', label: '🇲🇽 +52 (Mexico)' },
-  { code: '+34', flag: '🇪🇸', label: '🇪🇸 +34 (Spain)' },
-  { code: '+57', flag: '🇨🇴', label: '🇨🇴 +57 (Colombia)' },
-  { code: '+54', flag: '🇦🇷', label: '🇦🇷 +54 (Argentina)' },
-  { code: '+56', flag: '🇨🇱', label: '🇨🇱 +56 (Chile)' },
-  { code: '+51', flag: '🇵🇪', label: '🇵🇪 +51 (Peru)' },
-  { code: '+593', flag: '🇪🇨', label: '🇪🇨 +593 (Ecuador)' },
-  { code: '+502', flag: '🇬🇹', label: '🇬🇹 +502 (Guatemala)' },
-  { code: '+506', flag: '🇨🇷', label: '🇨🇷 +506 (Costa Rica)' },
-  { code: '+507', flag: '🇵🇦', label: '🇵🇦 +507 (Panama)' },
-  { code: '+1809', flag: '🇩🇴', label: '🇩🇴 +1 (Dominican)' },
-  { code: '+58', flag: '🇻🇪', label: '🇻🇪 +58 (Venezuela)' },
-  { code: '+55', flag: '🇧🇷', label: '🇧🇷 +55 (Brazil)' },
-  { code: '+44', flag: '🇬🇧', label: '🇬🇧 +44 (UK)' },
-  { code: '+33', flag: '🇫🇷', label: '🇫🇷 +33 (France)' },
-  { code: '+49', flag: '🇩🇪', label: '🇩🇪 +49 (Germany)' },
-  { code: '+39', flag: '🇮🇹', label: '🇮🇹 +39 (Italy)' },
-  { code: '+91', flag: '🇮🇳', label: '🇮🇳 +91 (India)' },
-  { code: '+61', flag: '🇦🇺', label: '🇦🇺 +61 (Australia)' },
-];
 
 export const DiagnosticIntake: React.FC<DiagnosticIntakeProps> = ({ onOpenBookingWithNotes }) => {
   const { language } = useLanguage();
@@ -366,8 +344,8 @@ How can we get started?`;
                         className="appearance-none pl-3 pr-8 py-3 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-xs sm:text-sm font-bold focus:bg-white focus:outline-none focus:border-[#48529e] transition-all cursor-pointer shadow-2xs"
                         aria-label="Select Country Code"
                       >
-                        {COUNTRY_CODES.map((c) => (
-                          <option key={c.code} value={c.code}>
+                        {ALL_COUNTRY_CODES.map((c, i) => (
+                          <option key={`${c.code}-${i}`} value={c.code}>
                             {c.label}
                           </option>
                         ))}
