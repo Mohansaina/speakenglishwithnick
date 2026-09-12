@@ -334,14 +334,14 @@ How can we get started?`;
                   <label className="block text-xs font-black uppercase tracking-wider text-stone-700">
                     {language === 'es' ? 'Teléfono (WhatsApp):' : 'Phone number (WhatsApp):'} <span className="text-red-500">*</span>
                   </label>
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
                     
                     {/* Country Code Select Dropdown */}
-                    <div className="relative shrink-0">
+                    <div className="relative w-full sm:w-auto shrink-0">
                       <select
                         value={countryCode}
                         onChange={(e) => setCountryCode(e.target.value)}
-                        className="appearance-none pl-3 pr-8 py-3 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-xs sm:text-sm font-bold focus:bg-white focus:outline-none focus:border-[#48529e] transition-all cursor-pointer shadow-2xs"
+                        className="w-full sm:w-auto appearance-none pl-3.5 pr-8 py-3 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-xs sm:text-sm font-bold focus:bg-white focus:outline-none focus:border-[#48529e] transition-all cursor-pointer shadow-2xs truncate"
                         aria-label="Select Country Code"
                       >
                         {ALL_COUNTRY_CODES.map((c, i) => (
@@ -350,11 +350,11 @@ How can we get started?`;
                           </option>
                         ))}
                       </select>
-                      <ChevronDown className="w-3.5 h-3.5 text-stone-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none stroke-[2.5]" />
+                      <ChevronDown className="w-3.5 h-3.5 text-stone-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none stroke-[2.5]" />
                     </div>
 
                     {/* Phone Number Input */}
-                    <div className="relative flex-1">
+                    <div className="relative w-full sm:flex-1">
                       <Phone className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                       <input
                         type="tel"
