@@ -46,14 +46,14 @@ export const Programs: React.FC<ProgramsProps> = ({ onOpenBooking }) => {
       isPopular: true,
       features: language === 'es'
         ? [
-            '1 sesión privada en vivo adaptada a tu meta exacta',
-            '3-5 días de audios por WhatsApp con situaciones reales',
-            'Roleplays para entrevistas, reuniones y viajes',
+            'Work: Uber, Doordash, Restaurant, etc.',
+            'Business: Painting, Flooring, Cars, etc.',
+            'Roleplays y práctica adaptada a tu meta personal',
           ]
         : [
-            '1 private live session tailored to your exact goal',
-            '3-5 days of real-world WhatsApp audio scenarios',
-            'Roleplays for job interviews, meetings & travel',
+            'Work: Uber, Doordash, Restaurant, etc.',
+            'Business: Painting, Flooring, Cars, etc.',
+            'Roleplays & practice tailored to your personal goals',
           ],
       ctaText: language === 'es' ? 'Elegir Inglés Específico' : 'Start Specific English',
     },

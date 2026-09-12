@@ -30,12 +30,12 @@ export const translations = {
       },
       learningOptions: [
         {
-          title: "Work",
-          subtitle: "Uber, Doordash, Restaurant, etc.",
+          title: "English from 0",
+          subtitle: "Start with basics",
         },
         {
-          title: "Business",
-          subtitle: "Painting, Flooring, Cars, etc.",
+          title: "Specific English",
+          subtitle: "Work, Business, Travel, etc.",
         },
         {
           title: "English Conversation Practice",
@@ -199,12 +199,12 @@ export const translations = {
       },
       learningOptions: [
         {
-          title: "Trabajo",
-          subtitle: "Uber, Doordash, Restaurantes, etc.",
+          title: "Inglés desde 0",
+          subtitle: "Empieza desde las bases",
         },
         {
-          title: "Negocios",
-          subtitle: "Pintura, Pisos, Vehículos, etc.",
+          title: "Inglés Específico",
+          subtitle: "Trabajo, Negocios, Viajes, etc.",
         },
         {
           title: "Práctica de Conversación",
