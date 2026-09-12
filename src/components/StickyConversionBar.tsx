@@ -22,7 +22,7 @@ export const StickyConversionBar: React.FC<StickyConversionBarProps> = ({
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          setIsVisible(window.scrollY > 250 && !isDismissed);
+          setIsVisible(window.scrollY > 300 && !isDismissed);
           ticking = false;
         });
         ticking = true;
@@ -36,57 +36,60 @@ export const StickyConversionBar: React.FC<StickyConversionBarProps> = ({
   if (!isVisible || isDismissed) return null;
 
   return (
-    <div className="fixed bottom-3 left-3 right-3 sm:left-auto sm:right-6 sm:bottom-6 z-50 max-w-2xl w-full transition-all animate-bounce-subtle">
-      <div className="relative bg-[#e9f0fc] backdrop-blur-xl text-stone-900 p-4 sm:p-5 rounded-3xl border-2 border-[#c4d4f7] shadow-[0_15px_40px_rgba(0,0,0,0.18)] flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div className="fixed bottom-2.5 left-2.5 right-2.5 sm:left-auto sm:right-5 sm:bottom-5 z-50 max-w-sm sm:max-w-md w-auto transition-all animate-fade-in">
+      <div className="relative bg-[#161a3b]/95 backdrop-blur-md text-white p-2.5 sm:p-3 rounded-2xl border border-white/20 shadow-[0_10px_30px_rgba(0,0,0,0.35)] flex items-center justify-between gap-2.5">
         
         {/* Dismiss Button */}
         <button
           onClick={() => setIsDismissed(true)}
-          className="absolute -top-2.5 -right-2.5 w-7 h-7 bg-stone-900 text-white hover:bg-black rounded-full flex items-center justify-center text-xs transition-transform hover:scale-110 shadow-md cursor-pointer border border-stone-700"
+          className="absolute -top-2 -right-2 w-5 h-5 bg-stone-900 text-stone-300 hover:text-white rounded-full flex items-center justify-center text-[10px] transition-all shadow-md cursor-pointer border border-stone-700"
           title="Dismiss"
-          aria-label="Close sticky questions bar"
+          aria-label="Close sticky bar"
         >
-          <X className="w-3.5 h-3.5 stroke-[2.5]" />
+          <X className="w-3 h-3 stroke-[2.5]" />
         </button>
 
-        {/* Text Content matching screenshot */}
-        <div className="space-y-1 text-center sm:text-left">
-          <h4 className="font-black text-[#18181b] text-sm sm:text-base tracking-tight">
-            {language === 'es' ? '¿Tienes alguna pregunta para Teacher Nick?' : 'Have any questions for Teacher Nick?'}
-          </h4>
-          <p className="text-xs text-stone-700 font-medium flex flex-wrap items-center justify-center sm:justify-start gap-1">
-            <span>{language === 'es' ? 'Envía un correo directamente a:' : 'Send an email directly to:'}</span>
+        {/* Left: Compact Icon & Text */}
+        <div className="flex items-center gap-2 min-w-0">
+          <div className="w-7 h-7 rounded-xl bg-[#f15555]/20 border border-[#f15555]/40 flex items-center justify-center shrink-0">
+            <Mail className="w-3.5 h-3.5 text-[#f15555]" />
+          </div>
+          <div className="min-w-0">
+            <h4 className="font-black text-white text-[11px] sm:text-xs truncate leading-tight">
+              {language === 'es' ? '¿Preguntas para Nick?' : 'Questions for Nick?'}
+            </h4>
             <a
               href={emailUrls.gmailWebUrl}
               onClick={(e) => handleSmartEmailClick(e)}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-black text-[#48529e] hover:underline hover:text-[#f15555] transition-colors"
+              className="text-[10px] text-stone-300 hover:text-white truncate block font-medium underline"
             >
               speakenglishwithnick@gmail.com
             </a>
-          </p>
+          </div>
         </div>
 
-        {/* Action Buttons matching screenshot */}
-        <div className="flex items-center gap-2.5 w-full sm:w-auto shrink-0 justify-center">
+        {/* Right: Compact Action Buttons */}
+        <div className="flex items-center gap-1.5 shrink-0">
           <a
             href={emailUrls.gmailWebUrl}
             onClick={(e) => handleSmartEmailClick(e)}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2.5 rounded-full bg-white hover:bg-stone-50 text-[#48529e] border border-[#c2d4f8] font-extrabold text-xs shadow-xs flex items-center justify-center gap-1.5 transition-all hover:scale-[1.02] active:scale-95 cursor-pointer"
+            className="px-2.5 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold text-[10.5px] sm:text-xs transition-colors flex items-center gap-1 cursor-pointer border border-white/20"
+            title="Send Email"
           >
-            <Mail className="w-3.5 h-3.5 text-[#f15555]" />
-            <span>{language === 'es' ? 'Enviar Email' : 'Send Email'}</span>
+            <Mail className="w-3 h-3 text-[#f15555]" />
+            <span className="hidden xs:inline">{language === 'es' ? 'Email' : 'Email'}</span>
           </a>
 
           <button
             onClick={onOpenBooking}
-            className="px-4 py-2.5 rounded-full bg-[#f15555] hover:bg-[#e04444] text-white font-extrabold text-xs shadow-md flex items-center justify-center gap-1.5 transition-all hover:scale-[1.02] active:scale-95 cursor-pointer"
+            className="px-3 py-1.5 rounded-xl bg-[#f15555] hover:bg-[#e04444] text-white font-black text-[10.5px] sm:text-xs flex items-center gap-1 transition-all shadow-md active:scale-95 cursor-pointer whitespace-nowrap"
           >
-            <span>{language === 'es' ? 'Agendar Sesión' : 'Book Session'}</span>
-            <ArrowRight className="w-3.5 h-3.5 text-white" />
+            <span>{language === 'es' ? 'Agendar' : 'Book'}</span>
+            <ArrowRight className="w-3 h-3 text-white" />
           </button>
         </div>
 
