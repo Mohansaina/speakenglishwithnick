@@ -19,46 +19,46 @@ export const FAQ: React.FC<FAQProps> = ({ onOpenBooking }) => {
   const faqData = language === 'es'
     ? [
         {
-          q: "¿Realmente 20 minutos al día me darán fluidez y mejorarán mi acento?",
-          a: "Sí. La fluidez y el acento son destrezas motoras y reflejos acústicos, no materias académicas para estudiar 2 horas el fin de semana. 20 minutos diarios de repetición acústica ('shadowing') entrenan tu lengua y cuerdas vocales para producir inglés natural sin traducir mentalmente desde el español.",
+          q: "¿Cómo funcionan las clases con Teacher Nick?",
+          a: "Cada semana tienes 1 sesión privada en vivo (online o presencial) enfocada en tus metas reales. Además, durante 3-5 días a la semana realizas ejercicios prácticos de voz guiados por WhatsApp con corrección y feedback directo de Nick.",
         },
         {
-          q: "Como hispanohablante, me cuesta pronunciar la 'S' inicial y las vocales en inglés. ¿Cómo me ayuda este método?",
-          a: "Nick diseñó ejercicios específicos para hispanohablantes. Entrenamos la posición exacta de labios y lengua para arrancar palabras como 'speak' o 'school' con aire limpio sin agregar una 'e' antes ('espeak'), además de dominar el sonido Schwa (/ə/) que usan los nativos.",
+          q: "¿Nick me ayuda si empiezo desde 0 o si solo necesito conversación?",
+          a: "Sí. Teacher Nick adapta las clases 100% a tu nivel actual: ya sea Inglés desde 0 (bases sólidas), Inglés Específico (trabajo, reuniones, viajes) o Práctica de Conversación para ganar fluidez y confianza.",
         },
         {
-          q: "Me da mucha ansiedad hablar en reuniones de trabajo en inglés. ¿Qué puedo hacer?",
-          a: "La ansiedad surge de intentar traducir oraciones completas palabra por palabra. Te enseñamos 'Estructuras de Rescate' automáticas para ganar tiempo de pensar, pedir amablemente que hablen más despacio y resumir ideas con palabras simples y contundentes.",
+          q: "¿Cómo funciona la práctica diaria de voz por WhatsApp?",
+          a: "Entre tus sesiones en vivo, Nick te envía audios y ejercicios breves (15-20 min/día). Tú envías tus respuestas por notas de voz en WhatsApp y Nick evalúa y corrige tu pronunciación, ritmo y vocabulario.",
         },
         {
-          q: "¿Cómo funciona la mentoría privada 1 a 1 con Nick?",
-          a: "Las sesiones se realizan por videollamada 1 a 1. Nick diagnostica tus bloqueos exactos de pronunciación y entonación, graba audios personalizados para que practiques entre sesiones y prepara roleplays a medida para tus entrevistas o reuniones laborales.",
+          q: "¿Qué horarios hay disponibles para las clases?",
+          a: "Los horarios se coordinan directamente con Teacher Nick para elegir una hora cómoda según tu disponibilidad semanal, en un ambiente muy relajado, paciente y sin presión.",
         },
         {
-          q: "¿Qué pasa si tengo un horario muy ocupado?",
-          a: "Todo el sistema está pensado para personas con poco tiempo. Puedes escuchar y repetir los audios 100% manos libres en tu auto, en el transporte público con auriculares o durante una caminata de 15 minutos.",
+          q: "¿Cómo puedo empezar mi primera sesión?",
+          a: "Puedes agendar una sesión privada de diagnóstico directamente en el botón 'Agendar Sesión 1 a 1' o enviar un correo electrónico a Teacher Nick a speakenglishwithnick@gmail.com.",
         },
       ]
     : [
         {
-          q: "Will 20 minutes a day really make me fluent and improve my accent?",
-          a: "Yes. Fluency and accent are motor skills and acoustic reflexes, not academic subjects to cram on weekends. 20 minutes of daily acoustic shadowing trains your vocal cords and tongue to produce natural English without pausing to translate.",
+          q: "How do lessons with Teacher Nick work?",
+          a: "Each week you get 1 private live session (online or in-person) focused on your specific goals. Plus, 3-5 days a week you receive guided voice drills on WhatsApp with direct feedback from Teacher Nick.",
         },
         {
-          q: "As a Spanish speaker, I struggle with 's' clusters and American vowels. How does this help?",
-          a: "Nick's curriculum has targeted modules for Spanish speakers. We train the tongue mechanics to eliminate the initial 'e' (e.g. 'speak' vs 'espeak') and master vowel reductions with the Schwa sound (/ə/).",
+          q: "Can Teacher Nick help me if I am starting from 0 or just need conversation practice?",
+          a: "Yes. Teacher Nick customizes every program 100% to your level: whether it's English from 0 (solid basics), Specific English (work, meetings, travel), or pure Conversation Practice to build confidence.",
         },
         {
-          q: "I get extreme anxiety when speaking in workplace meetings. How does this resolve it?",
-          a: "Speaking anxiety comes from internal translation loops and fear of getting stuck. Nick teaches 12 'Rescue Structures'—automatic plug-and-play phrases native speakers use to buy time, ask colleagues to slow down politely, and summarize clearly.",
+          q: "How does the daily WhatsApp voice practice work?",
+          a: "Between your weekly live calls, Nick sends short audio drills (15-20 min/day). You record your responses via voice notes on WhatsApp, and Nick reviews and corrects your pronunciation and speech flow.",
         },
         {
-          q: "How does 1-on-1 coaching with Nick work?",
-          a: "Private coaching is conducted via 1-on-1 Zoom sessions. Nick diagnoses your exact speaking bottlenecks, records custom audio feedback for you to shadow between calls, and prepares you for real-world interviews or presentations.",
+          q: "What class schedules are available?",
+          a: "Class times are coordinated directly with Teacher Nick to find a comfortable recurring time that fits your weekly schedule in a patient and supportive environment.",
         },
         {
-          q: "What if I am too busy to practice every day?",
-          a: "The curriculum is engineered specifically for commuters and busy professionals. You can do the acoustic shadowing hands-free in your car, on the train, or during your morning walk.",
+          q: "How do I get started?",
+          a: "You can book a private diagnostic session by clicking 'Book 1-on-1 Session' or by sending an email directly to Teacher Nick at speakenglishwithnick@gmail.com.",
         },
       ];
 
