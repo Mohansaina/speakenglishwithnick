@@ -341,8 +341,8 @@ export const SpanishSpeakersHub: React.FC<SpanishSpeakersHubProps> = ({
             </h3>
             <p className="text-xs sm:text-sm text-[#d4dcff] max-w-xl">
               {language === 'es'
-                ? 'En una sesión 1 a 1 evaluamos tu pronunciación exacta, velocidad y confianza, creando tu plan de práctica de 5 días por WhatsApp.'
-                : 'In a private 1-on-1 session, we diagnose your exact pronunciation patterns and design your 5-day WhatsApp practice routine.'}
+                ? 'En una sesión 1 a 1 evaluamos tu pronunciación exacta, velocidad y confianza, creando tu plan de práctica de 3-5 días por WhatsApp.'
+                : 'In a private 1-on-1 session, we diagnose your exact pronunciation patterns and design your 3-5 day WhatsApp practice routine.'}
             </p>
           </div>
 

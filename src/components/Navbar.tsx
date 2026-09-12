@@ -132,7 +132,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                     <a
                       href="#programs"
                       onClick={() => setCoursesDropdown(false)}
-                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-amber-50/60 text-stone-800 hover:text-amber-900 transition-colors"
                       className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-[#e4ebf9]/60 text-stone-800 hover:text-[#48529e] transition-colors"
                     >
                       <Headphones className="w-4 h-4 text-amber-600 mt-0.5 shrink-0" />
@@ -432,23 +431,26 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
           </div>
 
-          {/* Social icons in mobile drawer */}
+          {/* Social & Contact icons in mobile drawer */}
           <div className="pt-3 border-t border-stone-200 flex items-center justify-center gap-4 text-stone-600">
             <a
-              href="https://www.youtube.com/@speakenglishwithnick"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-full bg-stone-100 text-stone-700 hover:text-red-600 transition-colors"
+              href="mailto:speakenglishwithnick@gmail.com"
+              onClick={(e) => handleSmartEmailClick(e)}
+              className="p-2 rounded-full bg-stone-100 text-stone-700 hover:text-[#48529e] transition-colors flex items-center gap-1.5 text-xs font-bold"
+              title="Email Teacher Nick"
             >
-              <YoutubeIcon className="w-4 h-4" />
+              <Mail className="w-4 h-4 text-[#f15555]" />
+              <span>Email</span>
             </a>
             <a
               href="https://www.instagram.com/speak.english.with.nick/?hl=en"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full bg-stone-100 text-stone-700 hover:text-pink-600 transition-colors"
+              className="p-2 rounded-full bg-stone-100 text-stone-700 hover:text-pink-600 transition-colors flex items-center gap-1.5 text-xs font-bold"
+              title="Instagram"
             >
               <InstagramIcon className="w-4 h-4" />
+              <span>Instagram</span>
             </a>
           </div>
 

@@ -274,7 +274,7 @@ export async function sendDiagnosticEmail(data: DiagnosticEmailData) {
         <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 16px; border: 1px solid #e7e5e4; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
           <div style="text-align: center; margin-bottom: 24px;">
             <h1 style="color: #1e244d; font-size: 24px; font-weight: 900; margin: 0 0 6px 0;">¡Hola ${name}! 🚀</h1>
-            <p style="color: #78716c; font-size: 14px; margin: 0;">Aquí tienes tu Diagnóstico y Plan de Acción de 5 Días con Teacher Nick.</p>
+            <p style="color: #78716c; font-size: 14px; margin: 0;">Aquí tienes tu Diagnóstico y Plan de Acción de 3-5 Días con Teacher Nick.</p>
           </div>
 
           <div style="background: #e4ebf9; border: 1px solid #c2d4f8; border-radius: 12px; padding: 16px; margin-bottom: 24px;">
@@ -287,7 +287,7 @@ export async function sendDiagnosticEmail(data: DiagnosticEmailData) {
           </div>
 
           <div style="background: #fafaf9; border-radius: 12px; padding: 18px; margin-bottom: 24px;">
-            <h3 style="color: #48529e; font-size: 15px; font-weight: 800; margin: 0 0 10px 0;">Tu Plan de Práctica de 5 Días (20 min/día):</h3>
+            <h3 style="color: #48529e; font-size: 15px; font-weight: 800; margin: 0 0 10px 0;">Tu Plan de Práctica de 3-5 Días (20 min/día):</h3>
             <ol style="margin: 0; padding-left: 20px; color: #44403c; font-size: 13.5px; line-height: 1.6;">
               <li><strong>Día 1:</strong> Eliminación de la "E" inicial y posicionamiento de lengua/labios.</li>
               <li><strong>Día 2:</strong> V vs B y reducción de vocales al ritmo americano (Schwa /ə/).</li>
@@ -329,7 +329,7 @@ export async function sendDiagnosticEmail(data: DiagnosticEmailData) {
           </div>
 
           <div style="background: #fafaf9; border-radius: 12px; padding: 18px; margin-bottom: 24px;">
-            <h3 style="color: #48529e; font-size: 15px; font-weight: 800; margin: 0 0 10px 0;">Your 5-Day Action Plan (20 min/day):</h3>
+            <h3 style="color: #48529e; font-size: 15px; font-weight: 800; margin: 0 0 10px 0;">Your 3-5-Day Action Plan (20 min/day):</h3>
             <ol style="margin: 0; padding-left: 20px; color: #44403c; font-size: 13.5px; line-height: 1.6;">
               <li><strong>Day 1:</strong> Eliminating initial "E" sound and muscle memory placement.</li>
               <li><strong>Day 2:</strong> V vs B distinction and vowel reductions with Schwa /ə/.</li>
@@ -424,7 +424,7 @@ ${phone ? `• Open WhatsApp Chat: https://wa.me/${phone.replace(/[^0-9]/g, '')}
         from: `"Teacher Nick" <${process.env.SMTP_FROM || process.env.SMTP_USER || COACH_EMAIL}>`,
         to: email,
         replyTo: COACH_EMAIL,
-        subject: isEs ? `Tu Plan de Inglés de 5 Días • Teacher Nick 🎯` : `Your 5-Day English Fluency Plan • Teacher Nick 🎯`,
+        subject: isEs ? `Tu Plan de Inglés de 3-5 Días • Teacher Nick 🎯` : `Your 3-5-Day English Fluency Plan • Teacher Nick 🎯`,
         html: studentHtml,
       });
 
@@ -448,7 +448,7 @@ ${phone ? `• Open WhatsApp Chat: https://wa.me/${phone.replace(/[^0-9]/g, '')}
       console.log(`[Diagnostic Email Sent via Resend] Lead: ${name} -> Destination: ${COACH_EMAIL}`);
       await sendViaResend({
         to: email,
-        subject: isEs ? `Tu Plan de Inglés de 5 Días • Teacher Nick 🎯` : `Your 5-Day English Fluency Plan • Teacher Nick 🎯`,
+        subject: isEs ? `Tu Plan de Inglés de 3-5 Días • Teacher Nick 🎯` : `Your 3-5-Day English Fluency Plan • Teacher Nick 🎯`,
         html: studentHtml,
         replyTo: COACH_EMAIL,
       });

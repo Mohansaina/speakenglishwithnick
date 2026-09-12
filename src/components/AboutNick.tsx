@@ -117,7 +117,7 @@ export const AboutNick: React.FC<AboutNickProps> = ({ onOpenBooking }) => {
                   <span>{language === 'es' ? '3. Práctica WhatsApp' : '3. WhatsApp Voice'}</span>
                 </div>
                 <p className="text-xs text-[#373f7a] font-bold">
-                  {language === 'es' ? '5 días por semana de feedback de voz' : '5 days a week of direct voice guidance'}
+                  {language === 'es' ? '3-5 días por semana de feedback de voz' : '3-5 days a week of direct voice guidance'}
                 </p>
               </div>
             </div>

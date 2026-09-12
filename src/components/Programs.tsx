@@ -20,17 +20,17 @@ export const Programs: React.FC<ProgramsProps> = ({ onOpenBooking }) => {
       tagline: language === 'es'
         ? 'Aprende las bases del inglés paso a paso con paciencia absoluta y sin frustraciones.'
         : 'Build your core foundation step-by-step with patient, zero-judgment guidance.',
-      duration: language === 'es' ? '1 Clase Semanal + 5 Días WhatsApp' : '1 Live Session/Wk + 5 Days WhatsApp',
+      duration: language === 'es' ? '1 Clase Semanal + 3-5 Días WhatsApp' : '1 Live Session/Wk + 3-5 Days WhatsApp',
       isPopular: false,
       features: language === 'es'
         ? [
             '1 sesión privada en vivo por semana con Nick',
-            '5 días de práctica de voz guiada por WhatsApp',
+            '3-5 días de práctica de voz guiada por WhatsApp',
             'Bases sólidas y pronunciación desde el día uno',
           ]
         : [
             '1 private live coaching session per week with Nick',
-            '5 days of guided daily voice drills on WhatsApp',
+            '3-5 days of guided daily voice drills on WhatsApp',
             'Solid foundation & pronunciation from day one',
           ],
       ctaText: language === 'es' ? 'Empezar desde Cero' : 'Start English from 0',
@@ -42,17 +42,17 @@ export const Programs: React.FC<ProgramsProps> = ({ onOpenBooking }) => {
       tagline: language === 'es'
         ? 'Preparación para situaciones reales: trabajo, entrevistas, reuniones, viajes o restaurantes.'
         : 'Targeted preparation for real scenarios: job interviews, meetings, work, and travel.',
-      duration: language === 'es' ? '1 Clase Semanal + 5 Días WhatsApp' : '1 Live Session/Wk + 5 Days WhatsApp',
+      duration: language === 'es' ? '1 Clase Semanal + 3-5 Días WhatsApp' : '1 Live Session/Wk + 3-5 Days WhatsApp',
       isPopular: true,
       features: language === 'es'
         ? [
             '1 sesión privada en vivo adaptada a tu meta exacta',
-            '5 días de audios por WhatsApp con situaciones reales',
+            '3-5 días de audios por WhatsApp con situaciones reales',
             'Roleplays para entrevistas, reuniones y viajes',
           ]
         : [
             '1 private live session tailored to your exact goal',
-            '5 days of real-world WhatsApp audio scenarios',
+            '3-5 days of real-world WhatsApp audio scenarios',
             'Roleplays for job interviews, meetings & travel',
           ],
       ctaText: language === 'es' ? 'Elegir Inglés Específico' : 'Start Specific English',
@@ -64,17 +64,17 @@ export const Programs: React.FC<ProgramsProps> = ({ onOpenBooking }) => {
       tagline: language === 'es'
         ? 'Gana soltura natural, elimina la traducción mental y domina el ritmo del acento americano.'
         : 'Master effortless flow, stop mental translating, and speak with American cadence.',
-      duration: language === 'es' ? '1 Clase Semanal + 5 Días WhatsApp' : '1 Live Session/Wk + 5 Days WhatsApp',
+      duration: language === 'es' ? '1 Clase Semanal + 3-5 Días WhatsApp' : '1 Live Session/Wk + 3-5 Days WhatsApp',
       isPopular: false,
       features: language === 'es'
         ? [
             '1 sesión privada en vivo de conversación 100% fluida',
-            '5 días de notas de voz en WhatsApp con feedback',
+            '3-5 días de notas de voz en WhatsApp con feedback',
             'Técnicas de ritmo y reducción de vocales americanas',
           ]
         : [
             '1 private live 100% conversational session with Nick',
-            '5 days of voice note drills with instant feedback',
+            '3-5 days of voice note drills with instant feedback',
             'American cadence & vowel reduction techniques',
           ],
       ctaText: language === 'es' ? 'Unirme a Conversación' : 'Join Conversation Practice',
@@ -108,8 +108,8 @@ export const Programs: React.FC<ProgramsProps> = ({ onOpenBooking }) => {
 
           <p className="text-sm sm:text-base text-stone-600 max-w-xl mx-auto font-normal leading-relaxed">
             {language === 'es'
-              ? 'Todos los planes incluyen 1 sesión privada semanal con Teacher Nick más 5 días de práctica activa por WhatsApp.'
-              : 'All programs feature 1 private weekly session with Teacher Nick plus 5 days of guided speaking practice on WhatsApp.'}
+              ? 'Todos los planes incluyen 1 sesión privada semanal con Teacher Nick más 3-5 días de práctica activa por WhatsApp.'
+              : 'All programs feature 1 private weekly session with Teacher Nick plus 3-5 days of guided speaking practice on WhatsApp.'}
           </p>
         </div>
 

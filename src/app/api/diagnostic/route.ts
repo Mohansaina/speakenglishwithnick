@@ -30,8 +30,8 @@ export async function POST(req: Request) {
       coachEmail: COACH_EMAIL,
       emailSent: emailResult.sent,
       message: language === 'es' 
-        ? `Diagnóstico y plan de 5 días procesado exitosamente para ${email}` 
-        : `Diagnostic and 5-day action plan processed successfully for ${email}`,
+        ? `Diagnóstico y plan de 3-5 días procesado exitosamente para ${email}` 
+        : `Diagnostic and 3-5 day action plan processed successfully for ${email}`,
       refId: `DIAG-${Date.now().toString(36).toUpperCase()}`
     });
   } catch (error) {

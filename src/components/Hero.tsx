@@ -96,8 +96,8 @@ export const Hero: React.FC<HeroProps> = ({
                   <MessageCircle className="w-4 h-4 text-[#f15555] shrink-0 mt-0.5 sm:mt-0" />
                   <span className="text-stone-100 font-semibold text-xs sm:text-sm md:text-base leading-snug">
                     {language === 'es'
-                      ? '5 días de práctica guiada a través de WhatsApp'
-                      : '5 days of practice through WhatsApp'}
+                      ? '3-5 días de práctica guiada a través de WhatsApp'
+                      : '3-5 days of practice through WhatsApp'}
                   </span>
                 </div>
               </div>

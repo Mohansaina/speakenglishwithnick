@@ -72,7 +72,7 @@ TUS RESULTADOS:
 LO QUE DESEAS LOGRAR:
 "${wantToLearn || 'Mejorar mi fluidez y pronunciación'}"
 
-TU PLAN DE PRÁCTICA DE 5 DÍAS (20 MIN/DÍA POR WHATSAPP):
+TU PLAN DE PRÁCTICA DE 3-5 DÍAS (20 MIN/DÍA POR WHATSAPP):
 1. Día 1: Eliminación de la "E" inicial y posicionamiento de lengua/labios.
 2. Día 2: V vs B y reducción de vocales al ritmo americano (Schwa /ə/).
 3. Día 3: 10 Frases de rescate automático para trabajo y restaurantes.
@@ -95,7 +95,7 @@ YOUR RESULTS:
 WHAT YOU WANT TO LEARN:
 "${wantToLearn || 'Improve speaking flow and confidence'}"
 
-YOUR 5-DAY ACTION PLAN (20 MIN/DAY VIA WHATSAPP):
+YOUR 3-5 DAY ACTION PLAN (20 MIN/DAY VIA WHATSAPP):
 1. Day 1: Eliminating initial "E" sound and muscle memory placement.
 2. Day 2: V vs B distinction and vowel reductions with Schwa /ə/.
 3. Day 3: 10 automatic rescue phrases for work meetings & daily life.
@@ -270,8 +270,8 @@ How can we get started?`;
           
           <p className="text-xs sm:text-sm text-stone-600 font-normal max-w-md mx-auto">
             {language === 'es'
-              ? 'Completa estos datos y te enviaremos tu diagnóstico y plan de práctica de 5 días directamente a tu correo.'
-              : 'Fill in your details below and we will send your custom diagnostic and 5-day action plan straight to your email.'}
+              ? 'Completa estos datos y te enviaremos tu diagnóstico y plan de práctica de 3-5 días directamente a tu correo.'
+              : 'Fill in your details below and we will send your custom diagnostic and 3-5 day action plan straight to your email.'}
           </p>
         </div>
 

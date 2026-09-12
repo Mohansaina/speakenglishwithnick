@@ -298,7 +298,7 @@ export const VideoPlayerModal: React.FC<VideoPlayerModalProps> = ({
               <Award className="w-3.5 h-3.5 text-[#f15555]" />
             </button>
           </div>
-        </div>/div>
+        </div>
 
       </div>
     </div>

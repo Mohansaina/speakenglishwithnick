@@ -26,7 +26,7 @@ export const translations = {
       classLayout: {
         title: "Class layout:",
         item1: "1 session per week at a comfortable time (In person or online)",
-        item2: "5 days of practice through WhatsApp",
+        item2: "3-5 days of practice through WhatsApp",
       },
       learningOptions: [
         {
@@ -52,7 +52,7 @@ export const translations = {
       subscribersLabel: "Languages spoken fluently by Teacher Nick",
       students: "1-on-1",
       studentsLabel: "Personalized sessions at your comfortable time",
-      lessons: "5 Days",
+      lessons: "3-5 Days",
       lessonsLabel: "Of guided WhatsApp voice practice every week",
     },
     transformation: {
@@ -195,7 +195,7 @@ export const translations = {
       classLayout: {
         title: "Estructura de las clases:",
         item1: "1 sesión por semana en un horario cómodo (Presencial u online)",
-        item2: "5 días de práctica a través de WhatsApp",
+        item2: "3-5 días de práctica a través de WhatsApp",
       },
       learningOptions: [
         {
@@ -221,7 +221,7 @@ export const translations = {
       subscribersLabel: "Idiomas hablados con fluidez por Teacher Nick",
       students: "1 a 1",
       studentsLabel: "Sesiones personalizadas en un horario cómodo para ti",
-      lessons: "5 Días",
+      lessons: "3-5 Días",
       lessonsLabel: "De práctica guiada por WhatsApp cada semana",
     },
     transformation: {
