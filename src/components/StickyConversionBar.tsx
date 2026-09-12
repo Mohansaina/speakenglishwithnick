@@ -70,27 +70,19 @@ export const StickyConversionBar: React.FC<StickyConversionBarProps> = ({
           </div>
         </div>
 
-        {/* Right: Compact Action Buttons */}
-        <div className="flex items-center gap-1.5 shrink-0">
+        {/* Right: Email Action Button */}
+        <div className="flex items-center shrink-0">
           <a
             href={emailUrls.gmailWebUrl}
             onClick={(e) => handleSmartEmailClick(e)}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-2.5 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold text-[10.5px] sm:text-xs transition-colors flex items-center gap-1 cursor-pointer border border-white/20"
+            className="px-3.5 py-2 rounded-xl bg-[#f15555] hover:bg-[#e04444] text-white font-black text-[11px] sm:text-xs transition-all shadow-md active:scale-95 flex items-center gap-1.5 cursor-pointer whitespace-nowrap"
             title="Send Email"
           >
-            <Mail className="w-3 h-3 text-[#f15555]" />
-            <span className="hidden xs:inline">{language === 'es' ? 'Email' : 'Email'}</span>
+            <Mail className="w-3.5 h-3.5 text-white" />
+            <span>{language === 'es' ? 'Enviar Email' : 'Send Email'}</span>
           </a>
-
-          <button
-            onClick={onOpenBooking}
-            className="px-3 py-1.5 rounded-xl bg-[#f15555] hover:bg-[#e04444] text-white font-black text-[10.5px] sm:text-xs flex items-center gap-1 transition-all shadow-md active:scale-95 cursor-pointer whitespace-nowrap"
-          >
-            <span>{language === 'es' ? 'Agendar' : 'Book'}</span>
-            <ArrowRight className="w-3 h-3 text-white" />
-          </button>
         </div>
 
       </div>

@@ -143,19 +143,11 @@ export const FAQ: React.FC<FAQProps> = ({ onOpenBooking }) => {
               onClick={(e) => handleSmartEmailClick(e)}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white hover:bg-stone-50 text-[#48529e] border border-[#c2d4f8] font-extrabold text-xs sm:text-sm shadow-xs flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
+              className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#f15555] hover:bg-[#e04444] text-white font-extrabold text-xs sm:text-sm shadow-md flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
             >
-              <Mail className="w-4 h-4 text-[#f15555]" />
+              <Mail className="w-4 h-4 text-white" />
               <span>{language === 'es' ? 'Enviar Email' : 'Send Email'}</span>
             </a>
-
-            <button
-              onClick={onOpenBooking}
-              className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-[#f15555] hover:bg-[#e04444] text-white font-extrabold text-xs sm:text-sm shadow-md flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
-            >
-              <span>{language === 'es' ? 'Agendar Sesión' : 'Book Session'}</span>
-              <ArrowRight className="w-3.5 h-3.5 text-white" />
-            </button>
           </div>
         </div>
 
