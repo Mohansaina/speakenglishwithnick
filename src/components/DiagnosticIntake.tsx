@@ -13,7 +13,8 @@ import {
   Calendar,
   Download,
   ShieldCheck,
-  Send
+  Send,
+  ChevronDown
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -21,12 +22,37 @@ interface DiagnosticIntakeProps {
   onOpenBookingWithNotes?: (notes: string) => void;
 }
 
+const COUNTRY_CODES = [
+  { code: '+1', flag: '🇺🇸', label: '🇺🇸 +1 (US/CA)' },
+  { code: '+52', flag: '🇲🇽', label: '🇲🇽 +52 (Mexico)' },
+  { code: '+34', flag: '🇪🇸', label: '🇪🇸 +34 (Spain)' },
+  { code: '+57', flag: '🇨🇴', label: '🇨🇴 +57 (Colombia)' },
+  { code: '+54', flag: '🇦🇷', label: '🇦🇷 +54 (Argentina)' },
+  { code: '+56', flag: '🇨🇱', label: '🇨🇱 +56 (Chile)' },
+  { code: '+51', flag: '🇵🇪', label: '🇵🇪 +51 (Peru)' },
+  { code: '+593', flag: '🇪🇨', label: '🇪🇨 +593 (Ecuador)' },
+  { code: '+502', flag: '🇬🇹', label: '🇬🇹 +502 (Guatemala)' },
+  { code: '+506', flag: '🇨🇷', label: '🇨🇷 +506 (Costa Rica)' },
+  { code: '+507', flag: '🇵🇦', label: '🇵🇦 +507 (Panama)' },
+  { code: '+1809', flag: '🇩🇴', label: '🇩🇴 +1 (Dominican)' },
+  { code: '+58', flag: '🇻🇪', label: '🇻🇪 +58 (Venezuela)' },
+  { code: '+55', flag: '🇧🇷', label: '🇧🇷 +55 (Brazil)' },
+  { code: '+44', flag: '🇬🇧', label: '🇬🇧 +44 (UK)' },
+  { code: '+33', flag: '🇫🇷', label: '🇫🇷 +33 (France)' },
+  { code: '+49', flag: '🇩🇪', label: '🇩🇪 +49 (Germany)' },
+  { code: '+39', flag: '🇮🇹', label: '🇮🇹 +39 (Italy)' },
+  { code: '+91', flag: '🇮🇳', label: '🇮🇳 +91 (India)' },
+  { code: '+61', flag: '🇦🇺', label: '🇦🇺 +61 (Australia)' },
+];
+
 export const DiagnosticIntake: React.FC<DiagnosticIntakeProps> = ({ onOpenBookingWithNotes }) => {
   const { language } = useLanguage();
   
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
+  const [countryCode, setCountryCode] = useState('+1');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const phone = `${countryCode} ${phoneNumber}`.trim();
   const [understandPercent, setUnderstandPercent] = useState(70);
   const [speakPercent, setSpeakPercent] = useState(30);
   const [wantToLearn, setWantToLearn] = useState('');
@@ -325,21 +351,43 @@ How can we get started?`;
                   </div>
                 </div>
 
-                {/* 3. Phone number */}
+                {/* 3. Phone number with Country Code Dropdown */}
                 <div className="space-y-1.5">
                   <label className="block text-xs font-black uppercase tracking-wider text-stone-700">
                     {language === 'es' ? 'Teléfono (WhatsApp):' : 'Phone number (WhatsApp):'} <span className="text-red-500">*</span>
                   </label>
-                  <div className="relative flex items-center">
-                    <Phone className="w-4 h-4 text-stone-400 absolute left-3.5 pointer-events-none" />
-                    <input
-                      type="tel"
-                      required
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      placeholder="+1 (555) 000-0000"
-                      className="w-full pl-10 pr-3.5 py-3 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm font-medium focus:bg-white focus:outline-none focus:border-[#48529e] transition-all"
-                    />
+                  <div className="flex items-center gap-2">
+                    
+                    {/* Country Code Select Dropdown */}
+                    <div className="relative shrink-0">
+                      <select
+                        value={countryCode}
+                        onChange={(e) => setCountryCode(e.target.value)}
+                        className="appearance-none pl-3 pr-8 py-3 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-xs sm:text-sm font-bold focus:bg-white focus:outline-none focus:border-[#48529e] transition-all cursor-pointer shadow-2xs"
+                        aria-label="Select Country Code"
+                      >
+                        {COUNTRY_CODES.map((c) => (
+                          <option key={c.code} value={c.code}>
+                            {c.label}
+                          </option>
+                        ))}
+                      </select>
+                      <ChevronDown className="w-3.5 h-3.5 text-stone-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none stroke-[2.5]" />
+                    </div>
+
+                    {/* Phone Number Input */}
+                    <div className="relative flex-1">
+                      <Phone className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                      <input
+                        type="tel"
+                        required
+                        value={phoneNumber}
+                        onChange={(e) => setPhoneNumber(e.target.value)}
+                        placeholder="(555) 000-0000"
+                        className="w-full pl-10 pr-3.5 py-3 rounded-2xl bg-stone-50 border border-stone-200 text-stone-900 text-sm font-medium focus:bg-white focus:outline-none focus:border-[#48529e] transition-all shadow-2xs"
+                      />
+                    </div>
+
                   </div>
                 </div>
 
