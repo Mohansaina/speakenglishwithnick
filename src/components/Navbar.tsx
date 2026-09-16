@@ -183,17 +183,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               {lessonsDropdown && (
                 <div className="absolute top-full left-0 w-72 pt-2 animate-in fade-in slide-in-from-top-2 duration-150 z-50">
                   <div className="bg-white rounded-2xl border border-stone-200 p-2 shadow-2xl space-y-1">
-                    <a
-                      href="#drills"
-                      onClick={() => setLessonsDropdown(false)}
-                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-stone-50 text-stone-800 hover:text-[#48529e] transition-colors"
-                    >
-                      <Headphones className="w-4 h-4 text-[#f15555] mt-0.5 shrink-0" />
-                      <div>
-                        <div className="text-xs font-bold">{t.drills}</div>
-                        <div className="text-[11px] text-stone-500 font-normal">{language === 'es' ? 'Estudio de audio interactivo' : 'Interactive audio studio'}</div>
-                      </div>
-                    </a>
+
 
                     <button
                       onClick={() => {
@@ -374,13 +364,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
 
 
-            <a
-              href="#drills"
-              onClick={() => setMobileMenuOpen(false)}
-              className="p-3 rounded-xl hover:bg-stone-50 text-stone-800 flex items-center justify-between"
-            >
-              <span>{language === 'es' ? 'Estudio de Práctica de Audio' : 'Audio Practice Studio'}</span>
-            </a>
+
 
             <button
               onClick={() => {
