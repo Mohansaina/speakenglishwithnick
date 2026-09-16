@@ -122,12 +122,12 @@ export const Footer: React.FC<FooterProps> = ({
                 <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-4">
                   <button
                     onClick={onOpenBooking}
-                    className="px-8 py-4 rounded-full bg-[#f15555] hover:bg-[#e04444] text-white font-black text-base shadow-lg shadow-[#f15555]/25 hover:shadow-xl hover:shadow-[#f15555]/35 transition-all transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer inline-flex items-center justify-center gap-3 group"
+                    className="w-full sm:w-auto px-5 sm:px-8 py-3.5 sm:py-4 rounded-full bg-[#f15555] hover:bg-[#e04444] text-white font-black text-sm sm:text-base shadow-lg shadow-[#f15555]/25 hover:shadow-xl hover:shadow-[#f15555]/35 transition-all transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer inline-flex items-center justify-center gap-2 sm:gap-3 group"
                   >
-                    <span>
+                    <span className="whitespace-nowrap">
                       {language === 'es' ? '¡Agendar Sesión 1 a 1!' : 'Book 1-on-1 Session!'}
                     </span>
-                    <ArrowRight className="w-5 h-5 stroke-[2.5] group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5] group-hover:translate-x-1 transition-transform shrink-0" />
                   </button>
                 </div>
 
