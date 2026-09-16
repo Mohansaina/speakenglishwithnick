@@ -27,79 +27,156 @@ export const Footer: React.FC<FooterProps> = ({
   return (
     <div className="w-full font-sans text-left">
       
-      {/* 1. Pre-Footer Course Banner (Exact match to top half of screenshot) */}
-      <section className="bg-[#e4ebf9] py-12 sm:py-16 border-b border-[#c8d4f0] relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 flex flex-col lg:flex-row items-center justify-between gap-10">
+      {/* 1. Pre-Footer Course Banner */}
+      <section className="bg-gradient-to-b from-[#f0f4fd] via-[#e4ebf9] to-[#dbe4f6] py-14 sm:py-20 relative overflow-hidden">
+        {/* Ambient Glow Effects */}
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#48529e]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#f15555]/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
-          {/* Left Column: Feature List & Coral-Red CTA Button */}
-          <div className="space-y-6 max-w-xl text-stone-900">
-            <ul className="space-y-3 text-sm sm:text-base font-semibold text-stone-800">
-              <li className="flex items-center gap-3">
-                <div className="w-5 h-5 rounded-full border-2 border-[#48529e] flex items-center justify-center text-[#48529e] shrink-0">
-                  <CheckCircle2 className="w-3.5 h-3.5 fill-current text-white stroke-[2.5]" />
-                </div>
-                <span>
-                  {language === 'es'
-                    ? 'Ejercicios interactivos con retroalimentación instantánea'
-                    : 'Interactive exercises with instant feedback'}
-                </span>
-              </li>
-              <li className="flex items-center gap-3">
-                <div className="w-5 h-5 rounded-full border-2 border-[#48529e] flex items-center justify-center text-[#48529e] shrink-0">
-                  <CheckCircle2 className="w-3.5 h-3.5 fill-current text-white stroke-[2.5]" />
-                </div>
-                <span>
-                  {language === 'es'
-                    ? 'Lecciones adicionales para profundizar en el material'
-                    : 'Extra lessons that dive deeper into the material'}
-                </span>
-              </li>
-              <li className="flex items-center gap-3">
-                <div className="w-5 h-5 rounded-full border-2 border-[#48529e] flex items-center justify-center text-[#48529e] shrink-0">
-                  <CheckCircle2 className="w-3.5 h-3.5 fill-current text-white stroke-[2.5]" />
-                </div>
-                <span>
-                  {language === 'es'
-                    ? 'Ejercicios de examen final en el día 5'
-                    : 'Final Exam exercises on Day 5'}
-                </span>
-              </li>
-            </ul>
+          {/* Main Card Container */}
+          <div className="bg-white/90 backdrop-blur-xl rounded-3xl sm:rounded-[2.5rem] p-6 sm:p-10 lg:p-14 border border-white/80 shadow-[0_20px_50px_rgba(72,82,158,0.12)] relative overflow-hidden">
+            
+            {/* Top Accent Line */}
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#48529e] via-[#f15555] to-[#48529e]" />
 
-            {/* Coral-Red Pill Button (Exact match to screenshot) */}
-            <button
-              onClick={onOpenBooking}
-              className="px-8 py-3.5 sm:py-4 rounded-full bg-[#f15555] hover:bg-[#e04444] text-white font-extrabold text-sm sm:text-base shadow-md hover:shadow-lg transition-all transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer inline-flex items-center gap-2"
-            >
-              <span>
-                {language === 'es' ? '¡Agendar Sesión 1 a 1!' : 'Book 1-on-1 Session!'}
-              </span>
-              <ArrowRight className="w-4 h-4 stroke-[2.5]" />
-            </button>
-          </div>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+              
+              {/* Left Column: Feature List & CTA */}
+              <div className="lg:col-span-7 space-y-6 sm:space-y-8">
+                
+                {/* Pill Tag */}
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#48529e]/10 border border-[#48529e]/20 text-[#48529e] text-xs font-black uppercase tracking-wider">
+                  <span className="w-2 h-2 rounded-full bg-[#f15555]" />
+                  <span>
+                    {language === 'es' ? 'Programa Personalizado 1 a 1' : 'Personalized 1-on-1 Program'}
+                  </span>
+                </div>
 
-          {/* Right Column: Floating Device Mockup showing 5-Day Challenge */}
-          <div className="relative w-full max-w-md lg:max-w-lg flex justify-center">
-            <div className="relative w-full aspect-[16/10] bg-[#1e244d] rounded-2xl overflow-hidden shadow-2xl border-4 border-stone-800 flex items-center justify-center group">
-              <Image
-                src="/nick-hero.jpg"
-                alt="1-on-1 English Lessons with Teacher Nick"
-                width={600}
-                height={380}
-                className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1e244d]/90 via-[#1e244d]/40 to-transparent flex flex-col justify-end p-6 text-white text-left">
-                <span className="px-3 py-1 rounded-md bg-[#f15555] text-white text-xs font-black uppercase tracking-wider self-start mb-2">
-                  {language === 'es' ? 'Clases 1 a 1' : '1-on-1 Coaching'}
-                </span>
-                <h3 className="text-xl sm:text-2xl font-black text-white leading-tight">
-                  {language === 'es' ? 'APRENDE CON TEACHER NICK' : 'LEARN WITH TEACHER NICK'}
+                {/* Section Title */}
+                <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-stone-900 tracking-tight leading-tight">
+                  {language === 'es'
+                    ? 'Todo lo que necesitas para hablar Inglés con seguridad'
+                    : 'Everything you need to speak English with confidence'}
                 </h3>
-                <p className="text-xs text-stone-300 font-medium mt-1">
-                  {language === 'es' ? 'Inglés Americano Natural y Fluidez Real' : 'Master Natural American English & Real Fluency'}
-                </p>
+
+                {/* Bullet Points */}
+                <ul className="space-y-4">
+                  <li className="flex items-start gap-3.5 group">
+                    <div className="w-7 h-7 rounded-xl bg-[#48529e] text-white flex items-center justify-center shrink-0 shadow-xs mt-0.5 group-hover:bg-[#f15555] transition-colors duration-300">
+                      <CheckCircle2 className="w-4 h-4 stroke-[3]" />
+                    </div>
+                    <div>
+                      <span className="font-bold text-stone-900 text-base sm:text-lg block leading-snug">
+                        {language === 'es'
+                          ? 'Ejercicios interactivos con retroalimentación instantánea'
+                          : 'Interactive exercises with instant feedback'}
+                      </span>
+                      <p className="text-xs sm:text-sm text-stone-500 mt-0.5 font-normal">
+                        {language === 'es'
+                          ? 'Corrige tu pronunciación y fluidez al instante'
+                          : 'Correct your pronunciation and speech flow on the spot'}
+                      </p>
+                    </div>
+                  </li>
+
+                  <li className="flex items-start gap-3.5 group">
+                    <div className="w-7 h-7 rounded-xl bg-[#48529e] text-white flex items-center justify-center shrink-0 shadow-xs mt-0.5 group-hover:bg-[#f15555] transition-colors duration-300">
+                      <CheckCircle2 className="w-4 h-4 stroke-[3]" />
+                    </div>
+                    <div>
+                      <span className="font-bold text-stone-900 text-base sm:text-lg block leading-snug">
+                        {language === 'es'
+                          ? 'Lecciones adicionales para profundizar en el material'
+                          : 'Extra lessons that dive deeper into the material'}
+                      </span>
+                      <p className="text-xs sm:text-sm text-stone-500 mt-0.5 font-normal">
+                        {language === 'es'
+                          ? 'Materiales exclusivos diseñados para hispanohablantes'
+                          : 'Exclusive materials tailored for real-world fluency'}
+                      </p>
+                    </div>
+                  </li>
+
+                  <li className="flex items-start gap-3.5 group">
+                    <div className="w-7 h-7 rounded-xl bg-[#48529e] text-white flex items-center justify-center shrink-0 shadow-xs mt-0.5 group-hover:bg-[#f15555] transition-colors duration-300">
+                      <CheckCircle2 className="w-4 h-4 stroke-[3]" />
+                    </div>
+                    <div>
+                      <span className="font-bold text-stone-900 text-base sm:text-lg block leading-snug">
+                        {language === 'es'
+                          ? 'Ejercicios de examen final en el Día 5'
+                          : 'Final Exam exercises on Day 5'}
+                      </span>
+                      <p className="text-xs sm:text-sm text-stone-500 mt-0.5 font-normal">
+                        {language === 'es'
+                          ? 'Mide tu progreso real y consolida lo aprendido'
+                          : 'Measure your real progress and solidify key learnings'}
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+
+                {/* CTA Action Bar */}
+                <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-4">
+                  <button
+                    onClick={onOpenBooking}
+                    className="px-8 py-4 rounded-full bg-[#f15555] hover:bg-[#e04444] text-white font-black text-base shadow-lg shadow-[#f15555]/25 hover:shadow-xl hover:shadow-[#f15555]/35 transition-all transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer inline-flex items-center justify-center gap-3 group"
+                  >
+                    <span>
+                      {language === 'es' ? '¡Agendar Sesión 1 a 1!' : 'Book 1-on-1 Session!'}
+                    </span>
+                    <ArrowRight className="w-5 h-5 stroke-[2.5] group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </div>
+
               </div>
+
+              {/* Right Column: Teacher Nick Card Showcase */}
+              <div className="lg:col-span-5 flex justify-center">
+                <div className="relative w-full max-w-sm sm:max-w-md rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-[#1e244d] group transition-all duration-500 hover:shadow-[0_25px_60px_rgba(0,0,0,0.25)]">
+                  
+                  {/* Photo Container */}
+                  <div className="relative aspect-[4/5] w-full overflow-hidden">
+                    <Image
+                      src="/nick-hero.jpg"
+                      alt="1-on-1 English Lessons with Teacher Nick"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 450px"
+                      className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#121632] via-[#121632]/35 to-transparent" />
+
+                    {/* Top Floating Badge */}
+                    <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
+                      <span className="px-3.5 py-1.5 rounded-full bg-stone-900/85 backdrop-blur-md border border-white/20 text-white text-xs font-black uppercase tracking-wider flex items-center gap-2 shadow-xs">
+                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                        {language === 'es' ? 'Clases 1 a 1' : '1-on-1 Coaching'}
+                      </span>
+                    </div>
+
+                    {/* Bottom Card Content */}
+                    <div className="absolute bottom-0 inset-x-0 p-6 sm:p-7 text-white text-left space-y-1.5">
+                      <h4 className="text-xl sm:text-2xl font-black text-white leading-tight tracking-tight drop-shadow-xs">
+                        {language === 'es' ? 'APRENDE CON TEACHER NICK' : 'LEARN WITH TEACHER NICK'}
+                      </h4>
+                      <p className="text-xs sm:text-sm text-stone-200 font-medium leading-relaxed opacity-95">
+                        {language === 'es'
+                          ? 'Inglés Americano Natural y Fluidez Real'
+                          : 'Master Natural American English & Real Fluency'}
+                      </p>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+
             </div>
+
           </div>
 
         </div>

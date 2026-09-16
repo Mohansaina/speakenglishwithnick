@@ -118,32 +118,36 @@ export const FAQ: React.FC<FAQProps> = ({ onOpenBooking }) => {
         </div>
 
         {/* Still Have Questions CTA Banner */}
-        <div className="mt-10 sm:mt-14 p-6 sm:p-8 rounded-3xl bg-[#e4ebf9]/70 border border-[#c4d4f7] flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
-          <div className="space-y-1.5">
-            <h4 className="font-black text-[#18181b] text-base sm:text-lg">
+        <div className="mt-12 sm:mt-16 p-6 sm:p-9 rounded-3xl bg-gradient-to-r from-[#e4ebf9]/90 via-[#edf3fc] to-[#e4ebf9]/90 border border-[#c4d4f7] shadow-lg shadow-[#48529e]/5 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left relative overflow-hidden">
+          
+          {/* Decorative Ambient Background */}
+          <div className="absolute -right-10 -bottom-10 w-48 h-48 bg-[#48529e]/10 rounded-full blur-2xl pointer-events-none" />
+
+          <div className="space-y-1.5 relative z-10">
+            <h4 className="font-black text-[#18181b] text-base sm:text-xl tracking-tight">
               {language === 'es' ? '¿Tienes alguna pregunta para Teacher Nick?' : 'Have any questions for Teacher Nick?'}
             </h4>
-            <p className="text-xs sm:text-sm text-stone-700 font-medium flex flex-wrap items-center justify-center sm:justify-start gap-1">
+            <p className="text-xs sm:text-sm text-stone-600 font-medium flex flex-wrap items-center justify-center sm:justify-start gap-1.5">
               <span>{language === 'es' ? 'Envía un correo directamente a:' : 'Send an email directly to:'}</span>
               <a
                 href={emailUrls.gmailWebUrl}
                 onClick={(e) => handleSmartEmailClick(e)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-black text-[#48529e] hover:underline hover:text-[#f15555] transition-colors"
+                className="font-black text-[#48529e] hover:text-[#f15555] transition-colors underline underline-offset-4 decoration-[#c4d4f7]"
               >
                 speakenglishwithnick@gmail.com
               </a>
             </p>
           </div>
           
-          <div className="flex flex-col sm:flex-row gap-2.5 w-full sm:w-auto shrink-0">
+          <div className="flex flex-col sm:flex-row gap-2.5 w-full sm:w-auto shrink-0 relative z-10">
             <a
               href={emailUrls.gmailWebUrl}
               onClick={(e) => handleSmartEmailClick(e)}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#f15555] hover:bg-[#e04444] text-white font-extrabold text-xs sm:text-sm shadow-md flex items-center justify-center gap-2 cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
+              className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-[#f15555] hover:bg-[#e04444] text-white font-extrabold text-xs sm:text-sm shadow-md shadow-[#f15555]/20 flex items-center justify-center gap-2.5 cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
             >
               <Mail className="w-4 h-4 text-white" />
               <span>{language === 'es' ? 'Enviar Email' : 'Send Email'}</span>
