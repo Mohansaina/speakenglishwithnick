@@ -6,7 +6,6 @@ import { LanguageProvider, useLanguage } from '@/context/LanguageContext';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
 import { TransformationSection } from '@/components/TransformationSection';
-import { SpanishSpeakersHub } from '@/components/SpanishSpeakersHub';
 import { DiagnosticIntake } from '@/components/DiagnosticIntake';
 import { AudioStudioModal } from '@/components/AudioStudioModal';
 import { FluencyQuiz } from '@/components/FluencyQuiz';
@@ -74,14 +73,6 @@ function MainContent() {
       {/* 4.5 Interactive Fluency Diagnostic & Ratio Intake */}
       <DiagnosticIntake onOpenBookingWithNotes={handleOpenBookingWithQuiz} />
 
-      {/* 5. Spanish Speakers Specialization Hub */}
-      <SpanishSpeakersHub
-        onOpenBooking={() => {
-          setBookingNotes('');
-          setBookingModalOpen(true);
-        }}
-        onOpenLeadMagnet={() => handleOpenBooking()}
-      />
 
       {/* 6. Simple Interactive Audio Studio Callout Banner */}
       <section id="drills" className="py-14 sm:py-20 bg-[#fafafa] border-b border-stone-200/80 relative overflow-hidden">

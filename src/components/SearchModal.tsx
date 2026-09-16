@@ -16,12 +16,12 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose }) => 
   if (!isOpen) return null;
 
   const searchableItems = [
-    { title: 'The E-School Trap Fix for Spanish Speakers', type: 'Sound Drill', cat: 'Accent', anchor: '#spanish-hub' },
+    { title: 'The E-School Trap Fix for Spanish Speakers', type: 'Sound Drill', cat: 'Accent', anchor: '#drills' },
     { title: '10 Real Conversations without Mental Translation', type: 'Video Masterclass', cat: 'Videos', anchor: '#popular-lessons' },
     { title: 'American Vowel Sounds: Ship vs Sheep & Cup vs Cap', type: 'Pronunciation Guide', cat: 'Accent', anchor: '#drills' },
     { title: 'Job Interview English: Confident Responders Blueprint', type: 'Video Lesson', cat: 'Career', anchor: '#popular-lessons' },
     { title: 'Workplace Rescue Phrases (Buying Thinking Time)', type: 'Audio Workout', cat: 'Audio', anchor: '#drills' },
-    { title: 'Connected Speech: Gonna, Wanna, Coulda Reductions', type: 'Fluency Guide', cat: 'Rhythm', anchor: '#spanish-hub' },
+    { title: 'Connected Speech: Gonna, Wanna, Coulda Reductions', type: 'Fluency Guide', cat: 'Rhythm', anchor: '#drills' },
   ];
 
   const filtered = searchableItems.filter(item =>

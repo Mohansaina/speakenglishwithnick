@@ -194,17 +194,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                         <div className="text-[11px] text-stone-500 font-normal">{language === 'es' ? 'Estudio de audio interactivo' : 'Interactive audio studio'}</div>
                       </div>
                     </a>
-                    <a
-                      href="#spanish-hub"
-                      onClick={() => setLessonsDropdown(false)}
-                      className="flex items-start gap-2.5 p-2.5 rounded-xl bg-[#e4ebf9] text-[#48529e] transition-colors font-semibold"
-                    >
-                      <BookOpen className="w-4 h-4 text-[#48529e] mt-0.5 shrink-0" />
-                      <div>
-                        <div className="text-xs font-bold">{t.spanishGuide}</div>
-                        <div className="text-[11px] text-stone-600 font-normal">Fix 4 Spanish accent traps</div>
-                      </div>
-                    </a>
+
                     <button
                       onClick={() => {
                         setLessonsDropdown(false);
@@ -382,14 +372,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               </span>
             </a>
 
-            <a
-              href="#spanish-hub"
-              onClick={() => setMobileMenuOpen(false)}
-              className="p-3 rounded-xl bg-[#e4ebf9] text-[#48529e] font-black flex items-center justify-between"
-            >
-              <span>{t.spanishGuide}</span>
-              <span className="w-2 h-2 rounded-full bg-[#f15555]"></span>
-            </a>
+
 
             <a
               href="#drills"
