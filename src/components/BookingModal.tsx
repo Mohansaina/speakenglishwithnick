@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { X, Users, User, CheckCircle2, MessageCircle, Sparkles } from 'lucide-react';
+import { X, Users, User, CheckCircle2, Sparkles, BookOpen, Target, MessageSquare } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
 interface BookingModalProps {
@@ -10,6 +10,8 @@ interface BookingModalProps {
   prefilledNotes?: string;
 }
 
+type ProgramType = 'english-from-0' | 'specific-english' | 'conversation-practice';
+
 export const BookingModal: React.FC<BookingModalProps> = ({
   isOpen,
   onClose,
@@ -17,28 +19,27 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 }) => {
   const { language } = useLanguage();
 
-  const isConversationPrefill =
-    prefilledNotes.toLowerCase().includes('conversation') ||
-    prefilledNotes.toLowerCase().includes('conversación');
+  const getTabFromNotes = (notes: string): ProgramType => {
+    const lower = notes.toLowerCase();
+    if (lower.includes('conversation') || lower.includes('conversación')) {
+      return 'conversation-practice';
+    }
+    if (lower.includes('specific') || lower.includes('específico')) {
+      return 'specific-english';
+    }
+    return 'english-from-0';
+  };
 
-  const [activeTab, setActiveTab] = useState<'general' | 'conversation'>(
-    isConversationPrefill ? 'conversation' : 'general'
-  );
+  const [activeTab, setActiveTab] = useState<ProgramType>('english-from-0');
 
   useEffect(() => {
-    if (
-      prefilledNotes.toLowerCase().includes('conversation') ||
-      prefilledNotes.toLowerCase().includes('conversación')
-    ) {
-      setActiveTab('conversation');
-    } else {
-      setActiveTab('general');
-    }
-  }, [prefilledNotes]);
+    setActiveTab(getTabFromNotes(prefilledNotes));
+  }, [prefilledNotes, isOpen]);
 
   if (!isOpen) return null;
 
-  const generalPrices = [
+  // Tier 1 & 2 Pricing (English from 0 & Specific English)
+  const standardPrices = [
     {
       studentsEn: '1 student',
       studentsEs: '1 estudiante',
@@ -81,6 +82,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
     },
   ];
 
+  // Tier 3 Pricing (Conversation Practice)
   const conversationPrices = [
     {
       studentsEn: '1 student',
@@ -109,7 +111,35 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   ];
 
   const currentPrices =
-    activeTab === 'general' ? generalPrices : conversationPrices;
+    activeTab === 'conversation-practice' ? conversationPrices : standardPrices;
+
+  const getProgramTitle = () => {
+    switch (activeTab) {
+      case 'english-from-0':
+        return language === 'es' ? 'Inglés desde 0' : 'English from 0';
+      case 'specific-english':
+        return language === 'es' ? 'Inglés Específico' : 'Specific English';
+      case 'conversation-practice':
+        return language === 'es' ? 'Práctica de Conversación' : 'Conversation Practice';
+    }
+  };
+
+  const getProgramSubtitle = () => {
+    switch (activeTab) {
+      case 'english-from-0':
+        return language === 'es'
+          ? 'Tarifas por clase para estudiantes principiantes'
+          : 'Per-class rates for beginner students building a core foundation';
+      case 'specific-english':
+        return language === 'es'
+          ? 'Tarifas por clase para trabajo, negocios o metas personalizadas'
+          : 'Per-class rates for work, business, job interviews, or custom goals';
+      case 'conversation-practice':
+        return language === 'es'
+          ? 'Tarifas por clase para fluidez y práctica conversacional'
+          : 'Per-class rates for confidence speaking and native American cadence';
+    }
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md animate-modal-backdrop overflow-y-auto">
@@ -128,57 +158,65 @@ export const BookingModal: React.FC<BookingModalProps> = ({
           <div className="space-y-2 pr-8">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 border border-white/20 text-xs font-bold uppercase tracking-wider text-white">
               <Sparkles className="w-3.5 h-3.5 text-[#f15555]" />
-              <span>{language === 'es' ? 'Precios por Clase' : 'Prices Per Class'}</span>
+              <span>{language === 'es' ? 'Precios del Programa' : 'Program Pricing'}</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-white">
-              {language === 'es' ? 'Planes de Precios' : 'Class Pricing & Rates'}
+              {getProgramTitle()}
             </h2>
             <p className="text-xs sm:text-sm text-white/80 font-medium">
-              {language === 'es'
-                ? 'Elige el programa para ver las tarifas por clase según la cantidad de estudiantes.'
-                : 'Select your program to view transparent per-class rates based on group size.'}
+              {getProgramSubtitle()}
             </p>
           </div>
         </div>
 
-        {/* Tab Switcher Buttons */}
-        <div className="p-4 sm:p-6 bg-stone-50 border-b border-stone-200">
-          <div className="grid grid-cols-2 gap-2 p-1.5 bg-stone-200/70 rounded-2xl">
+        {/* 3 Separate Program Tabs */}
+        <div className="p-3 sm:p-5 bg-stone-50 border-b border-stone-200">
+          <div className="grid grid-cols-3 gap-1.5 p-1.5 bg-stone-200/80 rounded-2xl">
+            
             <button
-              onClick={() => setActiveTab('general')}
-              className={`py-3 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer text-center ${
-                activeTab === 'general'
+              onClick={() => setActiveTab('english-from-0')}
+              className={`py-2.5 px-2 sm:px-3 rounded-xl text-[11px] sm:text-xs font-black transition-all cursor-pointer text-center flex items-center justify-center gap-1.5 ${
+                activeTab === 'english-from-0'
                   ? 'bg-white text-[#48529e] shadow-md border border-stone-200/80'
                   : 'text-stone-600 hover:text-stone-900'
               }`}
             >
-              {language === 'es' ? 'Inglés desde 0 & Específico' : 'English From 0 & Specific English'}
+              <BookOpen className="w-3.5 h-3.5 shrink-0 hidden xs:inline" />
+              <span>{language === 'es' ? 'Inglés desde 0' : 'English from 0'}</span>
             </button>
 
             <button
-              onClick={() => setActiveTab('conversation')}
-              className={`py-3 px-3 sm:px-4 rounded-xl text-xs sm:text-sm font-black transition-all cursor-pointer text-center ${
-                activeTab === 'conversation'
+              onClick={() => setActiveTab('specific-english')}
+              className={`py-2.5 px-2 sm:px-3 rounded-xl text-[11px] sm:text-xs font-black transition-all cursor-pointer text-center flex items-center justify-center gap-1.5 ${
+                activeTab === 'specific-english'
                   ? 'bg-white text-[#48529e] shadow-md border border-stone-200/80'
                   : 'text-stone-600 hover:text-stone-900'
               }`}
             >
-              {language === 'es' ? 'Práctica de Conversación' : 'Conversation Practice'}
+              <Target className="w-3.5 h-3.5 shrink-0 hidden xs:inline" />
+              <span>{language === 'es' ? 'Inglés Específico' : 'Specific English'}</span>
             </button>
+
+            <button
+              onClick={() => setActiveTab('conversation-practice')}
+              className={`py-2.5 px-2 sm:px-3 rounded-xl text-[11px] sm:text-xs font-black transition-all cursor-pointer text-center flex items-center justify-center gap-1.5 ${
+                activeTab === 'conversation-practice'
+                  ? 'bg-white text-[#48529e] shadow-md border border-stone-200/80'
+                  : 'text-stone-600 hover:text-stone-900'
+              }`}
+            >
+              <MessageSquare className="w-3.5 h-3.5 shrink-0 hidden xs:inline" />
+              <span>{language === 'es' ? 'Conversación' : 'Conversation'}</span>
+            </button>
+
           </div>
         </div>
 
         {/* Prices List Body */}
-        <div className="p-5 sm:p-7 space-y-4 max-h-[55vh] overflow-y-auto">
+        <div className="p-5 sm:p-7 space-y-4 max-h-[50vh] overflow-y-auto">
           <div className="flex items-center justify-between pb-2 border-b border-stone-200">
             <span className="text-xs sm:text-sm font-extrabold text-stone-900 uppercase tracking-wider">
-              {activeTab === 'general'
-                ? language === 'es'
-                  ? 'Inglés desde 0 / Inglés Específico'
-                  : 'English From 0 & Specific English'
-                : language === 'es'
-                ? 'Práctica de Conversación'
-                : 'Conversation Practice'}
+              {getProgramTitle()}
             </span>
             <span className="text-xs font-bold text-[#f15555] bg-[#f15555]/10 px-2.5 py-1 rounded-full border border-[#f15555]/20">
               {language === 'es' ? 'Precios por clase' : 'Prices per class'}
@@ -231,10 +269,10 @@ export const BookingModal: React.FC<BookingModalProps> = ({
           </div>
         </div>
 
-        {/* Modal Footer / Action Button */}
+        {/* Modal Footer */}
         <div className="p-4 sm:p-6 bg-stone-50 border-t border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="text-xs text-stone-500 text-center sm:text-left font-medium">
-            {language === 'es' ? '¿Listo para reservar?' : 'Ready to reserve your spot?'}
+            {language === 'es' ? '¿Listo para empezar tu programa?' : 'Ready to start your program with Nick?'}
           </div>
           <button
             onClick={onClose}
