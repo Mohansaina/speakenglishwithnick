@@ -160,9 +160,8 @@ export const Hero: React.FC<HeroProps> = ({
               </div>
 
               <div className="pt-4 sm:pt-5 border-t border-white/20 flex items-center justify-between relative z-10 mt-4">
-                <span className="text-xs sm:text-sm font-bold text-stone-200 group-hover:text-white transition-colors flex items-center gap-1.5">
-                  <Mail className="w-3.5 h-3.5 text-[#f15555] shrink-0" />
-                  <span className="truncate">speakenglishwithnick@gmail.com</span>
+                <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#e4ebf9] group-hover:text-white transition-colors">
+                  {language === 'es' ? 'Ver Precios' : 'See Prices'}
                 </span>
                 <div className="w-8 h-8 rounded-full bg-[#f15555] border border-white/30 group-hover:bg-[#e04444] flex items-center justify-center transition-all duration-300 shadow-sm group-hover:scale-110 shrink-0">
                   <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform stroke-[2.5]" />
@@ -205,9 +204,8 @@ export const Hero: React.FC<HeroProps> = ({
               </div>
 
               <div className="pt-4 sm:pt-5 border-t border-white/20 flex items-center justify-between relative z-10 mt-4">
-                <span className="text-xs sm:text-sm font-bold text-stone-200 group-hover:text-white transition-colors flex items-center gap-1.5">
-                  <Mail className="w-3.5 h-3.5 text-[#f15555] shrink-0" />
-                  <span className="truncate">speakenglishwithnick@gmail.com</span>
+                <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-white group-hover:text-[#e4ebf9] transition-colors">
+                  {language === 'es' ? 'Ver Precios' : 'See Prices'}
                 </span>
                 <div className="w-8 h-8 rounded-full bg-[#f15555] border border-white/30 group-hover:bg-[#e04444] flex items-center justify-center transition-all duration-300 shadow-sm group-hover:scale-110 shrink-0">
                   <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform stroke-[2.5]" />
@@ -250,9 +248,8 @@ export const Hero: React.FC<HeroProps> = ({
               </div>
 
               <div className="pt-4 sm:pt-5 border-t border-white/20 flex items-center justify-between relative z-10 mt-4">
-                <span className="text-xs sm:text-sm font-bold text-stone-200 group-hover:text-white transition-colors flex items-center gap-1.5">
-                  <Mail className="w-3.5 h-3.5 text-[#f15555] shrink-0" />
-                  <span className="truncate">speakenglishwithnick@gmail.com</span>
+                <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#e4ebf9] group-hover:text-white transition-colors">
+                  {language === 'es' ? 'Ver Precios' : 'See Prices'}
                 </span>
                 <div className="w-8 h-8 rounded-full bg-[#f15555] border border-white/30 group-hover:bg-[#e04444] flex items-center justify-center transition-all duration-300 shadow-sm group-hover:scale-110 shrink-0">
                   <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform stroke-[2.5]" />
@@ -261,6 +258,23 @@ export const Hero: React.FC<HeroProps> = ({
             </button>
 
           </div>
+
+          {/* Any Questions Email Bar */}
+          <div className="mt-6 sm:mt-8 text-center">
+            <a
+              href="mailto:speakenglishwithnick@gmail.com?subject=Question%20for%20Teacher%20Nick"
+              className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[#e4ebf9] hover:bg-[#c2d4f8] text-[#48529e] text-xs sm:text-sm font-bold border border-[#c4d4f7] transition-all shadow-2xs hover:scale-[1.02] cursor-pointer"
+            >
+              <Mail className="w-4 h-4 text-[#f15555]" />
+              <span>
+                {language === 'es'
+                  ? '¿Tienes alguna pregunta? speakenglishwithnick@gmail.com'
+                  : 'Have any questions? speakenglishwithnick@gmail.com'}
+              </span>
+              <ArrowRight className="w-4 h-4 text-[#48529e] stroke-[2.5]" />
+            </a>
+          </div>
+
         </div>
 
       </div>
