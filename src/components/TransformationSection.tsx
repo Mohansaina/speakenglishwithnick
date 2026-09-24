@@ -166,7 +166,58 @@ export const TransformationSection: React.FC = () => {
               </div>
             </div>
 
+            {/* Jason Card */}
+            <div className="shrink-0 w-[300px] sm:w-[380px] md:w-[420px] bg-white rounded-3xl p-5 sm:p-7 border border-stone-200/90 shadow-[0_12px_40px_rgba(0,0,0,0.04)] space-y-5 flex flex-col justify-between hover:border-[#48529e]/60 transition-all group relative overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#f15555] to-[#48529e]" />
+              <div className="space-y-4 pt-1">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-2xl bg-[#48529e] text-white font-black flex items-center justify-center text-lg border border-[#373f7a] shadow-xs shrink-0">
+                      J
+                    </div>
+                    <div>
+                      <h4 className="font-black text-stone-900 text-base leading-tight">{t.student3}</h4>
+                      <span className="inline-block text-[10px] font-bold text-[#48529e] bg-[#e4ebf9] px-2 py-0.5 rounded-md border border-[#c2d4f8] mt-0.5">
+                        {t.country3}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-0.5 text-[#f59e0b] shrink-0">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-[#f59e0b]" />
+                    ))}
+                  </div>
+                </div>
 
+                <blockquote className="text-stone-800 text-sm sm:text-base leading-relaxed italic font-serif pt-1 border-l-3 border-[#f15555] pl-3.5">
+                  {language === 'es' ? t.quote3 : (t.quote3En || t.quote3)}
+                </blockquote>
+
+                <div className="p-3.5 rounded-2xl bg-[#f4f7fd] border border-stone-200/80 space-y-2 text-xs">
+                  <div className="text-stone-600 flex items-start gap-2">
+                    <span className="font-bold text-stone-800 uppercase text-[10px] tracking-wider bg-stone-200 px-1.5 py-0.5 rounded shrink-0">
+                      {language === 'es' ? 'Antes' : 'Before'}
+                    </span>
+                    <span className="leading-snug">{language === 'es' ? 'Le costaba entender a hablantes nativos cuando hablaban rápido.' : 'Found it challenging to follow fast native English speakers.'}</span>
+                  </div>
+                  <div className="text-[#48529e] font-semibold flex items-start gap-2 pt-2 border-t border-stone-200/60">
+                    <span className="font-black text-[#48529e] uppercase text-[10px] tracking-wider bg-[#e4ebf9] px-1.5 py-0.5 rounded flex items-center gap-1 shrink-0">
+                      <CheckCircle2 className="w-3 h-3 text-[#f15555]" />
+                      {language === 'es' ? 'Ahora' : 'Now'}
+                    </span>
+                    <span className="leading-snug">{language === 'es' ? 'Entiende la pronunciación clara de Nick sin ningún problema.' : 'Easily understands Teacher Nick thanks to clear pronunciation.'}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-3 border-t border-stone-100 flex items-center justify-between text-xs">
+                <span className="font-bold text-[#48529e] flex items-center gap-1">
+                  <ShieldCheck className="w-4 h-4 text-[#f15555]" />
+                  <span>{language === 'es' ? 'Alumno Verificado' : 'Verified Student'}</span>
+                </span>
+                <span className="text-stone-500 text-[11px]">Conversation Practice</span>
+              </div>
+            </div>
 
             {/* Duplicate Set for Seamless Infinite Loop */}
             {/* David Card Copy */}
@@ -262,6 +313,59 @@ export const TransformationSection: React.FC = () => {
                       {language === 'es' ? 'Ahora' : 'Now'}
                     </span>
                     <span className="leading-snug">{language === 'es' ? 'Comodidad practicando con Nick, corrigiendo errores y ganando confianza.' : 'Comfortably practicing with Nick, correcting mistakes & building confidence.'}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-3 border-t border-stone-100 flex items-center justify-between text-xs">
+                <span className="font-bold text-[#48529e] flex items-center gap-1">
+                  <ShieldCheck className="w-4 h-4 text-[#f15555]" />
+                  <span>{language === 'es' ? 'Alumno Verificado' : 'Verified Student'}</span>
+                </span>
+                <span className="text-stone-500 text-[11px]">Conversation Practice</span>
+              </div>
+            </div>
+
+            {/* Jason Card Copy */}
+            <div className="shrink-0 w-[300px] sm:w-[380px] md:w-[420px] bg-white rounded-3xl p-5 sm:p-7 border border-stone-200/90 shadow-[0_12px_40px_rgba(0,0,0,0.04)] space-y-5 flex flex-col justify-between hover:border-[#48529e]/60 transition-all group relative overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#f15555] to-[#48529e]" />
+              <div className="space-y-4 pt-1">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-2xl bg-[#48529e] text-white font-black flex items-center justify-center text-lg border border-[#373f7a] shadow-xs shrink-0">
+                      J
+                    </div>
+                    <div>
+                      <h4 className="font-black text-stone-900 text-base leading-tight">{t.student3}</h4>
+                      <span className="inline-block text-[10px] font-bold text-[#48529e] bg-[#e4ebf9] px-2 py-0.5 rounded-md border border-[#c2d4f8] mt-0.5">
+                        {t.country3}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-0.5 text-[#f59e0b] shrink-0">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-[#f59e0b]" />
+                    ))}
+                  </div>
+                </div>
+
+                <blockquote className="text-stone-800 text-sm sm:text-base leading-relaxed italic font-serif pt-1 border-l-3 border-[#f15555] pl-3.5">
+                  {language === 'es' ? t.quote3 : (t.quote3En || t.quote3)}
+                </blockquote>
+
+                <div className="p-3.5 rounded-2xl bg-[#f4f7fd] border border-stone-200/80 space-y-2 text-xs">
+                  <div className="text-stone-600 flex items-start gap-2">
+                    <span className="font-bold text-stone-800 uppercase text-[10px] tracking-wider bg-stone-200 px-1.5 py-0.5 rounded shrink-0">
+                      {language === 'es' ? 'Antes' : 'Before'}
+                    </span>
+                    <span className="leading-snug">{language === 'es' ? 'Le costaba entender a hablantes nativos cuando hablaban rápido.' : 'Found it challenging to follow fast native English speakers.'}</span>
+                  </div>
+                  <div className="text-[#48529e] font-semibold flex items-start gap-2 pt-2 border-t border-stone-200/60">
+                    <span className="font-black text-[#48529e] uppercase text-[10px] tracking-wider bg-[#e4ebf9] px-1.5 py-0.5 rounded flex items-center gap-1 shrink-0">
+                      <CheckCircle2 className="w-3 h-3 text-[#f15555]" />
+                      {language === 'es' ? 'Ahora' : 'Now'}
+                    </span>
+                    <span className="leading-snug">{language === 'es' ? 'Entiende la pronunciación clara de Nick sin ningún problema.' : 'Easily understands Teacher Nick thanks to clear pronunciation.'}</span>
                   </div>
                 </div>
               </div>

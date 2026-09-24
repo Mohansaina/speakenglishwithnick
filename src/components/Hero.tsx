@@ -39,9 +39,6 @@ export const Hero: React.FC<HeroProps> = ({
                     <span>Teacher Nick</span>
                     <span className="w-1.5 h-1.5 rounded-full bg-[#f15555]" />
                   </div>
-                  <p className="text-[10px] sm:text-[11px] text-white/80 font-medium">
-                    {language === 'es' ? 'Especialista en Acento y Fluidez' : 'Accent & Fluency Specialist'}
-                  </p>
                 </div>
                 <span className="text-[9px] sm:text-[10px] uppercase font-black px-2 sm:px-2.5 py-1 rounded-full bg-[#f15555] text-white shrink-0">
                   5 Languages
@@ -64,12 +61,12 @@ export const Hero: React.FC<HeroProps> = ({
               {language === 'es' ? (
                 <>
                   Donde hablar inglés <br />
-                  <span className="font-serif italic font-normal text-[#48529e]">es posible</span>
+                  <span className="font-serif italic font-black text-[#48529e]">es posible</span>
                 </>
               ) : (
                 <>
                   Where speaking English <br />
-                  <span className="font-serif italic font-normal text-[#48529e]">is possible</span>
+                  <span className="font-serif italic font-black text-[#48529e]">is possible</span>
                 </>
               )}
             </h1>
@@ -77,8 +74,8 @@ export const Hero: React.FC<HeroProps> = ({
             {/* Nick Introduction Bio */}
             <p className="text-xs sm:text-sm md:text-base text-stone-700 leading-relaxed font-normal">
               {language === 'es'
-                ? 'Hola, soy Nick. He aprendido a hablar 5 idiomas con fluidez y entiendo las bases de muchos otros. Será un verdadero placer guiarte con paciencia en el proceso de aprender a hablar inglés o ganar total confianza al comunicarte.'
-                : "Hi, I'm Nick. I have learned to speak 5 languages fluently, and I'm learning the basics of many other languages. I would be happy to patiently guide you through the process of learning how to speak English or get more confident with your English speaking."}
+                ? 'Hola, soy Nick. He aprendido a hablar 5 idiomas con fluidez y estoy aprendiendo otros idiomas. Estaré encantado de guiarte pacientemente en el proceso de aprender inglés y ganar más confianza al hablarlo.'
+                : "Hi, I'm Nick. I have learned to speak 5 languages fluently and I'm learning other languages. I would be happy to patiently guide you through the process of learning English and get more confident speaking it."}
             </p>
 
             {/* Class Layout Schedule Box */}

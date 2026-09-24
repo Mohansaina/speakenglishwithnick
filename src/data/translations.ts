@@ -22,7 +22,7 @@ export const translations = {
       badge: "Speak English",
       h1Line1: "Where speaking English",
       h1Line2: "is possible",
-      subtitle: "Hi, I'm Nick. I have learned to speak 5 languages fluently, and I'm learning the basics of many other languages. I would be happy to patiently guide you through the process of learning how to speak English or get more confident with your English speaking.",
+      subtitle: "Hi, I'm Nick. I have learned to speak 5 languages fluently and I'm learning other languages. I would be happy to patiently guide you through the process of learning English and get more confident speaking it.",
       classLayout: {
         title: "Class layout:",
         item1: "1 session per week (In person or online)",
@@ -67,6 +67,10 @@ export const translations = {
       quote2En: "I feel comfortable practicing English with Teacher Nick and he corrects my mistakes. I'm gaining confidence in English speaking.",
       student2: "Javier",
       country2: "Práctica de conversación (Conversation Practice)",
+      quote3: "En nuestra práctica de conversación es fácil entender al profesor Nick, porque habla muy claro.",
+      quote3En: "In our conversation practice it's easy to understand teacher Nick, because he speaks clearly.",
+      student3: "Jason",
+      country3: "Práctica de conversación (Conversation Practice)",
     },
     spanishSection: {
       badge: "Tailored For Hispanohablantes",
@@ -236,6 +240,10 @@ export const translations = {
       quote2En: "I feel comfortable practicing English with Teacher Nick and he corrects my mistakes. I'm gaining confidence in English speaking.",
       student2: "Javier",
       country2: "Práctica de conversación",
+      quote3: "En nuestra práctica de conversación es fácil entender al profesor Nick, porque habla muy claro.",
+      quote3En: "In our conversation practice it's easy to understand teacher Nick, because he speaks clearly.",
+      student3: "Jason",
+      country3: "Práctica de conversación",
     },
     spanishSection: {
       badge: "Especial Para Hispanohablantes",
