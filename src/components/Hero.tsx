@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Calendar, MessageCircle, ArrowRight, Check } from 'lucide-react';
+import { Calendar, MessageCircle, ArrowRight, Check, Mail } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
 interface HeroProps {
@@ -79,7 +79,7 @@ export const Hero: React.FC<HeroProps> = ({
             </p>
 
             {/* Class Layout Schedule Box */}
-            <div className="p-3.5 sm:p-5 rounded-2xl bg-[#1e244d] text-white border border-[#373f7a] shadow-md">
+            <div className="p-3.5 sm:p-5 rounded-2xl bg-[#1e244d] text-white border border-[#373f7a] shadow-md space-y-3">
               <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-stone-200 font-medium">
                 <div className="flex items-start sm:items-center gap-2.5 sm:gap-3">
                   <Calendar className="w-4 h-4 text-[#f15555] shrink-0 mt-0.5 sm:mt-0" />
@@ -97,6 +97,19 @@ export const Hero: React.FC<HeroProps> = ({
                       : '3-5 days of practice through WhatsApp'}
                   </span>
                 </div>
+              </div>
+
+              {/* Arrow Link to Email at the bottom of the blue box */}
+              <div className="pt-3 border-t border-white/15 flex items-center justify-between">
+                <a
+                  href="mailto:speakenglishwithnick@gmail.com?subject=Inquiry%20for%20Teacher%20Nick"
+                  className="group inline-flex items-center gap-2.5 text-xs sm:text-sm font-bold text-stone-200 hover:text-white transition-colors"
+                >
+                  <span className="group-hover:underline">speakenglishwithnick@gmail.com</span>
+                  <div className="w-7 h-7 rounded-full bg-[#f15555] group-hover:bg-[#e04444] flex items-center justify-center transition-all shadow-sm group-hover:scale-105">
+                    <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform stroke-[2.5]" />
+                  </div>
+                </a>
               </div>
             </div>
           </div>
@@ -147,11 +160,12 @@ export const Hero: React.FC<HeroProps> = ({
               </div>
 
               <div className="pt-4 sm:pt-5 border-t border-white/20 flex items-center justify-between relative z-10 mt-4">
-                <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#e4ebf9] group-hover:text-white transition-colors">
-                  {language === 'es' ? 'Bases sólidas' : 'Core foundation'}
+                <span className="text-xs sm:text-sm font-bold text-stone-200 group-hover:text-white transition-colors flex items-center gap-1.5">
+                  <Mail className="w-3.5 h-3.5 text-[#f15555] shrink-0" />
+                  <span className="truncate">speakenglishwithnick@gmail.com</span>
                 </span>
-                <div className="w-8 h-8 rounded-full bg-white/10 border border-white/20 group-hover:bg-[#f15555] group-hover:border-[#f15555] flex items-center justify-center transition-all duration-300 shadow-sm">
-                  <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform" />
+                <div className="w-8 h-8 rounded-full bg-[#f15555] border border-white/30 group-hover:bg-[#e04444] flex items-center justify-center transition-all duration-300 shadow-sm group-hover:scale-110 shrink-0">
+                  <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform stroke-[2.5]" />
                 </div>
               </div>
             </button>
@@ -191,11 +205,12 @@ export const Hero: React.FC<HeroProps> = ({
               </div>
 
               <div className="pt-4 sm:pt-5 border-t border-white/20 flex items-center justify-between relative z-10 mt-4">
-                <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-white group-hover:text-[#e4ebf9] transition-colors">
-                  {language === 'es' ? 'Personalizar tema' : 'Custom situations'}
+                <span className="text-xs sm:text-sm font-bold text-stone-200 group-hover:text-white transition-colors flex items-center gap-1.5">
+                  <Mail className="w-3.5 h-3.5 text-[#f15555] shrink-0" />
+                  <span className="truncate">speakenglishwithnick@gmail.com</span>
                 </span>
-                <div className="w-8 h-8 rounded-full bg-[#f15555] border border-white/30 group-hover:bg-[#e04444] flex items-center justify-center transition-all duration-300 shadow-sm">
-                  <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform" />
+                <div className="w-8 h-8 rounded-full bg-[#f15555] border border-white/30 group-hover:bg-[#e04444] flex items-center justify-center transition-all duration-300 shadow-sm group-hover:scale-110 shrink-0">
+                  <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform stroke-[2.5]" />
                 </div>
               </div>
             </button>
@@ -235,11 +250,12 @@ export const Hero: React.FC<HeroProps> = ({
               </div>
 
               <div className="pt-4 sm:pt-5 border-t border-white/20 flex items-center justify-between relative z-10 mt-4">
-                <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#e4ebf9] group-hover:text-white transition-colors">
-                  {language === 'es' ? 'Hablar con confianza' : 'Confidence speaking'}
+                <span className="text-xs sm:text-sm font-bold text-stone-200 group-hover:text-white transition-colors flex items-center gap-1.5">
+                  <Mail className="w-3.5 h-3.5 text-[#f15555] shrink-0" />
+                  <span className="truncate">speakenglishwithnick@gmail.com</span>
                 </span>
-                <div className="w-8 h-8 rounded-full bg-white/10 border border-white/20 group-hover:bg-[#f15555] group-hover:border-[#f15555] flex items-center justify-center transition-all duration-300 shadow-sm">
-                  <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform" />
+                <div className="w-8 h-8 rounded-full bg-[#f15555] border border-white/30 group-hover:bg-[#e04444] flex items-center justify-center transition-all duration-300 shadow-sm group-hover:scale-110 shrink-0">
+                  <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform stroke-[2.5]" />
                 </div>
               </div>
             </button>
