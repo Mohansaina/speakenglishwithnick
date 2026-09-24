@@ -14,8 +14,9 @@ export interface BookingEmailData {
   name: string;
   email: string;
   phone?: string;
-  date: string;
-  time: string;
+  groupSize?: string;
+  date?: string;
+  time?: string;
   timezone?: string;
   notes?: string;
 }
@@ -23,7 +24,7 @@ export interface BookingEmailData {
 // Destination email for Coach Nick / Admin
 export const COACH_EMAIL = process.env.COACH_EMAIL || 'speakenglishwithnick@gmail.com';
 export const RESEND_API_KEY = process.env.RESEND_API_KEY || '';
-export const WEB3FORMS_ACCESS_KEY = process.env.WEB3FORMS_ACCESS_KEY || '95e2795a-6c55-4b7a-bda3-26b98c09baaa';
+export const WEB3FORMS_ACCESS_KEY = process.env.WEB3FORMS_ACCESS_KEY || 'd00ae149-9fc0-4582-a1d8-d2232f28cbd9';
 
 /**
  * Send email using Web3Forms API
@@ -43,7 +44,7 @@ async function sendViaWeb3Forms({
   replyTo?: string;
   extraFields?: Record<string, string | number>;
 }) {
-  const apiKey = process.env.WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY || '95e2795a-6c55-4b7a-bda3-26b98c09baaa';
+  const apiKey = process.env.WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY || 'd00ae149-9fc0-4582-a1d8-d2232f28cbd9';
   if (!apiKey) return null;
 
   try {
@@ -465,7 +466,7 @@ ${phone ? `• Open WhatsApp Chat: https://wa.me/${phone.replace(/[^0-9]/g, '')}
  * Send Booking notification to Coach Nick and confirmation to student
  */
 export async function sendBookingEmail(data: BookingEmailData) {
-  const { name, email, phone, date, time, timezone, notes } = data;
+  const { name, email, phone, groupSize, date, time, timezone, notes } = data;
   const transporter = createTransporter();
 
   const coachHtml = `
@@ -474,20 +475,21 @@ export async function sendBookingEmail(data: BookingEmailData) {
       <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #f7f7f5; padding: 20px; color: #1c1917;">
         <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 16px; border: 1px solid #e7e5e4; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
           <div style="background: #1e244d; color: #fff; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
-            <h2 style="margin: 0 0 4px 0; color: #ffffff;">📅 New 1-on-1 Session Booked!</h2>
-            <p style="margin: 0; color: #c2d4f8; font-size: 13px;">Speak English with Nick Booking System</p>
+            <h2 style="margin: 0 0 4px 0; color: #ffffff;">📅 New Inquiry / Booking!</h2>
+            <p style="margin: 0; color: #c2d4f8; font-size: 13px;">Speak English with Nick System</p>
           </div>
 
           <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 14px;">
             <tr><td style="padding: 8px 0; color: #78716c; width: 35%;">Student:</td><td style="font-weight: 700;">${name}</td></tr>
             <tr><td style="padding: 8px 0; color: #78716c;">Email:</td><td style="font-weight: 700;"><a href="mailto:${email}">${email}</a></td></tr>
+            <tr><td style="padding: 8px 0; color: #78716c;">Group Size:</td><td style="font-weight: 700; color: #48529e;">${groupSize || '1 Student'}</td></tr>
             <tr><td style="padding: 8px 0; color: #78716c;">Phone:</td><td style="font-weight: 700;">${phone || 'N/A'}</td></tr>
-            <tr><td style="padding: 8px 0; color: #78716c;">Date & Time:</td><td style="font-weight: 700; color: #48529e;">${date} at ${time} (${timezone || 'Student Local Time'})</td></tr>
-            <tr><td style="padding: 8px 0; color: #78716c;">Notes / Intake:</td><td style="font-style: italic;">${notes || 'None'}</td></tr>
+            ${date ? `<tr><td style="padding: 8px 0; color: #78716c;">Date & Time:</td><td style="font-weight: 700; color: #48529e;">${date} at ${time} (${timezone || 'Local'})</td></tr>` : ''}
+            <tr><td style="padding: 8px 0; color: #78716c;">Goals / Notes:</td><td style="font-style: italic;">${notes || 'None'}</td></tr>
           </table>
 
           <div style="text-align: center; margin-top: 25px;">
-            <a href="mailto:${email}?subject=Confirming%20our%20English%20Coaching%20Session" style="background: #48529e; color: #ffffff; padding: 12px 24px; border-radius: 8px; font-weight: 700; text-decoration: none; display: inline-block;">
+            <a href="mailto:${email}?subject=Confirming%20your%20English%20Coaching%20Session" style="background: #48529e; color: #ffffff; padding: 12px 24px; border-radius: 8px; font-weight: 700; text-decoration: none; display: inline-block;">
               Reply to ${name}
             </a>
           </div>
@@ -499,17 +501,17 @@ export async function sendBookingEmail(data: BookingEmailData) {
   // 1. Dispatch via Web3Forms (Primary & Recommended)
   if (WEB3FORMS_ACCESS_KEY) {
     const bookingMessageText = `
-📅 NEW 1-ON-1 SESSION BOOKED!
+📅 NEW INQUIRY / BOOKING RECEIVED!
 
-BOOKING DETAILS:
+STUDENT DETAILS:
 ----------------------------------------
 • Student Name: ${name}
 • Email: ${email}
-• Phone / WhatsApp: ${phone || 'Not provided'}
-• Date & Time: ${date} at ${time}
-• Timezone: ${timezone || 'Student Local Time'}
-• Notes / Goals: ${notes || 'None'}
-• Date Booked: ${new Date().toLocaleString()}
+• Group Size: ${groupSize || '1 Student'}
+• WhatsApp / Phone: ${phone || 'Not provided'}
+• Goals / Questions: ${notes || 'None'}
+${date ? `• Date & Time: ${date} at ${time} (${timezone || 'Local'})` : ''}
+• Submitted At: ${new Date().toLocaleString()}
 
 DIRECT ACTIONS:
 ----------------------------------------
@@ -520,17 +522,18 @@ ${phone ? `• Open WhatsApp Chat: https://wa.me/${phone.replace(/[^0-9]/g, '')}
     const web3Result = await sendViaWeb3Forms({
       name,
       email,
-      subject: `📅 New Booking: ${name} (${date} @ ${time})`,
+      subject: `📩 New Inquiry: ${name} (${groupSize || '1 Student'})`,
       messageText: bookingMessageText,
       replyTo: email,
       extraFields: {
         "Student Name": name,
         "Student Email": email,
+        "Group Size": groupSize || '1 Student',
         "WhatsApp / Phone": phone || 'Not provided',
-        "Session Date": date,
-        "Session Time": time,
-        "Timezone": timezone || 'Student Local Time',
-        "Intake Notes & Goals": notes || 'None',
+        "Goals & Questions": notes || 'None',
+        "Session Date": date || 'N/A',
+        "Session Time": time || 'N/A',
+        "Timezone": timezone || 'N/A',
         "WhatsApp Link": phone ? `https://wa.me/${phone.replace(/[^0-9]/g, '')}` : 'N/A'
       }
     });

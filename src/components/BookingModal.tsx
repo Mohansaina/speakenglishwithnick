@@ -35,6 +35,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   const [showContactForm, setShowContactForm] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [groupSize, setGroupSize] = useState('1 Student');
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -43,18 +44,24 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
-      setShowContactForm(false);
+      const isDirectInquiry =
+        prefilledNotes.toLowerCase().includes('inquiry') ||
+        prefilledNotes.toLowerCase().includes('question') ||
+        prefilledNotes.toLowerCase().includes('pregunta') ||
+        prefilledNotes.toLowerCase().includes('contacto');
+      setShowContactForm(isDirectInquiry);
       setSubmitted(false);
       setName('');
       setEmail('');
       setMessage('');
+      setGroupSize('1 Student');
     } else {
       document.body.style.overflow = '';
     }
     return () => {
       document.body.style.overflow = '';
     };
-  }, [isOpen]);
+  }, [isOpen, prefilledNotes]);
 
   if (!isOpen) return null;
 
@@ -157,17 +164,41 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
     setIsSubmitting(true);
     try {
-      await fetch('/api/booking', {
+      // 1. Direct submit to Web3Forms endpoint for instant dashboard recording
+      const web3Data = {
+        access_key: 'd00ae149-9fc0-4582-a1d8-d2232f28cbd9',
+        name,
+        email,
+        from_name: 'Speak English with Nick Inquiry',
+        subject: `📩 New Inquiry: ${name} (${groupSize})`,
+        "Group Size": groupSize,
+        "Program Interest": getProgramTitle(),
+        message: `Student Name: ${name}\nEmail: ${email}\nGroup Size: ${groupSize}\nProgram: ${getProgramTitle()}\n\nGoals & Questions:\n${message}`,
+      };
+
+      await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(web3Data),
+      });
+
+      // 2. Also send to internal API endpoint for backup logging
+      fetch('/api/booking', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name,
           email,
+          groupSize,
           date: new Date().toLocaleDateString(),
           time: new Date().toLocaleTimeString(),
-          notes: `[Program: ${getProgramTitle()}] ${message}`,
+          notes: `[Program: ${getProgramTitle()}] Goals / Questions: ${message}`,
         }),
-      });
+      }).catch((err) => console.error('Internal API dispatch warning:', err));
+
       setSubmitted(true);
     } catch (err) {
       console.error('Error sending message:', err);
@@ -193,7 +224,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
           <div className="space-y-1 pr-8">
             <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-white/15 border border-white/20 text-xs font-bold uppercase tracking-wider text-white">
               <Sparkles className="w-3.5 h-3.5 text-[#f15555]" />
-              <span>{showContactForm ? (language === 'es' ? 'Contacto Directo' : 'Direct Message') : getBadgeLabel()}</span>
+              <span>{showContactForm ? (language === 'es' ? 'Contacto Directo' : 'Direct Inquiry') : getBadgeLabel()}</span>
             </div>
             <h2 className="text-xl sm:text-2xl font-black tracking-tight text-white leading-tight">
               {showContactForm
@@ -204,11 +235,10 @@ export const BookingModal: React.FC<BookingModalProps> = ({
         </div>
 
         {/* Modal Content Area */}
-        <div className="flex-1 overflow-y-auto max-h-[60vh] p-4 sm:p-5 space-y-3 min-h-0 touch-pan-y shadow-inner">
-          
-          {!showContactForm ? (
-            /* --- PRICES VIEW --- */
-            <>
+        {!showContactForm ? (
+          /* --- PRICES VIEW --- */
+          <>
+            <div className="flex-1 overflow-y-auto max-h-[62vh] p-4 sm:p-5 space-y-3 min-h-0 touch-pan-y shadow-inner">
               <div className="flex items-center justify-between pb-2 border-b border-stone-200">
                 <span className="text-xs sm:text-sm font-black text-stone-900 uppercase tracking-wider">
                   {getProgramTitle()}
@@ -267,7 +297,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               <div className="pt-2">
                 <button
                   onClick={() => {
-                    setMessage(`Hi Teacher Nick, I am interested in ${getProgramTitle()}!`);
+                    setMessage(`Hi Teacher Nick, I have a question about ${getProgramTitle()}!`);
                     setShowContactForm(true);
                   }}
                   className="w-full p-3.5 rounded-2xl bg-[#48529e] hover:bg-[#3a4387] text-white font-black text-xs sm:text-sm flex items-center justify-between transition-all group shadow-md cursor-pointer active:scale-[0.99]"
@@ -287,11 +317,28 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   </div>
                 </button>
               </div>
-            </>
-          ) : (
-            /* --- MESSAGE BOX FORM VIEW --- */
-            <div className="space-y-3">
+            </div>
+
+            {/* Modal Footer for Prices View */}
+            <div className="p-3.5 sm:p-4 bg-stone-50 border-t border-stone-200 flex items-center justify-between gap-3 shrink-0">
+              <div className="text-xs text-stone-600 font-bold flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span>{language === 'es' ? 'Destino: speakenglishwithnick@gmail.com' : 'Destination: speakenglishwithnick@gmail.com'}</span>
+              </div>
               <button
+                onClick={onClose}
+                className="px-5 py-2 sm:py-2.5 rounded-full bg-stone-200 hover:bg-stone-300 text-stone-800 font-black text-xs sm:text-sm transition-all cursor-pointer flex items-center justify-center"
+              >
+                <span>{language === 'es' ? 'Cerrar' : 'Close'}</span>
+              </button>
+            </div>
+          </>
+        ) : (
+          /* --- MESSAGE FORM VIEW WITH STICKY FOOTER SUBMIT --- */
+          <form onSubmit={handleSubmitMessage} className="flex flex-col flex-1 min-h-0 overflow-hidden">
+            <div className="flex-1 overflow-y-auto max-h-[55vh] p-4 sm:p-5 space-y-3 min-h-0 touch-pan-y shadow-inner">
+              <button
+                type="button"
                 onClick={() => setShowContactForm(false)}
                 className="text-xs font-bold text-[#48529e] hover:underline flex items-center gap-1 cursor-pointer mb-1"
               >
@@ -305,17 +352,17 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     <Check className="w-6 h-6 stroke-[3]" />
                   </div>
                   <h3 className="font-black text-emerald-900 text-base">
-                    {language === 'es' ? '¡Mensaje Enviado!' : 'Message Sent!'}
+                    {language === 'es' ? '¡Mensaje Enviado con Éxito!' : 'Inquiry Submitted Successfully!'}
                   </h3>
                   <p className="text-xs text-emerald-800 font-medium leading-relaxed">
                     {language === 'es'
-                      ? 'Tu consulta fue enviada a speakenglishwithnick@gmail.com. Teacher Nick te responderá a la brevedad.'
-                      : 'Your message has been sent directly to speakenglishwithnick@gmail.com. Teacher Nick will get back to you shortly.'}
+                      ? 'Tu consulta fue enviada directamente a speakenglishwithnick@gmail.com. Teacher Nick te responderá a la brevedad.'
+                      : 'Your inquiry has been sent directly to speakenglishwithnick@gmail.com. Teacher Nick will get back to you shortly.'}
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmitMessage} className="space-y-3">
-                  <div className="p-3 rounded-xl bg-stone-100 border border-stone-200 text-xs font-medium text-stone-700 flex items-center gap-2">
+                <div className="space-y-3">
+                  <div className="p-2.5 rounded-xl bg-stone-100 border border-stone-200 text-xs font-medium text-stone-700 flex items-center gap-2">
                     <Mail className="w-4 h-4 text-[#48529e] shrink-0" />
                     <span>
                       {language === 'es' ? 'Destino:' : 'Destination:'}{' '}
@@ -333,7 +380,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder={language === 'es' ? 'Ej: Maria Lopez' : 'E.g., Sarah Johnson'}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-xs font-medium focus:outline-none focus:border-[#48529e] focus:ring-2 focus:ring-[#48529e]/20"
+                      className="w-full px-3.5 py-2 rounded-xl border border-stone-300 text-xs font-medium focus:outline-none focus:border-[#48529e] focus:ring-2 focus:ring-[#48529e]/20"
                     />
                   </div>
 
@@ -347,64 +394,85 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="name@example.com"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-xs font-medium focus:outline-none focus:border-[#48529e] focus:ring-2 focus:ring-[#48529e]/20"
+                      className="w-full px-3.5 py-2 rounded-xl border border-stone-300 text-xs font-medium focus:outline-none focus:border-[#48529e] focus:ring-2 focus:ring-[#48529e]/20"
                     />
                   </div>
 
                   <div>
                     <label className="block text-xs font-bold text-stone-800 mb-1">
-                      {language === 'es' ? 'Tu Mensaje o Consulta' : 'Your Message / Inquiry'}
+                      {language === 'es' ? 'Tamaño del Grupo' : 'Group Size'} *
+                    </label>
+                    <select
+                      value={groupSize}
+                      onChange={(e) => setGroupSize(e.target.value)}
+                      className="w-full px-3.5 py-2 rounded-xl border border-stone-300 text-xs font-semibold focus:outline-none focus:border-[#48529e] focus:ring-2 focus:ring-[#48529e]/20 bg-white text-stone-900 cursor-pointer"
+                    >
+                      <option value="1 Student">{language === 'es' ? '1 Estudiante ($85 / clase)' : '1 Student ($85 / class)'}</option>
+                      <option value="2 Students">{language === 'es' ? '2 Estudiantes ($50 por persona)' : '2 Students ($50 per person)'}</option>
+                      <option value="3 Students">{language === 'es' ? '3 Estudiantes ($45 por persona)' : '3 Students ($45 per person)'}</option>
+                      <option value="4 Students">{language === 'es' ? '4 Estudiantes ($40 por persona)' : '4 Students ($40 per person)'}</option>
+                      <option value="5-8 Students">{language === 'es' ? '5-8 Estudiantes ($30 por persona)' : '5-8 Students ($30 per person)'}</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-stone-800 mb-1">
+                      {language === 'es' ? 'Metas y Preguntas' : 'Goals & Questions'} *
                     </label>
                     <textarea
-                      rows={3}
+                      rows={2}
+                      required
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
+                      placeholder={
+                        language === 'es'
+                          ? '¿Cuáles son tus metas para aprender inglés o qué preguntas tienes para Teacher Nick?'
+                          : 'What are your English learning goals or questions for Teacher Nick?'
+                      }
                       className="w-full px-3.5 py-2 rounded-xl border border-stone-300 text-xs font-medium focus:outline-none focus:border-[#48529e] focus:ring-2 focus:ring-[#48529e]/20"
                     ></textarea>
                   </div>
-
-                  <div className="pt-1 flex items-center gap-2">
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="flex-1 py-3 rounded-xl bg-[#f15555] hover:bg-[#e04444] text-white font-black text-xs shadow-md transition-all cursor-pointer flex items-center justify-center gap-2"
-                    >
-                      <Send className="w-4 h-4 stroke-[2.5]" />
-                      <span>
-                        {isSubmitting
-                          ? (language === 'es' ? 'Enviando...' : 'Sending...')
-                          : (language === 'es' ? 'Enviar a speakenglishwithnick@gmail.com' : 'Send to speakenglishwithnick@gmail.com')}
-                      </span>
-                    </button>
-                    <a
-                      href={`mailto:speakenglishwithnick@gmail.com?subject=Inquiry regarding ${encodeURIComponent(getProgramTitle())}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-3.5 py-3 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 font-bold text-xs border border-stone-300 transition-colors flex items-center justify-center gap-1 shrink-0"
-                      title="Open Mail App"
-                    >
-                      <Mail className="w-4 h-4 text-stone-600" />
-                    </a>
-                  </div>
-                </form>
+                </div>
               )}
             </div>
-          )}
 
-        </div>
+            {/* Sticky Form Footer Bar */}
+            {!submitted ? (
+              <div className="p-3.5 sm:p-4 bg-stone-50 border-t border-stone-200 flex items-center justify-between gap-3 shrink-0">
+                <button
+                  type="button"
+                  onClick={() => setShowContactForm(false)}
+                  className="px-4 py-2.5 rounded-xl bg-stone-200 hover:bg-stone-300 text-stone-800 font-bold text-xs shrink-0 cursor-pointer"
+                >
+                  {language === 'es' ? '← Volver' : '← Back'}
+                </button>
 
-        {/* Modal Footer */}
-        <div className="p-3.5 sm:p-4 bg-stone-50 border-t border-stone-200 flex items-center justify-between gap-3 shrink-0">
-          <div className="text-xs text-stone-500 font-medium">
-            {language === 'es' ? '¿Listo para empezar tu programa?' : 'Ready to start your program with Nick?'}
-          </div>
-          <button
-            onClick={onClose}
-            className="px-5 py-2 sm:py-2.5 rounded-full bg-stone-200 hover:bg-stone-300 text-stone-800 font-black text-xs sm:text-sm transition-all cursor-pointer flex items-center justify-center"
-          >
-            <span>{language === 'es' ? 'Cerrar' : 'Close'}</span>
-          </button>
-        </div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="flex-1 py-3 px-4 rounded-xl bg-[#f15555] hover:bg-[#e04444] text-white font-black text-xs sm:text-sm shadow-md transition-all cursor-pointer flex items-center justify-center gap-2 border border-red-400"
+                >
+                  <Send className="w-4 h-4 stroke-[2.5]" />
+                  <span>
+                    {isSubmitting
+                      ? (language === 'es' ? 'Enviando...' : 'Submitting...')
+                      : (language === 'es' ? 'ENVIAR CONSULTA A NICK →' : 'SUBMIT INQUIRY TO NICK →')}
+                  </span>
+                </button>
+              </div>
+            ) : (
+              <div className="p-3.5 sm:p-4 bg-stone-50 border-t border-stone-200 flex items-center justify-end shrink-0">
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="px-5 py-2 sm:py-2.5 rounded-full bg-stone-200 hover:bg-stone-300 text-stone-800 font-black text-xs sm:text-sm transition-all cursor-pointer"
+                >
+                  <span>{language === 'es' ? 'Cerrar' : 'Close'}</span>
+                </button>
+              </div>
+            )}
+          </form>
+        )}
 
       </div>
     </div>

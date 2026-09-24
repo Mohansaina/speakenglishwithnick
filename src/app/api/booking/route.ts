@@ -4,7 +4,7 @@ import { sendBookingEmail, COACH_EMAIL } from '@/lib/email';
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, email, phone, date, time, timezone, notes } = body;
+    const { name, email, phone, groupSize, date, time, timezone, notes } = body;
 
     if (!email || !name) {
       return NextResponse.json({ error: 'Name and email are required.' }, { status: 400 });
@@ -14,6 +14,7 @@ export async function POST(req: Request) {
       name,
       email,
       phone,
+      groupSize,
       date,
       time,
       timezone,

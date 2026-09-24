@@ -101,15 +101,15 @@ export const Hero: React.FC<HeroProps> = ({
 
               {/* Arrow Link to Email at the bottom of the blue box */}
               <div className="pt-3 border-t border-white/15 flex items-center justify-between">
-                <a
-                  href="mailto:speakenglishwithnick@gmail.com?subject=Inquiry%20for%20Teacher%20Nick"
-                  className="group inline-flex items-center gap-2.5 text-xs sm:text-sm font-bold text-stone-200 hover:text-white transition-colors"
+                <button
+                  onClick={() => onOpenBooking('Inquiry: Questions & Group Size')}
+                  className="group inline-flex items-center gap-2.5 text-xs sm:text-sm font-bold text-stone-200 hover:text-white transition-colors cursor-pointer"
                 >
                   <span className="group-hover:underline">speakenglishwithnick@gmail.com</span>
                   <div className="w-7 h-7 rounded-full bg-[#f15555] group-hover:bg-[#e04444] flex items-center justify-center transition-all shadow-sm group-hover:scale-105">
                     <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform stroke-[2.5]" />
                   </div>
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -261,8 +261,8 @@ export const Hero: React.FC<HeroProps> = ({
 
           {/* Any Questions Email Bar */}
           <div className="mt-6 sm:mt-8 text-center">
-            <a
-              href="mailto:speakenglishwithnick@gmail.com?subject=Question%20for%20Teacher%20Nick"
+            <button
+              onClick={() => onOpenBooking('Inquiry: Questions & Group Size')}
               className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[#e4ebf9] hover:bg-[#c2d4f8] text-[#48529e] text-xs sm:text-sm font-bold border border-[#c4d4f7] transition-all shadow-2xs hover:scale-[1.02] cursor-pointer"
             >
               <Mail className="w-4 h-4 text-[#f15555]" />
@@ -272,7 +272,7 @@ export const Hero: React.FC<HeroProps> = ({
                   : 'Have any questions? speakenglishwithnick@gmail.com'}
               </span>
               <ArrowRight className="w-4 h-4 text-[#48529e] stroke-[2.5]" />
-            </a>
+            </button>
           </div>
 
         </div>
