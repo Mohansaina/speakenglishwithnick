@@ -126,10 +126,7 @@ export const Hero: React.FC<HeroProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-7 items-stretch">
             
             {/* Box 1: English from 0 */}
-            <button
-              onClick={() => onOpenBooking(language === 'es' ? 'Inglés desde 0' : 'English from 0')}
-              className="group p-5 xs:p-6 sm:p-7 lg:p-8 rounded-3xl bg-gradient-to-b from-[#48529e] to-[#3a4387] hover:from-[#3a4387] hover:to-[#2e356e] text-white border-2 border-[#373f7a]/80 hover:border-[#f15555] text-left transition-all duration-300 shadow-[0_12px_35px_rgba(72,82,158,0.18)] hover:shadow-[0_20px_45px_rgba(72,82,158,0.32)] hover:-translate-y-1.5 flex flex-col justify-between min-h-[auto] md:min-h-[280px] cursor-pointer relative overflow-hidden active:scale-[0.98]"
-            >
+            <div className="group p-5 xs:p-6 sm:p-7 rounded-3xl bg-gradient-to-b from-[#48529e] to-[#3a4387] text-white border-2 border-[#373f7a]/80 hover:border-[#f15555] text-left transition-all duration-300 shadow-[0_12px_35px_rgba(72,82,158,0.18)] hover:shadow-[0_20px_45px_rgba(72,82,158,0.32)] flex flex-col justify-between min-h-[auto] md:min-h-[300px] relative overflow-hidden">
               <div className="absolute top-0 right-0 w-36 h-36 bg-[#f15555]/15 rounded-full blur-2xl pointer-events-none group-hover:scale-125 transition-transform duration-500" />
 
               <div className="space-y-3 relative z-10">
@@ -159,21 +156,38 @@ export const Hero: React.FC<HeroProps> = ({
                 </ul>
               </div>
 
-              <div className="pt-4 sm:pt-5 border-t border-white/20 flex items-center justify-between relative z-10 mt-4">
-                <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#e4ebf9] group-hover:text-white transition-colors">
-                  {language === 'es' ? 'Ver Precios' : 'See Prices'}
-                </span>
-                <div className="w-8 h-8 rounded-full bg-[#f15555] border border-white/30 group-hover:bg-[#e04444] flex items-center justify-center transition-all duration-300 shadow-sm group-hover:scale-110 shrink-0">
-                  <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform stroke-[2.5]" />
-                </div>
+              <div className="space-y-2 relative z-10 mt-4 pt-3 border-t border-white/20">
+                {/* SEE PRICES button */}
+                <button
+                  onClick={() => onOpenBooking(language === 'es' ? 'Inglés desde 0' : 'English from 0')}
+                  className="w-full p-3 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-between text-white transition-all group/btn cursor-pointer"
+                >
+                  <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#e4ebf9] group-hover/btn:text-white transition-colors">
+                    {language === 'es' ? 'Ver Precios' : 'See Prices'}
+                  </span>
+                  <div className="w-7 h-7 rounded-full bg-[#f15555] border border-white/30 group-hover/btn:bg-[#e04444] flex items-center justify-center transition-all duration-300 shadow-sm group-hover/btn:scale-110 shrink-0">
+                    <ArrowRight className="w-4 h-4 text-white group-hover/btn:translate-x-0.5 transition-transform stroke-[2.5]" />
+                  </div>
+                </button>
+
+                {/* HAVE ANY QUESTIONS bar inside this box */}
+                <button
+                  onClick={() => onOpenBooking(language === 'es' ? 'Preguntas sobre Inglés desde 0' : 'Questions about English from 0')}
+                  className="w-full p-2.5 rounded-2xl bg-[#e4ebf9]/15 hover:bg-[#e4ebf9]/25 border border-[#c4d4f7]/30 flex items-center justify-between text-stone-100 text-[11px] sm:text-xs font-semibold transition-all group/q cursor-pointer"
+                >
+                  <div className="flex items-center gap-1.5 truncate">
+                    <Mail className="w-3.5 h-3.5 text-[#f15555] shrink-0" />
+                    <span className="truncate">
+                      {language === 'es' ? '¿Tienes alguna pregunta?' : 'Have any questions?'} speakenglishwithnick@gmail.com
+                    </span>
+                  </div>
+                  <ArrowRight className="w-3.5 h-3.5 text-stone-200 group-hover/q:translate-x-0.5 transition-transform stroke-[2.5] shrink-0" />
+                </button>
               </div>
-            </button>
+            </div>
 
             {/* Box 2: Specific English */}
-            <button
-              onClick={() => onOpenBooking(language === 'es' ? 'Inglés Específico' : 'Specific English')}
-              className="group p-5 xs:p-6 sm:p-7 lg:p-8 rounded-3xl bg-gradient-to-b from-[#48529e] to-[#3a4387] hover:from-[#3a4387] hover:to-[#2e356e] text-white border-2 border-[#f15555]/90 hover:border-[#f15555] text-left transition-all duration-300 shadow-[0_15px_40px_rgba(241,85,85,0.22)] hover:shadow-[0_22px_50px_rgba(241,85,85,0.35)] hover:-translate-y-1.5 flex flex-col justify-between min-h-[auto] md:min-h-[280px] cursor-pointer relative overflow-hidden active:scale-[0.98] ring-4 ring-[#f15555]/15"
-            >
+            <div className="group p-5 xs:p-6 sm:p-7 rounded-3xl bg-gradient-to-b from-[#48529e] to-[#3a4387] text-white border-2 border-[#f15555]/90 hover:border-[#f15555] text-left transition-all duration-300 shadow-[0_15px_40px_rgba(241,85,85,0.22)] hover:shadow-[0_22px_50px_rgba(241,85,85,0.35)] flex flex-col justify-between min-h-[auto] md:min-h-[300px] relative overflow-hidden ring-4 ring-[#f15555]/15">
               <div className="absolute top-0 right-0 w-36 h-36 bg-[#f15555]/25 rounded-full blur-2xl pointer-events-none group-hover:scale-125 transition-transform duration-500" />
 
               <div className="space-y-3 relative z-10">
@@ -203,21 +217,38 @@ export const Hero: React.FC<HeroProps> = ({
                 </ul>
               </div>
 
-              <div className="pt-4 sm:pt-5 border-t border-white/20 flex items-center justify-between relative z-10 mt-4">
-                <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-white group-hover:text-[#e4ebf9] transition-colors">
-                  {language === 'es' ? 'Ver Precios' : 'See Prices'}
-                </span>
-                <div className="w-8 h-8 rounded-full bg-[#f15555] border border-white/30 group-hover:bg-[#e04444] flex items-center justify-center transition-all duration-300 shadow-sm group-hover:scale-110 shrink-0">
-                  <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform stroke-[2.5]" />
-                </div>
+              <div className="space-y-2 relative z-10 mt-4 pt-3 border-t border-white/20">
+                {/* SEE PRICES button */}
+                <button
+                  onClick={() => onOpenBooking(language === 'es' ? 'Inglés Específico' : 'Specific English')}
+                  className="w-full p-3 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-between text-white transition-all group/btn cursor-pointer"
+                >
+                  <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-white group-hover/btn:text-[#e4ebf9] transition-colors">
+                    {language === 'es' ? 'Ver Precios' : 'See Prices'}
+                  </span>
+                  <div className="w-7 h-7 rounded-full bg-[#f15555] border border-white/30 group-hover/btn:bg-[#e04444] flex items-center justify-center transition-all duration-300 shadow-sm group-hover/btn:scale-110 shrink-0">
+                    <ArrowRight className="w-4 h-4 text-white group-hover/btn:translate-x-0.5 transition-transform stroke-[2.5]" />
+                  </div>
+                </button>
+
+                {/* HAVE ANY QUESTIONS bar inside this box */}
+                <button
+                  onClick={() => onOpenBooking(language === 'es' ? 'Preguntas sobre Inglés Específico' : 'Questions about Specific English')}
+                  className="w-full p-2.5 rounded-2xl bg-[#e4ebf9]/15 hover:bg-[#e4ebf9]/25 border border-[#c4d4f7]/30 flex items-center justify-between text-stone-100 text-[11px] sm:text-xs font-semibold transition-all group/q cursor-pointer"
+                >
+                  <div className="flex items-center gap-1.5 truncate">
+                    <Mail className="w-3.5 h-3.5 text-[#f15555] shrink-0" />
+                    <span className="truncate">
+                      {language === 'es' ? '¿Tienes alguna pregunta?' : 'Have any questions?'} speakenglishwithnick@gmail.com
+                    </span>
+                  </div>
+                  <ArrowRight className="w-3.5 h-3.5 text-stone-200 group-hover/q:translate-x-0.5 transition-transform stroke-[2.5] shrink-0" />
+                </button>
               </div>
-            </button>
+            </div>
 
             {/* Box 3: Conversation Practice */}
-            <button
-              onClick={() => onOpenBooking(language === 'es' ? 'Práctica de Conversación' : 'Conversation Practice')}
-              className="group p-5 xs:p-6 sm:p-7 lg:p-8 rounded-3xl bg-gradient-to-b from-[#48529e] to-[#3a4387] hover:from-[#3a4387] hover:to-[#2e356e] text-white border-2 border-[#373f7a]/80 hover:border-[#f15555] text-left transition-all duration-300 shadow-[0_12px_35px_rgba(72,82,158,0.18)] hover:shadow-[0_20px_45px_rgba(72,82,158,0.32)] hover:-translate-y-1.5 flex flex-col justify-between min-h-[auto] md:min-h-[280px] cursor-pointer relative overflow-hidden active:scale-[0.98]"
-            >
+            <div className="group p-5 xs:p-6 sm:p-7 rounded-3xl bg-gradient-to-b from-[#48529e] to-[#3a4387] text-white border-2 border-[#373f7a]/80 hover:border-[#f15555] text-left transition-all duration-300 shadow-[0_12px_35px_rgba(72,82,158,0.18)] hover:shadow-[0_20px_45px_rgba(72,82,158,0.32)] flex flex-col justify-between min-h-[auto] md:min-h-[300px] relative overflow-hidden">
               <div className="absolute top-0 right-0 w-36 h-36 bg-[#f15555]/15 rounded-full blur-2xl pointer-events-none group-hover:scale-125 transition-transform duration-500" />
 
               <div className="space-y-3 relative z-10">
@@ -247,15 +278,35 @@ export const Hero: React.FC<HeroProps> = ({
                 </ul>
               </div>
 
-              <div className="pt-4 sm:pt-5 border-t border-white/20 flex items-center justify-between relative z-10 mt-4">
-                <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#e4ebf9] group-hover:text-white transition-colors">
-                  {language === 'es' ? 'Ver Precios' : 'See Prices'}
-                </span>
-                <div className="w-8 h-8 rounded-full bg-[#f15555] border border-white/30 group-hover:bg-[#e04444] flex items-center justify-center transition-all duration-300 shadow-sm group-hover:scale-110 shrink-0">
-                  <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform stroke-[2.5]" />
-                </div>
+              <div className="space-y-2 relative z-10 mt-4 pt-3 border-t border-white/20">
+                {/* SEE PRICES button */}
+                <button
+                  onClick={() => onOpenBooking(language === 'es' ? 'Práctica de Conversación' : 'Conversation Practice')}
+                  className="w-full p-3 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-between text-white transition-all group/btn cursor-pointer"
+                >
+                  <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#e4ebf9] group-hover/btn:text-white transition-colors">
+                    {language === 'es' ? 'Ver Precios' : 'See Prices'}
+                  </span>
+                  <div className="w-7 h-7 rounded-full bg-[#f15555] border border-white/30 group-hover/btn:bg-[#e04444] flex items-center justify-center transition-all duration-300 shadow-sm group-hover/btn:scale-110 shrink-0">
+                    <ArrowRight className="w-4 h-4 text-white group-hover/btn:translate-x-0.5 transition-transform stroke-[2.5]" />
+                  </div>
+                </button>
+
+                {/* HAVE ANY QUESTIONS bar inside this box */}
+                <button
+                  onClick={() => onOpenBooking(language === 'es' ? 'Preguntas sobre Práctica de Conversación' : 'Questions about Conversation Practice')}
+                  className="w-full p-2.5 rounded-2xl bg-[#e4ebf9]/15 hover:bg-[#e4ebf9]/25 border border-[#c4d4f7]/30 flex items-center justify-between text-stone-100 text-[11px] sm:text-xs font-semibold transition-all group/q cursor-pointer"
+                >
+                  <div className="flex items-center gap-1.5 truncate">
+                    <Mail className="w-3.5 h-3.5 text-[#f15555] shrink-0" />
+                    <span className="truncate">
+                      {language === 'es' ? '¿Tienes alguna pregunta?' : 'Have any questions?'} speakenglishwithnick@gmail.com
+                    </span>
+                  </div>
+                  <ArrowRight className="w-3.5 h-3.5 text-stone-200 group-hover/q:translate-x-0.5 transition-transform stroke-[2.5] shrink-0" />
+                </button>
               </div>
-            </button>
+            </div>
 
           </div>
 
