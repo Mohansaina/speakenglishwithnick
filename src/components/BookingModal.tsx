@@ -94,7 +94,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
     {
       studentsEn: '4-8 students',
       studentsEs: '4-8 estudiantes',
-      price: '$30',
+      price: '$35',
       noteEn: 'per person',
       noteEs: 'por persona',
       iconCount: 4,
@@ -202,14 +202,14 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-md p-3 sm:p-5 flex min-h-full items-center justify-center animate-modal-backdrop">
-      <div className="relative w-full max-w-lg bg-white border border-stone-200 shadow-2xl rounded-3xl overflow-hidden flex flex-col my-auto max-h-[88vh] animate-modal-pop">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-md p-2.5 sm:p-5 flex min-h-full items-center justify-center animate-modal-backdrop">
+      <div className="relative w-full max-w-lg bg-white border border-stone-200 shadow-2xl rounded-3xl overflow-hidden flex flex-col my-auto max-h-[92vh] sm:max-h-[88vh] animate-modal-pop">
         
         {/* Modal Header Bar */}
-        <div className="bg-[#48529e] p-4 sm:p-5 text-white relative shrink-0">
+        <div className="bg-[#48529e] p-3.5 sm:p-5 text-white relative shrink-0">
           <button
             onClick={onClose}
-            className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all cursor-pointer z-30"
+            className="absolute top-3 right-3 sm:top-4 sm:right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all cursor-pointer z-30"
             aria-label="Close modal"
           >
             <X className="w-5 h-5 stroke-[2.5]" />
@@ -232,7 +232,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
         {!showContactForm ? (
           /* --- PRICES VIEW --- */
           <>
-            <div className="flex-1 overflow-y-auto max-h-[50vh] sm:max-h-[55vh] p-4 sm:p-5 space-y-3 min-h-0 touch-pan-y shadow-inner">
+            <div className="flex-1 overflow-y-auto max-h-[60vh] sm:max-h-[62vh] p-3.5 sm:p-5 space-y-2.5 sm:space-y-3 min-h-0 overscroll-contain shadow-inner">
               <div className="flex items-center justify-between pb-2 border-b border-stone-200">
                 <span className="text-xs sm:text-sm font-black text-stone-900 uppercase tracking-wider">
                   {getProgramTitle()}
