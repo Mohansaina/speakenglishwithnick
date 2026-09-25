@@ -57,8 +57,7 @@ export const Footer: React.FC<FooterProps> = ({
                 {/* Contact & Social Badges: Only Email & Instagram */}
                 <div className="pt-2 flex flex-wrap items-center gap-3">
                   <a
-                    href={emailUrls.gmailWebUrl}
-                    onClick={(e) => handleSmartEmailClick(e)}
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=speakenglishwithnick@gmail.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2.5 text-xs sm:text-sm font-bold text-white bg-white/10 hover:bg-white/20 px-4 py-2.5 rounded-2xl border border-white/20 transition-all hover:border-white shadow-xs cursor-pointer group active:scale-95"
