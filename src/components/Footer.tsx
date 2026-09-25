@@ -81,10 +81,8 @@ export const Footer: React.FC<FooterProps> = ({
 
             </div>
 
-            {/* Right Column: Explore & Legal Links */}
-            <div className="lg:col-span-5 grid grid-cols-2 gap-8 sm:gap-12 lg:pl-6">
-              
-              {/* Explore Column */}
+            {/* Right Column: Explore Links */}
+            <div className="lg:col-span-5 flex justify-start lg:justify-end">
               <div className="space-y-3 sm:space-y-4">
                 <h4 className="font-extrabold text-white text-lg sm:text-xl tracking-tight mb-4">
                   {language === 'es' ? 'Explorar' : 'Explore'}
@@ -112,31 +110,6 @@ export const Footer: React.FC<FooterProps> = ({
                   </li>
                 </ul>
               </div>
-
-              {/* Legal Column */}
-              <div className="space-y-3 sm:space-y-4">
-                <h4 className="font-extrabold text-white text-lg sm:text-xl tracking-tight mb-4">
-                  {language === 'es' ? 'Legal' : 'Legal'}
-                </h4>
-                <ul className="space-y-2.5 text-sm sm:text-base text-white/85 font-medium">
-                  <li>
-                    <a href="#faq" className="hover:text-white transition-colors">
-                      {language === 'es' ? 'Política de uso aceptable' : 'Acceptable use policy'}
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#faq" className="hover:text-white transition-colors">
-                      {language === 'es' ? 'Términos de uso' : 'Terms of use'}
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#faq" className="hover:text-white transition-colors">
-                      {language === 'es' ? 'Política de privacidad' : 'Privacy Policy'}
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
             </div>
 
           </div>

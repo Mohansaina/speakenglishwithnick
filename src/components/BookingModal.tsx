@@ -71,8 +71,8 @@ export const BookingModal: React.FC<BookingModalProps> = ({
       studentsEn: '1 student',
       studentsEs: '1 estudiante',
       price: '$85',
-      noteEn: 'per class',
-      noteEs: 'por clase',
+      noteEn: 'per person',
+      noteEs: 'por persona',
       iconCount: 1,
     },
     {
@@ -107,8 +107,8 @@ export const BookingModal: React.FC<BookingModalProps> = ({
       studentsEn: '1 student',
       studentsEs: '1 estudiante',
       price: '$65',
-      noteEn: 'per class',
-      noteEs: 'por clase',
+      noteEn: 'per person',
+      noteEs: 'por persona',
       iconCount: 1,
     },
     {
@@ -144,13 +144,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   };
 
   const getBadgeLabel = () => {
-    if (activeProgram === 'conversation-practice') {
-      return language === 'es' ? 'Precios por clase' : 'Prices per class';
-    }
-    if (activeProgram === 'specific-english') {
-      return language === 'es' ? 'Trabajo & Negocios' : 'Work & Business';
-    }
-    return language === 'es' ? 'Precios' : 'Prices';
+    return language === 'es' ? 'Precios por clase' : 'Prices per class';
   };
 
   const handleSubmitMessage = async (e: React.FormEvent) => {
