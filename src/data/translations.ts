@@ -22,7 +22,7 @@ export const translations = {
       badge: "Speak English",
       h1Line1: "Where speaking English",
       h1Line2: "is possible",
-      subtitle: "Hi, I'm Nick. I have learned to speak 5 languages fluently and I'm learning other languages. I would be happy to patiently guide you through the process of learning English and get more confident speaking it.",
+      subtitle: "Hi, I'm Nick. I have learned to speak 5 languages fluently and I'm practicing other languages. I would be happy to patiently guide you through the process of learning English and get more confident speaking it.",
       classLayout: {
         title: "Class layout:",
         item1: "1 session per week (In person or online)",
@@ -58,7 +58,7 @@ export const translations = {
     transformation: {
       tag: "Real Student Stories",
       titlePrefix: "Imagine finally speaking English with",
-      titleHighlight: "effortless confidence",
+      titleHighlight: "confidence",
       quote1: "Sentí vergüenza al entrar a un restaurante... solo sonreía cuando la gente me hablaba.. Ahora me siento más seguro al responder.",
       quote1En: "I felt embarrassed walking into a restaurant... I only smiled when people talked to me.. Now I feel more confident answering.",
       student1: "David",
@@ -195,7 +195,7 @@ export const translations = {
       badge: "Speak English",
       h1Line1: "Donde hablar inglés",
       h1Line2: "es posible",
-      subtitle: "Hola, soy Nick. He aprendido a hablar 5 idiomas con fluidez y estoy aprendiendo los conceptos básicos de muchos otros. Estaré encantado de guiarte pacientemente en el proceso de aprender a hablar inglés o ganar más confianza al hablar.",
+      subtitle: "Hola, soy Nick. He aprendido a hablar 5 idiomas con fluidez y estoy practicando otros idiomas. Estaré encantado de guiarte pacientemente en el proceso de aprender a hablar inglés o ganar más confianza al hablar.",
       classLayout: {
         title: "Estructura de las clases:",
         item1: "1 sesión por semana (Presencial u online)",
@@ -231,7 +231,7 @@ export const translations = {
     transformation: {
       tag: "Historias Reales de Alumnos",
       titlePrefix: "Imagina por fin hablar inglés con",
-      titleHighlight: "fluidez y total confianza",
+      titleHighlight: "confianza",
       quote1: "Sentí vergüenza al entrar a un restaurante... solo sonreía cuando la gente me hablaba.. Ahora me siento más seguro al responder.",
       quote1En: "I felt embarrassed walking into a restaurant... I only smiled when people talked to me.. Now I feel more confident answering.",
       student1: "David",

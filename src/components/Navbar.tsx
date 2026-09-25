@@ -107,109 +107,34 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="hidden lg:flex items-center gap-6">
           
           <nav className="flex items-center gap-6 text-sm sm:text-[15px] font-bold text-stone-900">
-            {/* Home with active golden underline (just like Vanessa's site) */}
+            {/* Home */}
             <Link
               href="/"
-              className="relative py-1 font-extrabold text-stone-950 hover:text-amber-600 transition-colors after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-amber-500"
+              className="relative py-1 font-extrabold text-stone-950 hover:text-[#48529e] transition-colors after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#48529e]"
             >
               {language === 'es' ? 'Inicio' : 'Home'}
             </Link>
 
-            {/* English Courses Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setCoursesDropdown(true)}
-              onMouseLeave={() => setCoursesDropdown(false)}
+            <a
+              href="#how-it-works"
+              className="py-1 hover:text-[#48529e] transition-colors font-bold text-stone-800"
             >
-              <button className="flex items-center gap-1 py-1 hover:text-amber-600 transition-colors cursor-pointer font-bold">
-                <span>{language === 'es' ? 'Cursos de Inglés' : 'English Courses'}</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${coursesDropdown ? 'rotate-180 text-amber-600' : 'text-stone-400'}`} />
-              </button>
+              {language === 'es' ? 'Cómo Funciona' : 'How It Works'}
+            </a>
 
-              {coursesDropdown && (
-                <div className="absolute top-full left-0 w-72 pt-2 animate-in fade-in slide-in-from-top-2 duration-150 z-50">
-                  <div className="bg-white rounded-2xl border border-stone-200 p-2 shadow-2xl space-y-1">
-                    <a
-                      href="#programs"
-                      onClick={() => setCoursesDropdown(false)}
-                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-[#e4ebf9]/60 text-stone-800 hover:text-[#48529e] transition-colors"
-                    >
-                      <Headphones className="w-4 h-4 text-amber-600 mt-0.5 shrink-0" />
-                      <div>
-                        <div className="text-xs font-bold">{language === 'es' ? 'Método 20 Minutos al Día' : '20-Min Daily Commute'}</div>
-                        <div className="text-[11px] text-stone-500 font-normal">{language === 'es' ? 'Audio diario paso a paso' : 'Hands-free daily audio'}</div>
-                      </div>
-                    </a>
-                    <button
-                      onClick={() => {
-                        setCoursesDropdown(false);
-                        onOpenBooking();
-                      }}
-                      className="w-full text-left flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-[#e4ebf9]/60 text-stone-800 hover:text-[#48529e] transition-colors cursor-pointer"
-                    >
-                      <Shield className="w-4 h-4 text-[#48529e] mt-0.5 shrink-0" />
-                      <div>
-                        <div className="text-xs font-bold">{language === 'es' ? 'Mentoría VIP 1 a 1' : '1-on-1 VIP Mentorship'}</div>
-                        <div className="text-[11px] text-stone-500 font-normal">{language === 'es' ? 'Sesiones privadas con Nick' : 'Live private sessions'}</div>
-                      </div>
-                    </button>
-                    <a
-                      href="#programs"
-                      onClick={() => setCoursesDropdown(false)}
-                      className="flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-[#e4ebf9]/60 text-stone-800 hover:text-[#48529e] transition-colors"
-                    >
-                      <Video className="w-4 h-4 text-[#48529e] mt-0.5 shrink-0" />
-                      <div>
-                        <div className="text-xs font-bold">{language === 'es' ? 'Masterclass de Conversación' : 'Conversation Vault'}</div>
-                        <div className="text-[11px] text-stone-500 font-normal">{language === 'es' ? '60+ lecciones en video' : '60+ HD video lessons'}</div>
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Free Lessons Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setLessonsDropdown(true)}
-              onMouseLeave={() => setLessonsDropdown(false)}
+            <a
+              href="#programs"
+              className="py-1 hover:text-[#48529e] transition-colors font-bold text-stone-800"
             >
-              <button className="flex items-center gap-1 py-1 hover:text-[#48529e] transition-colors cursor-pointer font-bold">
-                <span>{language === 'es' ? 'Lecciones Gratis' : 'Free Lessons'}</span>
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${lessonsDropdown ? 'rotate-180 text-[#48529e]' : 'text-stone-400'}`} />
-              </button>
+              {language === 'es' ? 'Programas' : 'Programs'}
+            </a>
 
-              {lessonsDropdown && (
-                <div className="absolute top-full left-0 w-72 pt-2 animate-in fade-in slide-in-from-top-2 duration-150 z-50">
-                  <div className="bg-white rounded-2xl border border-stone-200 p-2 shadow-2xl space-y-1">
-
-
-                    <button
-                      onClick={() => {
-                        setLessonsDropdown(false);
-                        onOpenQuiz();
-                      }}
-                      className="w-full text-left flex items-start gap-2.5 p-2.5 rounded-xl hover:bg-stone-50 text-stone-800 hover:text-[#48529e] transition-colors cursor-pointer"
-                    >
-                      <BookOpen className="w-4 h-4 text-[#48529e] mt-0.5 shrink-0" />
-                      <div>
-                        <div className="text-xs font-bold">{language === 'es' ? 'Test de Diagnóstico' : 'Fluency Diagnostic'}</div>
-                        <div className="text-[11px] text-stone-500 font-normal">{language === 'es' ? 'Prueba tu nivel en 2 min' : 'Test your level in 2 mins'}</div>
-                      </div>
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Contact */}
-            <button
-              onClick={onOpenBooking}
-              className="py-1 hover:text-[#48529e] transition-colors cursor-pointer font-bold"
+            <a
+              href="#faq"
+              className="py-1 hover:text-[#48529e] transition-colors font-bold text-stone-800"
             >
-              {language === 'es' ? 'Contacto' : 'Contact'}
-            </button>
+              {language === 'es' ? 'FAQ' : 'FAQ'}
+            </a>
           </nav>
 
           {/* Social Icons row (YouTube, Instagram, Facebook, Twitter) - exactly like reference */}
@@ -352,19 +277,23 @@ export const Navbar: React.FC<NavbarProps> = ({
             </Link>
 
             <a
+              href="#how-it-works"
+              onClick={() => setMobileMenuOpen(false)}
+              className="p-3 rounded-xl hover:bg-stone-50 text-stone-800 flex items-center justify-between"
+            >
+              <span>{language === 'es' ? 'Cómo Funciona' : 'How It Works'}</span>
+            </a>
+
+            <a
               href="#programs"
               onClick={() => setMobileMenuOpen(false)}
               className="p-3 rounded-xl hover:bg-stone-50 text-stone-800 flex items-center justify-between"
             >
-              <span>{language === 'es' ? 'Cursos y Programas 1 a 1' : '1-on-1 Programs & Classes'}</span>
+              <span>{language === 'es' ? 'Programas 1 a 1' : '1-on-1 Programs'}</span>
               <span className="text-[10px] uppercase font-black text-[#48529e] bg-[#e4ebf9] px-2 py-0.5 rounded-md border border-[#c2d4f8]">
                 {language === 'es' ? 'Populares' : 'Popular'}
               </span>
             </a>
-
-
-
-
 
             <button
               onClick={() => {

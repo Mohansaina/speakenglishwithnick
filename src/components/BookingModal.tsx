@@ -92,20 +92,12 @@ export const BookingModal: React.FC<BookingModalProps> = ({
       iconCount: 3,
     },
     {
-      studentsEn: '4 students',
-      studentsEs: '4 estudiantes',
-      price: '$40',
-      noteEn: 'per person',
-      noteEs: 'por persona',
-      iconCount: 4,
-    },
-    {
-      studentsEn: '5-8 students',
-      studentsEs: '5-8 estudiantes',
+      studentsEn: '4-8 students',
+      studentsEs: '4-8 estudiantes',
       price: '$30',
       noteEn: 'per person',
       noteEs: 'por persona',
-      iconCount: 5,
+      iconCount: 4,
     },
   ];
 
@@ -155,6 +147,9 @@ export const BookingModal: React.FC<BookingModalProps> = ({
     if (activeProgram === 'conversation-practice') {
       return language === 'es' ? 'Precios por clase' : 'Prices per class';
     }
+    if (activeProgram === 'specific-english') {
+      return language === 'es' ? 'Trabajo & Negocios' : 'Work & Business';
+    }
     return language === 'es' ? 'Precios' : 'Prices';
   };
 
@@ -170,10 +165,9 @@ export const BookingModal: React.FC<BookingModalProps> = ({
         name,
         email,
         from_name: 'Speak English with Nick Inquiry',
-        subject: `📩 New Inquiry: ${name} (${groupSize})`,
-        "Group Size": groupSize,
+        subject: `📩 New Inquiry: ${name}`,
         "Program Interest": getProgramTitle(),
-        message: `Student Name: ${name}\nEmail: ${email}\nGroup Size: ${groupSize}\nProgram: ${getProgramTitle()}\n\nGoals & Questions:\n${message}`,
+        message: `Student Name: ${name}\nEmail: ${email}\nProgram: ${getProgramTitle()}\n\nGoals & Questions:\n${message}`,
       };
 
       await fetch('https://api.web3forms.com/submit', {
@@ -238,7 +232,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
         {!showContactForm ? (
           /* --- PRICES VIEW --- */
           <>
-            <div className="flex-1 overflow-y-auto max-h-[62vh] p-4 sm:p-5 space-y-3 min-h-0 touch-pan-y shadow-inner">
+            <div className="flex-1 overflow-y-auto max-h-[50vh] sm:max-h-[55vh] p-4 sm:p-5 space-y-3 min-h-0 touch-pan-y shadow-inner">
               <div className="flex items-center justify-between pb-2 border-b border-stone-200">
                 <span className="text-xs sm:text-sm font-black text-stone-900 uppercase tracking-wider">
                   {getProgramTitle()}
@@ -266,9 +260,6 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                         <div className="font-black text-xs sm:text-sm text-stone-900 leading-tight">
                           {language === 'es' ? item.studentsEs : item.studentsEn}
                         </div>
-                        <div className="text-[10px] sm:text-xs text-stone-500 font-semibold">
-                          {language === 'es' ? item.noteEs : item.noteEn}
-                        </div>
                       </div>
                     </div>
 
@@ -287,50 +278,58 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               <div className="p-3 rounded-2xl bg-[#e4ebf9]/60 border border-[#c4d4f7] flex items-start gap-2 mt-2">
                 <CheckCircle2 className="w-4 h-4 text-[#48529e] shrink-0 mt-0.5 stroke-[2.5]" />
                 <p className="text-[11px] sm:text-xs text-[#373f7a] font-medium leading-relaxed">
-                  {language === 'es'
-                    ? 'Todas las clases incluyen 1 sesión semanal en vivo con Teacher Nick + 3-5 días por semana de práctica guiada por voz en WhatsApp.'
-                    : 'All classes include 1 live weekly session with Teacher Nick + 3-5 days per week of guided voice practice on WhatsApp.'}
+                  {activeProgram === 'specific-english'
+                    ? (language === 'es'
+                        ? 'Incluye 1 sesión semanal en vivo adaptada a tu trabajo (Uber, DoorDash, Restaurantes, Negocios o Entrevistas) + 3-5 días por semana de práctica de voz en WhatsApp.'
+                        : 'Includes 1 live weekly session tailored to your work (Uber, DoorDash, Restaurants, Business, or Interviews) + 3-5 days per week of voice practice on WhatsApp.')
+                    : activeProgram === 'conversation-practice'
+                    ? (language === 'es'
+                        ? 'Incluye 1 sesión semanal 100% conversacional en vivo con Teacher Nick + 3-5 días por semana de práctica de notas de voz en WhatsApp.'
+                        : 'Includes 1 live weekly 100% conversational session with Teacher Nick + 3-5 days per week of voice note drills on WhatsApp.')
+                    : (language === 'es'
+                        ? 'Todas las clases incluyen 1 sesión semanal en vivo con Teacher Nick + 3-5 días por semana de práctica guiada por voz en WhatsApp.'
+                        : 'All classes include 1 live weekly session with Teacher Nick + 3-5 days per week of guided voice practice on WhatsApp.')}
                 </p>
-              </div>
-
-              {/* Arrow Button to Open Message Box */}
-              <div className="pt-2">
-                <button
-                  onClick={() => {
-                    setMessage(`Hi Teacher Nick, I have a question about ${getProgramTitle()}!`);
-                    setShowContactForm(true);
-                  }}
-                  className="w-full p-3.5 rounded-2xl bg-[#48529e] hover:bg-[#3a4387] text-white font-black text-xs sm:text-sm flex items-center justify-between transition-all group shadow-md cursor-pointer active:scale-[0.99]"
-                >
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-7 h-7 rounded-lg bg-white/15 flex items-center justify-center shrink-0">
-                      <Mail className="w-4 h-4 text-white" />
-                    </div>
-                    <span>
-                      {language === 'es'
-                        ? 'Enviar mensaje a speakenglishwithnick@gmail.com'
-                        : 'Send message to speakenglishwithnick@gmail.com'}
-                    </span>
-                  </div>
-                  <div className="w-7 h-7 rounded-full bg-white/20 group-hover:bg-[#f15555] flex items-center justify-center transition-colors">
-                    <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform stroke-[2.5]" />
-                  </div>
-                </button>
               </div>
             </div>
 
-            {/* Modal Footer for Prices View */}
-            <div className="p-3.5 sm:p-4 bg-stone-50 border-t border-stone-200 flex items-center justify-between gap-3 shrink-0">
-              <div className="text-xs text-stone-600 font-bold flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span>{language === 'es' ? 'Destino: speakenglishwithnick@gmail.com' : 'Destination: speakenglishwithnick@gmail.com'}</span>
-              </div>
+            {/* Sticky Modal Footer for Prices View - Always 100% Visible */}
+            <div className="p-3.5 sm:p-4 bg-stone-50 border-t border-stone-200 space-y-2.5 shrink-0">
+              {/* Theme Blue Box Button with Coral Circle Arrow */}
               <button
-                onClick={onClose}
-                className="px-5 py-2 sm:py-2.5 rounded-full bg-stone-200 hover:bg-stone-300 text-stone-800 font-black text-xs sm:text-sm transition-all cursor-pointer flex items-center justify-center"
+                type="button"
+                onClick={() => {
+                  setMessage(`Hi Teacher Nick, I have a question about ${getProgramTitle()}!`);
+                  setShowContactForm(true);
+                }}
+                className="w-full p-3 sm:p-3.5 rounded-2xl bg-[#48529e] hover:bg-[#3a4387] text-white font-bold text-xs sm:text-sm flex items-center justify-between transition-all group shadow-md cursor-pointer border border-[#373f7a]"
               >
-                <span>{language === 'es' ? 'Cerrar' : 'Close'}</span>
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <Mail className="w-4 h-4 text-[#f15555] shrink-0" />
+                  <span className="truncate">
+                    {language === 'es'
+                      ? '¿Tienes alguna pregunta? speakenglishwithnick@gmail.com'
+                      : 'Have any questions? speakenglishwithnick@gmail.com'}
+                  </span>
+                </div>
+                <div className="w-7 h-7 rounded-full bg-[#f15555] group-hover:bg-[#e04444] flex items-center justify-center transition-all duration-300 shadow-sm group-hover:scale-110 shrink-0">
+                  <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform stroke-[2.5]" />
+                </div>
               </button>
+
+              <div className="flex items-center justify-between gap-3 pt-0.5">
+                <div className="text-[11px] sm:text-xs text-stone-500 font-bold flex items-center gap-1.5 truncate">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+                  <span className="truncate">{language === 'es' ? 'Destino: speakenglishwithnick@gmail.com' : 'Destination: speakenglishwithnick@gmail.com'}</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="px-5 py-2 sm:py-2.5 rounded-full bg-stone-200 hover:bg-stone-300 text-stone-800 font-black text-xs sm:text-sm transition-all cursor-pointer flex items-center justify-center shrink-0"
+                >
+                  <span>{language === 'es' ? 'Cerrar' : 'Close'}</span>
+                </button>
+              </div>
             </div>
           </>
         ) : (
@@ -396,23 +395,6 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                       placeholder="name@example.com"
                       className="w-full px-3.5 py-2 rounded-xl border border-stone-300 text-xs font-medium focus:outline-none focus:border-[#48529e] focus:ring-2 focus:ring-[#48529e]/20"
                     />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-bold text-stone-800 mb-1">
-                      {language === 'es' ? 'Tamaño del Grupo' : 'Group Size'} *
-                    </label>
-                    <select
-                      value={groupSize}
-                      onChange={(e) => setGroupSize(e.target.value)}
-                      className="w-full px-3.5 py-2 rounded-xl border border-stone-300 text-xs font-semibold focus:outline-none focus:border-[#48529e] focus:ring-2 focus:ring-[#48529e]/20 bg-white text-stone-900 cursor-pointer"
-                    >
-                      <option value="1 Student">{language === 'es' ? '1 Estudiante ($85 / clase)' : '1 Student ($85 / class)'}</option>
-                      <option value="2 Students">{language === 'es' ? '2 Estudiantes ($50 por persona)' : '2 Students ($50 per person)'}</option>
-                      <option value="3 Students">{language === 'es' ? '3 Estudiantes ($45 por persona)' : '3 Students ($45 per person)'}</option>
-                      <option value="4 Students">{language === 'es' ? '4 Estudiantes ($40 por persona)' : '4 Students ($40 per person)'}</option>
-                      <option value="5-8 Students">{language === 'es' ? '5-8 Estudiantes ($30 por persona)' : '5-8 Students ($30 per person)'}</option>
-                    </select>
                   </div>
 
                   <div>

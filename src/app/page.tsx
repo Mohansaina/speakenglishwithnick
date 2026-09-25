@@ -7,6 +7,7 @@ import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
 import { TransformationSection } from '@/components/TransformationSection';
 import { DiagnosticIntake } from '@/components/DiagnosticIntake';
+import { HowItWorks } from '@/components/HowItWorks';
 import { AudioStudioModal } from '@/components/AudioStudioModal';
 import { FluencyQuiz } from '@/components/FluencyQuiz';
 import { Programs } from '@/components/Programs';
@@ -73,38 +74,14 @@ function MainContent() {
       {/* 4.5 Interactive Fluency Diagnostic & Ratio Intake */}
       <DiagnosticIntake onOpenBookingWithNotes={handleOpenBookingWithQuiz} />
 
+      {/* 5. How It Works 3-Step Path */}
+      <HowItWorks onOpenBooking={() => handleOpenBooking()} />
 
 
-
-      {/* 7. Interactive Fluency Diagnostic Quiz */}
-      <section id="fluency-quiz-section" className="py-20 sm:py-28 relative bg-[#fcfcfb] border-b border-stone-200/70">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-xl mx-auto mb-12 space-y-3">
-            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#e4ebf9] border border-[#c4d4f7] text-[#48529e] text-xs font-black uppercase tracking-wider">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#f15555]" />
-              <span>{translations[language].quiz.tag}</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#18181b] tracking-tight">
-              {translations[language].quiz.title}
-            </h2>
-            <p className="text-xs sm:text-sm text-stone-600 font-normal">
-              {translations[language].quiz.subtitle}
-            </p>
-          </div>
-
-          <FluencyQuiz
-            onSelectCourse={() => {}}
-            onOpenBookingWithResult={handleOpenBookingWithQuiz}
-          />
-        </div>
-      </section>
 
       {/* 9. Programs & Academy Tiers */}
       <Programs
-        onOpenBooking={() => {
-          setBookingNotes('');
-          setBookingModalOpen(true);
-        }}
+        onOpenBooking={(focusTopic) => handleOpenBooking(focusTopic)}
         onOpenLeadMagnet={() => handleOpenBooking()}
       />
 

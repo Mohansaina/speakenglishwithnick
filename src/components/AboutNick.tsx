@@ -34,7 +34,7 @@ export const AboutNick: React.FC<AboutNickProps> = ({ onOpenBooking }) => {
                 {/* Floating pill badge */}
                 <div className="absolute top-3 left-3 bg-[#48529e]/90 backdrop-blur-md border border-white/20 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5 shadow-sm">
                   <Globe className="w-3.5 h-3.5 text-[#f15555]" />
-                  <span>5 Fluent Languages</span>
+                  <span>American English</span>
                 </div>
               </div>
 

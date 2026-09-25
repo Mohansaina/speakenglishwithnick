@@ -92,7 +92,7 @@ export const FreeGuideBanner: React.FC<FreeGuideBannerProps> = ({ onOpenLeadMagn
               {/* Middle Badge */}
               <div className="p-3 bg-white/10 rounded-2xl border border-white/20 text-center shadow-xs">
                 <p className="text-xs font-bold text-[#d4dcff]">
-                  {language === 'es' ? 'Por Teacher Nick • 5 Idiomas' : 'By Teacher Nick • 5 Languages'}
+                  {language === 'es' ? 'Por Teacher Nick • Inglés Americano' : 'By Teacher Nick • American English'}
                 </p>
               </div>
 

@@ -10,7 +10,7 @@ export const TransformationSection: React.FC = () => {
   const t = translations[language].transformation;
 
   return (
-    <section className="py-20 sm:py-28 bg-[#f8f9f7] border-b border-stone-200/70 overflow-hidden relative">
+    <section id="student-reviews" className="py-20 sm:py-28 bg-[#f8f9f7] border-b border-stone-200/70 overflow-hidden relative">
       
       {/* Background ambient lighting */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-[#48529e]/10 rounded-full blur-3xl pointer-events-none" />
@@ -29,24 +29,18 @@ export const TransformationSection: React.FC = () => {
               <>
                 Imagina finalmente hablar inglés <br className="hidden sm:inline" />
                 <span className="font-serif italic font-normal text-[#48529e]">
-                  con total soltura y confianza
+                  con confianza
                 </span>
               </>
             ) : (
               <>
                 Imagine finally speaking English <br className="hidden sm:inline" />
                 <span className="font-serif italic font-normal text-[#48529e]">
-                  with effortless confidence
+                  with confidence
                 </span>
               </>
             )}
           </h2>
-
-          <p className="text-sm sm:text-base text-stone-600 max-w-2xl mx-auto leading-relaxed font-normal">
-            {language === 'es'
-              ? 'Historias reales de profesionales y estudiantes que eliminaron la ansiedad de traducir y encontraron su voz.'
-              : 'Real breakthrough stories from professionals who eliminated translation anxiety and found their voice.'}
-          </p>
         </div>
 
         {/* Continuously Running Infinite Horizontal Marquee Ticker */}
@@ -383,6 +377,57 @@ export const TransformationSection: React.FC = () => {
 
           </div>
 
+        </div>
+
+        {/* Problems & Solution Section */}
+        <div className="mt-16 sm:mt-20 pt-12 border-t border-stone-200/80 max-w-4xl mx-auto space-y-8">
+          {/* Black Title */}
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-stone-900 text-center tracking-tight">
+            {language === 'es' ? 'Si Te Enfrentas a Estos Problemas' : 'If You Face These Problems'}
+          </h3>
+
+          {/* 4 Bullet Points */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              {
+                en: 'I struggle to catch fast native speech and accents',
+                es: 'Me cuesta entender el habla rápida nativa y los acentos',
+              },
+              {
+                en: "I don't talk because I'm afraid of making mistakes",
+                es: 'No hablo porque tengo miedo de cometer errores',
+              },
+              {
+                en: 'I understand but I lack the confidence to speak',
+                es: 'Entiendo pero me falta la confianza para hablar',
+              },
+              {
+                en: 'I translate every single word in my head first',
+                es: 'Traduzco cada palabra en mi cabeza primero',
+              },
+            ].map((item, index) => (
+              <div 
+                key={index}
+                className="flex items-start gap-3.5 p-4 sm:p-5 rounded-2xl bg-white border border-stone-200/90 shadow-xs hover:border-[#48529e]/40 transition-all"
+              >
+                <div className="w-6 h-6 rounded-full bg-stone-900 text-white flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
+                  •
+                </div>
+                <p className="text-stone-900 font-bold text-sm sm:text-base leading-snug">
+                  {language === 'es' ? item.es : item.en}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Blue Text Under Bullet Points */}
+          <div className="text-center pt-4">
+            <span className="inline-block px-6 py-3.5 rounded-2xl bg-[#e4ebf9]/80 border border-[#c4d4f7] shadow-xs">
+              <p className="text-xl sm:text-2xl md:text-3xl font-black text-[#48529e] tracking-tight">
+                {language === 'es' ? 'Entonces Estas Clases Son Para Ti' : 'Then These Classes Are For You'}
+              </p>
+            </span>
+          </div>
         </div>
 
       </div>

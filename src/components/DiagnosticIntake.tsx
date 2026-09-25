@@ -258,7 +258,7 @@ How can we get started?`;
   };
 
   return (
-    <section id="intake-form" className="py-12 sm:py-20 bg-[#fbfbfa] border-y border-stone-200/80">
+    <section id="fluency-quiz-section" className="py-12 sm:py-20 bg-[#fbfbfa] border-y border-stone-200/80">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Clean Header */}

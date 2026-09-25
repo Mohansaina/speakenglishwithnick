@@ -39,10 +39,10 @@ export const Hero: React.FC<HeroProps> = ({
                     <span>Teacher Nick</span>
                     <span className="w-1.5 h-1.5 rounded-full bg-[#f15555]" />
                   </div>
+                  <div className="text-[10px] sm:text-xs font-semibold text-stone-200 mt-0.5">
+                    American English
+                  </div>
                 </div>
-                <span className="text-[9px] sm:text-[10px] uppercase font-black px-2 sm:px-2.5 py-1 rounded-full bg-[#f15555] text-white shrink-0">
-                  5 Languages
-                </span>
               </div>
             </div>
           </div>
@@ -61,12 +61,12 @@ export const Hero: React.FC<HeroProps> = ({
               {language === 'es' ? (
                 <>
                   Donde hablar inglés <br />
-                  <span className="font-serif italic font-black text-[#48529e]">es posible</span>
+                  <span className="font-serif italic font-semibold text-[#48529e]">es posible</span>
                 </>
               ) : (
                 <>
                   Where speaking English <br />
-                  <span className="font-serif italic font-black text-[#48529e]">is possible</span>
+                  <span className="font-serif italic font-semibold text-[#48529e]">is possible</span>
                 </>
               )}
             </h1>
@@ -74,8 +74,8 @@ export const Hero: React.FC<HeroProps> = ({
             {/* Nick Introduction Bio */}
             <p className="text-xs sm:text-sm md:text-base text-stone-700 leading-relaxed font-normal">
               {language === 'es'
-                ? 'Hola, soy Nick. He aprendido a hablar 5 idiomas con fluidez y estoy aprendiendo otros idiomas. Estaré encantado de guiarte pacientemente en el proceso de aprender inglés y ganar más confianza al hablarlo.'
-                : "Hi, I'm Nick. I have learned to speak 5 languages fluently and I'm learning other languages. I would be happy to patiently guide you through the process of learning English and get more confident speaking it."}
+                ? 'Hola, soy Nick. He aprendido a hablar 5 idiomas con fluidez y estoy practicando otros idiomas. Estaré encantado de guiarte pacientemente en el proceso de aprender inglés y ganar más confianza al hablarlo.'
+                : "Hi, I'm Nick. I have learned to speak 5 languages fluently and I'm practicing other languages. I would be happy to patiently guide you through the process of learning English and get more confident speaking it."}
             </p>
 
             {/* Class Layout Schedule Box */}
@@ -156,32 +156,18 @@ export const Hero: React.FC<HeroProps> = ({
                 </ul>
               </div>
 
-              <div className="space-y-2 relative z-10 mt-4 pt-3 border-t border-white/20">
-                {/* SEE PRICES button */}
+              <div className="relative z-10 mt-4 pt-3 border-t border-white/20">
+                {/* PRICES button */}
                 <button
                   onClick={() => onOpenBooking(language === 'es' ? 'Inglés desde 0' : 'English from 0')}
                   className="w-full p-3 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-between text-white transition-all group/btn cursor-pointer"
                 >
                   <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#e4ebf9] group-hover/btn:text-white transition-colors">
-                    {language === 'es' ? 'Ver Precios' : 'See Prices'}
+                    {language === 'es' ? 'Precios' : 'Prices'}
                   </span>
                   <div className="w-7 h-7 rounded-full bg-[#f15555] border border-white/30 group-hover/btn:bg-[#e04444] flex items-center justify-center transition-all duration-300 shadow-sm group-hover/btn:scale-110 shrink-0">
                     <ArrowRight className="w-4 h-4 text-white group-hover/btn:translate-x-0.5 transition-transform stroke-[2.5]" />
                   </div>
-                </button>
-
-                {/* HAVE ANY QUESTIONS bar inside this box */}
-                <button
-                  onClick={() => onOpenBooking(language === 'es' ? 'Preguntas sobre Inglés desde 0' : 'Questions about English from 0')}
-                  className="w-full p-2.5 rounded-2xl bg-[#e4ebf9]/15 hover:bg-[#e4ebf9]/25 border border-[#c4d4f7]/30 flex items-center justify-between text-stone-100 text-[11px] sm:text-xs font-semibold transition-all group/q cursor-pointer"
-                >
-                  <div className="flex items-center gap-1.5 truncate">
-                    <Mail className="w-3.5 h-3.5 text-[#f15555] shrink-0" />
-                    <span className="truncate">
-                      {language === 'es' ? '¿Tienes alguna pregunta?' : 'Have any questions?'} speakenglishwithnick@gmail.com
-                    </span>
-                  </div>
-                  <ArrowRight className="w-3.5 h-3.5 text-stone-200 group-hover/q:translate-x-0.5 transition-transform stroke-[2.5] shrink-0" />
                 </button>
               </div>
             </div>
@@ -217,32 +203,18 @@ export const Hero: React.FC<HeroProps> = ({
                 </ul>
               </div>
 
-              <div className="space-y-2 relative z-10 mt-4 pt-3 border-t border-white/20">
-                {/* SEE PRICES button */}
+              <div className="relative z-10 mt-4 pt-3 border-t border-white/20">
+                {/* PRICES button */}
                 <button
                   onClick={() => onOpenBooking(language === 'es' ? 'Inglés Específico' : 'Specific English')}
                   className="w-full p-3 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-between text-white transition-all group/btn cursor-pointer"
                 >
                   <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-white group-hover/btn:text-[#e4ebf9] transition-colors">
-                    {language === 'es' ? 'Ver Precios' : 'See Prices'}
+                    {language === 'es' ? 'Precios' : 'Prices'}
                   </span>
                   <div className="w-7 h-7 rounded-full bg-[#f15555] border border-white/30 group-hover/btn:bg-[#e04444] flex items-center justify-center transition-all duration-300 shadow-sm group-hover/btn:scale-110 shrink-0">
                     <ArrowRight className="w-4 h-4 text-white group-hover/btn:translate-x-0.5 transition-transform stroke-[2.5]" />
                   </div>
-                </button>
-
-                {/* HAVE ANY QUESTIONS bar inside this box */}
-                <button
-                  onClick={() => onOpenBooking(language === 'es' ? 'Preguntas sobre Inglés Específico' : 'Questions about Specific English')}
-                  className="w-full p-2.5 rounded-2xl bg-[#e4ebf9]/15 hover:bg-[#e4ebf9]/25 border border-[#c4d4f7]/30 flex items-center justify-between text-stone-100 text-[11px] sm:text-xs font-semibold transition-all group/q cursor-pointer"
-                >
-                  <div className="flex items-center gap-1.5 truncate">
-                    <Mail className="w-3.5 h-3.5 text-[#f15555] shrink-0" />
-                    <span className="truncate">
-                      {language === 'es' ? '¿Tienes alguna pregunta?' : 'Have any questions?'} speakenglishwithnick@gmail.com
-                    </span>
-                  </div>
-                  <ArrowRight className="w-3.5 h-3.5 text-stone-200 group-hover/q:translate-x-0.5 transition-transform stroke-[2.5] shrink-0" />
                 </button>
               </div>
             </div>
@@ -278,52 +250,22 @@ export const Hero: React.FC<HeroProps> = ({
                 </ul>
               </div>
 
-              <div className="space-y-2 relative z-10 mt-4 pt-3 border-t border-white/20">
-                {/* SEE PRICES button */}
+              <div className="relative z-10 mt-4 pt-3 border-t border-white/20">
+                {/* PRICES button */}
                 <button
                   onClick={() => onOpenBooking(language === 'es' ? 'Práctica de Conversación' : 'Conversation Practice')}
                   className="w-full p-3 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-between text-white transition-all group/btn cursor-pointer"
                 >
                   <span className="text-xs sm:text-sm font-black uppercase tracking-wider text-[#e4ebf9] group-hover/btn:text-white transition-colors">
-                    {language === 'es' ? 'Ver Precios' : 'See Prices'}
+                    {language === 'es' ? 'Precios' : 'Prices'}
                   </span>
                   <div className="w-7 h-7 rounded-full bg-[#f15555] border border-white/30 group-hover/btn:bg-[#e04444] flex items-center justify-center transition-all duration-300 shadow-sm group-hover/btn:scale-110 shrink-0">
                     <ArrowRight className="w-4 h-4 text-white group-hover/btn:translate-x-0.5 transition-transform stroke-[2.5]" />
                   </div>
                 </button>
-
-                {/* HAVE ANY QUESTIONS bar inside this box */}
-                <button
-                  onClick={() => onOpenBooking(language === 'es' ? 'Preguntas sobre Práctica de Conversación' : 'Questions about Conversation Practice')}
-                  className="w-full p-2.5 rounded-2xl bg-[#e4ebf9]/15 hover:bg-[#e4ebf9]/25 border border-[#c4d4f7]/30 flex items-center justify-between text-stone-100 text-[11px] sm:text-xs font-semibold transition-all group/q cursor-pointer"
-                >
-                  <div className="flex items-center gap-1.5 truncate">
-                    <Mail className="w-3.5 h-3.5 text-[#f15555] shrink-0" />
-                    <span className="truncate">
-                      {language === 'es' ? '¿Tienes alguna pregunta?' : 'Have any questions?'} speakenglishwithnick@gmail.com
-                    </span>
-                  </div>
-                  <ArrowRight className="w-3.5 h-3.5 text-stone-200 group-hover/q:translate-x-0.5 transition-transform stroke-[2.5] shrink-0" />
-                </button>
               </div>
             </div>
 
-          </div>
-
-          {/* Any Questions Email Bar */}
-          <div className="mt-6 sm:mt-8 text-center">
-            <button
-              onClick={() => onOpenBooking('Inquiry: Questions & Group Size')}
-              className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-[#e4ebf9] hover:bg-[#c2d4f8] text-[#48529e] text-xs sm:text-sm font-bold border border-[#c4d4f7] transition-all shadow-2xs hover:scale-[1.02] cursor-pointer"
-            >
-              <Mail className="w-4 h-4 text-[#f15555]" />
-              <span>
-                {language === 'es'
-                  ? '¿Tienes alguna pregunta? speakenglishwithnick@gmail.com'
-                  : 'Have any questions? speakenglishwithnick@gmail.com'}
-              </span>
-              <ArrowRight className="w-4 h-4 text-[#48529e] stroke-[2.5]" />
-            </button>
           </div>
 
         </div>
