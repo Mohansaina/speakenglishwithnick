@@ -383,7 +383,7 @@ export const TransformationSection: React.FC = () => {
         <div className="mt-16 sm:mt-20 pt-12 border-t border-stone-200/80 max-w-4xl mx-auto space-y-8">
           {/* Black Title */}
           <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-stone-900 text-center tracking-tight">
-            {language === 'es' ? 'Si Te Enfrentas a Estos Problemas' : 'If You Face These Problems'}
+            {language === 'es' ? '¿Enfrentas Estos Problemas?' : 'Do You Face These Problems?'}
           </h3>
 
           {/* 4 Bullet Points */}
