@@ -144,6 +144,9 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   };
 
   const getBadgeLabel = () => {
+    if (activeProgram === 'english-from-0' || activeProgram === 'specific-english') {
+      return language === 'es' ? 'Precios por semana' : 'Prices per week';
+    }
     return language === 'es' ? 'Precios por clase' : 'Prices per class';
   };
 
