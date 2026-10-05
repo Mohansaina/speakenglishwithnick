@@ -25,6 +25,7 @@ export interface BookingEmailData {
 export const COACH_EMAIL = process.env.COACH_EMAIL || 'speakenglishwithnick@gmail.com';
 export const RESEND_API_KEY = process.env.RESEND_API_KEY || '';
 export const WEB3FORMS_ACCESS_KEY = process.env.WEB3FORMS_ACCESS_KEY || 'd00ae149-9fc0-4582-a1d8-d2232f28cbd9';
+export const WEB3FORMS_DIAGNOSTIC_KEY = process.env.WEB3FORMS_DIAGNOSTIC_KEY || '95e2795a-6c55-4b7a-bda3-26b98c09baaa';
 
 /**
  * Send email using Web3Forms API
@@ -35,6 +36,7 @@ async function sendViaWeb3Forms({
   subject,
   messageText,
   replyTo,
+  apiKey,
   extraFields = {},
 }: {
   name: string;
@@ -42,10 +44,11 @@ async function sendViaWeb3Forms({
   subject: string;
   messageText: string;
   replyTo?: string;
+  apiKey?: string;
   extraFields?: Record<string, string | number>;
 }) {
-  const apiKey = process.env.WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY || 'd00ae149-9fc0-4582-a1d8-d2232f28cbd9';
-  if (!apiKey) return null;
+  const keyToUse = apiKey || process.env.WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY;
+  if (!keyToUse) return null;
 
   try {
     const res = await fetch('https://api.web3forms.com/submit', {
@@ -55,7 +58,7 @@ async function sendViaWeb3Forms({
         Accept: 'application/json',
       },
       body: JSON.stringify({
-        access_key: apiKey,
+        access_key: keyToUse,
         subject: subject,
         from_name: 'Speak English with Nick Leads',
         name: name,
@@ -384,6 +387,7 @@ ${phone ? `• Open WhatsApp Chat: https://wa.me/${phone.replace(/[^0-9]/g, '')}
 `;
 
     const web3Result = await sendViaWeb3Forms({
+      apiKey: WEB3FORMS_DIAGNOSTIC_KEY,
       name,
       email,
       subject: `🎯 New Fluency Diagnostic: ${name} (${understandPercent}% / ${speakPercent}%)`,
